@@ -11,9 +11,10 @@
 - [Limit Requirements](#limits-minmax)
 - [Additional Multisampling Capabilities](#limits-multisample)
 - [Additional_Multisampling_Capabilities](#limits-multisample)
-- [Profile Limits](#profile-limits)
-- [Roadmap 2022](#profile-limits-roadmap-2022)
-- [Roadmap 2024](#profile-limits-roadmap-2024)
+- [Milestone Limits](#milestone-limits)
+- [Roadmap 2022](#milestone-limits-roadmap-2022)
+- [Roadmap 2024](#milestone-limits-roadmap-2024)
+- [Roadmap 2026](#milestone-limits-roadmap-2026)
 
 ## Content
 
@@ -8572,17 +8573,23 @@ whether or not the feature is enabled.
 | `maxPerStageDescriptorSamplers` | - | 16 | min |
 | `maxPerStageDescriptorUniformBuffers` | - | 12 (Vulkan Core)
 
-                                                   15 (Vulkan Roadmap 2022, Vulkan 1.4) | min |
+                                                   15 (Vulkan Roadmap 2022, Vulkan 1.4)
+
+                                                   200 (Vulkan Roadmap 2026) | min |
 | `maxPerStageDescriptorStorageBuffers` | - | 4 (Vulkan Core)
 
-                                                   30 (Vulkan Roadmap 2022) | min |
+                                                   30 (Vulkan Roadmap 2022)
+
+                                                   200 (Vulkan Roadmap 2026) | min |
 | `maxPerStageDescriptorSampledImages` | - | 16 (Vulkan Core)
 
                                                    200 (Vulkan Roadmap 2022) | min |
 | `maxPerStageDescriptorStorageImages` | - | 4 (Vulkan Core)
 
                                                    144 (Vulkan Roadmap 2022) | min |
-| `maxPerStageDescriptorInputAttachments` | - | 4 | min |
+| `maxPerStageDescriptorInputAttachments` | - | 4
+
+                                                   8 (Vulkan Roadmap 2026) | min |
 | `maxPerStageResources` | - | 128 2 (Vulkan Core)
 
                                                    200 (Vulkan Roadmap 2022, Vulkan 1.4) | min |
@@ -8591,11 +8598,15 @@ whether or not the feature is enabled.
                                                    576 (Vulkan Roadmap 2022) | min, *n* × PerStage |
 | `maxDescriptorSetUniformBuffers` | - | 72 8 (Vulkan Core)
 
-                                                   90 (Vulkan Roadmap 2022, Vulkan 1.4) | min, *n* × PerStage |
+                                                   90 (Vulkan Roadmap 2022, Vulkan 1.4)
+
+                                                   1800 (Vulkan Roadmap 2026) | min, *n* × PerStage |
 | `maxDescriptorSetUniformBuffersDynamic` | - | 8 | min |
 | `maxDescriptorSetStorageBuffers` | - | 24 8 (Vulkan Core)
 
-                                                   96 (Vulkan Roadmap 2022, Vulkan 1.4) | min, *n* × PerStage |
+                                                   96 (Vulkan Roadmap 2022, Vulkan 1.4)
+
+                                                   1800 (Vulkan Roadmap 2026) | min, *n* × PerStage |
 | `maxDescriptorSetStorageBuffersDynamic` | - | 4 | min |
 | `maxDescriptorSetTotalUniformBuffersDynamic` | - | `maxDescriptorSetUniformBuffersDynamic` | min |
 | `maxDescriptorSetTotalStorageBuffersDynamic` | - | `maxDescriptorSetStorageBuffersDynamic` | min |
@@ -8606,32 +8617,54 @@ whether or not the feature is enabled.
 | `maxDescriptorSetStorageImages` | - | 24 8 (Vulkan Core)
 
                                                    144 (Vulkan Roadmap 2022, Vulkan 1.4) | min, *n* × PerStage |
-| `maxDescriptorSetInputAttachments` | - | 4 | min |
+| `maxDescriptorSetInputAttachments` | - | 4
+
+                                                   8 (Vulkan Roadmap 2026) | min |
 | `maxVertexInputAttributes` | - | 16 | min |
 | `maxVertexInputBindings` | - | 16 10 | min |
 | `maxVertexInputAttributeOffset` | - | 2047 | min |
 | `maxVertexInputBindingStride` | - | 2048 | min |
-| `maxVertexOutputComponents` | - | 64 | min |
+| `maxVertexOutputComponents` | - | 64
+
+                                                   124 (Vulkan Roadmap 2026) | min |
 | `maxTessellationGenerationLevel` | 0 | 64 | min |
 | `maxTessellationPatchSize` | 0 | 32 | min |
-| `maxTessellationControlPerVertexInputComponents` | 0 | 64 | min |
-| `maxTessellationControlPerVertexOutputComponents` | 0 | 64 | min |
+| `maxTessellationControlPerVertexInputComponents` | 0 | 64
+
+                                                              128 (Vulkan Roadmap 2026) | min |
+| `maxTessellationControlPerVertexOutputComponents` | 0 | 64
+
+                                                              128 (Vulkan Roadmap 2026) | min |
 | `maxTessellationControlPerPatchOutputComponents` | 0 | 120 | min |
-| `maxTessellationControlTotalOutputComponents` | 0 | 2048 | min |
-| `maxTessellationEvaluationInputComponents` | 0 | 64 | min |
-| `maxTessellationEvaluationOutputComponents` | 0 | 64 | min |
+| `maxTessellationControlTotalOutputComponents` | 0 | 2048
+
+                                                              4096 (Vulkan Roadmap 2026) | min |
+| `maxTessellationEvaluationInputComponents` | 0 | 64
+
+                                                              128 (Vulkan Roadmap 2026) | min |
+| `maxTessellationEvaluationOutputComponents` | 0 | 64
+
+                                                              128 (Vulkan Roadmap 2026) | min |
 | `maxGeometryShaderInvocations` | 0 | 32 | min |
 | `maxGeometryInputComponents` | 0 | 64 | min |
-| `maxGeometryOutputComponents` | 0 | 64 | min |
+| `maxGeometryOutputComponents` | 0 | 64
+
+                                                   128 (Vulkan Roadmap 2026) | min |
 | `maxGeometryOutputVertices` | 0 | 256 | min |
 | `maxGeometryTotalOutputComponents` | 0 | 1024 | min |
-| `maxFragmentInputComponents` | - | 64 | min |
-| `maxFragmentOutputAttachments` | - | 4 | min |
+| `maxFragmentInputComponents` | - | 64
+
+                                                   112 (Vulkan Roadmap 2026) | min |
+| `maxFragmentOutputAttachments` | - | 4
+
+                                                   8 (Vulkan Roadmap 2026) | min |
 | `maxFragmentDualSrcAttachments` | 0 | 1 | min |
 | `maxFragmentCombinedOutputResources` | - | 4 (Vulkan Core)
 
                                                    16 (Vulkan Roadmap 2022, Vulkan 1.4) | min |
-| `maxComputeSharedMemorySize` | - | 16384 | min |
+| `maxComputeSharedMemorySize` | - | 16384
+
+                                                   32768 (Vulkan Roadmap 2026) | min |
 | `maxComputeWorkGroupCount` | - | (65535,65535,65535) | min |
 | `maxComputeWorkGroupInvocations` | - | 128 (Vulkan Core)
 
@@ -8677,7 +8710,9 @@ whether or not the feature is enabled.
 | `maxSubgroupSize` | - | - (Vulkan Core)
 
                                                    4 (Vulkan Roadmap 2022) | min |
-| `subPixelPrecisionBits` | - | 4 | min |
+| `subPixelPrecisionBits` | - | 4
+
+                                                   8 (Vulkan Roadmap 2026) | min |
 | `subTexelPrecisionBits` | - | 4 (Vulkan Core)
 
                                                    8 (Vulkan Roadmap 2022, Vulkan 1.4) | min |
@@ -8693,7 +8728,9 @@ whether or not the feature is enabled.
 | `maxViewports` | 1 | 16 | min |
 | `maxViewportDimensions` 3 | - | (4096,4096) (Vulkan Core)
 
-                                                   (7680,7680) (Vulkan 1.4) | min |
+                                                   (7680,7680) (Vulkan 1.4)
+
+                                                   (8192,8192) (Vulkan Roadmap 2026) | min |
 | `viewportBoundsRange` 4 | - | (-8192,8191) (Vulkan Core)
 
                                                    (-15360,15359) (Vulkan 1.4) | (max,min) |
@@ -8711,10 +8748,14 @@ whether or not the feature is enabled.
 | `subPixelInterpolationOffsetBits` | 0 | 4 5 | min |
 | `maxFramebufferWidth` | - | 4096 (Vulkan Core)
 
-                                                   7680 (Vulkan 1.4) | min |
+                                                   7680 (Vulkan 1.4)
+
+                                                   8192 (Vulkan Roadmap 2026) | min |
 | `maxFramebufferHeight` | - | 4096 (Vulkan Core)
 
-                                                   7680 (Vulkan 1.4) | min |
+                                                   7680 (Vulkan 1.4)
+
+                                                   8192 (Vulkan Roadmap 2026) | min |
 | `maxFramebufferLayers` | - | 256 | min |
 | `framebufferColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
 | `framebufferIntegerColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits)) | min |
@@ -9235,7 +9276,7 @@ greater than or equal to the corresponding members of
 respectively, otherwise both members **must** be `0`.
 
 Implementations that claim support for the [Roadmap 2022](../appendices/roadmap.html#roadmap-2022)
-profile **must** satisfy the following additional limit requirements:
+milestone **must** satisfy the following additional limit requirements:
 
 | Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- |
@@ -9289,7 +9330,7 @@ profile **must** satisfy the following additional limit requirements:
 | `maxPerStageDescriptorUpdateAfterBindInputAttachments` | 7 | min |
 
 Implementations that claim support for the [Roadmap 2024](../appendices/roadmap.html#roadmap-2024)
-profile **must** satisfy the following additional limit requirements:
+milestone **must** satisfy the following additional limit requirements:
 
 | Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- |
@@ -9298,3 +9339,30 @@ profile **must** satisfy the following additional limit requirements:
 | `timestampComputeAndGraphics` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
 | `maxColorAttachments` | 8 | min |
 | `maxBoundDescriptorSets` | 7 | min |
+
+Implementations that claim support for the [Roadmap 2026](../appendices/roadmap.html#roadmap-2026)
+milestone **must** satisfy the following additional limit requirements:
+
+| Limit | Supported Limit | Limit Type1 |
+| --- | --- | --- |
+| `maxPerStageDescriptorUniformBuffers` | 200 | min |
+| `maxPerStageDescriptorStorageBuffers` | 200 | min |
+| `maxPerStageDescriptorInputAttachments` | 8 | min |
+| `maxDescriptorSetUniformBuffers` | 1800 | min |
+| `maxDescriptorSetStorageBuffers` | 1800 | min |
+| `maxDescriptorSetInputAttachments` | 8 | min |
+| `maxVertexOutputComponents` | 124 | min |
+| `maxTessellationControlPerVertexInputComponents` | 128 | min |
+| `maxTessellationControlPerVertexOutputComponents` | 128 | min |
+| `maxTessellationControlTotalOutputComponents` | 4096 | min |
+| `maxTessellationEvaluationInputComponents` | 128 | min |
+| `maxTessellationEvaluationOutputComponents` | 128 | min |
+| `maxGeometryOutputComponents` | 128 | min |
+| `maxFragmentInputComponents` | 112 | min |
+| `maxFragmentOutputAttachments` | 8 | min |
+| `maxComputeSharedMemorySize` | 32768 | min |
+| `subPixelPrecisionBits` | 8 | min |
+| `maxViewportDimensions.width` | 8192 | min |
+| `maxViewportDimensions.height` | 8192 | min |
+| `maxFramebufferWidth` | 8192 | min |
+| `maxFramebufferHeight` | 8192 | min |

@@ -9,9 +9,11 @@
 ## Table of Contents
 
 - [Feature Requirements](#features-requirements)
-- [Profile Features](#profile-features)
-- [Roadmap 2022](#profile-features-roadmap-2022)
-- [Roadmap 2024](#profile-features-roadmap-2024)
+- [Roadmap Milestone Features](#milestone-features)
+- [Roadmap_Milestone_Features](#milestone-features)
+- [Roadmap 2022](#milestone-features-roadmap-2022)
+- [Roadmap 2024](#milestone-features-roadmap-2024)
+- [Roadmap 2026](#milestone-features-roadmap-2026)
 
 ## Content
 
@@ -15981,7 +15983,7 @@ feature may not be supported despite `[VK_EXT_rgba10x6_formats](../appendices/ex
 advertised. |
 
 Implementations that claim support for the [Roadmap 2022](../appendices/roadmap.html#roadmap-2022)
-profile **must** support the following features:
+milestone **must** support the following features:
 
 * 
 [`fullDrawIndexUint32`](#features-fullDrawIndexUint32)
@@ -16092,7 +16094,7 @@ profile **must** support the following features:
 [`scalarBlockLayout`](#features-scalarBlockLayout)
 
 Implementations that claim support for the [Roadmap 2024](../appendices/roadmap.html#roadmap-2024)
-profile **must** support the following features:
+milestone **must** support the following features:
 
 * 
 [`multiDrawIndirect`](#features-multiDrawIndirect)
@@ -16117,3 +16119,18 @@ profile **must** support the following features:
 
 * 
 [`storageBuffer8BitAccess`](#features-storageBuffer8BitAccess)
+
+Implementations that claim support for the [Roadmap 2026](../appendices/roadmap.html#roadmap-2026)
+milestone **must** support the following features:
+
+* 
+[`hostImageCopy`](#features-hostImageCopy)
+
+* 
+[`robustBufferAccess2`](#features-robustBufferAccess2)
+
+* 
+[`robustImageAccess2`](#features-robustImageAccess2)
+
+* 
+[`nullDescriptor`](#features-nullDescriptor)

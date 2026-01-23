@@ -15,10 +15,16 @@
 - [Required Limits](#_required_limits)
 - [Required Extensions](#_required_extensions)
 - [Roadmap 2024](#roadmap-2024)
-- [Required Profiles](#_required_profiles)
+- [Required Milestones](#_required_milestones)
 - [Required Features](#_required_features_2)
 - [Required Limits](#_required_limits_2)
 - [Required Extensions](#_required_extensions_2)
+- [Roadmap 2026](#roadmap-2026)
+- [Required Milestones](#_required_milestones_2)
+- [Required Versions](#_required_versions)
+- [Required Features](#_required_features_3)
+- [Required Limits](#_required_limits_3)
+- [Required Extensions](#_required_extensions_3)
 
 ## Content
 
@@ -31,9 +37,9 @@ hardware shipping by the end of the target year or shortly thereafter.
 
 The Roadmap 2022 milestone is intended to be supported by newer
 mid-to-high-end devices shipping in 2022 or shortly thereafter across
-mainstream smartphone, tablet, laptops, console and desktop devices.
+mainstream smartphone, tablet, laptop, console and desktop devices.
 
-This profile requires Vulkan 1.3.
+This milestone requires Vulkan 1.3.
 
 The following core optional features are required to be supported:
 
@@ -153,7 +159,7 @@ Vulkan 1.2 Optional Features
 
 The following core increased limits are **required**
 
-| Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
+| Limit Name | Unsupported Limit | Core Limit | Milestone Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
 | `maxImageDimension1D` | - | 4096 | 8192 | min |
 | `maxImageDimension2D` | - | 4096 | 8192 | min |
@@ -183,7 +189,7 @@ The following core increased limits are **required**
 | `standardSampleLocations` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
 | `maxColorAttachments` | - | 4 | 7 | min |
 
-| Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
+| Limit Name | Unsupported Limit | Core Limit | Milestone Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
 | `subgroupSize` | - | 1/4 | 4 | implementation-dependent |
 | `subgroupSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](../chapters/pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_COMPUTE_BIT](../chapters/pipelines.html#VkShaderStageFlagBits)
@@ -203,13 +209,13 @@ The following core increased limits are **required**
 
                                                    [VK_SUBGROUP_FEATURE_QUAD_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits) | implementation-dependent |
 
-| Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
+| Limit Name | Unsupported Limit | Core Limit | Milestone Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
 | `shaderSignedZeroInfNanPreserveFloat16` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
 | `shaderSignedZeroInfNanPreserveFloat32` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
 | `maxPerStageDescriptorUpdateAfterBindInputAttachments` | 0 | 4 | 7 | min |
 
-| Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
+| Limit Name | Unsupported Limit | Core Limit | Milestone Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
 | `maxSubgroupSize` | - | - | 4 | min |
 
@@ -219,7 +225,7 @@ The following extensions are **required**
 
 The Roadmap 2024 milestone is intended to be supported by newer
 mid-to-high-end devices shipping in 2024 or shortly thereafter across
-mainstream smartphone, tablet, laptops, console and desktop devices.
+mainstream smartphone, tablet, laptop, console and desktop devices.
 
 Two of the core aims of this roadmap profile are to enable developers to
 rely on a number of important rasterization and shader features have been
@@ -239,7 +245,7 @@ A few other features have been added opportunistically, in lieu of shipping
 a Vulkan 1.4 in the same time frame, such as [push descriptors](extensions.html#VK_KHR_push_descriptor) and the various minor improvements included in
 [VK_KHR_maintenance5](extensions.html#VK_KHR_maintenance5).
 
-This profile requires the Roadmap 2022 profile.
+This milestone requires the Roadmap 2022 profile.
 
 The following core optional features are required to be supported:
 
@@ -329,3 +335,148 @@ The following extensions are **required**
 
 * 
 [VK_KHR_push_descriptor](extensions.html#VK_KHR_push_descriptor)
+
+The Roadmap 2026 milestone is intended to be supported by newer
+mid-to-high-end devices shipping in 2026 or shortly thereafter across
+mainstream smartphone, tablet, laptop, console and desktop devices.
+
+This milestone raises the baseline feature support of Vulkan implementations
+as with prior milestones.
+In addition, this milestone makes guarantees about swapchain and presentation
+support for implementations.
+
+Highlights of this roadmap include support for the following extensions:
+
+* 
+[VK_KHR_fragment_shading_rate](extensions.html#VK_KHR_fragment_shading_rate)
+
+* 
+[VK_KHR_shader_clock](extensions.html#VK_KHR_shader_clock)
+
+* 
+[VK_KHR_compute_shader_derivatives](extensions.html#VK_KHR_compute_shader_derivatives)
+
+* 
+[VK_KHR_cooperative_matrix](extensions.html#VK_KHR_cooperative_matrix)
+
+* 
+[VK_KHR_surface](extensions.html#VK_KHR_surface) and [VK_KHR_swapchain](extensions.html#VK_KHR_swapchain)
+
+* 
+[VK_KHR_present_mode_fifo_latest_ready](extensions.html#VK_KHR_present_mode_fifo_latest_ready)
+
+* 
+[VK_KHR_present_id2](extensions.html#VK_KHR_present_id2) and [VK_KHR_present_wait2](extensions.html#VK_KHR_present_wait2)
+
+Several other extensions and limits are also required by this milestone as
+indicated below.
+
+This requires the Roadmap 2024 milestone.
+
+Vulkan 1.4 is required by this milestone.
+
+The following core optional features are required to be supported:
+
+* 
+Vulkan 1.4 Optional Features
+
+[`hostImageCopy`](../chapters/features.html#features-hostImageCopy)
+
+[VK_KHR_robustness2](extensions.html#VK_KHR_robustness2) Features
+
+* 
+[`robustBufferAccess2`](../chapters/features.html#features-robustBufferAccess2)
+
+* 
+[`robustImageAccess2`](../chapters/features.html#features-robustImageAccess2)
+
+* 
+[`nullDescriptor`](../chapters/features.html#features-nullDescriptor)
+
+The following core increased limits are **required**
+
+| Limit Name | Core | 2026 | Limit Type1 |
+| --- | --- | --- | --- |
+| `maxPerStageDescriptorUniformBuffers` | 15 | 200 | min |
+| `maxPerStageDescriptorStorageBuffers` | 4 | 200 | min |
+| `maxPerStageDescriptorInputAttachments` | 4 | 8 | min |
+| `maxDescriptorSetStorageBuffers` | 96 | 1800 | min |
+| `maxDescriptorSetUniformBuffers` | 96 | 1800 | min |
+| `maxDescriptorSetInputAttachments` | 4 | 8 | min |
+| `maxVertexOutputComponents` | 64 | 124 | min |
+| `maxTessellationControlPerVertexInputComponents` | 64 | 128 | min |
+| `maxTessellationControlPerVertexOutputComponents` | 64 | 128 | min |
+| `maxTessellationControlTotalOutputComponents` | 2048 | 4096 | min |
+| `maxTessellationEvaluationInputComponents` | 64 | 128 | min |
+| `maxTessellationEvaluationOutputComponents` | 64 | 128 | min |
+| `maxGeometryOutputComponents` | 64 | 128 | min |
+| `maxFragmentInputComponents` | 64 | 112 | min |
+| `maxFragmentOutputAttachments` | 4 | 8 | min |
+| `maxComputeSharedMemorySize` | 16384 | 32768 | min |
+| `subPixelPrecisionBits` | 4 | 8 | min |
+| `maxViewportDimensions.width` | 7680 | 8192 | min |
+| `maxViewportDimensions.height` | 7680 | 8192 | min |
+| `maxFramebufferWidth` | 7680 | 8192 | min |
+| `maxFramebufferHeight` | 7680 | 8192 | min |
+
+The following extensions are **required**
+
+* 
+[VK_KHR_robustness2](extensions.html#VK_KHR_robustness2)
+
+* 
+[VK_KHR_pipeline_binary](extensions.html#VK_KHR_pipeline_binary)
+
+* 
+[VK_KHR_fragment_shading_rate](extensions.html#VK_KHR_fragment_shading_rate)
+
+* 
+[VK_KHR_shader_clock](extensions.html#VK_KHR_shader_clock)
+
+* 
+[VK_KHR_workgroup_memory_explicit_layout](extensions.html#VK_KHR_workgroup_memory_explicit_layout)
+
+* 
+[VK_KHR_compute_shader_derivatives](extensions.html#VK_KHR_compute_shader_derivatives)
+
+* 
+[VK_KHR_maintenance7](extensions.html#VK_KHR_maintenance7)
+
+* 
+[VK_KHR_maintenance8](extensions.html#VK_KHR_maintenance8)
+
+* 
+[VK_KHR_maintenance9](extensions.html#VK_KHR_maintenance9)
+
+* 
+[VK_KHR_depth_clamp_zero_one](extensions.html#VK_KHR_depth_clamp_zero_one)
+
+* 
+[VK_KHR_copy_memory_indirect](extensions.html#VK_KHR_copy_memory_indirect)
+
+* 
+[VK_KHR_shader_untyped_pointers](extensions.html#VK_KHR_shader_untyped_pointers)
+
+* 
+[VK_KHR_surface](extensions.html#VK_KHR_surface)
+
+* 
+[VK_KHR_swapchain](extensions.html#VK_KHR_swapchain)
+
+* 
+[VK_KHR_present_mode_fifo_latest_ready](extensions.html#VK_KHR_present_mode_fifo_latest_ready)
+
+* 
+[VK_KHR_present_id2](extensions.html#VK_KHR_present_id2)
+
+* 
+[VK_KHR_present_wait2](extensions.html#VK_KHR_present_wait2)
+
+* 
+[VK_KHR_surface_maintenance1](extensions.html#VK_KHR_surface_maintenance1)
+
+* 
+[VK_KHR_swapchain_maintenance1](extensions.html#VK_KHR_swapchain_maintenance1)
+
+* 
+[VK_KHR_cooperative_matrix](extensions.html#VK_KHR_cooperative_matrix)
