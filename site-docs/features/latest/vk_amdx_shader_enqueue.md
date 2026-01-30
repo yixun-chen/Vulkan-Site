@@ -30,8 +30,8 @@
 - [4. Issues](#_issues)
 - [4.1. How does this extension interact with device groups?](#_how_does_this_extension_interact_with_device_groups)
 - [4.1._How_does_this_extension_interact_with_device_groups?](#_how_does_this_extension_interact_with_device_groups)
-- [4.2. PROPOSED: What dynamic state should be allowed?](#_proposed_what_dynamic_state_should_be_allowed)
-- [4.2._PROPOSED:_What_dynamic_state_should_be_allowed?](#_proposed_what_dynamic_state_should_be_allowed)
+- [4.2. What dynamic state should be allowed?](#_what_dynamic_state_should_be_allowed)
+- [4.2._What_dynamic_state_should_be_allowed?](#_what_dynamic_state_should_be_allowed)
 
 ## Content
 
@@ -47,7 +47,7 @@ Table of Contents
 [4. Issues](#_issues)
 
 [4.1. How does this extension interact with device groups?](#_how_does_this_extension_interact_with_device_groups)
-[4.2. PROPOSED: What dynamic state should be allowed?](#_proposed_what_dynamic_state_should_be_allowed)
+[4.2. What dynamic state should be allowed?](#_what_dynamic_state_should_be_allowed)
 
 This extension adds the ability for developers to enqueue mesh pipelines and compute shader workgroups from other compute shaders.
 
@@ -805,6 +805,6 @@ Once this has been called for a given payload, writing values into that payload 
 It works the same as any other dispatch commands - work is replicated to all devices unless applications split the work themselves.
 There is no automatic scheduling between devices.
 
-Support a subset of dynamic state.
+A subset of dynamic state is supported.
 
 For now, this specification exposes basic "value" state - primarily things where there is only a value to modify rather than a mode switch or state enable.

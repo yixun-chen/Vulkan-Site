@@ -716,7 +716,7 @@ structure types)
 [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html) (different
 acceleration structure types)
 
-Added enums, structures and commands:
+Added enums, structures, and commands:
 
 * 
 [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) to [VkGeometryTypeKHR](VkGeometryTypeKHR.html) enum

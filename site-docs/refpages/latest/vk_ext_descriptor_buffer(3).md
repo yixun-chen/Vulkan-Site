@@ -13,6 +13,8 @@
 - [Other Extension Metadata](#_other_extension_metadata)
 - [Other_Extension_Metadata](#_other_extension_metadata)
 - [Description](#_description)
+- [Deprecation by VK_EXT_descriptor_heap](#_deprecation_by_vk_ext_descriptor_heap)
+- [Deprecation_by_VK_EXT_descriptor_heap](#_deprecation_by_vk_ext_descriptor_heap)
 - [New Commands](#_new_commands)
 - [New Structures](#_new_structures)
 - [New Unions](#_new_unions)
@@ -81,6 +83,13 @@ Interacts with VK_KHR_acceleration_structure
 
 * 
 Interacts with VK_NV_ray_tracing
+
+**Deprecation State**
+
+* 
+*Deprecated* by
+[VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html)
+extension
 
 **Contact**
 
@@ -151,6 +160,10 @@ Slawomir Grajewski, Intel
 
 This extension introduces new commands to put shader-accessible descriptors
 directly in memory, making the management of descriptor data more explicit.
+
+Functionality in this extension is deprecated by the
+[VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html) extension.
+See [Descriptor Management: Replaced by Descriptor Heaps](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets).
 
 * 
 [vkCmdBindDescriptorBufferEmbeddedSamplersEXT](vkCmdBindDescriptorBufferEmbeddedSamplersEXT.html)

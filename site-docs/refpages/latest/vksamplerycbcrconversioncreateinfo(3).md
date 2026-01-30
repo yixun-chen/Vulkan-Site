@@ -198,8 +198,8 @@ consequence of [component substitution](../../../../spec/latest/chapters/images.
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748
 
-If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](VkSamplerYcbcrRange.html) then the
-R, G and B components obtained by applying the `component` swizzle
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](VkSamplerYcbcrRange.html), then the
+R, G, and B components obtained by applying the `component` swizzle
 to `format` **must** each have a bit-depth greater than or equal to 8
 
 * 

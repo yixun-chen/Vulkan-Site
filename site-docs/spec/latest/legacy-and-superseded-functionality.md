@@ -20,6 +20,10 @@
 - [Render_Pass_Functions:_Superseded_via_version_2](#legacy-renderpass2)
 - [Render Pass Objects: Superseded via dynamic rendering](#_render_pass_objects_superseded_via_dynamic_rendering)
 - [Render_Pass_Objects:_Superseded_via_dynamic_rendering](#_render_pass_objects_superseded_via_dynamic_rendering)
+- [Sampler and Buffer View Objects: Unnecessary with Descriptor Heaps](#legacy-resource-objects)
+- [Sampler_and_Buffer_View_Objects:_Unnecessary_with_Descriptor_Heaps](#legacy-resource-objects)
+- [Descriptor Management: Replaced by descriptor Heaps](#legacy-descriptor-sets)
+- [Descriptor_Management:_Replaced_by_descriptor_Heaps](#legacy-descriptor-sets)
 
 ## Content
 
@@ -145,3 +149,26 @@ unless/until replacements are created. |
 Outside of vendor extensions, applications are advised to make use of
 [vkCmdBeginRendering](../chapters/renderpass.html#vkCmdBeginRendering) and [vkCmdEndRendering](../chapters/renderpass.html#vkCmdEndRendering) to manage render
 passes from this API version onward.
+
+When using [descriptor heaps](../chapters/descriptorheaps.html#descriptorheaps), the creation of sampler and
+buffer view objects are wholly unnecessary.
+Instead, these objects are directly converted to descriptors via
+[vkWriteSamplerDescriptorsEXT](../chapters/descriptorheaps.html#vkWriteSamplerDescriptorsEXT) and [vkWriteResourceDescriptorsEXT](../chapters/descriptorheaps.html#vkWriteResourceDescriptorsEXT),
+skipping the need to create objects altogether.
+In the case of samplers, samplers can also be embedded directly into a
+shader via [shader bindings](../chapters/descriptorheaps.html#descriptorheaps-bindings), which only
+requires the [VkSamplerCreateInfo](../chapters/samplers.html#VkSamplerCreateInfo), rather than a created object.
+
+The creation of image views can also be skipped similarly for images used as
+descriptors, but image views themselves are still used elsewhere in the
+spec, such as for [render passes](../chapters/renderpass.html#renderpass).
+
+[Descriptor heaps](../chapters/descriptorheaps.html#descriptorheaps) provide a complete alternative for
+managing shader resources, and can be used where present instead of the
+resource management provided by Vulkan 1.0.
+[Descriptor heaps](../chapters/descriptorheaps.html#descriptorheaps) can similarly be used instead of
+[VK_EXT_descriptor_buffer](extensions.html#VK_EXT_descriptor_buffer).
+
+While it is possible to use a mix of these in the same application, they
+cannot be used at the same time, and there are potential performance
+penalties for switching on some implementations.

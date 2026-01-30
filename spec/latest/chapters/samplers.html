@@ -496,8 +496,9 @@ There <strong>must</strong> be less than
 <p><a id="VUID-vkCreateSampler-maxSamplerAllocationCount-11412" href="#VUID-vkCreateSampler-maxSamplerAllocationCount-11412"></a> <span class="vuid">VUID-vkCreateSampler-maxSamplerAllocationCount-11412</span><br>
 
     If there are any pipelines
-ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
-    created on the device, there <strong>must</strong> be less than
+or shaders
+    with embedded samplers currently created on the device, there <strong>must</strong> be
+    less than
     <span class="eq">(<a href="limits.html#limits-maxSamplerAllocationCount" class="xref page"><code>maxSamplerAllocationCount</code></a>
     -  (<a href="limits.html#limits-minSamplerHeapReservedRangeWithEmbedded" class="xref page">    <code>minSamplerHeapReservedRangeWithEmbedded</code></a> /
     <a href="limits.html#limits-samplerDescriptorSize" class="xref page"><code>samplerDescriptorSize</code></a>))</span>
@@ -2341,8 +2342,8 @@ consequence of <a href="images.html#images-component-substitution" class="xref p
 <li>
 <p><a id="VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748" href="#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748"></a> <span class="vuid">VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748</span><br>
 
-If <code>ycbcrRange</code> is <a href="#VkSamplerYcbcrRangeKHR">VK_SAMPLER_YCBCR_RANGE_ITU_NARROW</a> then the
-R, G and B components obtained by applying the <code>component</code> swizzle
+If <code>ycbcrRange</code> is <a href="#VkSamplerYcbcrRangeKHR">VK_SAMPLER_YCBCR_RANGE_ITU_NARROW</a>, then the
+R, G, and B components obtained by applying the <code>component</code> swizzle
 to <code>format</code> <strong>must</strong> each have a bit-depth greater than or equal to 8</p>
 </li>
 <li>

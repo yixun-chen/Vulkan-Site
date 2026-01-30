@@ -412,7 +412,7 @@ chain **must** be equal to either zero or `attachmentCount`
 If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
-`pNext` chain that is used as an input, color, resolve or
+`pNext` chain that is used as an input, color, resolve, or
 depth/stencil attachment in `renderPass` **must** be greater than or
 equal to `width`
 
@@ -422,7 +422,7 @@ equal to `width`
 If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
-`pNext` chain that is used as an input, color, resolve or
+`pNext` chain that is used as an input, color, resolve, or
 depth/stencil attachment in `renderPass` **must** be greater than or
 equal to `height`
 
@@ -619,7 +619,7 @@ shading rate attachment by `renderPass` **must** include
 
 If
 [multisampled-render-to-single-sampled](../../../../spec/latest/chapters/renderpass.html#subpass-multisampledrendertosinglesampled)
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
@@ -632,7 +632,7 @@ their [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
 
 If
 [multisampled-render-to-single-sampled](../../../../spec/latest/chapters/renderpass.html#subpass-multisampledrendertosinglesampled)
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to

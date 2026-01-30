@@ -22,8 +22,8 @@
 - [3.4. New HLSL Attributes](#_new_hlsl_attributes)
 - [3.4._New_HLSL_Attributes](#_new_hlsl_attributes)
 - [4. Issues](#_issues)
-- [4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
-- [4.1._UNRESOLVED:_Should_we_expose_a_feature/property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+- [4.1. Should we expose a property indicating if the implementation is actually going to perform early and late tests?](#_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+- [4.1._Should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests?](#_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
 
 ## Content
 
@@ -40,7 +40,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+[4.1. Should we expose a property indicating if the implementation is actually going to perform early and late tests?](#_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
 
 This document describes a proposal for a new SPIR-V execution mode that allows fragment shaders to be discarded by early fragment operations, even if they contain writes to storage resources or other side effects.
 
@@ -225,4 +225,4 @@ Sets the `StencilRefLessBackAMD` execution mode in SPIR-V.
 Shaders must not specify more than one of `stencil_ref_unchanged_front`, `stencil_ref_greater_equal_front`, and `stencil_ref_less_equal_front`.
 Shaders must not specify more than one of `stencil_ref_unchanged_back`, `stencil_ref_greater_equal_back`, and `stencil_ref_less_equal_back`.
 
-It would be useful if ultimately all implementations could ship this feature, treating it as a no-op where relevant - but if some implementations cannot gain any advantage from this, it might be reasonable to expose a property indicating this.
+Only implementations actually supporting this functionality correctly should expose this extension.

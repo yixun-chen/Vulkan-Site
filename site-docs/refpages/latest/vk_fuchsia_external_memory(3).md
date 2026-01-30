@@ -83,7 +83,7 @@ John Bauman, Google
 John Rosasco, Google
 
 Vulkan apps may wish to export or import device memory handles to or from
-other logical devices, instances or APIs.
+other logical devices, instances, or APIs.
 
 This memory sharing can eliminate copies of memory buffers when different
 subsystems need to interoperate on them.

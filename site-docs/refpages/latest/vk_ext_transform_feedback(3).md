@@ -127,7 +127,7 @@ Stu Smith, Imagination Technologies
 
 This extension adds transform feedback to the Vulkan API by exposing the
 SPIR-V `TransformFeedback` and `GeometryStreams` capabilities to
-capture vertex, tessellation or geometry shader outputs to one or more
+capture vertex, tessellation, or geometry shader outputs to one or more
 buffers.
 It adds API functionality to bind transform feedback buffers to capture the
 primitives emitted by the graphics pipeline from SPIR-V outputs decorated

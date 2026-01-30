@@ -35,24 +35,24 @@
 - [3.11. Features and Properties structures](#_features_and_properties_structures)
 - [3.11._Features_and_Properties_structures](#_features_and_properties_structures)
 - [4. Issues](#_issues)
-- [4.1. PROPOSED: Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?](#_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
-- [4.1._PROPOSED:_Are_all_attachment_types_(color,_depth/stencil,_input,_resolve)_accessible_via_tile_attachment_load/store_operations?](#_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
-- [4.2. PROPOSED: Should draw commands be allowed when per-tile execution mode is enabled?](#_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
-- [4.2._PROPOSED:_Should_draw_commands_be_allowed_when_per-tile_execution_mode_is_enabled?](#_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
-- [4.3. PROPOSED: Should texture sampling be supported on tile attachments?](#_proposed_should_texture_sampling_be_supported_on_tile_attachments)
-- [4.3._PROPOSED:_Should_texture_sampling_be_supported_on_tile_attachments?](#_proposed_should_texture_sampling_be_supported_on_tile_attachments)
-- [4.4. PROPOSED: Does this extension offer any guarantees for the granularity of the tile dimensions?](#_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
-- [4.4._PROPOSED:_Does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions?](#_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
-- [4.5. PROPOSED: Should we support atomic operations on tile attachments?](#_proposed_should_we_support_atomic_operations_on_tile_attachments)
-- [4.5._PROPOSED:_Should_we_support_atomic_operations_on_tile_attachments?](#_proposed_should_we_support_atomic_operations_on_tile_attachments)
-- [4.6. PROPOSED: Does this extension support multiview rendering?](#_proposed_does_this_extension_support_multiview_rendering)
-- [4.6._PROPOSED:_Does_this_extension_support_multiview_rendering?](#_proposed_does_this_extension_support_multiview_rendering)
-- [4.7. PROPOSED: Does this extension support attachments with a layer count greater than 1?](#_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
-- [4.7._PROPOSED:_Does_this_extension_support_attachments_with_a_layer_count_greater_than_1?](#_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
-- [4.8. PROPOSED: Are store operations allowed for apron pixels?](#_proposed_are_store_operations_allowed_for_apron_pixels)
-- [4.8._PROPOSED:_Are_store_operations_allowed_for_apron_pixels?](#_proposed_are_store_operations_allowed_for_apron_pixels)
-- [4.9. PROPOSED: Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?](#_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
-- [4.9._PROPOSED:_Is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes?](#_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
+- [4.1. Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?](#_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
+- [4.1._Are_all_attachment_types_(color,_depth/stencil,_input,_resolve)_accessible_via_tile_attachment_load/store_operations?](#_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
+- [4.2. Should draw commands be allowed when per-tile execution mode is enabled?](#_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
+- [4.2._Should_draw_commands_be_allowed_when_per-tile_execution_mode_is_enabled?](#_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
+- [4.3. Should texture sampling be supported on tile attachments?](#_should_texture_sampling_be_supported_on_tile_attachments)
+- [4.3._Should_texture_sampling_be_supported_on_tile_attachments?](#_should_texture_sampling_be_supported_on_tile_attachments)
+- [4.4. Does this extension offer any guarantees for the granularity of the tile dimensions?](#_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
+- [4.4._Does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions?](#_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
+- [4.5. Should we support atomic operations on tile attachments?](#_should_we_support_atomic_operations_on_tile_attachments)
+- [4.5._Should_we_support_atomic_operations_on_tile_attachments?](#_should_we_support_atomic_operations_on_tile_attachments)
+- [4.6. Does this extension support multiview rendering?](#_does_this_extension_support_multiview_rendering)
+- [4.6._Does_this_extension_support_multiview_rendering?](#_does_this_extension_support_multiview_rendering)
+- [4.7. Does this extension support attachments with a layer count greater than 1?](#_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
+- [4.7._Does_this_extension_support_attachments_with_a_layer_count_greater_than_1?](#_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
+- [4.8. Are store operations allowed for apron pixels?](#_are_store_operations_allowed_for_apron_pixels)
+- [4.8._Are_store_operations_allowed_for_apron_pixels?](#_are_store_operations_allowed_for_apron_pixels)
+- [4.9. Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?](#_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
+- [4.9._Is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes?](#_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
 - [4.10. Does this extension change the behavior of render pass LoadOp or StoreOp?](#_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop)
 - [4.10._Does_this_extension_change_the_behavior_of_render_pass_LoadOp_or_StoreOp?](#_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop)
 - [4.11. Can tile attachment load/store operations be used without enabling per-tile execution?](#_can_tile_attachment_loadstore_operations_be_used_without_enabling_per_tile_execution)
@@ -94,15 +94,15 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. PROPOSED: Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?](#_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
-[4.2. PROPOSED: Should draw commands be allowed when per-tile execution mode is enabled?](#_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
-[4.3. PROPOSED: Should texture sampling be supported on tile attachments?](#_proposed_should_texture_sampling_be_supported_on_tile_attachments)
-[4.4. PROPOSED: Does this extension offer any guarantees for the granularity of the tile dimensions?](#_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
-[4.5. PROPOSED: Should we support atomic operations on tile attachments?](#_proposed_should_we_support_atomic_operations_on_tile_attachments)
-[4.6. PROPOSED: Does this extension support multiview rendering?](#_proposed_does_this_extension_support_multiview_rendering)
-[4.7. PROPOSED: Does this extension support attachments with a layer count greater than 1?](#_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
-[4.8. PROPOSED: Are store operations allowed for apron pixels?](#_proposed_are_store_operations_allowed_for_apron_pixels)
-[4.9. PROPOSED: Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?](#_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
+[4.1. Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?](#_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations)
+[4.2. Should draw commands be allowed when per-tile execution mode is enabled?](#_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled)
+[4.3. Should texture sampling be supported on tile attachments?](#_should_texture_sampling_be_supported_on_tile_attachments)
+[4.4. Does this extension offer any guarantees for the granularity of the tile dimensions?](#_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions)
+[4.5. Should we support atomic operations on tile attachments?](#_should_we_support_atomic_operations_on_tile_attachments)
+[4.6. Does this extension support multiview rendering?](#_does_this_extension_support_multiview_rendering)
+[4.7. Does this extension support attachments with a layer count greater than 1?](#_does_this_extension_support_attachments_with_a_layer_count_greater_than_1)
+[4.8. Are store operations allowed for apron pixels?](#_are_store_operations_allowed_for_apron_pixels)
+[4.9. Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?](#_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes)
 [4.10. Does this extension change the behavior of render pass LoadOp or StoreOp?](#_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop)
 [4.11. Can tile attachment load/store operations be used without enabling per-tile execution?](#_can_tile_attachment_loadstore_operations_be_used_without_enabling_per_tile_execution)
 [4.12. Should this extension include the ability for fragment or compute shader to reinterpret the format of tile attachment pixels?](#_should_this_extension_include_the_ability_for_fragment_or_compute_shader_to_reinterpret_the_format_of_tile_attachment_pixels)
@@ -806,7 +806,7 @@ Each tile will have dimensions that are a multiple of this granularity in width 
 The `maxTileShadingRate` property defines the maximum value that the `TileShadingRateQCOM`
 specified in the shader can be, and must be a power of 2.
 
-**RESOLVED**: No, we propose the following restrictions for specific attachment types and shader stages:
+No, we propose the following restrictions for specific attachment types and shader stages:
 
 * 
 Compute and fragment shaders must not store to depth/stencil attachments, resolve attachments,
@@ -824,7 +824,7 @@ color attachment do not seem useful and could be difficult to synchronize with
 fragment output writes. For those reasons, the above cases are disallowed
 in this extension.
 
-**RESOLVED**: Yes, this is allowed, because it can be useful for certain use cases.
+Yes, this is allowed, because it can be useful for certain use cases.
 
 Without this extension, a TBDR GPU can "distribute" the draw call across the tiles.
 As the GPU processes each tile, if a draw command includes primitives that do not
@@ -848,7 +848,7 @@ DRAW_INDIRECT stage.
 
 Other than such GPU-driven use cases, the use of per-tile draws is discouraged.
 
-**RESOLVED**: Yes, this has been included in the current proposal, but
+Yes, this has been included in the current proposal, but
 guarded by feature bit `tileShadingSampledAttachments`.
 
 * 
@@ -875,7 +875,7 @@ shader. The implementation is not required to clamp the coordinates to a valid
 range. Applications will need to guarantee that the filter does not result in
 reading locations outside the tile+apron boundary.
 
-**RESOLVED**: Yes, the granularity is guaranteed.
+Yes, the granularity is guaranteed.
 
 [VK_QCOM_tile_properties](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_tile_properties) reports
 tile dimensions but does not provide any guarantees on the granularity of the tile
@@ -884,10 +884,10 @@ size of known dimensions.
 
 An extension property `tileGranularity` is exposed to provide this.
 
-**RESOLVED**: Yes, the atomic operations on tile attachments are supported but
+Yes, the atomic operations on tile attachments are supported but
 the functionality is currently guarded by a feature bit.
 
-**RESOLVED**: Yes, this is supported.
+Yes, this is supported.
 
 Without this extension, implementations may implement multiview
 rendering as single-pass rendering to a multi-layered attachment, or multi-pass
@@ -898,16 +898,16 @@ most application use cases for tile shading. `VK_QCOM_tile_properties` exposes
 the number of layers in the tile, allowing the application to handle either
 implementation style.
 
-**RESOLVED**: Yes, this is supported. The existing `VK_QCOM_tile_properties`
+Yes, this is supported. The existing `VK_QCOM_tile_properties`
 extension exposes support for multi-layered tiles.
 
-**RESOLVED**: No, this is not allowed.
+No, this is not allowed.
 
 There are no known use cases, for stores to the apron pixels
 and supporting this may come at a performance cost on some
 TBDRs.
 
-**RESOLVED**: Yes, since this extension builds upon
+Yes, since this extension builds upon
 [VK_KHR_dynamic_rendering_local_read](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering_local_read),
 the functionality and performance is expected to be equivalent.
 
@@ -915,9 +915,9 @@ Earlier versions of this extension that were not based on
 VK_KHR_dynamic_rendering_local_read resulted in far less functionality
 for dynamic render passes.
 
-**RESOLVED**: No, there is no change to the behavior.
+No, there is no change to the behavior.
 
-**RESOLVED**: Yes, if a render pass enables tile shading but not the
+Yes, if a render pass enables tile shading but not the
 [per-tile execution model](https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model), then
 fragment shader invocations can load pixel values from tile attachment
 variables.
@@ -926,7 +926,7 @@ This includes loading the pixel value of the fragment coordinate
 (aka "framebuffer fetch") as well as the ability to load pixel values
 of other fragments within the tile and/or the apron region.
 
-**RESOLVED**: No, while such a feature is desirable for many TBDR GPUs and is related
+No, while such a feature is desirable for many TBDR GPUs and is related
 to this extension, but was considered beyond the scope of this extension.
 
 Use-cases such as deferred shading and deferred lighting are often implemented with multiple
@@ -938,7 +938,7 @@ the same block of tile memory to be interpreted as multiple layouts or formats.
 Such reinterpretation of framebuffer pixels can be useful even if tile shading is not
 used. Therefore, it may be best handled as a completely separate extension.
 
-**RESOLVED**: Yes, on some Adreno ™ GPUs and for some use cases, the tile-sized
+Yes, on some Adreno ™ GPUs and for some use cases, the tile-sized
 dispatch can improve GPU efficiency and has been incorporated into this extension.
 
 `vkCmdDispatchTileQCOM` provides a "tile-sized dispatch" where
@@ -947,7 +947,7 @@ where the GPU can construct workgroups that are aligned to implementation specif
 micro-tiles and assign those workgroups to the shader core that is able to
 most optimally perform load/store operations for the micro tile’s pixels.
 
-**RESOLVED**: No. In this proposal, a created graphics pipeline can be used in a render
+No. In this proposal, a created graphics pipeline can be used in a render
 pass regardless whether the render pass enables tile shading, and regardless whether
 [per-tile execution mode](https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model) is enabled. Similarly,
 a created compute pipelines can now be used inside or outside a render pass. We decided
@@ -956,11 +956,11 @@ to developers and because we do not anticipate implementations will require this
 We do specify that the new shader built-ins (e.g., TileDimensionQCOM, TileOffsetQCOM, etc.) contain
 the value `0` if the shader is invoked when per-tile execution mode is disabled.
 
-**RESOLVED**: No. Similar to above, we believe that limiting
+No. Similar to above, we believe that limiting
 compute pipelines to a single renderpass/subpass would be a burden to developers
 and we do not anticipate that implementations need this information.
 
-**RESOLVED**: The functionality of this extension is a superset of `VK_EXT_shader_tile_image`.
+The functionality of this extension is a superset of `VK_EXT_shader_tile_image`.
 
 VK_EXT_shader_tile_image is limited to bringing the functionality of
 GL_EXT_shader_framebuffer_fetch to Vulkan dynamic render passes. The
@@ -970,7 +970,7 @@ fragment location for only color/depth/stencil attachments. This extension
 is a superset of the functionality in VK_EXT_shader_tile_image with
 the exception of descriptor-less access.
 
-**RESOLVED**: Possibly in a future extension. This extension requires that sampling
+Possibly in a future extension. This extension requires that sampling
 and load/store tile attachment access must use an offset/coordinate that is within
 the boundary of the tile (plus any apron). Out-of-bounds access will result in
 undefined behavior. For many use cases, this will require the
@@ -987,7 +987,7 @@ For example, a robust out-of-bounds tile access might return 0, or the coordinat
 be clamped to the tile’s boundaries.
 In this initial proposal, we have elected to simply ban out-of-bounds tile access.
 
-**RESOLVED**: The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
+The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
 available with tile shading with an optional feature bit `tileShadingImageProcessing`.
 
 VK_QCOM_image_processing and VK_QCOM_image_processing2 adds several new "high order" SPIR-V texture filtering operations

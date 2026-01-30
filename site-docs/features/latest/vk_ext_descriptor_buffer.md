@@ -60,8 +60,8 @@
 - [7.1._How_do_immutable_samplers_work?](#_how_do_immutable_samplers_work)
 - [7.2. Should we support dynamic buffers?](#_should_we_support_dynamic_buffers)
 - [7.2._Should_we_support_dynamic_buffers?](#_should_we_support_dynamic_buffers)
-- [7.3. UNRESOLVED: How does this interact with descriptor set invalidation?](#_unresolved_how_does_this_interact_with_descriptor_set_invalidation)
-- [7.3._UNRESOLVED:_How_does_this_interact_with_descriptor_set_invalidation?](#_unresolved_how_does_this_interact_with_descriptor_set_invalidation)
+- [7.3. How does this interact with descriptor set invalidation?](#_how_does_this_interact_with_descriptor_set_invalidation)
+- [7.3._How_does_this_interact_with_descriptor_set_invalidation?](#_how_does_this_interact_with_descriptor_set_invalidation)
 - [7.4. Should vkGetDescriptorOffset take an arrayOffset parameter, or should we make guarantees about how arrays work?](#_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work)
 - [7.4._Should_vkGetDescriptorOffset_take_an_arrayOffset_parameter,_or_should_we_make_guarantees_about_how_arrays_work?](#_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work)
 - [7.5. Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?](#_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms)
@@ -124,7 +124,7 @@ Table of Contents
 
 [7.1. How do immutable samplers work?](#_how_do_immutable_samplers_work)
 [7.2. Should we support dynamic buffers?](#_should_we_support_dynamic_buffers)
-[7.3. UNRESOLVED: How does this interact with descriptor set invalidation?](#_unresolved_how_does_this_interact_with_descriptor_set_invalidation)
+[7.3. How does this interact with descriptor set invalidation?](#_how_does_this_interact_with_descriptor_set_invalidation)
 [7.4. Should `vkGetDescriptorOffset` take an `arrayOffset` parameter, or should we make guarantees about how arrays work?](#_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work)
 [7.5. Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?](#_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms)
 [7.6. Why are view objects required when DX12 has no such requirement?](#_why_are_view_objects_required_when_dx12_has_no_such_requirement)
@@ -1075,8 +1075,8 @@ For partity with DX12, a special kind of descriptor set - embedded immutable sam
 No, these have very specialized support paths in some drivers, and end up being more pain than it’s worth to support.
 Applications can achieve the same using device addresses in push constants, or pipelined descriptor buffer updates.
 
-There’s some extra complication with whether descriptor set layouts work with buffers or sets (`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`) that will need sorting.
-Shouldn’t be too difficult and will likely just be along the lines of invalidating sets that don’t match in this regard when binding a new pipeline layout, but it’s too much detail for this design document.
+`vkCmdBindDescriptorBuffersEXT` does not interact with invalidation of sets, and is treated as standalone state.
+`vkCmdSetDescriptorBufferOffsetEXT` will invalidate all descriptor set bindings that are not bound to descriptor buffers, and vice versa - you cannot use a mix of descriptor sets and buffers in the same command.
 
 Guarantees about how arrays work makes it much easier to work with GPU-side updates, as it avoids having to either add a “get offset” shader intrinsic, or for apps to keep a mapping when doing GPU copies.
 

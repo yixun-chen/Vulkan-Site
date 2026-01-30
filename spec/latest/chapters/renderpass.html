@@ -11884,7 +11884,7 @@ chain <strong>must</strong> be equal to either zero or <code>attachmentCount</co
 If <code>flags</code> includes <a href="#VkFramebufferCreateFlagBits">VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT</a>, the
 <code>width</code> member of any element of the <code>pAttachmentImageInfos</code>
 member of a <a href="#VkFramebufferAttachmentsCreateInfo">VkFramebufferAttachmentsCreateInfo</a> structure in the
-<code>pNext</code> chain that is used as an input, color, resolve or
+<code>pNext</code> chain that is used as an input, color, resolve, or
 depth/stencil attachment in <code>renderPass</code> <strong>must</strong> be greater than or
 equal to <code>width</code></p>
 </li>
@@ -11894,7 +11894,7 @@ equal to <code>width</code></p>
 If <code>flags</code> includes <a href="#VkFramebufferCreateFlagBits">VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT</a>, the
 <code>height</code> member of any element of the <code>pAttachmentImageInfos</code>
 member of a <a href="#VkFramebufferAttachmentsCreateInfo">VkFramebufferAttachmentsCreateInfo</a> structure in the
-<code>pNext</code> chain that is used as an input, color, resolve or
+<code>pNext</code> chain that is used as an input, color, resolve, or
 depth/stencil attachment in <code>renderPass</code> <strong>must</strong> be greater than or
 equal to <code>height</code></p>
 </li>
@@ -12091,7 +12091,7 @@ shading rate attachment by <code>renderPass</code> <strong>must</strong> include
 
 If
 <a href="#subpass-multisampledrendertosinglesampled">multisampled-render-to-single-sampled</a>
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 <code>VkAttachmentDescription</code>::<code>samples</code> or
 <code>VkAttachmentDescription2</code>::<code>samples</code> equal to
@@ -12104,7 +12104,7 @@ their <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreate
 
 If
 <a href="#subpass-multisampledrendertosinglesampled">multisampled-render-to-single-sampled</a>
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 <code>VkAttachmentDescription</code>::<code>samples</code> or
 <code>VkAttachmentDescription2</code>::<code>samples</code> equal to
@@ -13915,9 +13915,9 @@ Other elements of <code>pClearValues</code> are ignored.</p>
 <div class="paragraph">
 <p><code>renderArea</code> is the render area that is affected by the render pass
 instance.
-The effects of attachment load, store and multisample resolve operations are
-restricted to the pixels whose x and y coordinates fall within the render
-area on all attachments.
+The effects of attachment load, store, and multisample resolve operations
+are restricted to the pixels whose x and y coordinates fall within the
+render area on all attachments.
 The render area extends to all layers of <code>framebuffer</code>.
 The application <strong>must</strong> ensure (using scissor if necessary) that all rendering
 is contained within the render area.
@@ -17257,8 +17257,8 @@ variables at a location that is outside the current tile.
 The <code>width</code> and <code>height</code> value of <code>tileApronSize</code> specifies the
 number of pixels in the horizontal and vertical directions that are included
 in the apron region.
-For example, (1,1) means that the apron region extends the top, bottom, left
-and right margins of the tile by 1 pixel.
+For example, (1,1) means that the apron region extends the top, bottom,
+left, and right margins of the tile by 1 pixel.
 The <code>tileApronSize</code> <strong>must</strong> not exceed
 <a href="limits.html#VkPhysicalDeviceTileShadingPropertiesQCOM" class="xref page">VkPhysicalDeviceTileShadingPropertiesQCOM</a>::maxApronSize.</p>
 </div>

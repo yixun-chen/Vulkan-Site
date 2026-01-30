@@ -854,7 +854,7 @@ Each object type has a unique handle type.
 
 Happen-after, happens-after
 
-A transitive, irreflexive and antisymmetric ordering relation between
+A transitive, irreflexive, and antisymmetric ordering relation between
 operations.
 An execution dependency with a source of **A** and a destination of **B**
 enforces that **B** happens-after **A**.
@@ -862,7 +862,7 @@ The inverse relation of happens-before.
 
 Happen-before, happens-before
 
-A transitive, irreflexive and antisymmetric ordering relation between
+A transitive, irreflexive, and antisymmetric ordering relation between
 operations.
 An execution dependency with a source of **A** and a destination of **B**
 enforces that **A** happens-before **B**.
@@ -2018,7 +2018,7 @@ Represented by a [VkTensorARM](../chapters/resources.html#VkTensorARM) object.
 
 Tensor Description
 
-Describes the shape, format, usage and layout in memory of a tensor.
+Describes the shape, format, usage, and layout in memory of a tensor.
 Represented by [VkTensorDescriptionARM](../chapters/resources.html#VkTensorDescriptionARM).
 
 Tensor View
@@ -2441,7 +2441,7 @@ VK/Vk/vk
 
 Vulkan namespace
 
-All types, commands, enumerants and defines in this specification are
+All types, commands, enumerants, and defines in this specification are
 prefixed with these two characters.
 
 PFN/pfn

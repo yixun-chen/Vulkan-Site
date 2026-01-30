@@ -82,7 +82,7 @@ Jeff Bolz, NVIDIA
 
 This extension provides additional orthogonally aligned “discard
 rectangles” specified in framebuffer-space coordinates that restrict
-rasterization of all points, lines and triangles.
+rasterization of all points, lines, and triangles.
 
 From zero to an implementation-dependent limit (specified by
 `maxDiscardRectangles`) number of discard rectangles can be operational

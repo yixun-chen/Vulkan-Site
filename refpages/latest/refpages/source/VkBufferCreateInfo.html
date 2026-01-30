@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13076,6 +13082,25 @@ bits other than</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><a id="VUID-VkBufferCreateInfo-flags-11277" href="#VUID-VkBufferCreateInfo-flags-11277"></a> <span class="vuid">VUID-VkBufferCreateInfo-flags-11277</span><br>
+
+If the
+<a href="../../../../spec/latest/chapters/limits.html#limits-protectedDescriptorHeaps" class="xref page"><code>protectedDescriptorHeaps</code></a>
+property is not supported and the <a href="../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage" class="xref page">    effective usage</a> includes the
+<a href="VkBufferUsageFlagBits2.html" class="xref page">VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT</a> flag, <code>flags</code> <strong>must</strong>
+not include the <a href="VkBufferCreateFlagBits.html" class="xref page">VK_BUFFER_CREATE_PROTECTED_BIT</a> flag</p>
+</li>
+<li>
+<p><a id="VUID-VkBufferCreateInfo-flags-11279" href="#VUID-VkBufferCreateInfo-flags-11279"></a> <span class="vuid">VUID-VkBufferCreateInfo-flags-11279</span><br>
+
+If the <a href="../../../../spec/latest/chapters/limits.html#limits-sparseDescriptorHeaps" class="xref page"><code>sparseDescriptorHeaps</code></a>
+property is not supported and the <a href="../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage" class="xref page">    effective usage</a> includes the
+<a href="VkBufferUsageFlagBits2.html" class="xref page">VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT</a> flag, <code>flags</code> <strong>must</strong>
+not include any of the <a href="VkBufferCreateFlagBits.html" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a>,
+<a href="VkBufferCreateFlagBits.html" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a>, or
+<a href="VkBufferCreateFlagBits.html" class="xref page">VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</a> flags</p>
 </li>
 </ul>
 </div>

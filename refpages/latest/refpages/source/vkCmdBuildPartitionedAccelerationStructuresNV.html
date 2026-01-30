@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12795,7 +12801,8 @@ scratch memory region at address <code>pBuildInfo-&gt;scratchData</code></p>
 <li>
 <p><a id="VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549" href="#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549"></a> <span class="vuid">VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549</span><br>
 
-The memory regions containing the acceleration structures at addresses
+If the source and destination acceleration structures are not the same,
+the memory regions containing the acceleration structures at addresses
 <code>pBuildInfo-&gt;srcAccelerationStructureData</code> and
 <code>pBuildInfo-&gt;dstAccelerationStructureData</code> <strong>must</strong> not overlap with
 each other</p>

@@ -37,7 +37,7 @@ The conversion between linear and nonlinear encoding is performed as
 described in the “KHR_DF_TRANSFER_SRGB” section of the Khronos Data Format
 Specification.
 
-BC1, BC2 and BC3 formats are described in “S3TC Compressed Texture Image
+BC1, BC2, and BC3 formats are described in “S3TC Compressed Texture Image
 Formats” chapter of the [Khronos Data Format Specification](../chapters/introduction.html#data-format).
 BC4 and BC5 are described in the “RGTC Compressed Texture Image Formats”
 chapter.

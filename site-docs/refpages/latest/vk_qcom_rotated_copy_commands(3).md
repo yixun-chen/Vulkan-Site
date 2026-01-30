@@ -86,15 +86,15 @@ content and the other does not, a rotated copy may be desired.
 This extension may be used in combination with VK_QCOM_render_pass_transform
 which adds rotated render passes.
 
-This extension adds an extension structure to the following commands:
-vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR and
-vkCmdCopyBufferToImage2KHR
+This extension adds an extension structure to the commands
+[vkCmdBlitImage2KHR](vkCmdBlitImage2.html), [vkCmdCopyImageToBuffer2KHR](vkCmdCopyImageToBuffer2.html), and
+[vkCmdCopyBufferToImage2KHR](vkCmdCopyBufferToImage2.html)
 
 1) What is an appropriate name for the added extension structure? The style
 guide says “Structures which extend other structures through the
 `pNext` chain should reflect the name of the base structure they
 extend.”, but in this case a single extension structure is used to extend
-three base structures (vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR and
+three base structures (vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR, and
 vkCmdCopyBufferToImage2KHR).
 Creating three identical structures with unique names seemed undesirable.
 

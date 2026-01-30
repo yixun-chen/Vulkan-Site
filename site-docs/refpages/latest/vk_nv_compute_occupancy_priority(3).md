@@ -110,8 +110,8 @@ used for
 specify a low priority level.
 
 * 
-**VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV** - a constant value that can be
-used for
+**VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV** - a constant value that can
+be used for
 [VkComputeOccupancyPriorityParametersNV](VkComputeOccupancyPriorityParametersNV.html)::`occupancyPriority` to
 specify a normal priority level.
 This represents the default priority level.

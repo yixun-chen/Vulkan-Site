@@ -642,6 +642,23 @@ bits other than
 * 
 [VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR)
 
+[](#VUID-VkBufferCreateInfo-flags-11277) VUID-VkBufferCreateInfo-flags-11277
+
+If the
+[`protectedDescriptorHeaps`](limits.html#limits-protectedDescriptorHeaps)
+property is not supported and the [    effective usage](#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) flag, `flags` **must**
+not include the [VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) flag
+
+[](#VUID-VkBufferCreateInfo-flags-11279) VUID-VkBufferCreateInfo-flags-11279
+
+If the [`sparseDescriptorHeaps`](limits.html#limits-sparseDescriptorHeaps)
+property is not supported and the [    effective usage](#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) flag, `flags` **must**
+not include any of the [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits) flags
+
 Valid Usage (Implicit)
 
 * 
@@ -1815,40 +1832,24 @@ If `buffer` is non-sparse then it **must** be bound completely and
 contiguously to a single `VkDeviceMemory` object
 
 * 
-[](#VUID-VkBufferViewCreateInfo-offset-02749) VUID-VkBufferViewCreateInfo-offset-02749
-
-If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is not enabled,
-`offset` **must** be a multiple of
-`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
-
-* 
 [](#VUID-VkBufferViewCreateInfo-buffer-02750) VUID-VkBufferViewCreateInfo-buffer-02750
 
-If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is enabled and if `buffer` was created with the
+If `buffer` was created with the
 [VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) usage flag set,
-`offset` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested `format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+`offset` **must** be a multiple of the effective alignment requirement
+of `format` for [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) as
+defined by
+[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-buffer-02751) VUID-VkBufferViewCreateInfo-buffer-02751
 
-If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is enabled and if `buffer` was created with the
+If `buffer` was created with the
 [VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) usage flag set,
-`offset` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested `format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+`offset` **must** be a multiple of the effective alignment requirement
+of `format` for [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) as
+defined by
+[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-06782) VUID-VkBufferViewCreateInfo-pNext-06782

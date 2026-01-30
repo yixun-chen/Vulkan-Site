@@ -126,7 +126,7 @@ easily switched between without requiring swapchain recreation.
 
 All functionality in this extension is included in
 `[VK_KHR_surface_maintenance1](VK_KHR_surface_maintenance1.html)`, with the suffix changed to KHR.
-The original type, enum and command names are still available as aliases of
+The original type, enum, and command names are still available as aliases of
 the KHR functionality.
 
 * 

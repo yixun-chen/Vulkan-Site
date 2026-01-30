@@ -1399,7 +1399,7 @@ where:
 images)
 
 ∂r/∂x = ∂r/∂y = 0 (for 1D,
-2D or Cube images)
+2D, or Cube images)
 
 and:
 

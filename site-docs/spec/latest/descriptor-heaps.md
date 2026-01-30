@@ -499,62 +499,28 @@ enabled, and
 `data->pTensorARM` **must** not be `NULL`
 
 * 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11214) VUID-VkResourceDescriptorInfoEXT-type-11214
+[](#VUID-VkResourceDescriptorInfoEXT-type-12349) VUID-VkResourceDescriptorInfoEXT-type-12349
 
-If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and [    `uniformTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment) is [VK_FALSE](fundamentals.html#VK_FALSE),
-`data->pTexelBuffer→addressRange.address` and
-`data->pTexelBuffer→addressRange.size` **must** be multiples of
-[    `uniformTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes)
-
-* 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11215) VUID-VkResourceDescriptorInfoEXT-type-11215
-
-If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and [    `storageTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment) is [VK_FALSE](fundamentals.html#VK_FALSE),
-`data->pTexelBuffer→addressRange.address` and
-`data->pTexelBuffer→addressRange.size` **must** be multiples of
-[    `storageTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes)
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType),
+`data->pTexelBuffer→addressRange.address` **must** be a multiple of
+the effective alignment requirement of `data->pTexelBuffer→format`
+as determined by
+[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11216) VUID-VkResourceDescriptorInfoEXT-type-11216
-
-If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and [    `uniformTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment) is [VK_TRUE](fundamentals.html#VK_TRUE),
-`data->pTexelBuffer→addressRange.address` and
-`data->pTexelBuffer→addressRange.size` **must** be multiples of either
-[    `uniformTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes) or the highest integer
-power-of-two factor of the size of `data->pTexelBuffer→format` in
-bytes; whichever is lower
-
-* 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11217) VUID-VkResourceDescriptorInfoEXT-type-11217
-
-If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and [    `storageTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment) is [VK_TRUE](fundamentals.html#VK_TRUE),
-`data->pTexelBuffer→addressRange.address` and
-`data->pTexelBuffer→addressRange.size` **must** be multiples of either
-[    `storageTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes) or the highest integer
-power-of-two factor of the size of `data->pTexelBuffer→format` in
-bytes; whichever is lower
-
-* 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11452) VUID-VkResourceDescriptorInfoEXT-type-11452
+[](#VUID-VkResourceDescriptorInfoEXT-type-12350) VUID-VkResourceDescriptorInfoEXT-type-12350
 
 If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType),
-`data->pAddressRange→address` and `data->pAddressRange→size`
-**must** be multiples of [    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
+`data->pAddressRange→address` **must** be a multiple of
+[    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
 
 * 
-[](#VUID-VkResourceDescriptorInfoEXT-type-11453) VUID-VkResourceDescriptorInfoEXT-type-11453
+[](#VUID-VkResourceDescriptorInfoEXT-type-12351) VUID-VkResourceDescriptorInfoEXT-type-12351
 
 If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType),
-`data->pAddressRange→address` and `data->pAddressRange→size`
-**must** be multiples of [    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
+`data->pAddressRange→address` **must** be a multiple of
+[    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
 
 * 
 [](#VUID-VkResourceDescriptorInfoEXT-type-11454) VUID-VkResourceDescriptorInfoEXT-type-11454
@@ -569,8 +535,7 @@ If `type` is one of
 * 
 [VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV](descriptorsets.html#VkDescriptorType)
 
-`data->pAddressRange→address` and `data->pAddressRange→size` **must**
-be multiples of 256
+`data->pAddressRange→address` **must** be a multiple of 256
 
 [](#VUID-VkResourceDescriptorInfoEXT-pNext-11401) VUID-VkResourceDescriptorInfoEXT-pNext-11401
 
@@ -786,17 +751,6 @@ structure.
 * 
 `addressRange` is a [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) defining the range
 of data backing the descriptor.
-
-Valid Usage
-
-* 
-[](#VUID-VkTexelBufferDescriptorInfoEXT-None-11218) VUID-VkTexelBufferDescriptorInfoEXT-None-11218
-
-If [`texelBufferAlignment`](features.html#features-texelBufferAlignment) is not
-enabled,
-`addressRange.address` and `addressRange.size` **must** be aligned
-to
-[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 Valid Usage (Implicit)
 

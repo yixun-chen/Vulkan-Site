@@ -108,7 +108,7 @@ one subdevice to a resource on another subdevice, record command buffers
 where some work executes on an arbitrary subset of the subdevices, and
 potentially present a swapchain image from one or more subdevices.
 
-The following enums, types and commands are included as interactions with
+The following enums, types, and commands are included as interactions with
 `[VK_KHR_swapchain](VK_KHR_swapchain.html)`:
 
 * 
@@ -166,7 +166,7 @@ The following enums, types and commands are included as interactions with
 [vkAcquireNextImage2KHR](vkAcquireNextImage2KHR.html)
 
 If Vulkan 1.1 and `[VK_KHR_swapchain](VK_KHR_swapchain.html)` are supported, these are
-included by `VK_KHR_swapchain`.
+included by `[VK_KHR_swapchain](VK_KHR_swapchain.html)`.
 
 The base functionality in this extension is included in core Vulkan 1.1,
 with the KHR suffix omitted.

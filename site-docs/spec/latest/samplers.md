@@ -71,8 +71,9 @@ There **must** be less than
 [](#VUID-vkCreateSampler-maxSamplerAllocationCount-11412) VUID-vkCreateSampler-maxSamplerAllocationCount-11412
 
     If there are any pipelines
-ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
-    created on the device, there **must** be less than
+or shaders
+    with embedded samplers currently created on the device, there **must** be
+    less than
     ([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
     -  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
     [`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
@@ -1501,8 +1502,8 @@ consequence of [component substitution](images.html#images-component-substitutio
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748
 
-If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](#VkSamplerYcbcrRangeKHR) then the
-R, G and B components obtained by applying the `component` swizzle
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](#VkSamplerYcbcrRangeKHR), then the
+R, G, and B components obtained by applying the `component` swizzle
 to `format` **must** each have a bit-depth greater than or equal to 8
 
 * 

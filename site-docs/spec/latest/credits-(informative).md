@@ -1328,7 +1328,7 @@ Zehui Lin, Huawei Technologies Co., Ltd.
 The Vulkan Advisory Panel members provided important real-world usage
 information and advice that helped guide design decisions.
 
-The wider Vulkan community have provided useful feedback, questions and
+The wider Vulkan community have provided useful feedback, questions, and
 specification changes that have helped improve the quality of the
 Specification via
 [GitHub](https://github.com/KhronosGroup/Vulkan-Docs/graphs/contributors).

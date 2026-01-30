@@ -3268,8 +3268,8 @@ structure.</p>
 <ul>
 <li>
 <p><a id="features-shaderBufferFloat32Atomics"></a> <code>shaderBufferFloat32Atomics</code>
-indicates whether shaders <strong>can</strong> perform 32-bit floating-point load, store
-and exchange atomic operations on storage buffers.</p>
+indicates whether shaders <strong>can</strong> perform 32-bit floating-point load,
+store, and exchange atomic operations on storage buffers.</p>
 </li>
 <li>
 <p><a id="features-shaderBufferFloat32AtomicAdd"></a>
@@ -3278,8 +3278,8 @@ perform 32-bit floating-point add atomic operations on storage buffers.</p>
 </li>
 <li>
 <p><a id="features-shaderBufferFloat64Atomics"></a> <code>shaderBufferFloat64Atomics</code>
-indicates whether shaders <strong>can</strong> perform 64-bit floating-point load, store
-and exchange atomic operations on storage buffers.</p>
+indicates whether shaders <strong>can</strong> perform 64-bit floating-point load,
+store, and exchange atomic operations on storage buffers.</p>
 </li>
 <li>
 <p><a id="features-shaderBufferFloat64AtomicAdd"></a>
@@ -3288,8 +3288,8 @@ perform 64-bit floating-point add atomic operations on storage buffers.</p>
 </li>
 <li>
 <p><a id="features-shaderSharedFloat32Atomics"></a> <code>shaderSharedFloat32Atomics</code>
-indicates whether shaders <strong>can</strong> perform 32-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders <strong>can</strong> perform 32-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.</p>
 </li>
@@ -3302,8 +3302,8 @@ memory.</p>
 </li>
 <li>
 <p><a id="features-shaderSharedFloat64Atomics"></a> <code>shaderSharedFloat64Atomics</code>
-indicates whether shaders <strong>can</strong> perform 64-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders <strong>can</strong> perform 64-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.</p>
 </li>
@@ -3316,8 +3316,8 @@ memory.</p>
 </li>
 <li>
 <p><a id="features-shaderImageFloat32Atomics"></a> <code>shaderImageFloat32Atomics</code>
-indicates whether shaders <strong>can</strong> perform 32-bit floating-point load, store
-and exchange atomic image operations.</p>
+indicates whether shaders <strong>can</strong> perform 32-bit floating-point load,
+store, and exchange atomic image operations.</p>
 </li>
 <li>
 <p><a id="features-shaderImageFloat32AtomicAdd"></a>
@@ -3326,7 +3326,7 @@ and exchange atomic image operations.</p>
 </li>
 <li>
 <p><a id="features-sparseImageFloat32Atomics"></a> <code>sparseImageFloat32Atomics</code>
-indicates whether 32-bit floating-point load, store and exchange atomic
+indicates whether 32-bit floating-point load, store, and exchange atomic
 operations <strong>can</strong> be used on sparse images.</p>
 </li>
 <li>
@@ -3434,8 +3434,8 @@ buffers.</p>
 </li>
 <li>
 <p><a id="features-shaderSharedFloat16Atomics"></a> <code>shaderSharedFloat16Atomics</code>
-indicates whether shaders <strong>can</strong> perform 16-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders <strong>can</strong> perform 16-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.</p>
 </li>
@@ -7058,6 +7058,66 @@ chain of <a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDev
 <li>
 <p><a id="VUID-VkPhysicalDeviceCooperativeMatrixFeaturesKHR-sType-sType" href="#VUID-VkPhysicalDeviceCooperativeMatrixFeaturesKHR-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceCooperativeMatrixFeaturesKHR-sType-sType</span><br>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</code> structure
+is defined as:</p>
+</div>
+<div id="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_QCOM_cooperative_matrix_conversion
+typedef struct VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           cooperativeMatrixConversion;
+} VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This structure describes the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> is a <a href="fundamentals.html#VkStructureType" class="xref page">VkStructureType</a> value identifying this structure.</p>
+</li>
+<li>
+<p><code>pNext</code> is <code>NULL</code> or a pointer to a structure extending this
+structure.</p>
+</li>
+<li>
+<p><a id="features-cooperativeMatrixConversion"></a>
+<code>cooperativeMatrixConversion</code> indicates that the implementation
+supports the <code>CooperativeMatrixConversionQCOM</code> SPIR-V capability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the <code>VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</code> structure is included in the <code>pNext</code> chain of the
+<a href="#VkPhysicalDeviceFeatures2">VkPhysicalDeviceFeatures2</a> structure passed to
+<a href="#vkGetPhysicalDeviceFeatures2">vkGetPhysicalDeviceFeatures2</a>, it is filled in to indicate whether each
+corresponding feature is supported.
+If the application wishes to use a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a> with any features
+described by <code>VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</code>, it <strong>must</strong> add an instance of the structure,
+with the desired feature members set to <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, to the <code>pNext</code>
+chain of <a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDeviceCreateInfo</a> when creating the <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM-sType-sType" href="#VUID-VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM-sType-sType</span><br>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM</a></p>
 </li>
 </ul>
 </div>
@@ -21896,6 +21956,10 @@ the following features <strong>must</strong> be supported:</p>
 <li>
 <p>If <code><a href="../appendices/extensions.html#VK_NV_representative_fragment_test" class="xref page">VK_NV_representative_fragment_test</a></code> is supported,
 <a href="#features-representativeFragmentTest"><code>representativeFragmentTest</code></a> <strong>must</strong> be supported</p>
+</li>
+<li>
+<p>If <code><a href="../appendices/extensions.html#VK_QCOM_cooperative_matrix_conversion" class="xref page">VK_QCOM_cooperative_matrix_conversion</a></code> is supported,
+<a href="#features-cooperativeMatrixConversion"><code>cooperativeMatrixConversion</code></a> <strong>must</strong> be supported</p>
 </li>
 <li>
 <p>If <code><a href="../appendices/extensions.html#VK_EXT_vertex_attribute_divisor" class="xref page">VK_EXT_vertex_attribute_divisor</a></code> is supported,

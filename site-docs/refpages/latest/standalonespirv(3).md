@@ -799,7 +799,7 @@ an `Offset` value aligned to a 4 byte boundary
 
 [](#VUID-StandaloneSpirv-Offset-04692) VUID-StandaloneSpirv-Offset-04692
 
-Output variables, blocks or block members decorated with `Offset`
+Output variables, blocks, or block members decorated with `Offset`
 **must** only contain base types that have components that are either
 32-bit or 64-bit in size
 
@@ -957,13 +957,15 @@ dynamically uniform indices
 
 [](#VUID-StandaloneSpirv-OpVariable-06673) VUID-StandaloneSpirv-OpVariable-06673
 
-There **must** not be more than one variable in the `PushConstant`
+There **must** be at most one variable in the `PushConstant`
 `Storage` `Class` listed in the `Interface` for each `OpEntryPoint`
+unless the `PushConstantBanksNV` capability is declared
 
 [](#VUID-StandaloneSpirv-OpEntryPoint-06674) VUID-StandaloneSpirv-OpEntryPoint-06674
 
-Each `OpEntryPoint` **must** not statically use more than one variable
-in the `PushConstant` `Storage` `Class`
+Each `OpEntryPoint` **must** statically use at most one variable in the
+`PushConstant` `Storage` `Class` unless the `PushConstantBanksNV`
+capability is declared
 
 [](#VUID-StandaloneSpirv-OpEntryPoint-08721) VUID-StandaloneSpirv-OpEntryPoint-08721
 

@@ -43,7 +43,7 @@ structure.
 `maxWorkGroupCount`[3] is the maximum number of local workgroups
 that can be launched by a single command.
 These three value represent the maximum local workgroup count in the X,
-Y and Z dimensions, respectively.
+Y, and Z dimensions, respectively.
 In the current implementation, the values of Y and Z are both implicitly
 set as one.
 groupCountX of DrawCluster command **must** be less than or equal to
@@ -51,9 +51,9 @@ maxWorkGroupCount[0].
 
 * 
 `maxWorkGroupSize`[3] is the maximum size of a local workgroup.
-    These three value represent the maximum local workgroup size in the X, Y
-    and Z dimensions, respectively.
-    The x, y and z sizes, as specified by the `LocalSize`
+    These three value represent the maximum local workgroup size in the X,
+    Y, and Z dimensions, respectively.
+    The x, y, and z sizes, as specified by the `LocalSize`
 or `LocalSizeId`
     execution mode or by the object decorated by the WorkgroupSize
     decoration in shader modules, **must** be less than or equal to the

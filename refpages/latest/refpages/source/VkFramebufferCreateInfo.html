@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13049,7 +13055,7 @@ chain <strong>must</strong> be equal to either zero or <code>attachmentCount</co
 If <code>flags</code> includes <a href="VkFramebufferCreateFlagBits.html" class="xref page">VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT</a>, the
 <code>width</code> member of any element of the <code>pAttachmentImageInfos</code>
 member of a <a href="VkFramebufferAttachmentsCreateInfo.html" class="xref page">VkFramebufferAttachmentsCreateInfo</a> structure in the
-<code>pNext</code> chain that is used as an input, color, resolve or
+<code>pNext</code> chain that is used as an input, color, resolve, or
 depth/stencil attachment in <code>renderPass</code> <strong>must</strong> be greater than or
 equal to <code>width</code></p>
 </li>
@@ -13059,7 +13065,7 @@ equal to <code>width</code></p>
 If <code>flags</code> includes <a href="VkFramebufferCreateFlagBits.html" class="xref page">VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT</a>, the
 <code>height</code> member of any element of the <code>pAttachmentImageInfos</code>
 member of a <a href="VkFramebufferAttachmentsCreateInfo.html" class="xref page">VkFramebufferAttachmentsCreateInfo</a> structure in the
-<code>pNext</code> chain that is used as an input, color, resolve or
+<code>pNext</code> chain that is used as an input, color, resolve, or
 depth/stencil attachment in <code>renderPass</code> <strong>must</strong> be greater than or
 equal to <code>height</code></p>
 </li>
@@ -13256,7 +13262,7 @@ shading rate attachment by <code>renderPass</code> <strong>must</strong> include
 
 If
 <a href="../../../../spec/latest/chapters/renderpass.html#subpass-multisampledrendertosinglesampled" class="xref page">multisampled-render-to-single-sampled</a>
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 <code>VkAttachmentDescription</code>::<code>samples</code> or
 <code>VkAttachmentDescription2</code>::<code>samples</code> equal to
@@ -13269,7 +13275,7 @@ their <a href="VkImageCreateInfo.html" class="xref page">VkImageCreateInfo</a>::
 
 If
 <a href="../../../../spec/latest/chapters/renderpass.html#subpass-multisampledrendertosinglesampled" class="xref page">multisampled-render-to-single-sampled</a>
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 <code>VkAttachmentDescription</code>::<code>samples</code> or
 <code>VkAttachmentDescription2</code>::<code>samples</code> equal to

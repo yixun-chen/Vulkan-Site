@@ -1951,7 +1951,7 @@ This format only supports images with a width that is a multiple of two.
 [VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM](#VkFormat) specifies an unsigned
 normalized *multi-planar format* that has an 8-bit G component in plane
 0, an 8-bit B component in plane 1, and an 8-bit R component in plane 2.
-Each plane has the same dimensions and each R, G and B component
+Each plane has the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2096,7 +2096,7 @@ in the top 10 bits of each 16-bit word of plane 0, a 10-bit B component
 in the top 10 bits of each 16-bit word of plane 1, and a 10-bit R
 component in the top 10 bits of each 16-bit word of plane 2, with the
 bottom 6 bits of each word unused.
-Each plane has the same dimensions and each R, G and B component
+Each plane has the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2241,7 +2241,7 @@ in the top 12 bits of each 16-bit word of plane 0, a 12-bit B component
 in the top 12 bits of each 16-bit word of plane 1, and a 12-bit R
 component in the top 12 bits of each 16-bit word of plane 2, with the
 bottom 4 bits of each word unused.
-Each plane has the same dimensions and each R, G and B component
+Each plane has the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2353,7 +2353,7 @@ This format only supports images with a width that is a multiple of two.
 normalized *multi-planar format* that has a 16-bit G component in each
 16-bit word of plane 0, a 16-bit B component in each 16-bit word of
 plane 1, and a 16-bit R component in each 16-bit word of plane 2.
-Each plane has the same dimensions and each R, G and B component
+Each plane has the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2366,7 +2366,7 @@ determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourc
 normalized *multi-planar format* that has an 8-bit G component in plane
 0, and a two-component, 16-bit BR plane 1 consisting of an 8-bit B
 component in byte 0 and an 8-bit R component in byte 1.
-Both planes have the same dimensions and each R, G and B component
+Both planes have the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2380,7 +2380,7 @@ in the top 10 bits of each 16-bit word of plane 0, and a two-component,
 32-bit BR plane 1 consisting of a 10-bit B component in the top 10 bits
 of the word in bytes 0..1, and a 10-bit R component in the top 10 bits
 of the word in bytes 2..3, the bottom 6 bits of each word unused.
-Both planes have the same dimensions and each R, G and B component
+Both planes have the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2394,7 +2394,7 @@ in the top 12 bits of each 16-bit word of plane 0, and a two-component,
 32-bit BR plane 1 consisting of a 12-bit B component in the top 12 bits
 of the word in bytes 0..1, and a 12-bit R component in the top 12 bits
 of the word in bytes 2..3, the bottom 4 bits of each word unused.
-Both planes have the same dimensions and each R, G and B component
+Both planes have the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using
@@ -2407,7 +2407,7 @@ normalized *multi-planar format* that has a 16-bit G component in each
 16-bit word of plane 0, and a two-component, 32-bit BR plane 1
 consisting of a 16-bit B component in the word in bytes 0..1, and a
 16-bit R component in the word in bytes 2..3.
-Both planes have the same dimensions and each R, G and B component
+Both planes have the same dimensions and each R, G, and B component
 contributes to a single texel.
 The location of each plane when this image is in linear layout can be
 determined via [vkGetImageSubresourceLayout](resources.html#vkGetImageSubresourceLayout), using

@@ -1253,14 +1253,15 @@ described in the “sRGB EOTF” section of the [Khronos Data Format Specificati
 If the format is not sRGB, no linearization is performed.
 
 If the [numeric format](formats.html#formats-numericformat) of a framebuffer attachment
-uses sRGB encoding, then the final R, G and B values are converted into the
+uses sRGB encoding, then the final R, G, and B values are converted into the
 nonlinear sRGB representation before being written to the framebuffer
 attachment as described in the “sRGB EOTF -1” section of the
 Khronos Data Format Specification.
 
 If the [numeric format](formats.html#formats-numericformat) of a framebuffer color
-attachment is not sRGB encoded then the resulting cs values for R, G
-and B are unmodified.
+attachment is not sRGB encoded, then the resulting cs values for R,
+G, and B are unmodified.
+
 The value of A is never sRGB encoded.
 That is, the alpha component is always stored in memory as linear.
 

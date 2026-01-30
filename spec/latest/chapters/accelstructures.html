@@ -1461,9 +1461,19 @@ For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 <code>pInfos</code>[i].<code>ppGeometries</code> with a <code>geometryType</code> of
 <a href="resources.html#VkGeometryTypeNV" class="xref page">VK_GEOMETRY_TYPE_TRIANGLES_KHR</a>,
-<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to
-the size in bytes of the smallest component of the format in
-<code>vertexFormat</code></p>
+<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="formats.html#formats" class="xref page">size of the format</a> specified in <code>vertexFormat</code>, in
+bytes, if that format is a <a href="formats.html#formats-packed" class="xref page">packed format</a></p>
+</li>
+<li>
+<p>the <a href="formats.html#formats" class="xref page">component size</a> of the format specified in
+<code>vertexFormat</code>, in bytes, if that format is not a <a href="formats.html#formats-packed" class="xref page">     packed format</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806</span><br>
@@ -2420,9 +2430,19 @@ For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 <code>pInfos</code>[i].<code>ppGeometries</code> with a <code>geometryType</code> of
 <a href="resources.html#VkGeometryTypeNV" class="xref page">VK_GEOMETRY_TYPE_TRIANGLES_KHR</a>,
-<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to
-the size in bytes of the smallest component of the format in
-<code>vertexFormat</code></p>
+<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="formats.html#formats" class="xref page">size of the format</a> specified in <code>vertexFormat</code>, in
+bytes, if that format is a <a href="formats.html#formats-packed" class="xref page">packed format</a></p>
+</li>
+<li>
+<p>the <a href="formats.html#formats" class="xref page">component size</a> of the format specified in
+<code>vertexFormat</code>, in bytes, if that format is not a <a href="formats.html#formats-packed" class="xref page">     packed format</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03806" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03806"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03806</span><br>
@@ -11181,7 +11201,8 @@ scratch memory region at address <code>pBuildInfo-&gt;scratchData</code></p>
 <li>
 <p><a id="VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549" href="#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549"></a> <span class="vuid">VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549</span><br>
 
-The memory regions containing the acceleration structures at addresses
+If the source and destination acceleration structures are not the same,
+the memory regions containing the acceleration structures at addresses
 <code>pBuildInfo-&gt;srcAccelerationStructureData</code> and
 <code>pBuildInfo-&gt;dstAccelerationStructureData</code> <strong>must</strong> not overlap with
 each other</p>

@@ -516,6 +516,9 @@
     <a class="nav-link" href="VK_NV_ray_tracing_validation.html">VK_NV_ray_tracing_validation</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -643,7 +646,7 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests">4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?</a></li>
+<li><a href="#_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests">4.1. Should we expose a property indicating if the implementation is actually going to perform early and late tests?</a></li>
 </ul>
 </li>
 </ul>
@@ -939,9 +942,9 @@ Shaders must not specify more than one of <code>stencil_ref_unchanged_back</code
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests"><a class="anchor" href="#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests"></a>4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?</h3>
+<h3 id="_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests"><a class="anchor" href="#_should_we_expose_a_property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests"></a>4.1. Should we expose a property indicating if the implementation is actually going to perform early and late tests?</h3>
 <div class="paragraph">
-<p>It would be useful if ultimately all implementations could ship this feature, treating it as a no-op where relevant - but if some implementations cannot gain any advantage from this, it might be reasonable to expose a property indicating this.</p>
+<p>Only implementations actually supporting this functionality correctly should expose this extension.</p>
 </div>
 </div>
 </div>

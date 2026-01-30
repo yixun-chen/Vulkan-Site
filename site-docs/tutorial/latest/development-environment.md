@@ -136,7 +136,7 @@ Vulkan SDK has support for using find_package. To use it with your project,
 you can add the search path for the *-config.cmake to the `HINTS` portion of
 the find_package config calls: i.e.
 
-find_package(slang CONFIG HINTS "$ENV{VULKAN_SDK}/lib/cmake").
+find_package(slang CONFIG HINTS "$ENV{VULKAN_SDK}/lib/cmake")
 
 In the future, FindVulkan.cmake might migrate to the *-config.cmake standard,
 however at the time of writing it is recommended to grab FindVulkan.cmake

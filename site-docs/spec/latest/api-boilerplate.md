@@ -154,7 +154,7 @@ Specification.
 
 // Provided by VK_VERSION_1_0
 // Version of this file
-#define VK_HEADER_VERSION 341
+#define VK_HEADER_VERSION 342
 
 `VK_HEADER_VERSION_COMPLETE` is the complete version number of the
 `vulkan_core.h` header, comprising the major, minor, and patch versions.

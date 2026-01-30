@@ -930,8 +930,8 @@ This function accepts a simple <code>VkDescriptorSetLayoutCreateInfo</code> with
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::DescriptorSetLayoutBinding uboLayoutBinding(0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr);
-vk::DescriptorSetLayoutCreateInfo layoutInfo({}, 1, &amp;uboLayoutBinding);
-descriptorSetLayout = vk::raii::DescriptorSetLayout( device, layoutInfo );</code></pre>
+vk::DescriptorSetLayoutCreateInfo layoutInfo{.bindingCount = 1, .pBindings = &amp;uboLayoutBinding};
+descriptorSetLayout = vk::raii::DescriptorSetLayout(device, layoutInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">

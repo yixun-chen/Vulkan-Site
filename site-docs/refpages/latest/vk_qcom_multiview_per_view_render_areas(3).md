@@ -96,7 +96,7 @@ operations.
 The extension enables a multiview render pass instance to define per-view
 render areas.
 For each view of a multiview render pass instance, only those pixels in the
-per-view render area are affected by load, store and resolve operations.
+per-view render area are affected by load, store, and resolve operations.
 
 * 
 Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDeviceCreateInfo](VkDeviceCreateInfo.html):

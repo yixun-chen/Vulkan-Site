@@ -2397,8 +2397,8 @@ structure.
 
 * 
  `shaderBufferFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic operations on storage buffers.
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic operations on storage buffers.
 
 * 
 
@@ -2407,8 +2407,8 @@ perform 32-bit floating-point add atomic operations on storage buffers.
 
 * 
  `shaderBufferFloat64Atomics`
-indicates whether shaders **can** perform 64-bit floating-point load, store
-and exchange atomic operations on storage buffers.
+indicates whether shaders **can** perform 64-bit floating-point load,
+store, and exchange atomic operations on storage buffers.
 
 * 
 
@@ -2417,8 +2417,8 @@ perform 64-bit floating-point add atomic operations on storage buffers.
 
 * 
  `shaderSharedFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.
 
@@ -2431,8 +2431,8 @@ memory.
 
 * 
  `shaderSharedFloat64Atomics`
-indicates whether shaders **can** perform 64-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders **can** perform 64-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.
 
@@ -2445,8 +2445,8 @@ memory.
 
 * 
  `shaderImageFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic image operations.
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic image operations.
 
 * 
 
@@ -2455,7 +2455,7 @@ and exchange atomic image operations.
 
 * 
  `sparseImageFloat32Atomics`
-indicates whether 32-bit floating-point load, store and exchange atomic
+indicates whether 32-bit floating-point load, store, and exchange atomic
 operations **can** be used on sparse images.
 
 * 
@@ -2539,8 +2539,8 @@ buffers.
 
 * 
  `shaderSharedFloat16Atomics`
-indicates whether shaders **can** perform 16-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders **can** perform 16-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.
 
@@ -5100,6 +5100,46 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCooperativeMatrixFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixFeaturesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR](fundamentals.html#VkStructureType)
+
+The `VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM` structure
+is defined as:
+
+// Provided by VK_QCOM_cooperative_matrix_conversion
+typedef struct VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           cooperativeMatrixConversion;
+} VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM;
+
+This structure describes the following features:
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+
+`cooperativeMatrixConversion` indicates that the implementation
+supports the `CooperativeMatrixConversionQCOM` SPIR-V capability.
+
+If the `VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2) structure passed to
+[vkGetPhysicalDeviceFeatures2](#vkGetPhysicalDeviceFeatures2), it is filled in to indicate whether each
+corresponding feature is supported.
+If the application wishes to use a [VkDevice](devsandqueues.html#VkDevice) with any features
+described by `VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM`, it **must** add an instance of the structure,
+with the desired feature members set to [VK_TRUE](fundamentals.html#VK_TRUE), to the `pNext`
+chain of [VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo) when creating the [VkDevice](devsandqueues.html#VkDevice).
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCooperativeMatrix2FeaturesNV` structure is defined
 as:
@@ -15256,6 +15296,9 @@ If `[VK_NV_shading_rate_image](../appendices/extensions.html#VK_NV_shading_rate_
 
 If `[VK_NV_representative_fragment_test](../appendices/extensions.html#VK_NV_representative_fragment_test)` is supported,
 [`representativeFragmentTest`](#features-representativeFragmentTest) **must** be supported
+
+If `[VK_QCOM_cooperative_matrix_conversion](../appendices/extensions.html#VK_QCOM_cooperative_matrix_conversion)` is supported,
+[`cooperativeMatrixConversion`](#features-cooperativeMatrixConversion) **must** be supported
 
 If `[VK_EXT_vertex_attribute_divisor](../appendices/extensions.html#VK_EXT_vertex_attribute_divisor)` is supported,
 [`vertexAttributeInstanceRateDivisor`](#features-vertexAttributeInstanceRateDivisor) **must** be supported

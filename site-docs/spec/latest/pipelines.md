@@ -498,7 +498,7 @@ consisting entirely of zeros.
 * 
 [VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies
 that all built-in primitives
-including triangles, spheres and LSS primitives
+including triangles, spheres, and LSS primitives
 will be skipped during traversal using [    pipeline trace ray](../appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
@@ -652,10 +652,8 @@ pipeline hierarchy.
 See [Pipeline Derivatives](#pipelines-pipeline-derivatives) for more
 information.
 
-When an implementation is looking up a pipeline in a
-[pipeline cache](#pipelines-cache), if that pipeline is being created using
-linked libraries, implementations **should** always return an equivalent
-pipeline created with
+When an implementation is looking up a pipeline in a [pipeline cache](#pipelines-cache), if that pipeline is being created using linked libraries,
+implementations **should** always return an equivalent pipeline created with
 [VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits2KHR) if available,
 whether or not that bit was specified.
 
@@ -993,10 +991,8 @@ pipeline hierarchy.
 See [Pipeline Derivatives](#pipelines-pipeline-derivatives) for more
 information.
 
-When an implementation is looking up a pipeline in a
-[pipeline cache](#pipelines-cache), if that pipeline is being created using
-linked libraries, implementations **should** always return an equivalent
-pipeline created with
+When an implementation is looking up a pipeline in a [pipeline cache](#pipelines-cache), if that pipeline is being created using linked libraries,
+implementations **should** always return an equivalent pipeline created with
 [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) if available,
 whether or not that bit was specified.
 
@@ -13025,7 +13021,7 @@ OpDecorate %wgsize BuiltIn WorkgroupSize ; decorate WorkgroupSize onto constant
 %wgsize = OpSpecConstantComposite %uvec3 %x %y %z ; declare WorkgroupSize
 
 From the above we have three specialization constants, one for each of the
-x, y and z elements of the WorkgroupSize vector.
+x, y, and z elements of the WorkgroupSize vector.
 
 Now to specialize the above via the specialization constants mechanism:
 

@@ -37,7 +37,7 @@ hardware shipping by the end of the target year or shortly thereafter.
 
 The Roadmap 2022 milestone is intended to be supported by newer
 mid-to-high-end devices shipping in 2022 or shortly thereafter across
-mainstream smartphone, tablet, laptop, console and desktop devices.
+mainstream smartphone, tablet, laptop, console, and desktop devices.
 
 This milestone requires Vulkan 1.3.
 
@@ -225,7 +225,7 @@ The following extensions are **required**
 
 The Roadmap 2024 milestone is intended to be supported by newer
 mid-to-high-end devices shipping in 2024 or shortly thereafter across
-mainstream smartphone, tablet, laptop, console and desktop devices.
+mainstream smartphone, tablet, laptop, console, and desktop devices.
 
 Two of the core aims of this roadmap profile are to enable developers to
 rely on a number of important rasterization and shader features have been
@@ -338,7 +338,7 @@ The following extensions are **required**
 
 The Roadmap 2026 milestone is intended to be supported by newer
 mid-to-high-end devices shipping in 2026 or shortly thereafter across
-mainstream smartphone, tablet, laptop, console and desktop devices.
+mainstream smartphone, tablet, laptop, console, and desktop devices.
 
 This milestone raises the baseline feature support of Vulkan implementations
 as with prior milestones.

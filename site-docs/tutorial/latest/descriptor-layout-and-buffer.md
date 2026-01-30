@@ -177,8 +177,8 @@ We can then create it using `vkCreateDescriptorSetLayout`.
 This function accepts a simple `VkDescriptorSetLayoutCreateInfo` with the array of bindings:
 
 vk::DescriptorSetLayoutBinding uboLayoutBinding(0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr);
-vk::DescriptorSetLayoutCreateInfo layoutInfo({}, 1, &uboLayoutBinding);
-descriptorSetLayout = vk::raii::DescriptorSetLayout( device, layoutInfo );
+vk::DescriptorSetLayoutCreateInfo layoutInfo{.bindingCount = 1, .pBindings = &uboLayoutBinding};
+descriptorSetLayout = vk::raii::DescriptorSetLayout(device, layoutInfo);
 
 We need to specify the descriptor set layout during pipeline creation to tell Vulkan which descriptors the shaders will be using.
 Descriptor set layouts are specified in the pipeline layout object.

@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12688,8 +12694,9 @@ There <strong>must</strong> be less than
 <p><a id="VUID-vkCreateSampler-maxSamplerAllocationCount-11412" href="#VUID-vkCreateSampler-maxSamplerAllocationCount-11412"></a> <span class="vuid">VUID-vkCreateSampler-maxSamplerAllocationCount-11412</span><br>
 
     If there are any pipelines
-ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
-    created on the device, there <strong>must</strong> be less than
+or shaders
+    with embedded samplers currently created on the device, there <strong>must</strong> be
+    less than
     <span class="eq">(<a href="../../../../spec/latest/chapters/limits.html#limits-maxSamplerAllocationCount" class="xref page"><code>maxSamplerAllocationCount</code></a>
     -  (<a href="../../../../spec/latest/chapters/limits.html#limits-minSamplerHeapReservedRangeWithEmbedded" class="xref page">    <code>minSamplerHeapReservedRangeWithEmbedded</code></a> /
     <a href="../../../../spec/latest/chapters/limits.html#limits-samplerDescriptorSize" class="xref page"><code>samplerDescriptorSize</code></a>))</span>

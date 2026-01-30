@@ -569,11 +569,15 @@ For each element of `pInfos`[i].`pGeometries` or
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
 [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html),
-`geometry.triangles.vertexData.deviceAddress` **must** be aligned to
-the size in bytes of the smallest component of the format in
-`vertexFormat`
+`geometry.triangles.vertexData.deviceAddress` **must** be aligned to:
+
+the [size of the format](../../../../spec/latest/chapters/formats.html#formats) specified in `vertexFormat`, in
+bytes, if that format is a [packed format](../../../../spec/latest/chapters/formats.html#formats-packed)
 
 * 
+the [component size](../../../../spec/latest/chapters/formats.html#formats) of the format specified in
+`vertexFormat`, in bytes, if that format is not a [     packed format](../../../../spec/latest/chapters/formats.html#formats-packed)
+
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03806) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03806
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -583,7 +587,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.triangles.indexData.deviceAddress` **must** be a valid
 `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03712) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03712
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -594,7 +597,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.triangles.indexData.deviceAddress` **must** be aligned to the
 size in bytes of the type in `indexType`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03808) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03808
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -603,7 +605,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.triangles.transformData.deviceAddress` is not `0`, it
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03810) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03810
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -612,7 +613,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.triangles.transformData.deviceAddress` is not `0`, it
 **must** be aligned to `16` bytes
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03811) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03811
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -621,7 +621,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.aabbs.data.deviceAddress` **must** be a valid
 `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03714) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03714
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -629,7 +628,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html),
 `geometry.aabbs.data.deviceAddress` **must** be aligned to `8` bytes
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03715) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03715
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -638,7 +636,6 @@ For each element of `pInfos`[i].`pGeometries` or
 is [VK_FALSE](VK_FALSE.html), `geometry.instances.data.deviceAddress` **must** be
 aligned to `16` bytes
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03716) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03716
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -647,7 +644,6 @@ For each element of `pInfos`[i].`pGeometries` or
 is [VK_TRUE](VK_TRUE.html), `geometry.instances.data.deviceAddress` **must** be
 aligned to `8` bytes
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03717) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03717
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -657,7 +653,6 @@ is [VK_TRUE](VK_TRUE.html), each element of
 `geometry.instances.data.deviceAddress` in device memory **must** be
 aligned to `16` bytes
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03813) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03813
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -666,7 +661,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.instances.data.deviceAddress` **must** be a valid
 `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12281) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12281
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -677,7 +671,6 @@ value in `geometry.instances.data.deviceAddress` **must** be `0` or a
 value obtained from [vkGetAccelerationStructureDeviceAddressKHR](vkGetAccelerationStructureDeviceAddressKHR.html) for
 a valid bottom level acceleration structure
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10607) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10607
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -690,12 +683,10 @@ acceleration structure that was built with
 [VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT](VkBuildAccelerationStructureFlagBitsKHR.html)
 set in [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html)::`flags`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-commandBuffer-09547) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-commandBuffer-09547
 
 `commandBuffer` **must** not be a protected command buffer
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10904) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10904
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -706,7 +697,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexBuffer.deviceAddress`
 **must** be 0
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10905) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-10905
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -717,7 +707,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexBuffer.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11845) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11845
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -727,7 +716,6 @@ For each element of `pInfos`[i].`pGeometries` or
 `geometry.triangles.pNext` chain, then its
 `vertexData.deviceAddress` **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11846) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11846
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -737,7 +725,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.deviceAddress`
 **must** be 0
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11847) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11847
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -747,7 +734,6 @@ For each element of `pInfos`[i].`pGeometries` or
 not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11848) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11848
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -756,7 +742,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`vertexData.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11849) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11849
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -765,7 +750,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`radiusData.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11850) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11850
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -775,7 +759,6 @@ For each element of `pInfos`[i].`pGeometries` or
 is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.deviceAddress`
 **must** be 0
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11851) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11851
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -785,7 +768,6 @@ For each element of `pInfos`[i].`pGeometries` or
 is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its
 `indexData.deviceAddress` **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11852) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11852
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -794,7 +776,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`vertexData.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11853) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-11853
 
 For each element of `pInfos`[i].`pGeometries` or
@@ -803,7 +784,6 @@ For each element of `pInfos`[i].`pGeometries` or
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`radiusData.deviceAddress`
 **must** be a valid `VkDeviceAddress`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03646) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03646
 
 For each element of `pIndirectDeviceAddresses`[i], all device
@@ -812,32 +792,27 @@ addresses between `pIndirectDeviceAddresses`[i] and
 (`pInfos`[i].`geometryCount` × `pIndirectStrides`[i]) -
 1 **must** be in the buffer device address range of the same buffer
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03647) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03647
 
 For each element of `pIndirectDeviceAddresses`, the buffer from
 which it was queried **must** have been created with the
 [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03648) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03648
 
 Each element of `pIndirectDeviceAddresses` **must** be a multiple of
 `4`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectStrides-03787) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectStrides-03787
 
 Each element of `pIndirectStrides` **must** be a multiple of `4`
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03651) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pIndirectDeviceAddresses-03651
 
 Each [VkAccelerationStructureBuildRangeInfoKHR](VkAccelerationStructureBuildRangeInfoKHR.html) structure referenced
 by any element of `pIndirectDeviceAddresses` **must** be a valid
 [VkAccelerationStructureBuildRangeInfoKHR](VkAccelerationStructureBuildRangeInfoKHR.html) structure
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03652) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03652
 
 `pInfos`[i].`dstAccelerationStructure` **must** have been created
@@ -847,7 +822,6 @@ operation, as returned by [vkGetAccelerationStructureBuildSizesKHR](vkGetAcceler
 with `pBuildInfo` = `pInfos`[i] and
 `pMaxPrimitiveCounts` = `ppMaxPrimitiveCounts`[i]
 
-* 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-ppMaxPrimitiveCounts-03653) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-ppMaxPrimitiveCounts-03653
 
 Each `ppMaxPrimitiveCounts`[i][j] **must** be greater than or equal to

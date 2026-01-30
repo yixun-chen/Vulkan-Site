@@ -635,6 +635,39 @@ unless/until replacements are created.</p>
 passes from this API version onward.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="legacy-resource-objects"><a class="anchor" href="#legacy-resource-objects"></a>Sampler and Buffer View Objects: Unnecessary with Descriptor Heaps</h3>
+<div class="paragraph">
+<p>When using <a href="../chapters/descriptorheaps.html#descriptorheaps" class="xref page">descriptor heaps</a>, the creation of sampler and
+buffer view objects are wholly unnecessary.
+Instead, these objects are directly converted to descriptors via
+<a href="../chapters/descriptorheaps.html#vkWriteSamplerDescriptorsEXT" class="xref page">vkWriteSamplerDescriptorsEXT</a> and <a href="../chapters/descriptorheaps.html#vkWriteResourceDescriptorsEXT" class="xref page">vkWriteResourceDescriptorsEXT</a>,
+skipping the need to create objects altogether.
+In the case of samplers, samplers can also be embedded directly into a
+shader via <a href="../chapters/descriptorheaps.html#descriptorheaps-bindings" class="xref page">shader bindings</a>, which only
+requires the <a href="../chapters/samplers.html#VkSamplerCreateInfo" class="xref page">VkSamplerCreateInfo</a>, rather than a created object.</p>
+</div>
+<div class="paragraph">
+<p>The creation of image views can also be skipped similarly for images used as
+descriptors, but image views themselves are still used elsewhere in the
+spec, such as for <a href="../chapters/renderpass.html#renderpass" class="xref page">render passes</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="legacy-descriptor-sets"><a class="anchor" href="#legacy-descriptor-sets"></a>Descriptor Management: Replaced by descriptor Heaps</h3>
+<div class="paragraph">
+<p><a href="../chapters/descriptorheaps.html#descriptorheaps" class="xref page">Descriptor heaps</a> provide a complete alternative for
+managing shader resources, and can be used where present instead of the
+resource management provided by Vulkan 1.0.
+<a href="../chapters/descriptorheaps.html#descriptorheaps" class="xref page">Descriptor heaps</a> can similarly be used instead of
+<a href="extensions.html#VK_EXT_descriptor_buffer" class="xref page">VK_EXT_descriptor_buffer</a>.</p>
+</div>
+<div class="paragraph">
+<p>While it is possible to use a mix of these in the same application, they
+cannot be used at the same time, and there are potential performance
+penalties for switching on some implementations.</p>
+</div>
+</div>
 </div>
 </div>
 </article>

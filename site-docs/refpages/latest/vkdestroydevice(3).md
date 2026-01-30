@@ -85,10 +85,7 @@ Host Synchronization
 Host access to `device` **must** be externally synchronized
 
 * 
-Host access to all `VkQueue` objects created from `device`
-that are not created with
-[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](VkDeviceQueueCreateFlagBits.html)
-             **must** be externally synchronized
+Host access to all `VkQueue` objects created from `device` **must** be externally synchronized
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html)
 

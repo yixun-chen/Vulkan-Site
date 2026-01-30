@@ -4837,7 +4837,7 @@ accessible by remote devices, as returned in
 typedef void* VkRemoteAddressNV;
 
 On Fuchsia, when allocating memory that **may** be imported from another
-device, process or Vulkan instance, add a
+device, process, or Vulkan instance, add a
 [VkImportMemoryZirconHandleInfoFUCHSIA](#VkImportMemoryZirconHandleInfoFUCHSIA) structure to the `pNext`
 chain of the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure.
 

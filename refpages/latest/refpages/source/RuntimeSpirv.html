@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13395,6 +13401,28 @@ used.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-NSize-12352" href="#VUID-RuntimeSpirv-NSize-12352"></a> <span class="vuid">VUID-RuntimeSpirv-NSize-12352</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the length of the <code>Source</code> <code>Array</code>
+operand <strong>must</strong> match the
+<a href="VkCooperativeMatrixPropertiesKHR.html" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>NSize</code> of one of the
+matrices in any of the supported <a href="VkCooperativeMatrixPropertiesKHR.html" class="xref page">VkCooperativeMatrixPropertiesKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-KSize-12353" href="#VUID-RuntimeSpirv-KSize-12353"></a> <span class="vuid">VUID-RuntimeSpirv-KSize-12353</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the length of the <code>Result</code> <code>Type</code>
+operand <strong>must</strong> match the
+<a href="VkCooperativeMatrixPropertiesKHR.html" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>KSize</code> of one of the
+matrices in any of the supported <a href="VkCooperativeMatrixPropertiesKHR.html" class="xref page">VkCooperativeMatrixPropertiesKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354" href="#VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354"></a> <span class="vuid">VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the <code>Start</code> <code>Index</code> operand <strong>must</strong>
+be a multiple of the length of the <code>Result</code> <code>Type</code> operand</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164" href="#VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164"></a> <span class="vuid">VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164</span><br>

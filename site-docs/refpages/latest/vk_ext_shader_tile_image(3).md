@@ -113,7 +113,7 @@ Jeff Bolz, NVIDIA
 * 
 Shahbaz Youssefi, Google
 
-This extension allows fragment shader invocations to read color, depth and
+This extension allows fragment shader invocations to read color, depth, and
 stencil values at their pixel location in rasterization order.
 The functionality is only available when using dynamic render passes
 introduced by VK_KHR_dynamic_rendering.

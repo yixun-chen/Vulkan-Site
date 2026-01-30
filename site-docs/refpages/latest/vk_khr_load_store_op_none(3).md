@@ -101,7 +101,7 @@ Extending [VkAttachmentStoreOp](VkAttachmentStoreOp.html):
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.
-The original type, enum and command names are still available as aliases of
+The original type, enum, and command names are still available as aliases of
 the core functionality.
 
 |  | While [VK_ATTACHMENT_STORE_OP_NONE](VkAttachmentStoreOp.html) is part of Vulkan 1.3, this

@@ -442,9 +442,9 @@ the host environment with respect to Vulkan implementations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The host <strong>must</strong> have runtime support for 8, 16, 32 and 64-bit signed and
-unsigned twos-complement integers, all addressable at the granularity of
-their size in bytes.</p>
+<p>The host <strong>must</strong> have runtime support for 8-, 16-, 32-, and 64-bit signed
+and unsigned twos-complement integers, all addressable at the
+granularity of their size in bytes.</p>
 </li>
 <li>
 <p>The host <strong>must</strong> have runtime support for 32- and 64-bit floating-point
@@ -693,7 +693,7 @@ occurs in the command buffer, regardless of when it is executed.</p>
 <p>The devices, queues, and other entities in Vulkan are represented by Vulkan
 objects.
 At the API level, all objects are referred to by handles.
-There are two classes of handles, dispatchable and non-dispatchable.
+There are two classes of handles: dispatchable and non-dispatchable.
 <em>Dispatchable</em> handle types are a pointer to an opaque type.
 This pointer <strong>may</strong> be used by layers as part of intercepting API commands,
 and thus each API command takes a dispatchable type as its first parameter.
@@ -2661,10 +2661,7 @@ The implicit parameters and their associated object are listed below.</p>
 <p>All <code>VkPhysicalDevice</code> objects enumerated from <code>instance</code> in <a href="initialization.html#vkDestroyInstance" class="xref page">vkDestroyInstance</a></p>
 </li>
 <li>
-<p>All <code>VkQueue</code> objects created from <code>device</code>
-that are not created with
-<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a>
-             in <a href="devsandqueues.html#vkDestroyDevice" class="xref page">vkDestroyDevice</a></p>
+<p>All <code>VkQueue</code> objects created from <code>device</code> in <a href="devsandqueues.html#vkDestroyDevice" class="xref page">vkDestroyDevice</a></p>
 </li>
 <li>
 <p>All <code>VkQueue</code> objects created from <code>device</code>
@@ -4678,7 +4675,7 @@ Computation&#8221; below.</p>
 <p>These requirements only apply to computations performed in Vulkan operations
 outside of shader execution, such as texture image specification and
 sampling, and per-fragment operations.
-Range and precision requirements during shader execution differ and are
+Range and precision requirements during shader execution differ, and are
 specified by the <a href="../appendices/spirvenv.html#spirvenv-precision-operation" class="xref page">Precision and Operation of SPIR-V Instructions</a> section.</p>
 </div>
 <div class="paragraph">
@@ -6415,6 +6412,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT = 1000170000,
   // Provided by VK_EXT_filter_cubic
     VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT = 1000170001,
+  // Provided by VK_QCOM_cooperative_matrix_conversion
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM = 1000172000,
   // Provided by VK_EXT_external_memory_host
     VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT = 1000178000,
   // Provided by VK_EXT_external_memory_host

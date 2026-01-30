@@ -43,8 +43,8 @@
 - [5.2._Why_are_some_of_the_functions_of_multiple_subpasses_not_exposed?](#_why_are_some_of_the_functions_of_multiple_subpasses_not_exposed)
 - [5.3. Should input attachment descriptors be required?](#_should_input_attachment_descriptors_be_required)
 - [5.3._Should_input_attachment_descriptors_be_required?](#_should_input_attachment_descriptors_be_required)
-- [5.4. PROPOSED: Should this extension include the ability for fragment shaders to reinterpret the format of a color/input attachment during rendering?](#_proposed_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
-- [5.4._PROPOSED:_Should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_color/input_attachment_during_rendering?](#_proposed_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
+- [5.4. Should this extension include the ability for fragment shaders to reinterpret the format of a color/input attachment during rendering?](#_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
+- [5.4._Should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_color/input_attachment_during_rendering?](#_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
 - [5.5. Should this extension advertise local reads between fragments in the same draw call?](#_should_this_extension_advertise_local_reads_between_fragments_in_the_same_draw_call)
 - [5.5._Should_this_extension_advertise_local_reads_between_fragments_in_the_same_draw_call?](#_should_this_extension_advertise_local_reads_between_fragments_in_the_same_draw_call)
 - [5.6. Should this extension allow applications to access local data from resources other than attachments?](#_should_this_extension_allow_applications_to_access_local_data_from_resources_other_than_attachments)
@@ -82,7 +82,7 @@ Table of Contents
 [5.1. Why is color attachment location reordering included?](#_why_is_color_attachment_location_reordering_included)
 [5.2. Why are some of the functions of multiple subpasses not exposed?](#_why_are_some_of_the_functions_of_multiple_subpasses_not_exposed)
 [5.3. Should input attachment descriptors be required?](#_should_input_attachment_descriptors_be_required)
-[5.4. PROPOSED: Should this extension include the ability for fragment shaders to reinterpret the format of a color/input attachment during rendering?](#_proposed_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
+[5.4. Should this extension include the ability for fragment shaders to reinterpret the format of a color/input attachment during rendering?](#_should_this_extension_include_the_ability_for_fragment_shaders_to_reinterpret_the_format_of_a_colorinput_attachment_during_rendering)
 [5.5. Should this extension advertise local reads between fragments in the same draw call?](#_should_this_extension_advertise_local_reads_between_fragments_in_the_same_draw_call)
 [5.6. Should this extension allow applications to access local data from resources other than attachments?](#_should_this_extension_allow_applications_to_access_local_data_from_resources_other_than_attachments)
 [5.7. Should read-only input attachments be specified in `vkCmdBeginRendering` to enable pre-fetch in tilers?](#_should_read_only_input_attachments_be_specified_in_vkcmdbeginrendering_to_enable_pre_fetch_in_tilers)
@@ -278,10 +278,9 @@ Several vendors (including those considered tilers) need a separate descriptor t
 
 Note: `TRANSIENT` attachments still work with this extension, allowing a path to avoid the memory allocation, just as with render pass objects.
 
-Separate extension.
+That should be a separate extension if needed.
 
-To make this work, something as simple as a decoration on a color output or input attachment stating that the format is ignored and raw bits are written would suffice, but that might be beyond the scope of this extension, and may not be supportable by all implementers.
-This would allow applications to port code using the OpenGL ES pixel local storage extensions to Vulkan, and would also allow more code using more attachments than are available to work by aliasing discarded attachments (though this might also necessitate explicit load/store commands).
+To make this work, something as simple as a decoration on a color output or input attachment stating that the format is ignored and raw bits are written would suffice, but that is beyond the scope of this extension, and may not be supportable by all implementers.
 
 This is not efficient or easily implementable in all cases for many vendors.
 For implementations that do support it, that feature is provided as an interaction with [VK_EXT_rasterization_order_attachment_access](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_rasterization_order_attachment_access.adoc).

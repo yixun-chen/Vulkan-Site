@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13275,9 +13281,19 @@ For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 For each element of <code>pInfos</code>[i].<code>pGeometries</code> or
 <code>pInfos</code>[i].<code>ppGeometries</code> with a <code>geometryType</code> of
 <a href="VkGeometryTypeKHR.html" class="xref page">VK_GEOMETRY_TYPE_TRIANGLES_KHR</a>,
-<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to
-the size in bytes of the smallest component of the format in
-<code>vertexFormat</code></p>
+<code>geometry.triangles.vertexData.deviceAddress</code> <strong>must</strong> be aligned to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="../../../../spec/latest/chapters/formats.html#formats" class="xref page">size of the format</a> specified in <code>vertexFormat</code>, in
+bytes, if that format is a <a href="../../../../spec/latest/chapters/formats.html#formats-packed" class="xref page">packed format</a></p>
+</li>
+<li>
+<p>the <a href="../../../../spec/latest/chapters/formats.html#formats" class="xref page">component size</a> of the format specified in
+<code>vertexFormat</code>, in bytes, if that format is not a <a href="../../../../spec/latest/chapters/formats.html#formats-packed" class="xref page">     packed format</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03806</span><br>

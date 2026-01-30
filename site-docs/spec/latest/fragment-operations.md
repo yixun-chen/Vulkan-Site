@@ -1427,7 +1427,7 @@ attachment is present.
 `OpStencilAttachmentReadEXT` returns an **undefined** value if no stencil
 attachment is present.
 
-Tile image reads from color, depth and stencil attachments are said to be
+Tile image reads from color, depth, and stencil attachments are said to be
 coherent when the accesses happen in raster order and without
 [data race](../appendices/memorymodel.html#memory-model-access-data-race) with respect to accesses to the
 attachments from framebuffer-space pipeline stages.

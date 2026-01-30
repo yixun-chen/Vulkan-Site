@@ -556,7 +556,7 @@ added `libraries`, `pLibraryInterface`, and
 [vkCreateRayTracingPipelinesKHR](vkCreateRayTracingPipelinesKHR.html) (different struct, changed
 functionality)
 
-Added enums, structures and commands:
+Added enums, structures, and commands:
 
 * 
 [VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html)

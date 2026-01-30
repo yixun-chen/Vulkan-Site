@@ -9261,7 +9261,7 @@ chain **must** be equal to either zero or `attachmentCount`
 If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
-`pNext` chain that is used as an input, color, resolve or
+`pNext` chain that is used as an input, color, resolve, or
 depth/stencil attachment in `renderPass` **must** be greater than or
 equal to `width`
 
@@ -9271,7 +9271,7 @@ equal to `width`
 If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
-`pNext` chain that is used as an input, color, resolve or
+`pNext` chain that is used as an input, color, resolve, or
 depth/stencil attachment in `renderPass` **must** be greater than or
 equal to `height`
 
@@ -9468,7 +9468,7 @@ shading rate attachment by `renderPass` **must** include
 
 If
 [multisampled-render-to-single-sampled](#subpass-multisampledrendertosinglesampled)
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
@@ -9481,7 +9481,7 @@ their [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 If
 [multisampled-render-to-single-sampled](#subpass-multisampledrendertosinglesampled)
-is enabled for any subpass, all color, depth/stencil and input
+is enabled for any subpass, all color, depth/stencil, and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
@@ -10829,9 +10829,9 @@ Other elements of `pClearValues` are ignored.
 
 `renderArea` is the render area that is affected by the render pass
 instance.
-The effects of attachment load, store and multisample resolve operations are
-restricted to the pixels whose x and y coordinates fall within the render
-area on all attachments.
+The effects of attachment load, store, and multisample resolve operations
+are restricted to the pixels whose x and y coordinates fall within the
+render area on all attachments.
 The render area extends to all layers of `framebuffer`.
 The application **must** ensure (using scissor if necessary) that all rendering
 is contained within the render area.
@@ -13221,8 +13221,8 @@ variables at a location that is outside the current tile.
 The `width` and `height` value of `tileApronSize` specifies the
 number of pixels in the horizontal and vertical directions that are included
 in the apron region.
-For example, (1,1) means that the apron region extends the top, bottom, left
-and right margins of the tile by 1 pixel.
+For example, (1,1) means that the apron region extends the top, bottom,
+left, and right margins of the tile by 1 pixel.
 The `tileApronSize` **must** not exceed
 [VkPhysicalDeviceTileShadingPropertiesQCOM](limits.html#VkPhysicalDeviceTileShadingPropertiesQCOM)::maxApronSize.
 

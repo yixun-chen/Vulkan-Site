@@ -579,7 +579,7 @@ motion blurs.
 [VkFormat](VkFormat.html) when creating a swapchain?
 
 **RESOLVED**: While Vulkan itself is color space agnostic (e.g. even the
-meaning of R, G, B and A can be freely defined by the rendering
+meaning of R, G, B, and A can be freely defined by the rendering
 application), the swapchain eventually will have to present the images on a
 display device with specific color reproduction characteristics.
 If any color space transformations are necessary before an image can be

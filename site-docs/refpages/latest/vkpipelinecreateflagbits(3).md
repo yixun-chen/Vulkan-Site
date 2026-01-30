@@ -328,10 +328,8 @@ pipeline hierarchy.
 See [Pipeline Derivatives](../../../../spec/latest/chapters/pipelines.html#pipelines-pipeline-derivatives) for more
 information.
 
-When an implementation is looking up a pipeline in a
-[pipeline cache](../../../../spec/latest/chapters/pipelines.html#pipelines-cache), if that pipeline is being created using
-linked libraries, implementations **should** always return an equivalent
-pipeline created with
+When an implementation is looking up a pipeline in a [pipeline cache](../../../../spec/latest/chapters/pipelines.html#pipelines-cache), if that pipeline is being created using linked libraries,
+implementations **should** always return an equivalent pipeline created with
 [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#) if available,
 whether or not that bit was specified.
 

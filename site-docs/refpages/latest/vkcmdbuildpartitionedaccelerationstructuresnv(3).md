@@ -166,7 +166,8 @@ scratch memory region at address `pBuildInfo->scratchData`
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10549
 
-The memory regions containing the acceleration structures at addresses
+If the source and destination acceleration structures are not the same,
+the memory regions containing the acceleration structures at addresses
 `pBuildInfo->srcAccelerationStructureData` and
 `pBuildInfo->dstAccelerationStructureData` **must** not overlap with
 each other

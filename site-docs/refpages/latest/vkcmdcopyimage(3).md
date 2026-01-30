@@ -63,7 +63,7 @@ any of the specified regions in `dstImage`, values read from those
 overlapping regions are **undefined**.
 If any region accesses a depth aspect in `dstImage`
 and the `[VK_EXT_depth_range_unrestricted](VK_EXT_depth_range_unrestricted.html)` extension is not enabled,
-values copied from `srcBuffer` outside of the range [0,1] will be
+values copied from `srcImage` outside of the range [0,1] will be
 written as **undefined** values to the destination image.
 
 [Multi-planar images](../../../../spec/latest/chapters/formats.html#formats-multiplanar) **can** only be copied on a

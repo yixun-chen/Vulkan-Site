@@ -175,7 +175,7 @@ Extending [VkStructureType](VkStructureType.html):
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.
-The original type, enum and command names are still available as aliases of
+The original type, enum, and command names are still available as aliases of
 the core functionality.
 
 1) Can we additionally query whether a caller is permitted to acquire a

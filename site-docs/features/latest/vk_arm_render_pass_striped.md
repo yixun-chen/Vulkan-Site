@@ -18,14 +18,14 @@
 - [3.3. Specifying stripes](#_specifying_stripes)
 - [3.3._Specifying_stripes](#_specifying_stripes)
 - [4. Issues](#_issues)
-- [4.1. PROPOSED: Naming. Do we use "stripe" or "slice"?](#_proposed_naming_do_we_use_stripe_or_slice)
-- [4.1._PROPOSED:_Naming._Do_we_use_"stripe"_or_"slice"?](#_proposed_naming_do_we_use_stripe_or_slice)
-- [4.2. PROPOSED: Could we use timeline semaphores for this?](#_proposed_could_we_use_timeline_semaphores_for_this)
-- [4.2._PROPOSED:_Could_we_use_timeline_semaphores_for_this?](#_proposed_could_we_use_timeline_semaphores_for_this)
-- [4.3. PROPOSED: How do stripes interact with multiview or layered rendering?](#_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering)
-- [4.3._PROPOSED:_How_do_stripes_interact_with_multiview_or_layered_rendering?](#_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering)
-- [4.4. PROPOSED: Is striped rendering supported for all renderable formats?](#_proposed_is_striped_rendering_supported_for_all_renderable_formats)
-- [4.4._PROPOSED:_Is_striped_rendering_supported_for_all_renderable_formats?](#_proposed_is_striped_rendering_supported_for_all_renderable_formats)
+- [4.1. Naming. Do we use "stripe" or "slice"?](#_naming_do_we_use_stripe_or_slice)
+- [4.1._Naming._Do_we_use_"stripe"_or_"slice"?](#_naming_do_we_use_stripe_or_slice)
+- [4.2. Could we use timeline semaphores for this?](#_could_we_use_timeline_semaphores_for_this)
+- [4.2._Could_we_use_timeline_semaphores_for_this?](#_could_we_use_timeline_semaphores_for_this)
+- [4.3. How do stripes interact with multiview or layered rendering?](#_how_do_stripes_interact_with_multiview_or_layered_rendering)
+- [4.3._How_do_stripes_interact_with_multiview_or_layered_rendering?](#_how_do_stripes_interact_with_multiview_or_layered_rendering)
+- [4.4. Is striped rendering supported for all renderable formats?](#_is_striped_rendering_supported_for_all_renderable_formats)
+- [4.4._Is_striped_rendering_supported_for_all_renderable_formats?](#_is_striped_rendering_supported_for_all_renderable_formats)
 
 ## Content
 
@@ -41,10 +41,10 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. PROPOSED: Naming. Do we use "stripe" or "slice"?](#_proposed_naming_do_we_use_stripe_or_slice)
-[4.2. PROPOSED: Could we use timeline semaphores for this?](#_proposed_could_we_use_timeline_semaphores_for_this)
-[4.3. PROPOSED: How do stripes interact with multiview or layered rendering?](#_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering)
-[4.4. PROPOSED: Is striped rendering supported for all renderable formats?](#_proposed_is_striped_rendering_supported_for_all_renderable_formats)
+[4.1. Naming. Do we use "stripe" or "slice"?](#_naming_do_we_use_stripe_or_slice)
+[4.2. Could we use timeline semaphores for this?](#_could_we_use_timeline_semaphores_for_this)
+[4.3. How do stripes interact with multiview or layered rendering?](#_how_do_stripes_interact_with_multiview_or_layered_rendering)
+[4.4. Is striped rendering supported for all renderable formats?](#_is_striped_rendering_supported_for_all_renderable_formats)
 
 This document describes a proposal for a new extension that allows the
 processing of a render pass instance to be split into stripes.
@@ -206,7 +206,7 @@ something very similar to what this proposal is aiming to achieve.
 We use "stripe" to disambiguate from the way slice is used to describe
 partitions in 3D.
 
-Probably. But timeline semaphores are not yet available on all platforms.
+Probably, but timeline semaphores are not yet available on all platforms.
 
 Regular timeline semaphores are not shareable to foreign queues so are
 not a good fit for the target use cases.

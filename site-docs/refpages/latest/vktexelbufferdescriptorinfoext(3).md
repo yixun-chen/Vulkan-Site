@@ -43,17 +43,6 @@ structure.
 `addressRange` is a [VkDeviceAddressRangeEXT](VkDeviceAddressRangeEXT.html) defining the range
 of data backing the descriptor.
 
-Valid Usage
-
-* 
-[](#VUID-VkTexelBufferDescriptorInfoEXT-None-11218) VUID-VkTexelBufferDescriptorInfoEXT-None-11218
-
-If [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment) is not
-enabled,
-`addressRange.address` and `addressRange.size` **must** be aligned
-to
-[`minTexelBufferOffsetAlignment`](../../../../spec/latest/chapters/limits.html#limits-minTexelBufferOffsetAlignment)
-
 Valid Usage (Implicit)
 
 * 

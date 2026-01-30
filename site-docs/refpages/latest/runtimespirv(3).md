@@ -768,6 +768,25 @@ If and only if
 The scope of all cooperative matrix operands **must** match
 [VkCooperativeMatrixPropertiesKHR](VkCooperativeMatrixPropertiesKHR.html)::`scope`.
 
+[](#VUID-RuntimeSpirv-NSize-12352) VUID-RuntimeSpirv-NSize-12352
+
+For `OpExtractSubArrayQCOM`, the length of the `Source` `Array`
+operand **must** match the
+[VkCooperativeMatrixPropertiesKHR](VkCooperativeMatrixPropertiesKHR.html)::`NSize` of one of the
+matrices in any of the supported [VkCooperativeMatrixPropertiesKHR](VkCooperativeMatrixPropertiesKHR.html)
+
+[](#VUID-RuntimeSpirv-KSize-12353) VUID-RuntimeSpirv-KSize-12353
+
+For `OpExtractSubArrayQCOM`, the length of the `Result` `Type`
+operand **must** match the
+[VkCooperativeMatrixPropertiesKHR](VkCooperativeMatrixPropertiesKHR.html)::`KSize` of one of the
+matrices in any of the supported [VkCooperativeMatrixPropertiesKHR](VkCooperativeMatrixPropertiesKHR.html)
+
+[](#VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354) VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354
+
+For `OpExtractSubArrayQCOM`, the `Start` `Index` operand **must**
+be a multiple of the length of the `Result` `Type` operand
+
 [](#VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164) VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164
 
 If the [    `cooperativeMatrixWorkgroupScope`](../../../../spec/latest/chapters/features.html#features-cooperativeMatrixWorkgroupScope) feature is not enabled, the

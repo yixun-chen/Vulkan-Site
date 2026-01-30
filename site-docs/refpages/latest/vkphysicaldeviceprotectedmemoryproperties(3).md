@@ -42,7 +42,7 @@ write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
 If this limit is [VK_TRUE](VK_TRUE.html), such writes will be discarded or have
-**undefined** values written, reads and queries will return **undefined**
+**undefined** values written; reads and queries will return **undefined**
 values.
 If this limit is [VK_FALSE](VK_FALSE.html), applications **must** not perform these
 operations.

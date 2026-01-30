@@ -1069,62 +1069,28 @@ enabled, and
 <code>data-&gt;pTensorARM</code> <strong>must</strong> not be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11214" href="#VUID-VkResourceDescriptorInfoEXT-type-11214"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11214</span><br>
+<p><a id="VUID-VkResourceDescriptorInfoEXT-type-12349" href="#VUID-VkResourceDescriptorInfoEXT-type-12349"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-12349</span><br>
 
-If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a>, the
-<a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a> feature is
-enabled, and <a href="devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>uniformTexelBufferOffsetSingleTexelAlignment</code></a> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
-<code>data-&gt;pTexelBuffer&#8594;addressRange.address</code> and
-<code>data-&gt;pTexelBuffer&#8594;addressRange.size</code> <strong>must</strong> be multiples of
-<a href="devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a></p>
+If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a> or
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>,
+<code>data-&gt;pTexelBuffer&#8594;addressRange.address</code> <strong>must</strong> be a multiple of
+the effective alignment requirement of <code>data-&gt;pTexelBuffer&#8594;format</code>
+as determined by
+<a href="limits.html#limits-minTexelBufferOffsetAlignment" class="xref page"><code>minTexelBufferOffsetAlignment</code></a></p>
 </li>
 <li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11215" href="#VUID-VkResourceDescriptorInfoEXT-type-11215"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11215</span><br>
-
-If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>, the
-<a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a> feature is
-enabled, and <a href="devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>storageTexelBufferOffsetSingleTexelAlignment</code></a> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
-<code>data-&gt;pTexelBuffer&#8594;addressRange.address</code> and
-<code>data-&gt;pTexelBuffer&#8594;addressRange.size</code> <strong>must</strong> be multiples of
-<a href="devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a></p>
-</li>
-<li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11216" href="#VUID-VkResourceDescriptorInfoEXT-type-11216"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11216</span><br>
-
-If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a>, the
-<a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a> feature is
-enabled, and <a href="devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>uniformTexelBufferOffsetSingleTexelAlignment</code></a> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
-<code>data-&gt;pTexelBuffer&#8594;addressRange.address</code> and
-<code>data-&gt;pTexelBuffer&#8594;addressRange.size</code> <strong>must</strong> be multiples of either
-<a href="devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a> or the highest integer
-power-of-two factor of the size of <code>data-&gt;pTexelBuffer&#8594;format</code> in
-bytes; whichever is lower</p>
-</li>
-<li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11217" href="#VUID-VkResourceDescriptorInfoEXT-type-11217"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11217</span><br>
-
-If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>, the
-<a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a> feature is
-enabled, and <a href="devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>storageTexelBufferOffsetSingleTexelAlignment</code></a> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
-<code>data-&gt;pTexelBuffer&#8594;addressRange.address</code> and
-<code>data-&gt;pTexelBuffer&#8594;addressRange.size</code> <strong>must</strong> be multiples of either
-<a href="devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a> or the highest integer
-power-of-two factor of the size of <code>data-&gt;pTexelBuffer&#8594;format</code> in
-bytes; whichever is lower</p>
-</li>
-<li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11452" href="#VUID-VkResourceDescriptorInfoEXT-type-11452"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11452</span><br>
+<p><a id="VUID-VkResourceDescriptorInfoEXT-type-12350" href="#VUID-VkResourceDescriptorInfoEXT-type-12350"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-12350</span><br>
 
 If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a>,
-<code>data-&gt;pAddressRange&#8594;address</code> and <code>data-&gt;pAddressRange&#8594;size</code>
-<strong>must</strong> be multiples of <a href="limits.html#limits-minUniformBufferOffsetAlignment" class="xref page">    <code>minUniformBufferOffsetAlignment</code></a></p>
+<code>data-&gt;pAddressRange&#8594;address</code> <strong>must</strong> be a multiple of
+<a href="limits.html#limits-minUniformBufferOffsetAlignment" class="xref page">    <code>minUniformBufferOffsetAlignment</code></a></p>
 </li>
 <li>
-<p><a id="VUID-VkResourceDescriptorInfoEXT-type-11453" href="#VUID-VkResourceDescriptorInfoEXT-type-11453"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11453</span><br>
+<p><a id="VUID-VkResourceDescriptorInfoEXT-type-12351" href="#VUID-VkResourceDescriptorInfoEXT-type-12351"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-12351</span><br>
 
 If <code>type</code> is <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a>,
-<code>data-&gt;pAddressRange&#8594;address</code> and <code>data-&gt;pAddressRange&#8594;size</code>
-<strong>must</strong> be multiples of <a href="limits.html#limits-minStorageBufferOffsetAlignment" class="xref page">    <code>minStorageBufferOffsetAlignment</code></a></p>
+<code>data-&gt;pAddressRange&#8594;address</code> <strong>must</strong> be a multiple of
+<a href="limits.html#limits-minStorageBufferOffsetAlignment" class="xref page">    <code>minStorageBufferOffsetAlignment</code></a></p>
 </li>
 <li>
 <p><a id="VUID-VkResourceDescriptorInfoEXT-type-11454" href="#VUID-VkResourceDescriptorInfoEXT-type-11454"></a> <span class="vuid">VUID-VkResourceDescriptorInfoEXT-type-11454</span><br>
@@ -1141,8 +1107,7 @@ If <code>type</code> is one of</p>
 <li>
 <p><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV</a></p>
 <div class="paragraph">
-<p><code>data-&gt;pAddressRange&#8594;address</code> and <code>data-&gt;pAddressRange&#8594;size</code> <strong>must</strong>
-be multiples of 256</p>
+<p><code>data-&gt;pAddressRange&#8594;address</code> <strong>must</strong> be a multiple of 256</p>
 </div>
 </li>
 </ul>
@@ -1405,25 +1370,6 @@ structure.</p>
 of data backing the descriptor.</p>
 </li>
 </ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Valid Usage</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a id="VUID-VkTexelBufferDescriptorInfoEXT-None-11218" href="#VUID-VkTexelBufferDescriptorInfoEXT-None-11218"></a> <span class="vuid">VUID-VkTexelBufferDescriptorInfoEXT-None-11218</span><br>
-
-
-If <a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a> is not
-enabled,
-<code>addressRange.address</code> and <code>addressRange.size</code> <strong>must</strong> be aligned
-to
-<a href="limits.html#limits-minTexelBufferOffsetAlignment" class="xref page"><code>minTexelBufferOffsetAlignment</code></a></p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sidebarblock">
 <div class="content">

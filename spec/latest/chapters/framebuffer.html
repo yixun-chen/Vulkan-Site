@@ -2165,16 +2165,18 @@ If the format is not sRGB, no linearization is performed.</p>
 </div>
 <div class="paragraph">
 <p>If the <a href="formats.html#formats-numericformat" class="xref page">numeric format</a> of a framebuffer attachment
-uses sRGB encoding, then the final R, G and B values are converted into the
+uses sRGB encoding, then the final R, G, and B values are converted into the
 nonlinear sRGB representation before being written to the framebuffer
 attachment as described in the &#8220;sRGB EOTF<sup>&#160;-1</sup>&#8221; section of the
 Khronos Data Format Specification.</p>
 </div>
 <div class="paragraph">
 <p>If the <a href="formats.html#formats-numericformat" class="xref page">numeric format</a> of a framebuffer color
-attachment is not sRGB encoded then the resulting <span class="eq">c<sub>s</sub></span> values for R, G
-and B are unmodified.
-The value of A is never sRGB encoded.
+attachment is not sRGB encoded, then the resulting <span class="eq">c<sub>s</sub></span> values for R,
+G, and B are unmodified.</p>
+</div>
+<div class="paragraph">
+<p>The value of A is never sRGB encoded.
 That is, the alpha component is always stored in memory as linear.</p>
 </div>
 <div class="paragraph">

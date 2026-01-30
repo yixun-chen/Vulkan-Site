@@ -411,6 +411,12 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="graph_constants/README.html">Graph constants</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="compute_shaders_with_tensors/README.html">Compute shaders with tensors</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -663,6 +669,12 @@
 <li>
 <p><a href="simple_tensor_and_data_graph/README.html" class="xref page">Simple tensor and data graph</a></p>
 </li>
+<li>
+<p><a href="graph_constants/README.html" class="xref page">Graph constants</a></p>
+</li>
+<li>
+<p><a href="compute_shaders_with_tensors/README.html" class="xref page">Compute shaders with tensors</a></p>
+</li>
 </ul>
 </div>
 </div>
@@ -697,14 +709,16 @@ The samples and their dependencies can be built and run on Windows and Linux, ot
 <p>Note: The ML Emulation Layer for Vulkan is only required on devices where the <strong>VK_ARM_tensors</strong> and <strong>VK_ARM_data_graph</strong> extensions are not available.</p>
 </div>
 <div class="paragraph">
-<p>Install and enable <a href="https://github.com/arm/ai-ml-emulation-layer-for-vulkan">ML Emulation Layer for Vulkan</a> from GitHub. Please follow the steps in that repository to build and enable the emulation layers.</p>
+<p>Install and enable <a href="https://github.com/arm/ai-ml-emulation-layer-for-vulkan">ML Emulation Layer for Vulkan</a> from GitHub.
+Please follow the usage steps located in the README.md for your platform to enable the emulation layers.
+Pre-builts are available for both Windows and Linux in the Releases section, but it can also be built from source using the build guide.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, on Windows, the Vulkan Configurator tool — which is part of the Vulkan SDK — can also be used, as described below. If it is not already installed, it can be obtained from the <a href="https://vulkan.lunarg.com/">Vulkan SDK</a> website.</p>
+<p>Alternatively, the Vulkan Configurator tool — which is part of the Vulkan SDK — can also be used, as described below. If it is not already installed, it can be obtained from the <a href="https://vulkan.lunarg.com/">Vulkan SDK</a> website.</p>
 </div>
 <div class="paragraph">
 <p>Once installed, open Vulkan Configurator and navigate to the Vulkan Layers Location tab. Click the plus (+) symbol to append a user-defined layers path,
-and navigate to the folder containing the built layers (DLLs and json files). Please note that there are two separate layers that need to be enabled, so if these are in separate folders then you will need to add both.</p>
+and navigate to the folder containing the built layers. Please note that there are two separate layers that need to be enabled, so if these are in separate folders then you will need to add both.</p>
 </div>
 <div class="paragraph">
 <p>Note: It is recommended to disable the validation layer when running these samples as the new extensions are not supported yet.</p>

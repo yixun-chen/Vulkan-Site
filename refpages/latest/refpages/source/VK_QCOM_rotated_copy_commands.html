@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12720,9 +12726,9 @@ This extension may be used in combination with VK_QCOM_render_pass_transform
 which adds rotated render passes.</p>
 </div>
 <div class="paragraph">
-<p>This extension adds an extension structure to the following commands:
-vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR and
-vkCmdCopyBufferToImage2KHR</p>
+<p>This extension adds an extension structure to the commands
+<a href="vkCmdBlitImage2.html" class="xref page">vkCmdBlitImage2KHR</a>, <a href="vkCmdCopyImageToBuffer2.html" class="xref page">vkCmdCopyImageToBuffer2KHR</a>, and
+<a href="vkCmdCopyBufferToImage2.html" class="xref page">vkCmdCopyBufferToImage2KHR</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -12732,7 +12738,7 @@ vkCmdCopyBufferToImage2KHR</p>
 guide says &#8220;Structures which extend other structures through the
 <code>pNext</code> chain should reflect the name of the base structure they
 extend.&#8221;, but in this case a single extension structure is used to extend
-three base structures (vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR and
+three base structures (vkCmdBlitImage2KHR, vkCmdCopyImageToBuffer2KHR, and
 vkCmdCopyBufferToImage2KHR).
 Creating three identical structures with unique names seemed undesirable.</p>
 </div>

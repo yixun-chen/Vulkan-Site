@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12659,7 +12665,7 @@ structure.</p>
 <p><code>maxWorkGroupCount</code>[3] is the maximum number of local workgroups
 that can be launched by a single command.
 These three value represent the maximum local workgroup count in the X,
-Y and Z dimensions, respectively.
+Y, and Z dimensions, respectively.
 In the current implementation, the values of Y and Z are both implicitly
 set as one.
 groupCountX of DrawCluster command <strong>must</strong> be less than or equal to
@@ -12667,9 +12673,9 @@ maxWorkGroupCount[0].</p>
 </li>
 <li>
 <p><code>maxWorkGroupSize</code>[3] is the maximum size of a local workgroup.
-    These three value represent the maximum local workgroup size in the X, Y
-    and Z dimensions, respectively.
-    The x, y and z sizes, as specified by the <code>LocalSize</code>
+    These three value represent the maximum local workgroup size in the X,
+    Y, and Z dimensions, respectively.
+    The x, y, and z sizes, as specified by the <code>LocalSize</code>
 or <code>LocalSizeId</code>
     execution mode or by the object decorated by the WorkgroupSize
     decoration in shader modules, <strong>must</strong> be less than or equal to the

@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13437,16 +13443,23 @@ The value <strong>must</strong> be a power of two.</p>
 in bytes, for the <code>offset</code> member of the
 <a href="VkBufferViewCreateInfo.html" class="xref page">VkBufferViewCreateInfo</a> structure for texel buffers.
 The value <strong>must</strong> be a power of two.
-If the <a href="../../../../spec/latest/chapters/features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a>
-feature is enabled, this limit is equivalent to the maximum of the
+This limit is equivalent to the maximum of the
 <a href="../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a> and
 <a href="../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a> members of
 <a href="VkPhysicalDeviceTexelBufferAlignmentProperties.html" class="xref page">VkPhysicalDeviceTexelBufferAlignmentProperties</a>, but smaller
 alignment is <strong>optionally</strong> allowed by
 <a href="../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>storageTexelBufferOffsetSingleTexelAlignment</code></a> and
 <a href="../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>uniformTexelBufferOffsetSingleTexelAlignment</code></a>.
+For single texel alignment, a format has an alignment requirement which
+is the size of a single component if the size of the format is a
+multiple of three bytes, otherwise, it is the size of the format itself.
+The effective alignment requirement is the minimum of the per-format
+alignment and <a href="../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a> or
+<a href="../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a> depending on the
+descriptor type.
 If the <a href="../../../../spec/latest/chapters/features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a>
-feature is not enabled,
+feature is not enabled, the effective alignment requirement for any
+format is <code>minTexelBufferOffsetAlignment</code>.
 <a href="VkBufferViewCreateInfo.html" class="xref page">VkBufferViewCreateInfo</a>::<code>offset</code> <strong>must</strong> be a multiple of this
 value.</p>
 </li>

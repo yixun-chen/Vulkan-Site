@@ -28,6 +28,12 @@ The samples in this folder are:
 * 
 [Simple tensor and data graph](simple_tensor_and_data_graph/README.html)
 
+* 
+[Graph constants](graph_constants/README.html)
+
+* 
+[Compute shaders with tensors](compute_shaders_with_tensors/README.html)
+
 Some setup steps are needed before you can build and run these samples.
 
 |  | The samples and their dependencies can be built and run on Windows and Linux, other operating systems are not currently supported. |
@@ -37,12 +43,14 @@ In order to compile the shader code used in these samples, a recent version of t
 
 Note: The ML Emulation Layer for Vulkan is only required on devices where the **VK_ARM_tensors** and **VK_ARM_data_graph** extensions are not available.
 
-Install and enable [ML Emulation Layer for Vulkan](https://github.com/arm/ai-ml-emulation-layer-for-vulkan) from GitHub. Please follow the steps in that repository to build and enable the emulation layers.
+Install and enable [ML Emulation Layer for Vulkan](https://github.com/arm/ai-ml-emulation-layer-for-vulkan) from GitHub.
+Please follow the usage steps located in the README.md for your platform to enable the emulation layers.
+Pre-builts are available for both Windows and Linux in the Releases section, but it can also be built from source using the build guide.
 
-Alternatively, on Windows, the Vulkan Configurator tool — which is part of the Vulkan SDK — can also be used, as described below. If it is not already installed, it can be obtained from the [Vulkan SDK](https://vulkan.lunarg.com/) website.
+Alternatively, the Vulkan Configurator tool — which is part of the Vulkan SDK — can also be used, as described below. If it is not already installed, it can be obtained from the [Vulkan SDK](https://vulkan.lunarg.com/) website.
 
 Once installed, open Vulkan Configurator and navigate to the Vulkan Layers Location tab. Click the plus (+) symbol to append a user-defined layers path,
-and navigate to the folder containing the built layers (DLLs and json files). Please note that there are two separate layers that need to be enabled, so if these are in separate folders then you will need to add both.
+and navigate to the folder containing the built layers. Please note that there are two separate layers that need to be enabled, so if these are in separate folders then you will need to add both.
 
 Note: It is recommended to disable the validation layer when running these samples as the new extensions are not supported yet.
 

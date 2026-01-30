@@ -433,6 +433,23 @@ bits other than
 * 
 [VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html)
 
+[](#VUID-VkBufferCreateInfo-flags-11277) VUID-VkBufferCreateInfo-flags-11277
+
+If the
+[`protectedDescriptorHeaps`](../../../../spec/latest/chapters/limits.html#limits-protectedDescriptorHeaps)
+property is not supported and the [    effective usage](../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html) flag, `flags` **must**
+not include the [VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) flag
+
+[](#VUID-VkBufferCreateInfo-flags-11279) VUID-VkBufferCreateInfo-flags-11279
+
+If the [`sparseDescriptorHeaps`](../../../../spec/latest/chapters/limits.html#limits-sparseDescriptorHeaps)
+property is not supported and the [    effective usage](../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html) flag, `flags` **must**
+not include any of the [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html) flags
+
 Valid Usage (Implicit)
 
 * 

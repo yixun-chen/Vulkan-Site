@@ -62,8 +62,9 @@ There **must** be less than
 [](#VUID-vkCreateSampler-maxSamplerAllocationCount-11412) VUID-vkCreateSampler-maxSamplerAllocationCount-11412
 
     If there are any pipelines
-ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
-    created on the device, there **must** be less than
+or shaders
+    with embedded samplers currently created on the device, there **must** be
+    less than
     ([`maxSamplerAllocationCount`](../../../../spec/latest/chapters/limits.html#limits-maxSamplerAllocationCount)
     -  ([    `minSamplerHeapReservedRangeWithEmbedded`](../../../../spec/latest/chapters/limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
     [`samplerDescriptorSize`](../../../../spec/latest/chapters/limits.html#limits-samplerDescriptorSize)))

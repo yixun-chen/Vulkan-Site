@@ -398,6 +398,7 @@ The mesh shader creates the vertices for the triangle.
 The mesh shading  pipeline includes the task and mesh shaders before going into the fragment shader.
 This replaces the vertex /  geometry shader standard pipeline.
 
+als. I updated th
 A transcoded version of the Extensions sample [Mesh shading](extensions/mesh_shading/README.html) that illustrates the usage of the C++ bindings of vulkan provided by Vulkan-Hpp.
 
 **Extensions**: [`VK_KHR_external_memory`](https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_KHR_external_memory.html), [`VK_KHR_external_semaphore`](https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_KHR_external_semaphore.html)
@@ -540,6 +541,16 @@ Demonstrate how to build data graph pipelines and execute neural networks:
 [simple_tensor_and_data_graph](extensions/tensor_and_data_graph/simple_tensor_and_data_graph/README.html)
 
 Explains how to set up and execute a simple neural network using a data graph pipeline.
+
+[graph_constants](extensions/tensor_and_data_graph/graph_constants/README.html)
+
+* 
+Explains how graph constants are used in a simple convolutional neural network as weights and bias.
+
+[compute_shaders_with_tensors](extensions/tensor_and_data_graph/compute_shaders_with_tensors/README.html)
+
+* 
+Explains how compute shaders can be used to write input tensors and read output tensors from a simple convolutional neural network.
 
 **Extensions:** [`VK_EXT_ray_tracing_invocation_reorder`](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_ray_tracing_invocation_reorder.html)
 

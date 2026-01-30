@@ -629,6 +629,9 @@ The corresponding core version is supported (as returned by
 | `CooperativeMatrixKHR`
 
                 [`VkPhysicalDeviceCooperativeMatrixFeaturesKHR`::`cooperativeMatrix`](../chapters/features.html#features-cooperativeMatrix) |
+| `CooperativeMatrixConversionQCOM`
+
+                [`VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM`::`cooperativeMatrixConversion`](../chapters/features.html#features-cooperativeMatrixConversion) |
 | `ShaderEnqueueAMDX`
 
                 [`VkPhysicalDeviceShaderEnqueueFeaturesAMDX`::`shaderEnqueue`](../chapters/features.html#features-shaderEnqueue) |
@@ -1911,7 +1914,7 @@ an `Offset` value aligned to a 4 byte boundary
 
 [](#VUID-StandaloneSpirv-Offset-04692) VUID-StandaloneSpirv-Offset-04692
 
-Output variables, blocks or block members decorated with `Offset`
+Output variables, blocks, or block members decorated with `Offset`
 **must** only contain base types that have components that are either
 32-bit or 64-bit in size
 
@@ -2069,13 +2072,15 @@ dynamically uniform indices
 
 [](#VUID-StandaloneSpirv-OpVariable-06673) VUID-StandaloneSpirv-OpVariable-06673
 
-There **must** not be more than one variable in the `PushConstant`
+There **must** be at most one variable in the `PushConstant`
 `Storage` `Class` listed in the `Interface` for each `OpEntryPoint`
+unless the `PushConstantBanksNV` capability is declared
 
 [](#VUID-StandaloneSpirv-OpEntryPoint-06674) VUID-StandaloneSpirv-OpEntryPoint-06674
 
-Each `OpEntryPoint` **must** not statically use more than one variable
-in the `PushConstant` `Storage` `Class`
+Each `OpEntryPoint` **must** statically use at most one variable in the
+`PushConstant` `Storage` `Class` unless the `PushConstantBanksNV`
+capability is declared
 
 [](#VUID-StandaloneSpirv-OpEntryPoint-08721) VUID-StandaloneSpirv-OpEntryPoint-08721
 
@@ -3120,6 +3125,25 @@ If and only if
 * 
 The scope of all cooperative matrix operands **must** match
 [VkCooperativeMatrixPropertiesKHR](../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR)::`scope`.
+
+[](#VUID-RuntimeSpirv-NSize-12352) VUID-RuntimeSpirv-NSize-12352
+
+For `OpExtractSubArrayQCOM`, the length of the `Source` `Array`
+operand **must** match the
+[VkCooperativeMatrixPropertiesKHR](../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR)::`NSize` of one of the
+matrices in any of the supported [VkCooperativeMatrixPropertiesKHR](../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR)
+
+[](#VUID-RuntimeSpirv-KSize-12353) VUID-RuntimeSpirv-KSize-12353
+
+For `OpExtractSubArrayQCOM`, the length of the `Result` `Type`
+operand **must** match the
+[VkCooperativeMatrixPropertiesKHR](../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR)::`KSize` of one of the
+matrices in any of the supported [VkCooperativeMatrixPropertiesKHR](../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR)
+
+[](#VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354) VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354
+
+For `OpExtractSubArrayQCOM`, the `Start` `Index` operand **must**
+be a multiple of the length of the `Result` `Type` operand
 
 [](#VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164) VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164
 
@@ -5507,7 +5531,7 @@ than might be expected from the constituent operations.
 Implementations **may** rearrange floating-point operations using any of the
 mathematical properties governing the expressions in precise arithmetic,
 even where the floating- point operations do not share these properties.
-This includes, but is not limited to, associativity and distributivity, and
+This includes, but is not limited to associativity and distributivity, and
 **may** involve a different number of rounding steps than would occur if the
 operations were not rearranged.
 In shaders that use the `SignedZeroInfNanPreserve` `Execution` `Mode` the
@@ -5603,8 +5627,8 @@ formula, the result returned **must** be at least as accurate as the result of
 computing an approximation to x using a formula equivalent to the
 given formula applied to the supplied inputs.
 Specifically, the formula given may be transformed using the mathematical
-associativity, commutativity and distributivity of the operators involved to
-yield an equivalent formula.
+associativity, commutativity, and distributivity of the operators involved
+to yield an equivalent formula.
 The SPIR-V precision rules, when applied to each such formula and the given
 input values, define a range of permitted values.
 If NaN is one of the permitted values then the operation may return

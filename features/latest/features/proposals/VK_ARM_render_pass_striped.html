@@ -516,6 +516,9 @@
     <a class="nav-link" href="VK_NV_ray_tracing_validation.html">VK_NV_ray_tracing_validation</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -642,10 +645,10 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_proposed_naming_do_we_use_stripe_or_slice">4.1. PROPOSED: Naming. Do we use "stripe" or "slice"?</a></li>
-<li><a href="#_proposed_could_we_use_timeline_semaphores_for_this">4.2. PROPOSED: Could we use timeline semaphores for this?</a></li>
-<li><a href="#_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering">4.3. PROPOSED: How do stripes interact with multiview or layered rendering?</a></li>
-<li><a href="#_proposed_is_striped_rendering_supported_for_all_renderable_formats">4.4. PROPOSED: Is striped rendering supported for all renderable formats?</a></li>
+<li><a href="#_naming_do_we_use_stripe_or_slice">4.1. Naming. Do we use "stripe" or "slice"?</a></li>
+<li><a href="#_could_we_use_timeline_semaphores_for_this">4.2. Could we use timeline semaphores for this?</a></li>
+<li><a href="#_how_do_stripes_interact_with_multiview_or_layered_rendering">4.3. How do stripes interact with multiview or layered rendering?</a></li>
+<li><a href="#_is_striped_rendering_supported_for_all_renderable_formats">4.4. Is striped rendering supported for all renderable formats?</a></li>
 </ul>
 </li>
 </ul>
@@ -885,7 +888,7 @@ render pass is complete, etc.</p>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_proposed_naming_do_we_use_stripe_or_slice"><a class="anchor" href="#_proposed_naming_do_we_use_stripe_or_slice"></a>4.1. PROPOSED: Naming. Do we use "stripe" or "slice"?</h3>
+<h3 id="_naming_do_we_use_stripe_or_slice"><a class="anchor" href="#_naming_do_we_use_stripe_or_slice"></a>4.1. Naming. Do we use "stripe" or "slice"?</h3>
 <div class="paragraph">
 <p>The specification uses "slice" to refer to slices of a 3D image.
 This proposal wants to express partitions in 2D.
@@ -898,9 +901,9 @@ partitions in 3D.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_could_we_use_timeline_semaphores_for_this"><a class="anchor" href="#_proposed_could_we_use_timeline_semaphores_for_this"></a>4.2. PROPOSED: Could we use timeline semaphores for this?</h3>
+<h3 id="_could_we_use_timeline_semaphores_for_this"><a class="anchor" href="#_could_we_use_timeline_semaphores_for_this"></a>4.2. Could we use timeline semaphores for this?</h3>
 <div class="paragraph">
-<p>Probably. But timeline semaphores are not yet available on all platforms.</p>
+<p>Probably, but timeline semaphores are not yet available on all platforms.</p>
 </div>
 <div class="paragraph">
 <p>Regular timeline semaphores are not shareable to foreign queues so are
@@ -925,7 +928,7 @@ TIMELINE type native fence. There are two ways to export these:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering"><a class="anchor" href="#_proposed_how_do_stripes_interact_with_multiview_or_layered_rendering"></a>4.3. PROPOSED: How do stripes interact with multiview or layered rendering?</h3>
+<h3 id="_how_do_stripes_interact_with_multiview_or_layered_rendering"><a class="anchor" href="#_how_do_stripes_interact_with_multiview_or_layered_rendering"></a>4.3. How do stripes interact with multiview or layered rendering?</h3>
 <div class="paragraph">
 <p>The main question is whether a stripe covers individual views (or layers of
 the framebuffer) or all of them.</p>
@@ -942,7 +945,7 @@ to reduce the number of synchronization operations required.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proposed_is_striped_rendering_supported_for_all_renderable_formats"><a class="anchor" href="#_proposed_is_striped_rendering_supported_for_all_renderable_formats"></a>4.4. PROPOSED: Is striped rendering supported for all renderable formats?</h3>
+<h3 id="_is_striped_rendering_supported_for_all_renderable_formats"><a class="anchor" href="#_is_striped_rendering_supported_for_all_renderable_formats"></a>4.4. Is striped rendering supported for all renderable formats?</h3>
 <div class="paragraph">
 <p>Yes.</p>
 </div>

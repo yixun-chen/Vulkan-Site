@@ -369,7 +369,7 @@ Fixed typos and namings as discussed in Bugzilla.
 Reordered and grouped functions.
 
 * 
-Added functions to query count of display, mode and overlay.
+Added functions to query count of display, mode, and overlay.
 
 * 
 Added native display handle, which may be needed on some platforms to

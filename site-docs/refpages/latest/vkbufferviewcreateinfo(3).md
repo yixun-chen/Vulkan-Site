@@ -150,40 +150,24 @@ If `buffer` is non-sparse then it **must** be bound completely and
 contiguously to a single `VkDeviceMemory` object
 
 * 
-[](#VUID-VkBufferViewCreateInfo-offset-02749) VUID-VkBufferViewCreateInfo-offset-02749
-
-If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
-feature is not enabled,
-`offset` **must** be a multiple of
-`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
-
-* 
 [](#VUID-VkBufferViewCreateInfo-buffer-02750) VUID-VkBufferViewCreateInfo-buffer-02750
 
-If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
-feature is enabled and if `buffer` was created with the
+If `buffer` was created with the
 [VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set,
-`offset` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested `format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+`offset` **must** be a multiple of the effective alignment requirement
+of `format` for [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) as
+defined by
+[`minTexelBufferOffsetAlignment`](../../../../spec/latest/chapters/limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-buffer-02751) VUID-VkBufferViewCreateInfo-buffer-02751
 
-If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
-feature is enabled and if `buffer` was created with the
+If `buffer` was created with the
 [VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set,
-`offset` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested `format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+`offset` **must** be a multiple of the effective alignment requirement
+of `format` for [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) as
+defined by
+[`minTexelBufferOffsetAlignment`](../../../../spec/latest/chapters/limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-06782) VUID-VkBufferViewCreateInfo-pNext-06782

@@ -98,9 +98,9 @@ The Vulkan Specification assumes and requires: the following properties of
 the host environment with respect to Vulkan implementations:
 
 * 
-The host **must** have runtime support for 8, 16, 32 and 64-bit signed and
-unsigned twos-complement integers, all addressable at the granularity of
-their size in bytes.
+The host **must** have runtime support for 8-, 16-, 32-, and 64-bit signed
+and unsigned twos-complement integers, all addressable at the
+granularity of their size in bytes.
 
 * 
 The host **must** have runtime support for 32- and 64-bit floating-point
@@ -269,7 +269,7 @@ occurs in the command buffer, regardless of when it is executed. |
 The devices, queues, and other entities in Vulkan are represented by Vulkan
 objects.
 At the API level, all objects are referred to by handles.
-There are two classes of handles, dispatchable and non-dispatchable.
+There are two classes of handles: dispatchable and non-dispatchable.
 *Dispatchable* handle types are a pointer to an opaque type.
 This pointer **may** be used by layers as part of intercepting API commands,
 and thus each API command takes a dispatchable type as its first parameter.
@@ -2001,10 +2001,7 @@ Implicit Externally Synchronized Parameters
 All `VkPhysicalDevice` objects enumerated from `instance` in [vkDestroyInstance](initialization.html#vkDestroyInstance)
 
 * 
-All `VkQueue` objects created from `device`
-that are not created with
-[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
-             in [vkDestroyDevice](devsandqueues.html#vkDestroyDevice)
+All `VkQueue` objects created from `device` in [vkDestroyDevice](devsandqueues.html#vkDestroyDevice)
 
 * 
 All `VkQueue` objects created from `device`
@@ -3706,7 +3703,7 @@ Computation” below.
 These requirements only apply to computations performed in Vulkan operations
 outside of shader execution, such as texture image specification and
 sampling, and per-fragment operations.
-Range and precision requirements during shader execution differ and are
+Range and precision requirements during shader execution differ, and are
 specified by the [Precision and Operation of SPIR-V Instructions](../appendices/spirvenv.html#spirvenv-precision-operation) section.
 
 In some cases, the representation and/or precision of operations is
@@ -5161,6 +5158,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT = 1000170000,
   // Provided by VK_EXT_filter_cubic
     VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT = 1000170001,
+  // Provided by VK_QCOM_cooperative_matrix_conversion
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM = 1000172000,
   // Provided by VK_EXT_external_memory_host
     VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT = 1000178000,
   // Provided by VK_EXT_external_memory_host

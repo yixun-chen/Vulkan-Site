@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -13431,7 +13437,7 @@ an <code>Offset</code> value aligned to a 4 byte boundary</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-Offset-04692" href="#VUID-StandaloneSpirv-Offset-04692"></a> <span class="vuid">VUID-StandaloneSpirv-Offset-04692</span><br>
 
-Output variables, blocks or block members decorated with <code>Offset</code>
+Output variables, blocks, or block members decorated with <code>Offset</code>
 <strong>must</strong> only contain base types that have components that are either
 32-bit or 64-bit in size</p>
 </li>
@@ -13616,14 +13622,16 @@ dynamically uniform indices</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpVariable-06673" href="#VUID-StandaloneSpirv-OpVariable-06673"></a> <span class="vuid">VUID-StandaloneSpirv-OpVariable-06673</span><br>
 
-There <strong>must</strong> not be more than one variable in the <code>PushConstant</code>
-<code>Storage</code> <code>Class</code> listed in the <code>Interface</code> for each <code>OpEntryPoint</code></p>
+There <strong>must</strong> be at most one variable in the <code>PushConstant</code>
+<code>Storage</code> <code>Class</code> listed in the <code>Interface</code> for each <code>OpEntryPoint</code>
+unless the <code>PushConstantBanksNV</code> capability is declared</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpEntryPoint-06674" href="#VUID-StandaloneSpirv-OpEntryPoint-06674"></a> <span class="vuid">VUID-StandaloneSpirv-OpEntryPoint-06674</span><br>
 
-Each <code>OpEntryPoint</code> <strong>must</strong> not statically use more than one variable
-in the <code>PushConstant</code> <code>Storage</code> <code>Class</code></p>
+Each <code>OpEntryPoint</code> <strong>must</strong> statically use at most one variable in the
+<code>PushConstant</code> <code>Storage</code> <code>Class</code> unless the <code>PushConstantBanksNV</code>
+capability is declared</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpEntryPoint-08721" href="#VUID-StandaloneSpirv-OpEntryPoint-08721"></a> <span class="vuid">VUID-StandaloneSpirv-OpEntryPoint-08721</span><br>

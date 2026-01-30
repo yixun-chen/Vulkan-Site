@@ -69,9 +69,9 @@ Other elements of `pClearValues` are ignored.
 
 `renderArea` is the render area that is affected by the render pass
 instance.
-The effects of attachment load, store and multisample resolve operations are
-restricted to the pixels whose x and y coordinates fall within the render
-area on all attachments.
+The effects of attachment load, store, and multisample resolve operations
+are restricted to the pixels whose x and y coordinates fall within the
+render area on all attachments.
 The render area extends to all layers of `framebuffer`.
 The application **must** ensure (using scissor if necessary) that all rendering
 is contained within the render area.

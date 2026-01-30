@@ -936,7 +936,7 @@ consisting entirely of zeros.</p>
 <li>
 <p><a href="#VkPipelineCreateFlagBits2KHR">VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> specifies
 that all built-in primitives
-including triangles, spheres and LSS primitives
+including triangles, spheres, and LSS primitives
 will be skipped during traversal using <a href="../appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">    pipeline trace ray</a> instructions.</p>
 </li>
 <li>
@@ -1094,10 +1094,8 @@ See <a href="#pipelines-pipeline-derivatives">Pipeline Derivatives</a> for more
 information.</p>
 </div>
 <div class="paragraph">
-<p>When an implementation is looking up a pipeline in a
-<a href="#pipelines-cache">pipeline cache</a>, if that pipeline is being created using
-linked libraries, implementations <strong>should</strong> always return an equivalent
-pipeline created with
+<p>When an implementation is looking up a pipeline in a <a href="#pipelines-cache">pipeline cache</a>, if that pipeline is being created using linked libraries,
+implementations <strong>should</strong> always return an equivalent pipeline created with
 <a href="#VkPipelineCreateFlagBits2KHR">VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT</a> if available,
 whether or not that bit was specified.</p>
 </div>
@@ -1476,10 +1474,8 @@ See <a href="#pipelines-pipeline-derivatives">Pipeline Derivatives</a> for more
 information.</p>
 </div>
 <div class="paragraph">
-<p>When an implementation is looking up a pipeline in a
-<a href="#pipelines-cache">pipeline cache</a>, if that pipeline is being created using
-linked libraries, implementations <strong>should</strong> always return an equivalent
-pipeline created with
+<p>When an implementation is looking up a pipeline in a <a href="#pipelines-cache">pipeline cache</a>, if that pipeline is being created using linked libraries,
+implementations <strong>should</strong> always return an equivalent pipeline created with
 <a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT</a> if available,
 whether or not that bit was specified.</p>
 </div>
@@ -15892,7 +15888,7 @@ OpDecorate %wgsize BuiltIn WorkgroupSize ; decorate WorkgroupSize onto constant
 </div>
 <div class="paragraph">
 <p>From the above we have three specialization constants, one for each of the
-x, y and z elements of the WorkgroupSize vector.</p>
+x, y, and z elements of the WorkgroupSize vector.</p>
 </div>
 <div class="paragraph">
 <p>Now to specialize the above via the specialization constants mechanism:</p>

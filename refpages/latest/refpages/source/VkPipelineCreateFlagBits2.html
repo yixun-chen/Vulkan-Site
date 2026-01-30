@@ -4752,6 +4752,9 @@
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM.html">VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceCooperativeMatrixFeaturesKHR.html">VkPhysicalDeviceCooperativeMatrixFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12322,6 +12325,9 @@
     <span class="nav-text">Q</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_QCOM_cooperative_matrix_conversion.html">VK_QCOM_cooperative_matrix_conversion</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12842,7 +12848,7 @@ consisting entirely of zeros.</p>
 <li>
 <p><a href="#">VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> specifies
 that all built-in primitives
-including triangles, spheres and LSS primitives
+including triangles, spheres, and LSS primitives
 will be skipped during traversal using <a href="../../../../spec/latest/appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">    pipeline trace ray</a> instructions.</p>
 </li>
 <li>
@@ -13000,10 +13006,8 @@ See <a href="../../../../spec/latest/chapters/pipelines.html#pipelines-pipeline-
 information.</p>
 </div>
 <div class="paragraph">
-<p>When an implementation is looking up a pipeline in a
-<a href="../../../../spec/latest/chapters/pipelines.html#pipelines-cache" class="xref page">pipeline cache</a>, if that pipeline is being created using
-linked libraries, implementations <strong>should</strong> always return an equivalent
-pipeline created with
+<p>When an implementation is looking up a pipeline in a <a href="../../../../spec/latest/chapters/pipelines.html#pipelines-cache" class="xref page">pipeline cache</a>, if that pipeline is being created using linked libraries,
+implementations <strong>should</strong> always return an equivalent pipeline created with
 <a href="#">VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT</a> if available,
 whether or not that bit was specified.</p>
 </div>

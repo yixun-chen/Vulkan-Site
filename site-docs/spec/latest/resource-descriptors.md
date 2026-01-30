@@ -9036,54 +9036,22 @@ be aligned to
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
 * 
-[](#VUID-VkDescriptorGetInfoEXT-type-12267) VUID-VkDescriptorGetInfoEXT-type-12267
-
-If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType),
-the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is not enabled,
-and `pUniformTexelBuffer` is not `NULL`,
-`pUniformTexelBuffer->address` **must** be aligned to
-`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-12268) VUID-VkDescriptorGetInfoEXT-type-12268
-
-If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType),
-the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is not enabled,
-and `pStorageTexelBuffer` is not `NULL`,
-`pStorageTexelBuffer->address` **must** be aligned to
-`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
-
-* 
 [](#VUID-VkDescriptorGetInfoEXT-type-12269) VUID-VkDescriptorGetInfoEXT-type-12269
 
-If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and `pUniformTexelBuffer` is not `NULL`,
-`pUniformTexelBuffer->address` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested
-`pUniformTexelBuffer->format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), and
+`pUniformTexelBuffer` is not `NULL`,
+`pUniformTexelBuffer->address` **must** be a multiple of the effective
+alignment requirement as determined by
+[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12270) VUID-VkDescriptorGetInfoEXT-type-12270
 
-If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), the
-[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
-enabled, and `pStorageTexelBuffer` is not `NULL`,
-`pStorageTexelBuffer->address` **must** be a multiple of the lesser of
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetAlignmentBytes`
-or, if
-[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetSingleTexelAlignment`
-is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested
-`pStorageTexelBuffer->format`.
-If the size of a texel is a multiple of three bytes, then the size of a
-single component of `format` is used instead
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), the and
+`pStorageTexelBuffer` is not `NULL`,
+`pStorageTexelBuffer->address` **must** be a multiple of the effective
+alignment requirement as determined by
+[`minTexelBufferOffsetAlignment`](limits.html#limits-minTexelBufferOffsetAlignment)
 
 Valid Usage (Implicit)
 

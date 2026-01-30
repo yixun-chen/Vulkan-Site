@@ -255,7 +255,7 @@ Extending [VkStructureType](VkStructureType.html):
 Functionality in this extension is included in core Vulkan 1.4, with the EXT
 suffix omitted.
 However, the feature is made optional in Vulkan 1.4.
-The original type, enum and command names are still available as aliases of
+The original type, enum, and command names are still available as aliases of
 the core functionality.
 
 A Vulkan 1.4 implementation that has a [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) queue

@@ -51,8 +51,8 @@ structure.
 
 * 
  `shaderBufferFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic operations on storage buffers.
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic operations on storage buffers.
 
 * 
 
@@ -61,8 +61,8 @@ perform 32-bit floating-point add atomic operations on storage buffers.
 
 * 
  `shaderBufferFloat64Atomics`
-indicates whether shaders **can** perform 64-bit floating-point load, store
-and exchange atomic operations on storage buffers.
+indicates whether shaders **can** perform 64-bit floating-point load,
+store, and exchange atomic operations on storage buffers.
 
 * 
 
@@ -71,8 +71,8 @@ perform 64-bit floating-point add atomic operations on storage buffers.
 
 * 
  `shaderSharedFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.
 
@@ -85,8 +85,8 @@ memory.
 
 * 
  `shaderSharedFloat64Atomics`
-indicates whether shaders **can** perform 64-bit floating-point load, store
-and exchange atomic operations on shared
+indicates whether shaders **can** perform 64-bit floating-point load,
+store, and exchange atomic operations on shared
 and payload
 memory.
 
@@ -99,8 +99,8 @@ memory.
 
 * 
  `shaderImageFloat32Atomics`
-indicates whether shaders **can** perform 32-bit floating-point load, store
-and exchange atomic image operations.
+indicates whether shaders **can** perform 32-bit floating-point load,
+store, and exchange atomic image operations.
 
 * 
 
@@ -109,7 +109,7 @@ and exchange atomic image operations.
 
 * 
  `sparseImageFloat32Atomics`
-indicates whether 32-bit floating-point load, store and exchange atomic
+indicates whether 32-bit floating-point load, store, and exchange atomic
 operations **can** be used on sparse images.
 
 * 

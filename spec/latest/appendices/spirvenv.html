@@ -1131,6 +1131,10 @@ the <a href="../chapters/devsandqueues.html#VkDevice" class="xref page">VkDevice
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-cooperativeMatrix" class="xref page"><code>VkPhysicalDeviceCooperativeMatrixFeaturesKHR</code>::<code>cooperativeMatrix</code></a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-CooperativeMatrixConversionQCOM"></a><code>CooperativeMatrixConversionQCOM</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-cooperativeMatrixConversion" class="xref page"><code>VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM</code>::<code>cooperativeMatrixConversion</code></a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-ShaderEnqueueAMDX"></a><code>ShaderEnqueueAMDX</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-shaderEnqueue" class="xref page"><code>VkPhysicalDeviceShaderEnqueueFeaturesAMDX</code>::<code>shaderEnqueue</code></a></p></td>
 </tr>
@@ -2583,7 +2587,7 @@ an <code>Offset</code> value aligned to a 4 byte boundary</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-Offset-04692" href="#VUID-StandaloneSpirv-Offset-04692"></a> <span class="vuid">VUID-StandaloneSpirv-Offset-04692</span><br>
 
-Output variables, blocks or block members decorated with <code>Offset</code>
+Output variables, blocks, or block members decorated with <code>Offset</code>
 <strong>must</strong> only contain base types that have components that are either
 32-bit or 64-bit in size</p>
 </li>
@@ -2768,14 +2772,16 @@ dynamically uniform indices</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpVariable-06673" href="#VUID-StandaloneSpirv-OpVariable-06673"></a> <span class="vuid">VUID-StandaloneSpirv-OpVariable-06673</span><br>
 
-There <strong>must</strong> not be more than one variable in the <code>PushConstant</code>
-<code>Storage</code> <code>Class</code> listed in the <code>Interface</code> for each <code>OpEntryPoint</code></p>
+There <strong>must</strong> be at most one variable in the <code>PushConstant</code>
+<code>Storage</code> <code>Class</code> listed in the <code>Interface</code> for each <code>OpEntryPoint</code>
+unless the <code>PushConstantBanksNV</code> capability is declared</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpEntryPoint-06674" href="#VUID-StandaloneSpirv-OpEntryPoint-06674"></a> <span class="vuid">VUID-StandaloneSpirv-OpEntryPoint-06674</span><br>
 
-Each <code>OpEntryPoint</code> <strong>must</strong> not statically use more than one variable
-in the <code>PushConstant</code> <code>Storage</code> <code>Class</code></p>
+Each <code>OpEntryPoint</code> <strong>must</strong> statically use at most one variable in the
+<code>PushConstant</code> <code>Storage</code> <code>Class</code> unless the <code>PushConstantBanksNV</code>
+capability is declared</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpEntryPoint-08721" href="#VUID-StandaloneSpirv-OpEntryPoint-08721"></a> <span class="vuid">VUID-StandaloneSpirv-OpEntryPoint-08721</span><br>
@@ -3902,6 +3908,28 @@ used.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-NSize-12352" href="#VUID-RuntimeSpirv-NSize-12352"></a> <span class="vuid">VUID-RuntimeSpirv-NSize-12352</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the length of the <code>Source</code> <code>Array</code>
+operand <strong>must</strong> match the
+<a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>NSize</code> of one of the
+matrices in any of the supported <a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-KSize-12353" href="#VUID-RuntimeSpirv-KSize-12353"></a> <span class="vuid">VUID-RuntimeSpirv-KSize-12353</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the length of the <code>Result</code> <code>Type</code>
+operand <strong>must</strong> match the
+<a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>KSize</code> of one of the
+matrices in any of the supported <a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354" href="#VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354"></a> <span class="vuid">VUID-RuntimeSpirv-OpExtractSubArrayQCOM-12354</span><br>
+
+For <code>OpExtractSubArrayQCOM</code>, the <code>Start</code> <code>Index</code> operand <strong>must</strong>
+be a multiple of the length of the <code>Result</code> <code>Type</code> operand</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164" href="#VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164"></a> <span class="vuid">VUID-RuntimeSpirv-cooperativeMatrixWorkgroupScope-10164</span><br>
@@ -6676,7 +6704,7 @@ than might be expected from the constituent operations.</p>
 <p>Implementations <strong>may</strong> rearrange floating-point operations using any of the
 mathematical properties governing the expressions in precise arithmetic,
 even where the floating- point operations do not share these properties.
-This includes, but is not limited to, associativity and distributivity, and
+This includes, but is not limited to associativity and distributivity, and
 <strong>may</strong> involve a different number of rounding steps than would occur if the
 operations were not rearranged.
 In shaders that use the <code>SignedZeroInfNanPreserve</code> <code>Execution</code> <code>Mode</code> the
@@ -6805,8 +6833,8 @@ formula, the result returned <strong>must</strong> be at least as accurate as th
 computing an approximation to <span class="eq">x</span> using a formula equivalent to the
 given formula applied to the supplied inputs.
 Specifically, the formula given may be transformed using the mathematical
-associativity, commutativity and distributivity of the operators involved to
-yield an equivalent formula.
+associativity, commutativity, and distributivity of the operators involved
+to yield an equivalent formula.
 The SPIR-V precision rules, when applied to each such formula and the given
 input values, define a range of permitted values.
 If <span class="eq">NaN</span> is one of the permitted values then the operation may return

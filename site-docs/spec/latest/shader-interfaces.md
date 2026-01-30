@@ -2014,8 +2014,8 @@ Vectors **must** not improperly straddle, as defined above.
 
 * 
 The `Offset` decoration of a member **must** not place it between the
-end of a structure, an array or a matrix and the next multiple of the
-alignment of that structure, array or matrix.
+end of a structure, an array, or a matrix and the next multiple of the
+alignment of that structure, array, or matrix.
 
 |  | The **std430 layout** in GLSL satisfies these rules for types using the base
 | --- | --- |

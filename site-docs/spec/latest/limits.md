@@ -805,16 +805,23 @@ The value **must** be a power of two.
 in bytes, for the `offset` member of the
 [VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo) structure for texel buffers.
 The value **must** be a power of two.
-If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is enabled, this limit is equivalent to the maximum of the
+This limit is equivalent to the maximum of the
 [    `uniformTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes) and
 [    `storageTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes) members of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](#VkPhysicalDeviceTexelBufferAlignmentProperties), but smaller
 alignment is **optionally** allowed by
 [    `storageTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment) and
 [    `uniformTexelBufferOffsetSingleTexelAlignment`](devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment).
+For single texel alignment, a format has an alignment requirement which
+is the size of a single component if the size of the format is a
+multiple of three bytes, otherwise, it is the size of the format itself.
+The effective alignment requirement is the minimum of the per-format
+alignment and [    `uniformTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes) or
+[    `storageTexelBufferOffsetAlignmentBytes`](devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes) depending on the
+descriptor type.
 If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
-feature is not enabled,
+feature is not enabled, the effective alignment requirement for any
+format is `minTexelBufferOffsetAlignment`.
 [VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo)::`offset` **must** be a multiple of this
 value.
 
@@ -2245,7 +2252,7 @@ write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
 If this limit is [VK_TRUE](fundamentals.html#VK_TRUE), such writes will be discarded or have
-**undefined** values written, reads and queries will return **undefined**
+**undefined** values written; reads and queries will return **undefined**
 values.
 If this limit is [VK_FALSE](fundamentals.html#VK_FALSE), applications **must** not perform these
 operations.
@@ -7076,7 +7083,7 @@ structure.
 `maxWorkGroupCount`[3] is the maximum number of local workgroups
 that can be launched by a single command.
 These three value represent the maximum local workgroup count in the X,
-Y and Z dimensions, respectively.
+Y, and Z dimensions, respectively.
 In the current implementation, the values of Y and Z are both implicitly
 set as one.
 groupCountX of DrawCluster command **must** be less than or equal to
@@ -7084,9 +7091,9 @@ maxWorkGroupCount[0].
 
 * 
 `maxWorkGroupSize`[3] is the maximum size of a local workgroup.
-    These three value represent the maximum local workgroup size in the X, Y
-    and Z dimensions, respectively.
-    The x, y and z sizes, as specified by the `LocalSize`
+    These three value represent the maximum local workgroup size in the X,
+    Y, and Z dimensions, respectively.
+    The x, y, and z sizes, as specified by the `LocalSize`
 or `LocalSizeId`
     execution mode or by the object decorated by the WorkgroupSize
     decoration in shader modules, **must** be less than or equal to the

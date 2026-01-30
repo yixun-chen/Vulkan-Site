@@ -793,16 +793,23 @@ The value **must** be a power of two.
 in bytes, for the `offset` member of the
 [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html) structure for texel buffers.
 The value **must** be a power of two.
-If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
-feature is enabled, this limit is equivalent to the maximum of the
+This limit is equivalent to the maximum of the
 [    `uniformTexelBufferOffsetAlignmentBytes`](../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes) and
 [    `storageTexelBufferOffsetAlignmentBytes`](../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes) members of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html), but smaller
 alignment is **optionally** allowed by
 [    `storageTexelBufferOffsetSingleTexelAlignment`](../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment) and
 [    `uniformTexelBufferOffsetSingleTexelAlignment`](../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment).
+For single texel alignment, a format has an alignment requirement which
+is the size of a single component if the size of the format is a
+multiple of three bytes, otherwise, it is the size of the format itself.
+The effective alignment requirement is the minimum of the per-format
+alignment and [    `uniformTexelBufferOffsetAlignmentBytes`](../../../../spec/latest/chapters/devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes) or
+[    `storageTexelBufferOffsetAlignmentBytes`](../../../../spec/latest/chapters/devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes) depending on the
+descriptor type.
 If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
-feature is not enabled,
+feature is not enabled, the effective alignment requirement for any
+format is `minTexelBufferOffsetAlignment`.
 [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html)::`offset` **must** be a multiple of this
 value.
 

@@ -15,8 +15,8 @@
 - [3. Proposal](#_proposal)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. How are issues written?](#_how_are_issues_written)
-- [5.1._How_are_issues_written?](#_how_are_issues_written)
+- [5.1. How Are Issues Written?](#_how_are_issues_written)
+- [5.1._How_Are_Issues_Written?](#_how_are_issues_written)
 - [6. Validation and Tools](#_validation_and_tools)
 - [6._Validation_and_Tools](#_validation_and_tools)
 - [7. Further Functionality](#_further_functionality)
@@ -32,7 +32,7 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. How are issues written?](#_how_are_issues_written)
+[5.1. How Are Issues Written?](#_how_are_issues_written)
 
 [6. Validation and Tools](#_validation_and_tools)
 [7. Further Functionality](#_further_functionality)
@@ -89,7 +89,13 @@ Extraneous details in examples should be omitted (e.g. code examples do not need
 This section describes issues with the existing proposal – including both open issues that you have not addressed, and closed issues that are not self-evident from the proposal description.
 
 Each issue should be a separate subsection starting with a question, discussion expanding on the question, and a proposal for resolving it if there is one.
-While in development, an indication of the status (UNRESOLVED/PROPOSED/RESOLVED) can be used in the answer text, but all issues must be resolved and the status removed before publication.
+
+While in development, a tag indicating the status (**UNRESOLVED** or
+**PROPOSED**) of the issue can be used in the answer text.
+
+Issues which are resolved do not have tags.
+
+All issues must be resolved and any status tags removed before publication.
 
 This section is designed to make sure the extension will not create abnormal challenges for tools. Things to consider:
 

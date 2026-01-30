@@ -1252,16 +1252,23 @@ The value <strong>must</strong> be a power of two.</p>
 in bytes, for the <code>offset</code> member of the
 <a href="resources.html#VkBufferViewCreateInfo" class="xref page">VkBufferViewCreateInfo</a> structure for texel buffers.
 The value <strong>must</strong> be a power of two.
-If the <a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a>
-feature is enabled, this limit is equivalent to the maximum of the
+This limit is equivalent to the maximum of the
 <a href="devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a> and
 <a href="devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a> members of
 <a href="#VkPhysicalDeviceTexelBufferAlignmentProperties">VkPhysicalDeviceTexelBufferAlignmentProperties</a>, but smaller
 alignment is <strong>optionally</strong> allowed by
 <a href="devsandqueues.html#limits-storageTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>storageTexelBufferOffsetSingleTexelAlignment</code></a> and
 <a href="devsandqueues.html#limits-uniformTexelBufferOffsetSingleTexelAlignment" class="xref page">    <code>uniformTexelBufferOffsetSingleTexelAlignment</code></a>.
+For single texel alignment, a format has an alignment requirement which
+is the size of a single component if the size of the format is a
+multiple of three bytes, otherwise, it is the size of the format itself.
+The effective alignment requirement is the minimum of the per-format
+alignment and <a href="devsandqueues.html#limits-uniformTexelBufferOffsetAlignmentBytes" class="xref page">    <code>uniformTexelBufferOffsetAlignmentBytes</code></a> or
+<a href="devsandqueues.html#limits-storageTexelBufferOffsetAlignmentBytes" class="xref page">    <code>storageTexelBufferOffsetAlignmentBytes</code></a> depending on the
+descriptor type.
 If the <a href="features.html#features-texelBufferAlignment" class="xref page"><code>texelBufferAlignment</code></a>
-feature is not enabled,
+feature is not enabled, the effective alignment requirement for any
+format is <code>minTexelBufferOffsetAlignment</code>.
 <a href="resources.html#VkBufferViewCreateInfo" class="xref page">VkBufferViewCreateInfo</a>::<code>offset</code> <strong>must</strong> be a multiple of this
 value.</p>
 </li>
@@ -3130,7 +3137,7 @@ write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
 If this limit is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, such writes will be discarded or have
-<strong>undefined</strong> values written, reads and queries will return <strong>undefined</strong>
+<strong>undefined</strong> values written; reads and queries will return <strong>undefined</strong>
 values.
 If this limit is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, applications <strong>must</strong> not perform these
 operations.
@@ -9506,7 +9513,7 @@ structure.</p>
 <p><code>maxWorkGroupCount</code>[3] is the maximum number of local workgroups
 that can be launched by a single command.
 These three value represent the maximum local workgroup count in the X,
-Y and Z dimensions, respectively.
+Y, and Z dimensions, respectively.
 In the current implementation, the values of Y and Z are both implicitly
 set as one.
 groupCountX of DrawCluster command <strong>must</strong> be less than or equal to
@@ -9514,9 +9521,9 @@ maxWorkGroupCount[0].</p>
 </li>
 <li>
 <p><code>maxWorkGroupSize</code>[3] is the maximum size of a local workgroup.
-    These three value represent the maximum local workgroup size in the X, Y
-    and Z dimensions, respectively.
-    The x, y and z sizes, as specified by the <code>LocalSize</code>
+    These three value represent the maximum local workgroup size in the X,
+    Y, and Z dimensions, respectively.
+    The x, y, and z sizes, as specified by the <code>LocalSize</code>
 or <code>LocalSizeId</code>
     execution mode or by the object decorated by the WorkgroupSize
     decoration in shader modules, <strong>must</strong> be less than or equal to the
