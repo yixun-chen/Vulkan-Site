@@ -131,6 +131,6 @@ This is known as *aliasing* and some Vulkan functions have explicit flags to spe
 The [next chapter](../05_Uniform_buffers/00_Descriptor_set_layout_and_buffer.html) we’ll learn how to pass frequently changing parameters to the GPU.
 
 [C++ code](../_attachments/21_index_buffer.cpp) /
-[slang shader](../_attachments/18_shader_vertexbuffer.slang) /
-[GLSL Vertex shader](../_attachments/18_shader_vertexbuffer.vert) /
-[GLSL Fragment shader](../_attachments/18_shader_vertexbuffer.frag)
+[slang shader](../_attachments/19_shader_vertexbuffer.slang) /
+[GLSL Vertex shader](../_attachments/19_shader_vertexbuffer.vert) /
+[GLSL Fragment shader](../_attachments/19_shader_vertexbuffer.frag)

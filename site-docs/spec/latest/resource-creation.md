@@ -7747,9 +7747,11 @@ the [VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFl
 
 * 
 [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) specifies the layout that an
-image created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) **must** be in for it and
-a tensor bound to the same aliased range of memory to consistently
-interpret the data in memory.
+image created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) **must** be in, if the
+[`unifiedImageLayouts`](features.html#features-unifiedImageLayouts) feature is
+disabled, or **may** be in if it is enabled, for it and a tensor bound to
+the same aliased range of memory to consistently interpret the data in
+memory.
 See [Memory Aliasing](#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.
 This layout is valid only for image subresources of images created with
@@ -16987,12 +16989,16 @@ dimensions of the image plus 1) must be 1.
 * 
 The image subresource is in the
 [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) layout if the image was
-created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling).
-The image **must** be transitioned to
+created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
+and the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts)
+feature is not enabled.
+If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts)
+feature if not enabled, the image **must** be transitioned to
 [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) prior to any reads via the
 tensor resource for those reads to return data consistent with that
 provided to the image writes.
-The image **must** be transitioned to
+If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts)
+feature if not enabled, the image **must** be transitioned to
 [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) prior to any writes performed
 via the tensor resource for reads performed via the image resource to
 return data consistent with that provided to the tensor writes.

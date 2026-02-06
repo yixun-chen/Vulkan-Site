@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -12789,18 +12816,35 @@ descriptor binding used to create <code>layout</code> <strong>must</strong> have
 <p><a id="VUID-VkDataGraphPipelineCreateInfoARM-None-11840" href="#VUID-VkDataGraphPipelineCreateInfoARM-None-11840"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-None-11840</span><br>
 
     If a <a href="VkDataGraphPipelineIdentifierCreateInfoARM.html" class="xref page">VkDataGraphPipelineIdentifierCreateInfoARM</a>
-or <a href="VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html" class="xref page">VkDataGraphPipelineBuiltinModelCreateInfoQCOM</a>
+or a <a href="VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html" class="xref page">VkDataGraphPipelineBuiltinModelCreateInfoQCOM</a>
     structure is included in the <code>pNext</code> chain, then <code>flags</code> <strong>must</strong>
     contain <a href="VkPipelineCreateFlagBits2.html" class="xref page">VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT</a></p>
 </li>
 <li>
-<p><a id="VUID-VkDataGraphPipelineCreateInfoARM-None-11841" href="#VUID-VkDataGraphPipelineCreateInfoARM-None-11841"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-None-11841</span><br>
+<p><a id="VUID-VkDataGraphPipelineCreateInfoARM-None-12363" href="#VUID-VkDataGraphPipelineCreateInfoARM-None-12363"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-None-12363</span><br>
 
     If a <a href="VkDataGraphPipelineIdentifierCreateInfoARM.html" class="xref page">VkDataGraphPipelineIdentifierCreateInfoARM</a>
-or <a href="VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html" class="xref page">VkDataGraphPipelineBuiltinModelCreateInfoQCOM</a>
+or a <a href="VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html" class="xref page">VkDataGraphPipelineBuiltinModelCreateInfoQCOM</a>
     structure is included in the <code>pNext</code> chain, then
-    <code>resourceInfoCount</code> <strong>must</strong> be 0 and <code>pResourceInfos</code> <strong>must</strong> be
-    <code>NULL</code></p>
+    <code>resourceInfoCount</code> <strong>must</strong> be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-12364" href="#VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-12364"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-12364</span><br>
+
+If <code>resourceInfoCount</code> is equal to 0, then <code>pResourceInfos</code>
+<strong>must</strong> equal <code>NULL</code></p>
+</li>
+<li>
+<p><a id="VUID-VkDataGraphPipelineCreateInfoARM-None-12365" href="#VUID-VkDataGraphPipelineCreateInfoARM-None-12365"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-None-12365</span><br>
+
+    If
+neither
+    a <a href="VkDataGraphPipelineIdentifierCreateInfoARM.html" class="xref page">VkDataGraphPipelineIdentifierCreateInfoARM</a>
+nor a <a href="VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html" class="xref page">VkDataGraphPipelineBuiltinModelCreateInfoQCOM</a>
+    structure
+are
+    included in the <code>pNext</code> chain, then <code>resourceInfoCount</code> <strong>must</strong> be
+    greater than 0</p>
 </li>
 <li>
 <p><a id="VUID-VkDataGraphPipelineCreateInfoARM-dataGraphShaderModule-09886" href="#VUID-VkDataGraphPipelineCreateInfoARM-dataGraphShaderModule-09886"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-dataGraphShaderModule-09886</span><br>
@@ -12911,11 +12955,7 @@ included in the <code>pNext</code> chain,
 </li>
 <li>
 <p><a id="VUID-VkDataGraphPipelineCreateInfoARM-pResourceInfos-parameter" href="#VUID-VkDataGraphPipelineCreateInfoARM-pResourceInfos-parameter"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-pResourceInfos-parameter</span><br>
- <code>pResourceInfos</code> <strong>must</strong> be a valid pointer to an array of <code>resourceInfoCount</code> valid <a href="VkDataGraphPipelineResourceInfoARM.html" class="xref page">VkDataGraphPipelineResourceInfoARM</a> structures</p>
-</li>
-<li>
-<p><a id="VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-arraylength" href="#VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-arraylength"></a> <span class="vuid">VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-arraylength</span><br>
- <code>resourceInfoCount</code> <strong>must</strong> be greater than <code>0</code></p>
+ If <code>resourceInfoCount</code> is not <code>0</code>, <code>pResourceInfos</code> <strong>must</strong> be a valid pointer to an array of <code>resourceInfoCount</code> valid <a href="VkDataGraphPipelineResourceInfoARM.html" class="xref page">VkDataGraphPipelineResourceInfoARM</a> structures</p>
 </li>
 </ul>
 </div>

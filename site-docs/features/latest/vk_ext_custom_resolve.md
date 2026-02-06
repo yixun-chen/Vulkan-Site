@@ -195,6 +195,23 @@ All rendering commands recorded from the time that `vkCmdBeginCustomResolveEXT` 
 end of the rendering pass will output to the resolve attachments. The contents of all resolve attachments become
 undefined upon recording this command.
 
+`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT` is also promoted from
+[VK_QCOM_render_pass_shader_resolve](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_render_pass_shader_resolve),
+and support is added for dynamic rendering too.
+
+#define VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT  ((VkSubpassDescriptionFlagBits)0x00000004)
+#define VK_RENDERING_FRAGMENT_REGION_BIT_EXT  ((VkRenderingFlagBits)0x00000040)
+
+Specifying either flag expands the framebuffer region used for dependencies with
+`VK_DEPENDENCY_BY_REGION_BIT` to always cover the entire fragment. This allows
+for multisample input attachments that contain the same sample count as
+`rasterizationSamples` to read from any sample of the fragment being rendered.
+This is not necessary for custom resolve operations, because the framebuffer
+region already equals the whole fragment when sample count is mismatched, but
+e.g. can be used to implement a custom resolve in an alternate way by drawing a
+fullscreen quad with `pSampleMask` to 1 to overwrite sample zero with the
+resolve result and then using `VK_RESOLVE_MODE_SAMPLE_ZERO_BIT`.
+
 No. There is no known use case for this functionality, and adding it to the specification would introduce considerable complexity.
 
 On some implementations, in particular when using non-subsampled images, it may

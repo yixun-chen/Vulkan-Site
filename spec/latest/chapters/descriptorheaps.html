@@ -444,7 +444,7 @@ and buffer descriptors.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Descriptors can be obtained for the different heaps with commands that write
-sampler descriptors to host memory, with the application responsible for
+descriptors to a host address, with the application responsible for
 transferring those descriptors into device memory for access via heaps.</p>
 </div>
 <div class="openblock">
@@ -484,7 +484,7 @@ that will be written to for each descriptor.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each descriptor will be written to <code>pDescriptors</code>[i]&#8594;address where
+<p>Each descriptor will be written to <code>pDescriptors</code>[i].<code>address</code> where
 <span class="eq">i</span> is the index of its create info in <code>pSamplers</code>.</p>
 </div>
 <div class="paragraph">
@@ -670,7 +670,7 @@ that will be written to for each descriptor.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each descriptor will be written to <code>pDescriptors</code>[i]&#8594;address where
+<p>Each descriptor will be written to <code>pDescriptors</code>[i].address where
 <span class="eq">i</span> is the index of its create info in <code>pResources</code>.</p>
 </div>
 <div class="paragraph">

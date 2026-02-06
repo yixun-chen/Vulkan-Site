@@ -45,7 +45,7 @@ written.
 [VkHostAddressRangeEXT](VkHostAddressRangeEXT.html) structures defining the host address ranges
 that will be written to for each descriptor.
 
-Each descriptor will be written to `pDescriptors`[i]→address where
+Each descriptor will be written to `pDescriptors`[i].`address` where
 i is the index of its create info in `pSamplers`.
 
 Descriptors written using a fully identical [VkSamplerCreateInfo](VkSamplerCreateInfo.html)

@@ -220,6 +220,6 @@ Run the program again, and you should see the following:
 In the [next chapter,](02_Staging_buffer.html) we’ll look at a different way to copy vertex data to a vertex buffer that results in better performance, but takes some more work.
 
 [C++ code](../_attachments/19_vertex_buffer.cpp) /
-[slang shader](../_attachments/18_shader_vertexbuffer.slang) /
-[GLSL Vertex shader](../_attachments/18_shader_vertexbuffer.vert) /
-[GLSL Fragment shader](../_attachments/18_shader_vertexbuffer.frag)
+[slang shader](../_attachments/19_shader_vertexbuffer.slang) /
+[GLSL Vertex shader](../_attachments/19_shader_vertexbuffer.vert) /
+[GLSL Fragment shader](../_attachments/19_shader_vertexbuffer.frag)

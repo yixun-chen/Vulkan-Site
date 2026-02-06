@@ -1622,6 +1622,10 @@ parameter of <a href="../chapters/shaders.html#vkCreateShaderModule" class="xref
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_QCOM_image_processing2" class="xref page">VK_QCOM_image_processing2</a></code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_QCOM_cooperative_matrix_conversion</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_QCOM_cooperative_matrix_conversion" class="xref page">VK_QCOM_cooperative_matrix_conversion</a></code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_mesh_shader</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_mesh_shader" class="xref page">VK_EXT_mesh_shader</a></code></p></td>
 </tr>
@@ -4766,17 +4770,20 @@ atomic operations to be supported</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-NonWritable-06340" href="#VUID-RuntimeSpirv-NonWritable-06340"></a> <span class="vuid">VUID-RuntimeSpirv-NonWritable-06340</span><br>
 
-If the <a href="../chapters/features.html#features-fragmentStoresAndAtomics" class="xref page">    <code>fragmentStoresAndAtomics</code></a> feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-fragment stage <strong>must</strong> be decorated with the <code>NonWritable</code> decoration</p>
+    If the <a href="../chapters/features.html#features-fragmentStoresAndAtomics" class="xref page">    <code>fragmentStoresAndAtomics</code></a> feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the fragment stage <strong>must</strong> be decorated
+    with the <code>NonWritable</code> decoration</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-NonWritable-06341" href="#VUID-RuntimeSpirv-NonWritable-06341"></a> <span class="vuid">VUID-RuntimeSpirv-NonWritable-06341</span><br>
 
-If the <a href="../chapters/features.html#features-vertexPipelineStoresAndAtomics" class="xref page">    <code>vertexPipelineStoresAndAtomics</code></a> feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-vertex, tessellation, and geometry stages <strong>must</strong> be decorated with the
-<code>NonWritable</code> decoration</p>
+    If the <a href="../chapters/features.html#features-vertexPipelineStoresAndAtomics" class="xref page">    <code>vertexPipelineStoresAndAtomics</code></a> feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the vertex, tessellation, and geometry
+    stages <strong>must</strong> be decorated with the <code>NonWritable</code> decoration</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-None-06342" href="#VUID-RuntimeSpirv-None-06342"></a> <span class="vuid">VUID-RuntimeSpirv-None-06342</span><br>
@@ -6826,7 +6833,7 @@ sign.
 If the infinitely precise result of the operation is not mathematically
 defined then the value returned is <strong>undefined</strong>.</p>
 </div>
-<div class="paragraph">
+<div id="spirvenv-inherited-from" class="paragraph">
 <div class="title">Inherited From &#8230;&#8203;</div>
 <p>Where an operation&#8217;s precision is described as being inherited from a
 formula, the result returned <strong>must</strong> be at least as accurate as the result of
@@ -7737,7 +7744,7 @@ Type-Declaration Instruction, Bit Width, and Signedness from above.</p>
 <p>SPIR-V <code>Image</code> <code>Dim</code> values are compatible with <a href="../chapters/resources.html#VkImageView" class="xref page">VkImageView</a>
 <code>viewType</code> values as defined below:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="spirvenv-spir-v-and-vulkan-imageview-dimension-compatibility-table" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 5. SPIR-V and Vulkan ImageView Dimension Compatibility</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -7777,7 +7784,7 @@ Type-Declaration Instruction, Bit Width, and Signedness from above.</p>
 <p>SPIR-V <code>Image</code> <code>Format</code> values are compatible with <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a>
 values as defined below:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="spirvenv-spir-v-and-vulkan-image-format-compatibility-table" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 6. SPIR-V and Vulkan Image Format Compatibility</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -7982,7 +7989,7 @@ matrix multiplication.</p>
 <p>SPIR-V Tensor <code>Element</code> <code>Type</code> values are compatible with
 <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> values as defined below:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="spirvenv-spir-v-tensor-element-type-and-vulkan-format-compatibility-table" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 7. SPIR-V Tensor Element Type and Vulkan Format Compatibility</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -8000,8 +8007,20 @@ matrix multiplication.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_BOOL_ARM</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 8 Float8E4M3EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 8 Float8E5M2EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 16</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SFLOAT</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 16 BFloat16KHR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 32</code></p></td>

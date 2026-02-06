@@ -60,7 +60,8 @@ We’re going to use these types to specify the position and color vectors.
 
 Create a new structure called `Vertex` with the two attributes that we’re going to use in the vertex shader inside it:
 
-struct Vertex {
+struct Vertex
+{
     glm::vec2 pos;
     glm::vec3 color;
 };
@@ -80,7 +81,7 @@ This is known as *interleaving* vertex attributes.
 The next step is to tell Vulkan how to pass this data format to the vertex shader once it’s been uploaded into GPU memory.
 There are two types of structures needed to convey this information.
 
-The first structure is `VkVertexInputBindingDescription` and we’ll add a member function to the `Vertex` struct to populate it with the right data.
+The first structure is `vk::VertexInputBindingDescription` and we’ll add a member function to the `Vertex` struct to populate it with the right data.
 
 struct Vertex {
     glm::vec2 pos;
@@ -99,14 +100,14 @@ The `binding` parameter specifies the index of the binding in the array of bindi
 The `stride` parameter specifies the number of bytes from one entry to the next, and the `inputRate` parameter can have one of the following values:
 
 * 
-`VK_VERTEX_INPUT_RATE_VERTEX`: Move to the next data entry after each vertex
+`vk::VertexInputRate::eVertex`  : Move to the next data entry after each vertex
 
 * 
-`VK_VERTEX_INPUT_RATE_INSTANCE`: Move to the next data entry after each instance
+`vk::VertexInputRate::eInstance`: Move to the next data entry after each instance
 
 We’re not going to use instanced rendering, so we’ll stick to per-vertex data.
 
-The second structure that describes how to handle vertex input is `VkVertexInputAttributeDescription`.
+The second structure that describes how to handle vertex input is `vk::VertexInputAttributeDescription`.
 We’re going to add another helper function to `Vertex` to fill in these structs.
 
 #include 
@@ -133,33 +134,31 @@ A bit confusingly, the formats are specified using the same enumeration as color
 The following shader types and formats are commonly used together:
 
 * 
-`float`: `VK_FORMAT_R32_SFLOAT`
+`float` : `vk::Format::eR32Sfloat`
 
 * 
-`float2`: `VK_FORMAT_R32G32_SFLOAT`
+`float2`: `vk::Format::eR32G32Sfloat`
 
 * 
-`float3`: `VK_FORMAT_R32G32B32_SFLOAT`
+`float3`: `vk::Format::eR32G32B32Sfloat`
 
 * 
-`float4`: `VK_FORMAT_R32G32B32A32_SFLOAT`
+`float4`: `vk::Format::eR32G32B32A32Sfloat`
 
 As you can see, you should use the format where the amount of color channels matches the number of components in the shader data type.
 It is allowed to use more channels than the number of components in the shader, but they will be silently discarded.
 If the number of channels is lower than the number of components, then the BGA components will use default values of `(0, 0, 1)`.
-The color type (`SFLOAT`, `UINT`, `SINT`) and bit width should also match the type of the shader input.
+The color type (`Sfloat`, `Uint`, `Sint`) and bit width should also match the type of the shader input.
 See the following examples:
 
 * 
-`int2`: `VK_FORMAT_R32G32_SINT`, a 2-component vector of 32-bit signed
-integers
+`int2`  : `vk::Format::eR32G32Sint`, a 2-component vector of 32-bit signed integers
 
 * 
-`uint4`: `VK_FORMAT_R32G32B32A32_UINT`, a 4-component vector of 32-bit
-unsigned integers
+`uint4` : `vk::Format::eR32G32B32A32Uint`, a 4-component vector of 32-bit unsigned integers
 
 * 
-`double`: `VK_FORMAT_R64_SFLOAT`, a double-precision (64-bit) float
+`double`: `vk::Format::eR64Sfloat`, a double-precision (64-bit) float
 
 The `format` parameter implicitly defines the byte size of attribute data and the `offset` parameter has specified the number of bytes since the start of the per-vertex data to read from.
 The binding is loading one `Vertex` at a time and the position attribute (`pos`) is at an offset of `0` bytes from the beginning of this struct.
@@ -170,16 +169,17 @@ The color attribute is described in much the same way.
 We now need to set up the graphics pipeline to accept vertex data in this format by referencing the structures in `createGraphicsPipeline`.
 Find the `vertexInputInfo` struct and modify it to reference the two descriptions:
 
-auto bindingDescription = Vertex::getBindingDescription();
-auto attributeDescriptions = Vertex::getAttributeDescriptions();
-vk::PipelineVertexInputStateCreateInfo vertexInputInfo {  .vertexBindingDescriptionCount =1, .pVertexBindingDescriptions = &bindingDescription,
-    .vertexAttributeDescriptionCount = attributeDescriptions.size(), .pVertexAttributeDescriptions = attributeDescriptions.data() };
+auto                                   bindingDescription    = Vertex::getBindingDescription();
+auto                                   attributeDescriptions = Vertex::getAttributeDescriptions();
+vk::PipelineVertexInputStateCreateInfo vertexInputInfo{ .vertexBindingDescriptionCount   = 1,
+                                                        .pVertexBindingDescriptions      = &bindingDescription,
+                                                        .vertexAttributeDescriptionCount = static_cast( attributeDescriptions.size() ),
+                                                        .pVertexAttributeDescriptions    = attributeDescriptions.data() };
 
 The pipeline is now ready to accept vertex data in the format of the `vertices` container and pass it on to our vertex shader.
-If you run the program now with validation layers enabled, you’ll see that it complains that there is no vertex buffer bound to the binding.
 The [next step](01_Vertex_buffer_creation.html) is to create a vertex buffer and move the vertex data to it so the GPU is able to access it.
 
-[C++ code](../_attachments/18_vertex_input.cpp) /
-[slang shader](../_attachments/18_shader_vertexbuffer.slang) /
-[GLSL Vertex shader](../_attachments/18_shader_vertexbuffer.vert) /
-[GLSL Fragment shader](../_attachments/18_shader_vertexbuffer.frag)
+[C++ code](../_attachments/19_vertex_buffer.cpp) /
+[slang shader](../_attachments/19_shader_vertexbuffer.slang) /
+[GLSL Vertex shader](../_attachments/19_shader_vertexbuffer.vert) /
+[GLSL Fragment shader](../_attachments/19_shader_vertexbuffer.frag)

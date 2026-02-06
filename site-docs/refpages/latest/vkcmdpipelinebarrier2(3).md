@@ -67,11 +67,12 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](VkRenderPass.html) object, the render pass **must** have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) if this command does not, does not
-include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) if this command does not, and
-has [synchronization scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) and
-[access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) that are
-all supersets of the scopes defined in this command
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) if this command does not,
+does not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) if this command does
+not,
+and has [synchronization scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
+and [access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) that
+are all supersets of the scopes defined in this command
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178
@@ -89,37 +90,6 @@ barrier included in this command **must** be an attachment used in the
 current subpass both as an input attachment, and as either a color,
 color resolve,
 or depth/stencil attachment
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-image-09373) VUID-vkCmdPipelineBarrier2-image-09373
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance using a
-[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
-memory barrier is a color resolve attachment, the corresponding color
-attachment **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance using a
-[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
-memory barrier is a color resolve attachment, it **must** have been created
-with a non-zero [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat`
-value
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-oldLayout-01181) VUID-vkCmdPipelineBarrier2-oldLayout-01181
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance, the
-`oldLayout` and `newLayout` members of any image memory barrier
-included in this command **must** be equal
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182) VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance, the
-`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
-memory barrier included in this command **must** be equal
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07890) VUID-vkCmdPipelineBarrier2-None-07890
@@ -209,6 +179,37 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](vkCmdBeginRendering.html), this command **must** only specify
 [framebuffer-space stages](../../../../spec/latest/chapters/synchronization.html#synchronization-framebuffer-regions) in
 `srcStageMask` and `dstStageMask`
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-image-09373) VUID-vkCmdPipelineBarrier2-image-09373
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
+memory barrier is a color resolve attachment, it **must** have been created
+with a non-zero [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat`
+value
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-oldLayout-01181) VUID-vkCmdPipelineBarrier2-oldLayout-01181
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance, the
+`oldLayout` and `newLayout` members of any image memory barrier
+included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182) VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance, the
+`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
+memory barrier included in this command **must** be equal
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-synchronization2-03848) VUID-vkCmdPipelineBarrier2-synchronization2-03848

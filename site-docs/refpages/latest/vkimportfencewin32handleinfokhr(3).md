@@ -100,13 +100,13 @@ If `handle` is not `NULL`, `name` **must** be `NULL`
 [](#VUID-VkImportFenceWin32HandleInfoKHR-handle-01539) VUID-VkImportFenceWin32HandleInfoKHR-handle-01539
 
 If `handle` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in [external    fence handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-fence-handle-types-compatibility)
+`handleType` in [    external fence handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-fence-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-name-01540) VUID-VkImportFenceWin32HandleInfoKHR-name-01540
 
 If `name` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in [external    fence handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-fence-handle-types-compatibility)
+`handleType` in [    external fence handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-fence-handle-types-compatibility)
 
 Valid Usage (Implicit)
 

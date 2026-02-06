@@ -141,17 +141,32 @@ descriptor binding used to create `layout` **must** have a
 [](#VUID-VkDataGraphPipelineCreateInfoARM-None-11840) VUID-VkDataGraphPipelineCreateInfoARM-None-11840
 
     If a [VkDataGraphPipelineIdentifierCreateInfoARM](VkDataGraphPipelineIdentifierCreateInfoARM.html)
-or [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
+or a [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
     structure is included in the `pNext` chain, then `flags` **must**
     contain [VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits2.html)
 
-[](#VUID-VkDataGraphPipelineCreateInfoARM-None-11841) VUID-VkDataGraphPipelineCreateInfoARM-None-11841
+[](#VUID-VkDataGraphPipelineCreateInfoARM-None-12363) VUID-VkDataGraphPipelineCreateInfoARM-None-12363
 
     If a [VkDataGraphPipelineIdentifierCreateInfoARM](VkDataGraphPipelineIdentifierCreateInfoARM.html)
-or [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
+or a [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
     structure is included in the `pNext` chain, then
-    `resourceInfoCount` **must** be 0 and `pResourceInfos` **must** be
-    `NULL`
+    `resourceInfoCount` **must** be 0
+
+[](#VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-12364) VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-12364
+
+If `resourceInfoCount` is equal to 0, then `pResourceInfos`
+**must** equal `NULL`
+
+[](#VUID-VkDataGraphPipelineCreateInfoARM-None-12365) VUID-VkDataGraphPipelineCreateInfoARM-None-12365
+
+    If
+neither
+    a [VkDataGraphPipelineIdentifierCreateInfoARM](VkDataGraphPipelineIdentifierCreateInfoARM.html)
+nor a [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
+    structure
+are
+    included in the `pNext` chain, then `resourceInfoCount` **must** be
+    greater than 0
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-dataGraphShaderModule-09886) VUID-VkDataGraphPipelineCreateInfoARM-dataGraphShaderModule-09886
 
@@ -252,12 +267,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-pResourceInfos-parameter) VUID-VkDataGraphPipelineCreateInfoARM-pResourceInfos-parameter
 
- `pResourceInfos` **must** be a valid pointer to an array of `resourceInfoCount` valid [VkDataGraphPipelineResourceInfoARM](VkDataGraphPipelineResourceInfoARM.html) structures
-
-* 
-[](#VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-arraylength) VUID-VkDataGraphPipelineCreateInfoARM-resourceInfoCount-arraylength
-
- `resourceInfoCount` **must** be greater than `0`
+ If `resourceInfoCount` is not `0`, `pResourceInfos` **must** be a valid pointer to an array of `resourceInfoCount` valid [VkDataGraphPipelineResourceInfoARM](VkDataGraphPipelineResourceInfoARM.html) structures
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkDataGraphPipelineResourceInfoARM](VkDataGraphPipelineResourceInfoARM.html), [VkPipelineCreateFlags2](VkPipelineCreateFlags2.html), [VkPipelineLayout](VkPipelineLayout.html), [VkStructureType](VkStructureType.html), [vkCreateDataGraphPipelinesARM](vkCreateDataGraphPipelinesARM.html)
 

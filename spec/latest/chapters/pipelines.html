@@ -2330,11 +2330,13 @@ in the shader <strong>must</strong> be one of:</p>
 <li>
 <p><a id="VUID-VkPipelineShaderStageCreateInfo-pNext-11378" href="#VUID-VkPipelineShaderStageCreateInfo-pNext-11378"></a> <span class="vuid">VUID-VkPipelineShaderStageCreateInfo-pNext-11378</span><br>
 
-If the <code>pNext</code> chain specifies a <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">    descriptor mapping</a> using
-<a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
-<a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
-or <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, the
-<code>OpArrayLength</code> instruction <strong>must</strong> not be used on that resource</p>
+    If the <code>pNext</code> chain specifies a <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">    descriptor mapping</a> using
+    <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
+    <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
+    or <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, the
+    <code>OpArrayLength</code>
+or <code>OpUntypedArrayLengthKHR</code>
+    instruction <strong>must</strong> not be used on that resource</p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineShaderStageCreateInfo-pNext-11399" href="#VUID-VkPipelineShaderStageCreateInfo-pNext-11399"></a> <span class="vuid">VUID-VkPipelineShaderStageCreateInfo-pNext-11399</span><br>
@@ -8255,6 +8257,48 @@ If <a href="#VkPipelineCreateFlags2CreateInfoKHR">VkPipelineCreateFlags2CreateIn
 include <a href="#VkPipelineCreateFlagBits2KHR">VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT</a>, all
 libraries linked to this pipeline <strong>must</strong> also not have that flag set</p>
 </li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12355" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12355"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12355</span><br>
+
+If <code>flags</code> includes
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12356" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12356"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12356</span><br>
+
+If <code>flags</code> does not include
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also not have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12357" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12357"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12357</span><br>
+
+If <code>flags</code> includes
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a>, all libraries linked
+to this pipeline <strong>must</strong> also have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12358" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12358"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12358</span><br>
+
+If <code>flags</code> does not include
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a>, all libraries linked
+to this pipeline <strong>must</strong> also not have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12359" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12359"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12359</span><br>
+
+If <code>flags</code> includes
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a>, all libraries linked
+to this pipeline <strong>must</strong> also have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-flags-12360" href="#VUID-VkGraphicsPipelineCreateInfo-flags-12360"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-flags-12360</span><br>
+
+If <code>flags</code> does not include
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a>, all libraries linked
+to this pipeline <strong>must</strong> also not have that flag set</p>
+</li>
 </ul>
 </div>
 </div>
@@ -11173,6 +11217,20 @@ to this pipeline <strong>must</strong> also have that flag set</p>
 If <a href="#VkPipelineCreateFlags2CreateInfoKHR">VkPipelineCreateFlags2CreateInfoKHR</a>::<code>flags</code> does not
 include <a href="#VkPipelineCreateFlagBits2KHR">VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT</a>, all
 libraries linked to this pipeline <strong>must</strong> also not have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361" href="#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361</span><br>
+
+If <code>flags</code> includes
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362" href="#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362</span><br>
+
+If <code>flags</code> does not include
+<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also not have that flag set</p>
 </li>
 <li>
 <p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-None-11369" href="#VUID-VkRayTracingPipelineCreateInfoKHR-None-11369"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-None-11369</span><br>
@@ -16072,46 +16130,6 @@ If any library in <code>pLibraries</code> was created with a shader stage with
 <code>identifierSize</code> not equal to 0, the pipeline <strong>must</strong> be created with
 the <a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT</a> flag
 set</p>
-</li>
-<li>
-<p><a id="VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096" href="#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096"></a> <span class="vuid">VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096</span><br>
-
-If any element of <code>pLibraries</code> was created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all elements <strong>must</strong>
-have been created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a></p>
-</li>
-<li>
-<p><a id="VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404" href="#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404"></a> <span class="vuid">VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404</span><br>
-
-If <code>pipeline</code> is being created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a>, every element of
-<code>pLibraries</code> <strong>must</strong> have been created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a></p>
-</li>
-<li>
-<p><a id="VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405" href="#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405"></a> <span class="vuid">VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405</span><br>
-
-If <code>pipeline</code> is being created without
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a>, every element of
-<code>pLibraries</code> <strong>must</strong> have been created without
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT</a></p>
-</li>
-<li>
-<p><a id="VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406" href="#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406"></a> <span class="vuid">VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406</span><br>
-
-If <code>pipeline</code> is being created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a>, every element of
-<code>pLibraries</code> <strong>must</strong> have been created with
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a></p>
-</li>
-<li>
-<p><a id="VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407" href="#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407"></a> <span class="vuid">VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407</span><br>
-
-If <code>pipeline</code> is being created without
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a>, every element of
-<code>pLibraries</code> <strong>must</strong> have been created without
-<a href="#VkPipelineCreateFlagBits">VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT</a></p>
 </li>
 </ul>
 </div>

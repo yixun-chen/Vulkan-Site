@@ -782,7 +782,8 @@ We&#8217;re going to use these types to specify the position and color vectors.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">struct Vertex {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">struct Vertex
+{
     glm::vec2 pos;
     glm::vec3 color;
 };</code></pre>
@@ -815,7 +816,7 @@ This is known as <em>interleaving</em> vertex attributes.</p>
 There are two types of structures needed to convey this information.</p>
 </div>
 <div class="paragraph">
-<p>The first structure is <code>VkVertexInputBindingDescription</code> and we&#8217;ll add a member function to the <code>Vertex</code> struct to populate it with the right data.</p>
+<p>The first structure is <code>vk::VertexInputBindingDescription</code> and we&#8217;ll add a member function to the <code>Vertex</code> struct to populate it with the right data.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -841,10 +842,10 @@ The <code>stride</code> parameter specifies the number of bytes from one entry t
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_VERTEX_INPUT_RATE_VERTEX</code>: Move to the next data entry after each vertex</p>
+<p><code>vk::VertexInputRate::eVertex</code>  : Move to the next data entry after each vertex</p>
 </li>
 <li>
-<p><code>VK_VERTEX_INPUT_RATE_INSTANCE</code>: Move to the next data entry after each instance</p>
+<p><code>vk::VertexInputRate::eInstance</code>: Move to the next data entry after each instance</p>
 </li>
 </ul>
 </div>
@@ -857,7 +858,7 @@ The <code>stride</code> parameter specifies the number of bytes from one entry t
 <h2 id="_attribute_descriptions"><a class="anchor" href="#_attribute_descriptions"></a>Attribute descriptions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The second structure that describes how to handle vertex input is <code>VkVertexInputAttributeDescription</code>.
+<p>The second structure that describes how to handle vertex input is <code>vk::VertexInputAttributeDescription</code>.
 We&#8217;re going to add another helper function to <code>Vertex</code> to fill in these structs.</p>
 </div>
 <div class="listingblock">
@@ -892,16 +893,16 @@ The following shader types and formats are commonly used together:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>float</code>: <code>VK_FORMAT_R32_SFLOAT</code></p>
+<p><code>float</code> : <code>vk::Format::eR32Sfloat</code></p>
 </li>
 <li>
-<p><code>float2</code>: <code>VK_FORMAT_R32G32_SFLOAT</code></p>
+<p><code>float2</code>: <code>vk::Format::eR32G32Sfloat</code></p>
 </li>
 <li>
-<p><code>float3</code>: <code>VK_FORMAT_R32G32B32_SFLOAT</code></p>
+<p><code>float3</code>: <code>vk::Format::eR32G32B32Sfloat</code></p>
 </li>
 <li>
-<p><code>float4</code>: <code>VK_FORMAT_R32G32B32A32_SFLOAT</code></p>
+<p><code>float4</code>: <code>vk::Format::eR32G32B32A32Sfloat</code></p>
 </li>
 </ul>
 </div>
@@ -909,21 +910,19 @@ The following shader types and formats are commonly used together:</p>
 <p>As you can see, you should use the format where the amount of color channels matches the number of components in the shader data type.
 It is allowed to use more channels than the number of components in the shader, but they will be silently discarded.
 If the number of channels is lower than the number of components, then the BGA components will use default values of <code>(0, 0, 1)</code>.
-The color type (<code>SFLOAT</code>, <code>UINT</code>, <code>SINT</code>) and bit width should also match the type of the shader input.
+The color type (<code>Sfloat</code>, <code>Uint</code>, <code>Sint</code>) and bit width should also match the type of the shader input.
 See the following examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>int2</code>: <code>VK_FORMAT_R32G32_SINT</code>, a 2-component vector of 32-bit signed
-integers</p>
+<p><code>int2</code>  : <code>vk::Format::eR32G32Sint</code>, a 2-component vector of 32-bit signed integers</p>
 </li>
 <li>
-<p><code>uint4</code>: <code>VK_FORMAT_R32G32B32A32_UINT</code>, a 4-component vector of 32-bit
-unsigned integers</p>
+<p><code>uint4</code> : <code>vk::Format::eR32G32B32A32Uint</code>, a 4-component vector of 32-bit unsigned integers</p>
 </li>
 <li>
-<p><code>double</code>: <code>VK_FORMAT_R64_SFLOAT</code>, a double-precision (64-bit) float</p>
+<p><code>double</code>: <code>vk::Format::eR64Sfloat</code>, a double-precision (64-bit) float</p>
 </li>
 </ul>
 </div>
@@ -946,22 +945,23 @@ Find the <code>vertexInputInfo</code> struct and modify it to reference the two 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto bindingDescription = Vertex::getBindingDescription();
-auto attributeDescriptions = Vertex::getAttributeDescriptions();
-vk::PipelineVertexInputStateCreateInfo vertexInputInfo {  .vertexBindingDescriptionCount =1, .pVertexBindingDescriptions = &amp;bindingDescription,
-    .vertexAttributeDescriptionCount = attributeDescriptions.size(), .pVertexAttributeDescriptions = attributeDescriptions.data() };</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto                                   bindingDescription    = Vertex::getBindingDescription();
+auto                                   attributeDescriptions = Vertex::getAttributeDescriptions();
+vk::PipelineVertexInputStateCreateInfo vertexInputInfo{ .vertexBindingDescriptionCount   = 1,
+                                                        .pVertexBindingDescriptions      = &amp;bindingDescription,
+                                                        .vertexAttributeDescriptionCount = static_cast&lt;uint32_t&gt;( attributeDescriptions.size() ),
+                                                        .pVertexAttributeDescriptions    = attributeDescriptions.data() };</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The pipeline is now ready to accept vertex data in the format of the <code>vertices</code> container and pass it on to our vertex shader.
-If you run the program now with validation layers enabled, you&#8217;ll see that it complains that there is no vertex buffer bound to the binding.
 The <a href="01_Vertex_buffer_creation.html" class="xref page">next step</a> is to create a vertex buffer and move the vertex data to it so the GPU is able to access it.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/18_vertex_input.cpp">C&#43;&#43; code</a> /
-<a href="../_attachments/18_shader_vertexbuffer.slang">slang shader</a> /
-<a href="../_attachments/18_shader_vertexbuffer.vert">GLSL Vertex shader</a> /
-<a href="../_attachments/18_shader_vertexbuffer.frag">GLSL Fragment shader</a></p>
+<p><a href="../_attachments/19_vertex_buffer.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/19_shader_vertexbuffer.slang">slang shader</a> /
+<a href="../_attachments/19_shader_vertexbuffer.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/19_shader_vertexbuffer.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>

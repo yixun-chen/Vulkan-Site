@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -12675,7 +12702,7 @@ that will be written to for each descriptor.</p>
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Each descriptor will be written to <code>pDescriptors</code>[i]&#8594;address where
+<p>Each descriptor will be written to <code>pDescriptors</code>[i].address where
 <span class="eq">i</span> is the index of its create info in <code>pResources</code>.</p>
 </div>
 <div class="paragraph">

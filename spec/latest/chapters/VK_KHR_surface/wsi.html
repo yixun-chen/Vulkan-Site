@@ -3611,6 +3611,205 @@ currently reserved for future use.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_ubm_platform"><a class="anchor" href="#_ubm_platform"></a>UBM Platform</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To create a <code>VkSurfaceKHR</code> object for a UBM surface, call:</p>
+</div>
+<div id="vkCreateUbmSurfaceSEC" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_SEC_ubm_surface
+VkResult vkCreateUbmSurfaceSEC(
+    VkInstance                                  instance,
+    const VkUbmSurfaceCreateInfoSEC*            pCreateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkSurfaceKHR*                               pSurface);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>instance</code> is the instance to associate the surface with.</p>
+</li>
+<li>
+<p><code>pCreateInfo</code> is a pointer to a <a href="#VkUbmSurfaceCreateInfoSEC">VkUbmSurfaceCreateInfoSEC</a>
+structure containing parameters affecting the creation of the surface
+object.</p>
+</li>
+<li>
+<p><code>pAllocator</code> is the allocator used for host memory allocated for the
+surface object when there is no more specific allocator available (see
+<a href="../memory.html#memory-allocation" class="xref page">Memory Allocation</a>).</p>
+</li>
+<li>
+<p><code>pSurface</code> is a pointer to a <a href="#VkSurfaceKHR">VkSurfaceKHR</a> handle in which the
+created surface object is returned.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCreateUbmSurfaceSEC-instance-parameter" href="#VUID-vkCreateUbmSurfaceSEC-instance-parameter"></a> <span class="vuid">VUID-vkCreateUbmSurfaceSEC-instance-parameter</span><br>
+ <code>instance</code> <strong>must</strong> be a valid <a href="../initialization.html#VkInstance" class="xref page">VkInstance</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-vkCreateUbmSurfaceSEC-pCreateInfo-parameter" href="#VUID-vkCreateUbmSurfaceSEC-pCreateInfo-parameter"></a> <span class="vuid">VUID-vkCreateUbmSurfaceSEC-pCreateInfo-parameter</span><br>
+ <code>pCreateInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkUbmSurfaceCreateInfoSEC">VkUbmSurfaceCreateInfoSEC</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-vkCreateUbmSurfaceSEC-pAllocator-parameter" href="#VUID-vkCreateUbmSurfaceSEC-pAllocator-parameter"></a> <span class="vuid">VUID-vkCreateUbmSurfaceSEC-pAllocator-parameter</span><br>
+ If <code>pAllocator</code> is not <code>NULL</code>, <code>pAllocator</code> <strong>must</strong> be a valid pointer to a valid <a href="../memory.html#VkAllocationCallbacks" class="xref page">VkAllocationCallbacks</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-vkCreateUbmSurfaceSEC-pSurface-parameter" href="#VUID-vkCreateUbmSurfaceSEC-pSurface-parameter"></a> <span class="vuid">VUID-vkCreateUbmSurfaceSEC-pSurface-parameter</span><br>
+ <code>pSurface</code> <strong>must</strong> be a valid pointer to a <a href="#VkSurfaceKHR">VkSurfaceKHR</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-successcodes" class="xref page">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-errorcodes" class="xref page">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
+</li>
+<li>
+<p><a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
+</li>
+<li>
+<p><a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
+</li>
+<li>
+<p><a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>VkUbmSurfaceCreateInfoSEC</code> structure is defined as:</p>
+</div>
+<div id="VkUbmSurfaceCreateInfoSEC" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_SEC_ubm_surface
+typedef struct VkUbmSurfaceCreateInfoSEC {
+    VkStructureType               sType;
+    const void*                   pNext;
+    VkUbmSurfaceCreateFlagsSEC    flags;
+    struct ubm_device*            ubm_device;
+    struct ubm_surface*           ubm_surface;
+} VkUbmSurfaceCreateInfoSEC;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> is a <a href="../fundamentals.html#VkStructureType" class="xref page">VkStructureType</a> value identifying this structure.</p>
+</li>
+<li>
+<p><code>pNext</code> is <code>NULL</code> or a pointer to a structure extending this
+structure.</p>
+</li>
+<li>
+<p><code>flags</code> is reserved for future use.</p>
+</li>
+<li>
+<p><code>ubm_device</code> is a pointer to a <code>ubm_device</code> to associate the
+surface with.</p>
+</li>
+<li>
+<p><code>ubm_surface</code> is a pointer to a <code>ubm_surface</code> to associate the
+surface with.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366</span><br>
+
+<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+</li>
+<li>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367</span><br>
+
+<code>ubm_surface</code> <strong>must</strong> point to a valid UBM <code>ubm_surface</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-sType-sType" href="#VUID-VkUbmSurfaceCreateInfoSEC-sType-sType"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-sType-sType</span><br>
+ <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC</a></p>
+</li>
+<li>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-pNext-pNext" href="#VUID-VkUbmSurfaceCreateInfoSEC-pNext-pNext"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-pNext-pNext</span><br>
+ <code>pNext</code> <strong>must</strong> be <code>NULL</code></p>
+</li>
+<li>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-flags-zerobitmask" href="#VUID-VkUbmSurfaceCreateInfoSEC-flags-zerobitmask"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-flags-zerobitmask</span><br>
+ <code>flags</code> <strong>must</strong> be <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="VkUbmSurfaceCreateFlagsSEC" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_SEC_ubm_surface
+typedef VkFlags VkUbmSurfaceCreateFlagsSEC;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>VkUbmSurfaceCreateFlagsSEC</code> is a bitmask type for setting a mask, but
+is currently reserved for future use.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_platform_independent_information"><a class="anchor" href="#_platform_independent_information"></a>Platform-Independent Information</h3>
 <div class="paragraph">
 <p>Once created, <code>VkSurfaceKHR</code> objects <strong>can</strong> be used in this and other
@@ -7906,6 +8105,82 @@ As a result there is no Open Harmony OS platform-specific query for these
 capabilities.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="platformQuerySupport_ubm"><a class="anchor" href="#platformQuerySupport_ubm"></a>UBM Platform</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To determine whether a queue family of a physical device supports
+presentation to a UBM compositor, call:</p>
+</div>
+<div id="vkGetPhysicalDeviceUbmPresentationSupportSEC" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_SEC_ubm_surface
+VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
+    VkPhysicalDevice                            physicalDevice,
+    uint32_t                                    queueFamilyIndex,
+    struct ubm_device*                          ubm_device);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>physicalDevice</code> is the physical device.</p>
+</li>
+<li>
+<p><code>queueFamilyIndex</code> is the queue family index.</p>
+</li>
+<li>
+<p><code>ubm_device</code> is a pointer to the <code>ubm_device</code> associated with a
+UBM compositor.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This platform-specific function <strong>can</strong> be called prior to creating a surface.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368</span><br>
+
+<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+</li>
+<li>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369</span><br>
+
+<code>queueFamilyIndex</code> <strong>must</strong> be less than
+<code>pQueueFamilyPropertyCount</code> returned by
+<code>vkGetPhysicalDeviceQueueFamilyProperties</code> for the given
+<code>physicalDevice</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-physicalDevice-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-physicalDevice-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-physicalDevice-parameter</span><br>
+ <code>physicalDevice</code> <strong>must</strong> be a valid <a href="../devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter</span><br>
+ <code>ubm_device</code> <strong>must</strong> be a valid pointer to a <code>ubm_device</code> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -10800,7 +11075,7 @@ The A channel is always interpreted as linearly encoded.</p>
 <p>This extension defines enums for <a href="#VkColorSpaceKHR">VkColorSpaceKHR</a> that correspond to
 the following color spaces:</p>
 </div>
-<table id="VK_EXT_swapchain_colorspace-table" class="tableblock frame-all grid-all stretch">
+<table id="wsi-color-spaces-and-attributes-table" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Color Spaces and Attributes</caption>
 <colgroup>
 <col style="width: 16.6666%;">
@@ -11349,7 +11624,7 @@ not timed correctly.</p>
 swapchain created for a surface <strong>may</strong> differ depending on the presentation
 mode, and can be determined as per the table below:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="wsi-presentable-image-usage-queries-table" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Presentable Image Usage Queries</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -12956,9 +13231,9 @@ each time domain.</p>
 <code>pTimeDomains</code> is <code>NULL</code> and <code>pTimeDomainIds</code> is <code>NULL</code>, then the
 number of time domains supported for the given <code>swapchain</code> is returned
 in <code>timeDomainCount</code>.
-Otherwise, <code>timeDomainCount</code> <strong>must</strong> specify the number of elements in the
-<code>pTimeDomains</code>, <code>pTimeDomainIds</code>, or both arrays, and on return is
-overwritten with the number of values actually written to either array.</p>
+Otherwise, <code>timeDomainCount</code> <strong>must</strong> specify the number of elements in
+<code>pTimeDomains</code> and <code>pTimeDomainIds</code>, and on return is overwritten
+with the number of values actually written to each array.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -12978,6 +13253,27 @@ implementation to differentiate opaque time domains of identical scopes.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370" href="#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370"></a> <span class="vuid">VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370</span><br>
+
+<code>pTimeDomains</code> and <code>pTimeDomainIds</code> <strong>must</strong> both be <code>NULL</code> or both
+not be <code>NULL</code></p>
+</li>
+<li>
+<p><a id="VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371" href="#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371"></a> <span class="vuid">VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371</span><br>
+
+If <code>pTimeDomains</code> and <code>pTimeDomainIds</code> are not <code>NULL</code>, then
+<code>timeDomainCount</code> <strong>must</strong> not be zero</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -19079,7 +19375,7 @@ structure.</p>
 </li>
 <li>
 <p><code>swapchainCount</code> is the number of swapchains being presented to the
-<code>vkQueuePresentKHR</code> command.</p>
+<a href="#vkQueuePresentKHR">vkQueuePresentKHR</a> command.</p>
 </li>
 <li>
 <p><code>pPresentIds</code> is <code>NULL</code> or a pointer to an array of <code>uint64_t</code>
@@ -19092,7 +19388,7 @@ the same index in the <a href="#vkQueuePresentKHR">vkQueuePresentKHR</a> call.</
 </div>
 <div class="paragraph">
 <p>For applications to be able to reference specific presentation events queued
-by a call to <code>vkQueuePresentKHR</code>, an identifier needs to be associated
+by a call to <a href="#vkQueuePresentKHR">vkQueuePresentKHR</a>, an identifier needs to be associated
 with them.
 When the <a href="../features.html#features-presentId" class="xref page"><code>presentId</code></a> feature is enabled,
 applications <strong>can</strong> include the <code>VkPresentIdKHR</code> structure in the
@@ -19100,7 +19396,7 @@ applications <strong>can</strong> include the <code>VkPresentIdKHR</code> struct
 identifiers.</p>
 </div>
 <div class="paragraph">
-<p>Each <code>VkSwapchainKHR</code> has a presentId associated with it.
+<p>Each <a href="#VkSwapchainKHR">VkSwapchainKHR</a> has a presentId associated with it.
 This value is initially zero when the <code>VkSwapchainKHR</code> is created.</p>
 </div>
 <div class="paragraph">
@@ -19131,15 +19427,16 @@ presentation of the first pixel in the new image to the user.</p>
 <p><a id="VUID-VkPresentIdKHR-swapchainCount-04998" href="#VUID-VkPresentIdKHR-swapchainCount-04998"></a> <span class="vuid">VUID-VkPresentIdKHR-swapchainCount-04998</span><br>
 
 <code>swapchainCount</code> <strong>must</strong> be the same value as
-<code>VkPresentInfoKHR</code>::<code>swapchainCount</code>, where this
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a>::<code>swapchainCount</code>, where this
 <code>VkPresentIdKHR</code> is in the <code>pNext</code> chain of the
-<code>VkPresentInfoKHR</code> structure</p>
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-VkPresentIdKHR-presentIds-04999" href="#VUID-VkPresentIdKHR-presentIds-04999"></a> <span class="vuid">VUID-VkPresentIdKHR-presentIds-04999</span><br>
 
-Each <code>presentIds</code> entry <strong>must</strong> be greater than any previous
-<code>presentIds</code> entry passed for the associated <code>pSwapchains</code> entry</p>
+Each non-zero entry in <code>presentIds</code> <strong>must</strong> be greater than all
+previously submitted present ids for the associated swapchain in
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a>::<code>pSwapchains</code></p>
 </li>
 </ul>
 </div>
@@ -19174,7 +19471,7 @@ Each <code>presentIds</code> entry <strong>must</strong> be greater than any pre
 <p>When the <a href="../features.html#features-presentWait" class="xref page"><code>presentWait</code></a> feature is enabled, an
 application <strong>can</strong> wait for an image to be presented to the user by first
 specifying a presentId for the target presentation by adding a
-<code>VkPresentIdKHR</code> structure to the <code>pNext</code> chain of the
+<a href="#VkPresentIdKHR">VkPresentIdKHR</a> structure to the <code>pNext</code> chain of the
 <a href="#VkPresentInfoKHR">VkPresentInfoKHR</a> structure and then waiting for that presentation to
 complete by calling:</p>
 </div>
@@ -19210,20 +19507,14 @@ period.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><code>vkWaitForPresentKHR</code> waits for the presentId associated with
-<code>swapchain</code> to be increased in value so that it is at least equal to
-<code>presentId</code>.</p>
-</div>
-<div class="paragraph">
-<p>For <a href="#VkPresentModeKHR">VK_PRESENT_MODE_MAILBOX_KHR</a> (or other present mode where images
-may be replaced in the presentation queue) any wait of this type associated
-with such an image <strong>must</strong> be signaled no later than a wait associated with
-the replacing image would be signaled.</p>
-</div>
-<div class="paragraph">
-<p>When the presentation has completed, the presentId associated with the
-related <code>pSwapchains</code> entry will be increased in value so that it is at
-least equal to the value provided in the <code>VkPresentIdKHR</code> structure.</p>
+<p>The call to <code>vkWaitForPresentKHR</code> will block until either the presentId
+associated with <code>swapchain</code> is greater than or equal to <code>presentId</code>,
+or <code>timeout</code> nanoseconds passes.
+When the swapchain becomes OUT_OF_DATE, the call will either return
+<a href="../fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a> (if the image was delivered to the presentation engine and
+may have been presented to the user) or will return early with status
+<a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DATE_KHR</a> (if the image could not be presented to the
+user).</p>
 </div>
 <div class="paragraph">
 <p>There is no requirement for any precise timing relationship between the
@@ -19233,14 +19524,10 @@ presentation of the first pixel in the next image being presented to the
 user.</p>
 </div>
 <div class="paragraph">
-<p>The call to <code>vkWaitForPresentKHR</code> will block until either the presentId
-associated with <code>swapchain</code> is greater than or equal to <code>presentId</code>,
-or <code>timeout</code> nanoseconds passes.
-When the swapchain becomes OUT_OF_DATE, the call will either return
-<a href="../fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a> (if the image was delivered to the presentation engine and
-may have been presented to the user) or will return early with status
-<a href="../fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DATE_KHR</a> (if the image could not be presented to the
-user).</p>
+<p>For <a href="#VkPresentModeKHR">VK_PRESENT_MODE_MAILBOX_KHR</a> (or other present mode where images
+may be replaced in the presentation queue) any wait of this type associated
+with such an image <strong>must</strong> be signaled no later than a wait associated with
+the replacing image would be signaled.</p>
 </div>
 <div class="paragraph">
 <p>As an exception to the normal rules for objects which are externally
@@ -19387,7 +19674,7 @@ structure.</p>
 </li>
 <li>
 <p><code>swapchainCount</code> is the number of swapchains being presented to the
-<code>vkQueuePresentKHR</code> command.</p>
+<a href="#vkQueuePresentKHR">vkQueuePresentKHR</a> command.</p>
 </li>
 <li>
 <p><code>pPresentIds</code> is <code>NULL</code> or a pointer to an array of uint64_t with
@@ -19400,7 +19687,7 @@ the same index in the <a href="#vkQueuePresentKHR">vkQueuePresentKHR</a> call.</
 </div>
 <div class="paragraph">
 <p>For applications to be able to reference specific presentation events queued
-by a call to <code>vkQueuePresentKHR</code>, an identifier needs to be associated
+by a call to <a href="#vkQueuePresentKHR">vkQueuePresentKHR</a>, an identifier needs to be associated
 with them.</p>
 </div>
 <div class="paragraph">
@@ -19455,15 +19742,16 @@ IDs.</p>
 <p><a id="VUID-VkPresentId2KHR-swapchainCount-10818" href="#VUID-VkPresentId2KHR-swapchainCount-10818"></a> <span class="vuid">VUID-VkPresentId2KHR-swapchainCount-10818</span><br>
 
 <code>swapchainCount</code> <strong>must</strong> be the same value as
-<code>VkPresentInfoKHR</code>::<code>swapchainCount</code>, where this
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a>::<code>swapchainCount</code>, where this
 <code>VkPresentId2KHR</code> is in the <code>pNext</code> chain of the
-<code>VkPresentInfoKHR</code> structure</p>
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-VkPresentId2KHR-presentIds-10819" href="#VUID-VkPresentId2KHR-presentIds-10819"></a> <span class="vuid">VUID-VkPresentId2KHR-presentIds-10819</span><br>
 
-Each <code>presentIds</code> entry <strong>must</strong> be greater than any previous
-<code>presentIds</code> entry passed for the associated <code>pSwapchains</code> entry</p>
+Each non-zero entry in <code>presentIds</code> <strong>must</strong> be greater than all
+previously submitted present ids for the associated swapchain in
+<a href="#VkPresentInfoKHR">VkPresentInfoKHR</a>::<code>pSwapchains</code></p>
 </li>
 <li>
 <p><a id="VUID-VkPresentId2KHR-None-10820" href="#VUID-VkPresentId2KHR-None-10820"></a> <span class="vuid">VUID-VkPresentId2KHR-None-10820</span><br>

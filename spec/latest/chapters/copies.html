@@ -3583,8 +3583,8 @@ interleaved.
 Addressing calculations are thus performed for a different format than the
 base image, according to the aspect, as described in the following table:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 95%;">
-<caption class="title">Table 1. Depth/Stencil Aspect Copy Table</caption>
+<table id="copies-depth-stencil-aspect-copy-table" class="tableblock frame-all grid-all" style="width: 95%;">
+<caption class="title">Table 1. Depth/Stencil Aspect Copy</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9562,16 +9562,8 @@ application from a buffer created with the
  <code>srcCopyFlags</code> <strong>must</strong> be a valid combination of <a href="#VkAddressCopyFlagBitsKHR">VkAddressCopyFlagBitsKHR</a> values</p>
 </li>
 <li>
-<p><a id="VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask" href="#VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask"></a> <span class="vuid">VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask</span><br>
- <code>srcCopyFlags</code> <strong>must</strong> not be <code>0</code></p>
-</li>
-<li>
 <p><a id="VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter" href="#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter"></a> <span class="vuid">VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter</span><br>
  <code>dstCopyFlags</code> <strong>must</strong> be a valid combination of <a href="#VkAddressCopyFlagBitsKHR">VkAddressCopyFlagBitsKHR</a> values</p>
-</li>
-<li>
-<p><a id="VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask" href="#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask"></a> <span class="vuid">VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask</span><br>
- <code>dstCopyFlags</code> <strong>must</strong> not be <code>0</code></p>
 </li>
 </ul>
 </div>
@@ -10341,10 +10333,6 @@ device</p>
 <li>
 <p><a id="VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-parameter" href="#VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-parameter"></a> <span class="vuid">VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-parameter</span><br>
  <code>srcCopyFlags</code> <strong>must</strong> be a valid combination of <a href="#VkAddressCopyFlagBitsKHR">VkAddressCopyFlagBitsKHR</a> values</p>
-</li>
-<li>
-<p><a id="VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask" href="#VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask"></a> <span class="vuid">VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask</span><br>
- <code>srcCopyFlags</code> <strong>must</strong> not be <code>0</code></p>
 </li>
 <li>
 <p><a id="VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter" href="#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter"></a> <span class="vuid">VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter</span><br>

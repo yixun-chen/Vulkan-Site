@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -12923,9 +12950,8 @@ the core functionality.</p>
 per-memory-handle-type basis?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: This is because some handle types are based on
-OS-native objects that have far more limited capabilities than the very
-generic Vulkan memory objects.
+<p>This is because some handle types are based on OS-native objects that have
+far more limited capabilities than the very generic Vulkan memory objects.
 Not all memory handle types can name memory objects that support 3D images,
 for example.
 Some handle types cannot even support the deferred image and memory binding
@@ -12938,7 +12964,7 @@ importing the memory object.</p>
 type bits that support the given handle type?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: No.
+<p>No.
 The memory types that do not support the handle types will simply be
 filtered out of the results returned by <a href="vkGetImageMemoryRequirements.html" class="xref page">vkGetImageMemoryRequirements</a>
 and <a href="vkGetBufferMemoryRequirements.html" class="xref page">vkGetBufferMemoryRequirements</a> when a set of handle types was
@@ -12948,7 +12974,7 @@ specified at image or buffer creation time.</p>
 <p>3) Should the non-opaque handle types be moved to their own extension?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: Perhaps.
+<p>Perhaps.
 However, defining the handle type bits does very little and does not require
 any platform-specific types on its own, and it is easier to maintain the
 bitfield values in a single extension for now.
@@ -12960,7 +12986,7 @@ the core spec and some in extensions</p>
 <p>4) Do we need a <code>D3D11_TILEPOOL</code> type?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: No.
+<p>No.
 This is technically possible, but the synchronization is awkward.
 D3D11 surfaces must be synchronized using shared mutexes, and these
 synchronization primitives are shared by the entire memory object, so D3D11
@@ -12972,15 +12998,15 @@ difficult to synchronize.</p>
 &#8220;GLOBAL_SHARE&#8221; handles?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: KMT, simply because it is more concise.</p>
+<p>KMT, simply because it is more concise.</p>
 </div>
 <div class="paragraph">
 <p>6) How do applications identify compatible devices and drivers across
 instance, process, and API boundaries when sharing memory?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED RESOLUTION</strong>: New device properties are exposed that allow
-applications to correctly correlate devices and drivers.
+<p>New device properties are exposed that allow applications to correctly
+correlate devices and drivers.
 A device and driver UUID that must both match to ensure sharing
 compatibility between two Vulkan instances, or a Vulkan instance and an
 extensible external API are added.

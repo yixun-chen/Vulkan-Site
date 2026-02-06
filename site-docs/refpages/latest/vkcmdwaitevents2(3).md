@@ -105,6 +105,37 @@ condition. |
 Valid Usage
 
 * 
+[](#VUID-vkCmdWaitEvents2-image-09373) VUID-vkCmdWaitEvents2-image-09373
+
+If `vkCmdWaitEvents2` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
+
+* 
+[](#VUID-vkCmdWaitEvents2-image-09374) VUID-vkCmdWaitEvents2-image-09374
+
+If `vkCmdWaitEvents2` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
+memory barrier is a color resolve attachment, it **must** have been created
+with a non-zero [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat`
+value
+
+* 
+[](#VUID-vkCmdWaitEvents2-oldLayout-01181) VUID-vkCmdWaitEvents2-oldLayout-01181
+
+If `vkCmdWaitEvents2` is called within a render pass instance, the
+`oldLayout` and `newLayout` members of any image memory barrier
+included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182) VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182
+
+If `vkCmdWaitEvents2` is called within a render pass instance, the
+`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
+memory barrier included in this command **must** be equal
+
+* 
 [](#VUID-vkCmdWaitEvents2-synchronization2-03836) VUID-vkCmdWaitEvents2-synchronization2-03836
 
 The [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature **must**

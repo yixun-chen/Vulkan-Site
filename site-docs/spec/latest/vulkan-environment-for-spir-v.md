@@ -1017,6 +1017,9 @@ The corresponding core version is supported (as returned by
 | `SPV_QCOM_image_processing2`
 
                 `[VK_QCOM_image_processing2](extensions.html#VK_QCOM_image_processing2)` |
+| `SPV_QCOM_cooperative_matrix_conversion`
+
+                `[VK_QCOM_cooperative_matrix_conversion](extensions.html#VK_QCOM_cooperative_matrix_conversion)` |
 | `SPV_EXT_mesh_shader`
 
                 `[VK_EXT_mesh_shader](extensions.html#VK_EXT_mesh_shader)` |
@@ -3858,16 +3861,19 @@ atomic operations to be supported
 
 [](#VUID-RuntimeSpirv-NonWritable-06340) VUID-RuntimeSpirv-NonWritable-06340
 
-If the [    `fragmentStoresAndAtomics`](../chapters/features.html#features-fragmentStoresAndAtomics) feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-fragment stage **must** be decorated with the `NonWritable` decoration
+    If the [    `fragmentStoresAndAtomics`](../chapters/features.html#features-fragmentStoresAndAtomics) feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the fragment stage **must** be decorated
+    with the `NonWritable` decoration
 
 [](#VUID-RuntimeSpirv-NonWritable-06341) VUID-RuntimeSpirv-NonWritable-06341
 
-If the [    `vertexPipelineStoresAndAtomics`](../chapters/features.html#features-vertexPipelineStoresAndAtomics) feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-vertex, tessellation, and geometry stages **must** be decorated with the
-`NonWritable` decoration
+    If the [    `vertexPipelineStoresAndAtomics`](../chapters/features.html#features-vertexPipelineStoresAndAtomics) feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the vertex, tessellation, and geometry
+    stages **must** be decorated with the `NonWritable` decoration
 
 [](#VUID-RuntimeSpirv-None-06342) VUID-RuntimeSpirv-None-06342
 
@@ -6028,7 +6034,10 @@ SPIR-V Tensor `Element` `Type` values are compatible with
 | SPIR-V Tensor Element Type | Compatible Vulkan Formats |
 | --- | --- |
 | `OpTypeBool` | [VK_FORMAT_R8_BOOL_ARM](../chapters/formats.html#VkFormat) |
+| `OpTypeFloat 8 Float8E4M3EXT` | [VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM](../chapters/formats.html#VkFormat) |
+| `OpTypeFloat 8 Float8E5M2EXT` | [VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM](../chapters/formats.html#VkFormat) |
 | `OpTypeFloat 16` | [VK_FORMAT_R16_SFLOAT](../chapters/formats.html#VkFormat) |
+| `OpTypeFloat 16 BFloat16KHR` | [VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM](../chapters/formats.html#VkFormat) |
 | `OpTypeFloat 32` | [VK_FORMAT_R32_SFLOAT](../chapters/formats.html#VkFormat) |
 | `OpTypeFloat 64` | [VK_FORMAT_R64_SFLOAT](../chapters/formats.html#VkFormat) |
 | `OpTypeInt 8 0` | [VK_FORMAT_R8_UINT](../chapters/formats.html#VkFormat) |

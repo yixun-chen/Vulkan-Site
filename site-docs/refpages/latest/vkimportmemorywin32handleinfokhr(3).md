@@ -128,15 +128,13 @@ If `handle` is not `NULL`, `name` **must** be `NULL`
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handle-01518) VUID-VkImportMemoryWin32HandleInfoKHR-handle-01518
 
 If `handle` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external memory handle    types compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
+`handleType` in [    external memory handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-name-01519) VUID-VkImportMemoryWin32HandleInfoKHR-name-01519
 
 If `name` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external memory handle    types compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
+`handleType` in [    external memory handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
 
 Valid Usage (Implicit)
 

@@ -1102,11 +1102,13 @@ in the shader <strong>must</strong> be one of:</p>
 <li>
 <p><a id="VUID-VkShaderCreateInfoEXT-pNext-11378" href="#VUID-VkShaderCreateInfoEXT-pNext-11378"></a> <span class="vuid">VUID-VkShaderCreateInfoEXT-pNext-11378</span><br>
 
-If the <code>pNext</code> chain specifies a <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">    descriptor mapping</a> using
-<a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
-<a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
-or <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, the
-<code>OpArrayLength</code> instruction <strong>must</strong> not be used on that resource</p>
+    If the <code>pNext</code> chain specifies a <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">    descriptor mapping</a> using
+    <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
+    <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
+    or <a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, the
+    <code>OpArrayLength</code>
+or <code>OpUntypedArrayLengthKHR</code>
+    instruction <strong>must</strong> not be used on that resource</p>
 </li>
 <li>
 <p><a id="VUID-VkShaderCreateInfoEXT-pNext-11399" href="#VUID-VkShaderCreateInfoEXT-pNext-11399"></a> <span class="vuid">VUID-VkShaderCreateInfoEXT-pNext-11399</span><br>
@@ -8400,7 +8402,7 @@ To enable applications to detect when previously retrieved data is
 incompatible with the device, the initial bytes written to <code>pData</code> <strong>must</strong>
 be a header consisting of the following members:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 85%;">
+<table id="shaders-layout-for-validation-cache-header-v1-table" class="tableblock frame-all grid-all" style="width: 85%;">
 <caption class="title">Table 1. Layout for Validation Cache Header Version <a href="#VkValidationCacheHeaderVersionEXT">VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT</a></caption>
 <colgroup>
 <col style="width: 8%;">

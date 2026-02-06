@@ -94,7 +94,7 @@ type specified by `handleType`
 The memory represented by `fd` **must** have been created from a
 physical device and driver that is compatible with `device` and
 `handleType`, as described in
-[External Memory Handle Types Compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
+[external memory handle    types compatibility](../../../../spec/latest/chapters/capabilities.html#external-memory-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-fd-01520) VUID-VkImportMemoryFdInfoKHR-fd-01520

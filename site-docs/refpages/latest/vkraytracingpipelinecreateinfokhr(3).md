@@ -553,6 +553,20 @@ include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2
 libraries linked to this pipeline **must** also not have that flag set
 
 * 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361) VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361
+
+If `flags` includes
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362) VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also not have that flag set
+
+* 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-None-11369) VUID-VkRayTracingPipelineCreateInfoKHR-None-11369
 
 If [VkPipelineCreateFlags2CreateInfoKHR](VkPipelineCreateFlags2CreateInfo.html)::`flags` does not

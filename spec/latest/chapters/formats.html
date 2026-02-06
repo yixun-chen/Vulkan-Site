@@ -825,6 +825,12 @@ typedef enum VkFormat {
     VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT = 1000288029,
   // Provided by VK_ARM_tensors
     VK_FORMAT_R8_BOOL_ARM = 1000460000,
+  // Provided by VK_KHR_shader_bfloat16 with VK_ARM_tensors
+    VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM = 1000460001,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM = 1000460002,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM = 1000460003,
   // Provided by VK_NV_optical_flow
     VK_FORMAT_R16G16_SFIXED5_NV = 1000464000,
   // Provided by VK_ARM_format_pack
@@ -2990,6 +2996,21 @@ This format only supports images with a width that is a multiple of two.</p>
 format that has a single 8-bit R component.
 See <a href="fundamentals.html#fundamentals-bool" class="xref page">8-bit booleans</a>.</p>
 </li>
+<li>
+<p><a href="#VkFormat">VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM</a> specifies a
+one-component, 16-bit signed floating-point format with BFLOAT16
+encoding that has a single 16-bit R component.</p>
+</li>
+<li>
+<p><a href="#VkFormat">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM</a> specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E4M3
+encoding that has a single 8-bit R component.</p>
+</li>
+<li>
+<p><a href="#VkFormat">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM</a> specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E5M2
+encoding that has a single 8-bit R component.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3011,8 +3032,8 @@ These planes are also <a href="#formats-size-compatibility">size-compatible</a> 
 any format that is <a href="#formats-size-compatibility">size-compatible</a> with the
 listed single-plane format.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 95%;">
-<caption class="title">Table 1. Plane Format Compatibility Table</caption>
+<table id="formats-plane-format-compatibility-table" class="tableblock frame-all grid-all" style="width: 95%;">
+<caption class="title">Table 1. Plane Format Compatibility</caption>
 <colgroup>
 <col style="width: 7.6923%;">
 <col style="width: 46.1538%;">
@@ -3958,8 +3979,40 @@ The suffix <code>_mPACKnn</code> is a short-hand that indicates that the format 
 format, with the representation of multiple texels encoded interdependently
 within a region.</p>
 </div>
+<div class="paragraph">
+<p>The suffix <code>_FPENCODING_&lt;encoding&gt;</code> indicates that the format uses a
+floating-point encoding, specified by <code>&lt;encoding&gt;</code>, that is different from
+IEEE754.</p>
+</div>
+<table id="formats-fpencoding" class="tableblock frame-all grid-all" style="width: 95%;">
+<caption class="title">Table 3. Interpretation of FP Encoding</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">FP Encoding</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FLOAT8E4M3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8-bit signed float with 4-bit mantissa and 3-bit exponent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FLOAT8E5M2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8-bit signed float with 5-bit mantissa and 2-bit exponent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BFLOAT16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16-bit signed float with 7-bit mantissa and 8-bit exponent (a.k.a. "brain float 16")</p></td>
+</tr>
+</tbody>
+</table>
 <table id="formats-compressionscheme" class="tableblock frame-all grid-all" style="width: 95%;">
-<caption class="title">Table 3. Interpretation of Compression Scheme</caption>
+<caption class="title">Table 4. Interpretation of Compression Scheme</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 83.3334%;">
@@ -4039,12 +4092,12 @@ The texel block size for each format is shown in the
 <p>The representation of non-packed formats is that the first component
 specified in the name of the format is in the lowest memory addresses and
 the last component specified is in the highest memory addresses.
-See <a href="#formats-non-packed">Byte mappings for non-packed/compressed color formats</a>.
+See <a href="#formats-non-packed">Byte Mappings for Non-Packed/Compressed Color Formats</a>.
 The in-memory ordering of bytes within a component is determined by the host
 endianness.</p>
 </div>
 <table id="formats-non-packed" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Byte Mappings for Non-Packed/Compressed Color Formats</caption>
+<caption class="title">Table 5. Byte Mappings for Non-Packed/Compressed Color Formats</caption>
 <colgroup>
 <col style="width: 3.8461%;">
 <col style="width: 3.8461%;">
@@ -4227,7 +4280,7 @@ The in-memory ordering of bytes comprising the underlying type is determined
 by the host endianness.</p>
 </div>
 <table id="formats-packed-8-bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Bit Mappings for Packed 8-Bit Formats</caption>
+<caption class="title">Table 6. Bit Mappings for Packed 8-Bit Formats</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 12.5%;">
@@ -4274,7 +4327,7 @@ by the host endianness.</p>
 </tbody>
 </table>
 <table id="formats-packed-16-bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Bit Mappings for Packed 16-Bit Formats</caption>
+<caption class="title">Table 7. Bit Mappings for Packed 16-Bit Formats</caption>
 <colgroup>
 <col style="width: 6.25%;">
 <col style="width: 6.25%;">
@@ -4713,7 +4766,7 @@ by the host endianness.</p>
 </tbody>
 </table>
 <table id="formats-packed-32-bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Bit Mappings for Packed 32-Bit Formats</caption>
+<caption class="title">Table 8. Bit Mappings for Packed 32-Bit Formats</caption>
 <colgroup>
 <col style="width: 3.125%;">
 <col style="width: 3.125%;">
@@ -5075,7 +5128,7 @@ Each format has a defined <em>texel block extent</em> specifying how many texels
 each texel block represents in each dimension.</p>
 </div>
 <table id="formats-compatibility" class="tableblock frame-all grid-all" style="width: 90%;">
-<caption class="title">Table 8. Compatible Formats</caption>
+<caption class="title">Table 9. Compatible Formats</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 71.4286%;">
@@ -5093,6 +5146,8 @@ each texel block represents in each dimension.</p>
   1x1x1 block extent<br>
   1 texel/block</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkFormat">VK_FORMAT_R8_BOOL_ARM</a>,<br>
+                    <a href="#VkFormat">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM</a>,<br>
+                    <a href="#VkFormat">VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R4G4_UNORM_PACK8</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R8_UNORM</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R8_SNORM</a>,<br>
@@ -5116,6 +5171,7 @@ each texel block represents in each dimension.</p>
                     <a href="#VkFormat">VK_FORMAT_R12X4_UINT_PACK16_ARM</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R14X2_UINT_PACK16_ARM</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R14X2_UNORM_PACK16_ARM</a>,<br>
+                    <a href="#VkFormat">VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R4G4B4A4_UNORM_PACK16</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_B4G4R4A4_UNORM_PACK16</a>,<br>
                     <a href="#VkFormat">VK_FORMAT_R5G6B5_UNORM_PACK16</a>,<br>
@@ -7731,7 +7787,7 @@ be used as a destination tensor for <a href="copies.html#copies-tensors" class="
 <li>
 <p><a href="#VkFormatFeatureFlagBits2KHR">VK_FORMAT_FEATURE_2_TENSOR_SHADER_BIT_ARM</a> specifies that a tensor
 view <strong>can</strong> be used as a <a href="descriptorsets.html#descriptorsets-storagetensor" class="xref page">storage tensor</a>
-with <a href="pipelines.html#pipelines-compute" class="xref page">compute pipelines</a>.</p>
+in shaders.</p>
 </li>
 <li>
 <p><a href="#VkFormatFeatureFlagBits2KHR">VK_FORMAT_FEATURE_2_TENSOR_IMAGE_ALIASING_BIT_ARM</a> specifies that a
@@ -7902,8 +7958,8 @@ Formats that are required to support
 <a href="#VkFormatFeatureFlagBits">VK_FORMAT_FEATURE_TRANSFER_SRC_BIT</a> and
 <a href="#VkFormatFeatureFlagBits">VK_FORMAT_FEATURE_TRANSFER_DST_BIT</a>.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 9. Key for Format Feature Tables</caption>
+<table id="formats-key-for-format-feature-tables-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 10. Key for Format Feature Tables</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 90.9091%;">
@@ -7931,8 +7987,8 @@ preconditions, with more information in the table where the symbol appears</p></
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 10. Feature Bits in <code>optimalTilingFeatures</code></caption>
+<table id="formats-feature-bits-in-optimaltilingfeatures-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 11. Feature Bits in <code>optimalTilingFeatures</code></caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -7978,8 +8034,8 @@ preconditions, with more information in the table where the symbol appears</p></
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 11. Feature Bits in <code>bufferFeatures</code></caption>
+<table id="formats-feature-bits-in-bufferfeatures-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 12. Feature Bits in <code>bufferFeatures</code></caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -8000,7 +8056,7 @@ preconditions, with more information in the table where the symbol appears</p></
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-subbyte" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Mandatory Format Support: Sub-Byte Components</caption>
+<caption class="title">Table 13. Mandatory Format Support: Sub-Byte Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -8296,7 +8352,7 @@ preconditions, with more information in the table where the symbol appears</p></
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-2byte" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Mandatory Format Support: 1-3 Byte-Sized Components</caption>
+<caption class="title">Table 14. Mandatory Format Support: 1-3 Byte-Sized Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -8876,7 +8932,7 @@ preconditions, with more information in the table where the symbol appears</p></
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-4byte" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Mandatory Format Support: 4 Byte-Sized Components</caption>
+<caption class="title">Table 15. Mandatory Format Support: 4 Byte-Sized Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -9315,7 +9371,7 @@ preconditions, with more information in the table where the symbol appears</p></
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-10bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Mandatory Format Support: 10-, 12-, and 14-Bit Components</caption>
+<caption class="title">Table 16. Mandatory Format Support: 10-, 12-, and 14-Bit Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -9912,7 +9968,7 @@ preconditions, with more information in the table where the symbol appears</p></
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-16bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Mandatory Format Support: 16-bit Components</caption>
+<caption class="title">Table 17. Mandatory Format Support: 16-bit Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -10481,7 +10537,7 @@ feature.</p></td>
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-32bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Mandatory Format Support: 32-bit Components</caption>
+<caption class="title">Table 18. Mandatory Format Support: 32-bit Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -10775,7 +10831,7 @@ feature.</p></td>
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-64bit" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. Mandatory Format Support: 64-bit/uneven Components</caption>
+<caption class="title">Table 19. Mandatory Format Support: 64-bit/uneven Components</caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -11107,7 +11163,7 @@ feature is supported, <a href="#VkFormatFeatureFlagBits">VK_FORMAT_FEATURE_STORA
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-depth-stencil" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. Mandatory Format Support: Depth/Stencil With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
+<caption class="title">Table 20. Mandatory Format Support: Depth/Stencil With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -11317,7 +11373,7 @@ supported for at least one of <a href="#VkFormat">VK_FORMAT_X8_D24_UNORM_PACK32<
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-bcn" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 20. Mandatory Format Support: BC Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a> and <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_3D</a></caption>
+<caption class="title">Table 21. Mandatory Format Support: BC Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a> and <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_3D</a></caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -11679,7 +11735,7 @@ one of: this table, <a href="#formats-mandatory-features-etc">Mandatory Format S
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-etc" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. Mandatory Format Support: ETC2 and EAC Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
+<caption class="title">Table 22. Mandatory Format Support: ETC2 and EAC Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -11939,7 +11995,7 @@ one of: this table, <a href="#formats-mandatory-features-bcn">Mandatory Format S
 </table>
 <div style="page-break-after: always;"></div>
 <table id="formats-mandatory-features-astc" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 22. Mandatory Format Support: ASTC LDR Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
+<caption class="title">Table 23. Mandatory Format Support: ASTC LDR Compressed Formats With <code>VkImageType</code> <a href="resources.html#VkImageType" class="xref page">VK_IMAGE_TYPE_2D</a></caption>
 <colgroup>
 <col style="width: 48.1481%;">
 <col style="width: 3.7037%;">
@@ -12671,7 +12727,7 @@ view types <strong>must</strong> be supported for those formats:</p>
 equal to <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a>, <a href="samplers.html#samplers-YCbCr-conversion" class="xref page">sampler Y′C<sub>B</sub>C<sub>R</sub> conversion</a> <strong>must</strong> be enabled for the following formats:</p>
 </div>
 <table id="formats-requiring-sampler-ycbcr-conversion" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. Formats Requiring Sampler Y′C<sub>B</sub>C<sub>R</sub> Conversion for <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a> Image Views</caption>
+<caption class="title">Table 24. Formats Requiring Sampler Y′C<sub>B</sub>C<sub>R</sub> Conversion for <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a> Image Views</caption>
 <colgroup>
 <col style="width: 58.0645%;">
 <col style="width: 9.6774%;">
@@ -13551,8 +13607,8 @@ Additional restrictions, including, but not limited to, further required
 format feature flags specific to the particular use of the resource <strong>may</strong>
 apply, as described in the respective sections of this specification.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 24. Format Feature Dependent Buffer Usage Flags</caption>
+<table id="formats-format-feature-dependent-buffer-usage-flags-table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 25. Format Feature Dependent Buffer Usage Flags</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -13578,8 +13634,8 @@ apply, as described in the respective sections of this specification.</p>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. Format Feature Dependent Image Usage Flags</caption>
+<table id="formats-format-feature-dependent-image-usage-flags-table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 26. Format Feature Dependent Image Usage Flags</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -13645,8 +13701,8 @@ apply, as described in the respective sections of this specification.</p>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. Format feature dependent tensor usage flags</caption>
+<table id="formats-format-feature-dependent-tensor-usage-flags-table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 27. Format feature dependent tensor usage flags</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -13691,8 +13747,8 @@ features on the listed tensor formats.</p>
 <p>The following tables show which tensor feature bits <strong>must</strong> be supported for
 each format.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 27. Key for tensor format feature tables</caption>
+<table id="formats-key-for-tensor-format-feature-tables-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 28. Key for tensor format feature tables</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 90.9091%;">
@@ -13710,8 +13766,8 @@ where the symbol appears</p></td>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 28. Feature bits in <code>optimalTilingTensorFeatures</code></caption>
+<table id="formats-feature-bits-in-pname:optimaltilingtensorfeatures-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 29. Feature bits in <code>optimalTilingTensorFeatures</code></caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -13727,8 +13783,8 @@ where the symbol appears</p></td>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Table 29. Feature bits in <code>linearTilingTensorFeatures</code></caption>
+<table id="formats-feature-bits-in-pname:lineartilingtensorfeatures-table" class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 30. Feature bits in <code>linearTilingTensorFeatures</code></caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -13746,7 +13802,7 @@ where the symbol appears</p></td>
 </table>
 <div style="page-break-after: always;"></div>
 <table id="features-formats-mandatory-features-tensor" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 30. Mandatory tensor format support</caption>
+<caption class="title">Table 31. Mandatory tensor format support</caption>
 <colgroup>
 <col style="width: 80%;">
 <col style="width: 6.6666%;">

@@ -2720,12 +2720,25 @@ or in which [VkSubmitInfo2](cmdbuffers.html#VkSubmitInfo2) structures are specif
 `pSubmits` parameter of [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2),
 from lowest index to highest.
 
-The fence signal operation defined by the `fence` parameter of a
-    [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
-or [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
-or [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
-    command is ordered after all semaphore signal operations defined by that
-    command.
+The fence signal operation defined by the `fence` parameter of the
+following commands
+and the [VkAcquireNextImageInfoKHR](VK_KHR_surface/wsi.html#VkAcquireNextImageInfoKHR)::`fence` member of the
+variable referred to by the `pAcquireInfo` parameter of
+[vkAcquireNextImage2KHR](VK_KHR_surface/wsi.html#vkAcquireNextImage2KHR)
+is ordered after all semaphore signal operations defined by that
+command:
+
+* 
+[vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
+
+* 
+[vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
+
+* 
+[vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
+
+* 
+[vkAcquireNextImageKHR](VK_KHR_surface/wsi.html#vkAcquireNextImageKHR)
 
 Semaphore signal operations defined by a single [VkSubmitInfo](cmdbuffers.html#VkSubmitInfo)
 or [VkSubmitInfo2](cmdbuffers.html#VkSubmitInfo2)
@@ -4302,13 +4315,13 @@ If `handle` is not `NULL`, `name` **must** be `NULL`
 [](#VUID-VkImportFenceWin32HandleInfoKHR-handle-01539) VUID-VkImportFenceWin32HandleInfoKHR-handle-01539
 
 If `handle` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in [external    fence handle types compatibility](capabilities.html#external-fence-handle-types-compatibility)
+`handleType` in [    external fence handle types compatibility](capabilities.html#external-fence-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-name-01540) VUID-VkImportFenceWin32HandleInfoKHR-name-01540
 
 If `name` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in [external    fence handle types compatibility](capabilities.html#external-fence-handle-types-compatibility)
+`handleType` in [    external fence handle types compatibility](capabilities.html#external-fence-handle-types-compatibility)
 
 Valid Usage (Implicit)
 
@@ -6410,15 +6423,13 @@ If `handle` is not `NULL`, `name` **must** be `NULL`
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542) VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542
 
 If `handle` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543) VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543
 
 If `name` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261
@@ -6790,8 +6801,7 @@ Valid Usage
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766
 
 `zirconHandle` **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767
@@ -8442,6 +8452,37 @@ condition. |
 Valid Usage
 
 * 
+[](#VUID-vkCmdWaitEvents2-image-09373) VUID-vkCmdWaitEvents2-image-09373
+
+If `vkCmdWaitEvents2` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
+
+* 
+[](#VUID-vkCmdWaitEvents2-image-09374) VUID-vkCmdWaitEvents2-image-09374
+
+If `vkCmdWaitEvents2` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, it **must** have been created
+with a non-zero [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
+value
+
+* 
+[](#VUID-vkCmdWaitEvents2-oldLayout-01181) VUID-vkCmdWaitEvents2-oldLayout-01181
+
+If `vkCmdWaitEvents2` is called within a render pass instance, the
+`oldLayout` and `newLayout` members of any image memory barrier
+included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182) VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182
+
+If `vkCmdWaitEvents2` is called within a render pass instance, the
+`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
+memory barrier included in this command **must** be equal
+
+* 
 [](#VUID-vkCmdWaitEvents2-synchronization2-03836) VUID-vkCmdWaitEvents2-synchronization2-03836
 
 The [`synchronization2`](features.html#features-synchronization2) feature **must**
@@ -9004,6 +9045,37 @@ access flags that are supported by one or more of the pipeline stages in
 [table of supported access    types](#synchronization-access-types-supported)
 
 * 
+[](#VUID-vkCmdWaitEvents-image-09373) VUID-vkCmdWaitEvents-image-09373
+
+If `vkCmdWaitEvents` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
+
+* 
+[](#VUID-vkCmdWaitEvents-image-09374) VUID-vkCmdWaitEvents-image-09374
+
+If `vkCmdWaitEvents` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, it **must** have been created
+with a non-zero [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
+value
+
+* 
+[](#VUID-vkCmdWaitEvents-oldLayout-01181) VUID-vkCmdWaitEvents-oldLayout-01181
+
+If `vkCmdWaitEvents` is called within a render pass instance, the
+`oldLayout` and `newLayout` members of any image memory barrier
+included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdWaitEvents-srcQueueFamilyIndex-01182) VUID-vkCmdWaitEvents-srcQueueFamilyIndex-01182
+
+If `vkCmdWaitEvents` is called within a render pass instance, the
+`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
+memory barrier included in this command **must** be equal
+
+* 
 [](#VUID-vkCmdWaitEvents-srcStageMask-06459) VUID-vkCmdWaitEvents-srcStageMask-06459
 
 Any pipeline stage included in `srcStageMask` **must** be supported by
@@ -9198,11 +9270,12 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](renderpass.html#VkRenderPass) object, the render pass **must** have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not, does not
-include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does not, and
-has [synchronization scopes](#synchronization-dependencies-scopes) and
-[access scopes](#synchronization-dependencies-access-scopes) that are
-all supersets of the scopes defined in this command
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not,
+does not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does
+not,
+and has [synchronization scopes](#synchronization-dependencies-scopes)
+and [access scopes](#synchronization-dependencies-access-scopes) that
+are all supersets of the scopes defined in this command
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178
@@ -9220,37 +9293,6 @@ barrier included in this command **must** be an attachment used in the
 current subpass both as an input attachment, and as either a color,
 color resolve,
 or depth/stencil attachment
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-image-09373) VUID-vkCmdPipelineBarrier2-image-09373
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance using a
-[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
-memory barrier is a color resolve attachment, the corresponding color
-attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance using a
-[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
-memory barrier is a color resolve attachment, it **must** have been created
-with a non-zero [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
-value
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-oldLayout-01181) VUID-vkCmdPipelineBarrier2-oldLayout-01181
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance, the
-`oldLayout` and `newLayout` members of any image memory barrier
-included in this command **must** be equal
-
-* 
-[](#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182) VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182
-
-If `vkCmdPipelineBarrier2` is called within a render pass instance, the
-`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
-memory barrier included in this command **must** be equal
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07890) VUID-vkCmdPipelineBarrier2-None-07890
@@ -9340,6 +9382,37 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), this command **must** only specify
 [framebuffer-space stages](#synchronization-framebuffer-regions) in
 `srcStageMask` and `dstStageMask`
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-image-09373) VUID-vkCmdPipelineBarrier2-image-09373
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
+memory barrier is a color resolve attachment, it **must** have been created
+with a non-zero [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
+value
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-oldLayout-01181) VUID-vkCmdPipelineBarrier2-oldLayout-01181
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance, the
+`oldLayout` and `newLayout` members of any image memory barrier
+included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182) VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182
+
+If `vkCmdPipelineBarrier2` is called within a render pass instance, the
+`srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
+memory barrier included in this command **must** be equal
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-synchronization2-03848) VUID-vkCmdPipelineBarrier2-synchronization2-03848
@@ -9817,36 +9890,6 @@ access flags that are supported by one or more of the pipeline stages in
 [table of supported access    types](#synchronization-access-types-supported)
 
 * 
-[](#VUID-vkCmdPipelineBarrier-None-07889) VUID-vkCmdPipelineBarrier-None-07889
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](renderpass.html#VkRenderPass) object, the render pass **must** have been created with
-at least one subpass dependency that expresses a dependency from the
-current subpass to itself, does not include
-[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not, does not
-include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does not, and
-has [synchronization scopes](#synchronization-dependencies-scopes) and
-[access scopes](#synchronization-dependencies-access-scopes) that are
-all supersets of the scopes defined in this command
-
-* 
-[](#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](renderpass.html#VkRenderPass) object, it **must** not include any buffer memory
-barriers
-
-* 
-[](#VUID-vkCmdPipelineBarrier-image-04073) VUID-vkCmdPipelineBarrier-image-04073
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](renderpass.html#VkRenderPass) object, the `image` member of any image memory
-barrier included in this command **must** be an attachment used in the
-current subpass both as an input attachment, and as either a color,
-color resolve,
-or depth/stencil attachment
-
-* 
 [](#VUID-vkCmdPipelineBarrier-image-09373) VUID-vkCmdPipelineBarrier-image-09373
 
 If `vkCmdPipelineBarrier` is called within a render pass instance using a
@@ -9876,6 +9919,37 @@ included in this command **must** be equal
 If `vkCmdPipelineBarrier` is called within a render pass instance, the
 `srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
 memory barrier included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdPipelineBarrier-None-07889) VUID-vkCmdPipelineBarrier-None-07889
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, the render pass **must** have been created with
+at least one subpass dependency that expresses a dependency from the
+current subpass to itself, does not include
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not,
+does not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does
+not,
+and has [synchronization scopes](#synchronization-dependencies-scopes)
+and [access scopes](#synchronization-dependencies-access-scopes) that
+are all supersets of the scopes defined in this command
+
+* 
+[](#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, it **must** not include any buffer memory
+barriers
+
+* 
+[](#VUID-vkCmdPipelineBarrier-image-04073) VUID-vkCmdPipelineBarrier-image-04073
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](renderpass.html#VkRenderPass) object, the `image` member of any image memory
+barrier included in this command **must** be an attachment used in the
+current subpass both as an input attachment, and as either a color,
+color resolve,
+or depth/stencil attachment
 
 * 
 [](#VUID-vkCmdPipelineBarrier-None-07890) VUID-vkCmdPipelineBarrier-None-07890

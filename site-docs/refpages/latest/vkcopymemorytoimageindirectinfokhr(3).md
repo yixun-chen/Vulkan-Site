@@ -256,11 +256,6 @@ Valid Usage (Implicit)
  `srcCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](VkAddressCopyFlagBitsKHR.html) values
 
 * 
-[](#VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask) VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask
-
- `srcCopyFlags` **must** not be `0`
-
-* 
 [](#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter) VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter
 
  `dstImage` **must** be a valid [VkImage](VkImage.html) handle

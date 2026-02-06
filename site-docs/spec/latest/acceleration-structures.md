@@ -8728,11 +8728,6 @@ If `srcAccelerationStructureData` is not `NULL`, it **must** have
 previously been built as a PTLAS
 
 * 
-[](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-10561) VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-10561
-
-`dstAccelerationStructureData` **must** not be `NULL`
-
-* 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-10562) VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-10562
 
 Memory at `dstAccelerationStructureData` **must** be equal or larger
@@ -8779,11 +8774,6 @@ Valid Usage (Implicit)
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter) VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter
 
  `dstAccelerationStructureData` **must** be a valid `VkDeviceAddress` value
-
-* 
-[](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-parameter) VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-parameter
-
- `scratchData` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcInfos-parameter) VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcInfos-parameter

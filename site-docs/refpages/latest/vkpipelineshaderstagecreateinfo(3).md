@@ -169,11 +169,13 @@ A `OpTypeAccelerationStructureNV` variable
 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-11378) VUID-VkPipelineShaderStageCreateInfo-pNext-11378
 
-If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
-[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
-[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
-or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), the
-`OpArrayLength` instruction **must** not be used on that resource
+    If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+    [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), the
+    `OpArrayLength`
+or `OpUntypedArrayLengthKHR`
+    instruction **must** not be used on that resource
 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-11399) VUID-VkPipelineShaderStageCreateInfo-pNext-11399
 

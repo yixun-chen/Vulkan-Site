@@ -46,7 +46,7 @@ Device extension
 
 **Revision**
 
-1
+2
 
 **Ratification Status**
 
@@ -64,6 +64,12 @@ Interacts with VK_EXT_descriptor_buffer
 * 
 Interacts with VK_EXT_frame_boundary
 
+* 
+Interacts with VK_EXT_shader_float8
+
+* 
+Interacts with VK_KHR_shader_bfloat16
+
 **SPIR-V Dependencies**
 
 * 
@@ -80,7 +86,7 @@ Kevin Petit [kpet](https://github.com/KhronosGroup/Vulkan-Docs/issues/new?body=[
 
 **Last Modified Date**
 
-2025-06-03
+2026-01-07
 
 **Interactions and External Dependencies**
 
@@ -103,6 +109,15 @@ This extension interacts with `[VK_EXT_frame_boundary](VK_EXT_frame_boundary.htm
 
 * 
 This extension interacts with `[VK_EXT_robustness2](VK_EXT_robustness2.html)`
+
+* 
+This extension interacts with `[VK_KHR_unified_image_layouts](VK_KHR_unified_image_layouts.html)`
+
+* 
+This extension interacts with `[VK_KHR_shader_bfloat16](VK_KHR_shader_bfloat16.html)`
+
+* 
+This extension interacts with `[VK_EXT_shader_float8](VK_EXT_shader_float8.html)`
 
 **IP Status**
 
@@ -435,6 +450,23 @@ Extending [VkStructureType](VkStructureType.html):
 
 [VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM](VkStructureType.html)
 
+If [VK_EXT_shader_float8](VK_EXT_shader_float8.html) is supported:
+
+* 
+Extending [VkFormat](VkFormat.html):
+
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM](VkFormat.html)
+
+* 
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM](VkFormat.html)
+
+If [VK_KHR_shader_bfloat16](VK_KHR_shader_bfloat16.html) is supported:
+
+* 
+Extending [VkFormat](VkFormat.html):
+
+[VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM](VkFormat.html)
+
 * 
 [`TensorsARM`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-TensorsARM)
 
@@ -476,8 +508,14 @@ integers for strides to make it possible to relax this limitation in future
 extensions.
 
 * 
+Revision 2, 2026-01-07 (Kévin Petit)
+
+Add interactions with VK_KHR_unified_image_layouts,
+VK_KHR_shader_bfloat16, and VK_EXT_shader_float8
+
 Revision 1, 2025-06-03 (Kévin Petit)
 
+* 
 Initial revision
 
 No cross-references are available

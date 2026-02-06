@@ -1067,8 +1067,7 @@ VK_MAKE_VERSION macro in the header file.
 Made improvements to several descriptions.
 
 * 
-Changed the status of several issues from PROPOSED to RESOLVED, leaving
-no unresolved issues.
+Changed the status of several issues, leaving no unresolved issues.
 
 * 
 Resolved several TODOs, did miscellaneous cleanup, etc.

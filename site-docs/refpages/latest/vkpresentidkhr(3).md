@@ -38,7 +38,7 @@ structure.
 
 * 
 `swapchainCount` is the number of swapchains being presented to the
-`vkQueuePresentKHR` command.
+[vkQueuePresentKHR](vkQueuePresentKHR.html) command.
 
 * 
 `pPresentIds` is `NULL` or a pointer to an array of `uint64_t`
@@ -48,14 +48,14 @@ present id to be associated with the presentation of the swapchain with
 the same index in the [vkQueuePresentKHR](vkQueuePresentKHR.html) call.
 
 For applications to be able to reference specific presentation events queued
-by a call to `vkQueuePresentKHR`, an identifier needs to be associated
+by a call to [vkQueuePresentKHR](vkQueuePresentKHR.html), an identifier needs to be associated
 with them.
 When the [`presentId`](../../../../spec/latest/chapters/features.html#features-presentId) feature is enabled,
 applications **can** include the `VkPresentIdKHR` structure in the
 `pNext` chain of the [VkPresentInfoKHR](VkPresentInfoKHR.html) structure to supply
 identifiers.
 
-Each `VkSwapchainKHR` has a presentId associated with it.
+Each [VkSwapchainKHR](VkSwapchainKHR.html) has a presentId associated with it.
 This value is initially zero when the `VkSwapchainKHR` is created.
 
 When a `VkPresentIdKHR` structure with a non-NULL `pPresentIds` is
@@ -81,15 +81,16 @@ Valid Usage
 [](#VUID-VkPresentIdKHR-swapchainCount-04998) VUID-VkPresentIdKHR-swapchainCount-04998
 
 `swapchainCount` **must** be the same value as
-`VkPresentInfoKHR`::`swapchainCount`, where this
+[VkPresentInfoKHR](VkPresentInfoKHR.html)::`swapchainCount`, where this
 `VkPresentIdKHR` is in the `pNext` chain of the
-`VkPresentInfoKHR` structure
+[VkPresentInfoKHR](VkPresentInfoKHR.html) structure
 
 * 
 [](#VUID-VkPresentIdKHR-presentIds-04999) VUID-VkPresentIdKHR-presentIds-04999
 
-Each `presentIds` entry **must** be greater than any previous
-`presentIds` entry passed for the associated `pSwapchains` entry
+Each non-zero entry in `presentIds` **must** be greater than all
+previously submitted present ids for the associated swapchain in
+[VkPresentInfoKHR](VkPresentInfoKHR.html)::`pSwapchains`
 
 Valid Usage (Implicit)
 

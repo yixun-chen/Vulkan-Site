@@ -7721,19 +7721,9 @@ Valid Usage (Implicit)
  `srcCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](#VkAddressCopyFlagBitsKHR) values
 
 * 
-[](#VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask) VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask
-
- `srcCopyFlags` **must** not be `0`
-
-* 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter
 
  `dstCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](#VkAddressCopyFlagBitsKHR) values
-
-* 
-[](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask
-
- `dstCopyFlags` **must** not be `0`
 
 The structure describing source and destination memory regions,
 `VkCopyMemoryIndirectCommandKHR` is defined as:
@@ -8315,11 +8305,6 @@ Valid Usage (Implicit)
 [](#VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-parameter) VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-parameter
 
  `srcCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](#VkAddressCopyFlagBitsKHR) values
-
-* 
-[](#VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask) VUID-VkCopyMemoryToImageIndirectInfoKHR-srcCopyFlags-requiredbitmask
-
- `srcCopyFlags` **must** not be `0`
 
 * 
 [](#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter) VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-parameter

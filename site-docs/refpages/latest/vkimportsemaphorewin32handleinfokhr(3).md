@@ -103,15 +103,13 @@ If `handle` is not `NULL`, `name` **must** be `NULL`
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542) VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542
 
 If `handle` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543) VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543
 
 If `name` is not `NULL`, it **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261

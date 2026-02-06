@@ -400,6 +400,12 @@ typedef enum VkFormat {
     VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT = 1000288029,
   // Provided by VK_ARM_tensors
     VK_FORMAT_R8_BOOL_ARM = 1000460000,
+  // Provided by VK_KHR_shader_bfloat16 with VK_ARM_tensors
+    VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM = 1000460001,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM = 1000460002,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM = 1000460003,
   // Provided by VK_NV_optical_flow
     VK_FORMAT_R16G16_SFIXED5_NV = 1000464000,
   // Provided by VK_ARM_format_pack
@@ -2561,6 +2567,21 @@ This format only supports images with a width that is a multiple of two.
 [VK_FORMAT_R8_BOOL_ARM](#) specifies a one-component 8-bit boolean
 format that has a single 8-bit R component.
 See [8-bit booleans](../../../../spec/latest/chapters/fundamentals.html#fundamentals-bool).
+
+* 
+[VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM](#) specifies a
+one-component, 16-bit signed floating-point format with BFLOAT16
+encoding that has a single 16-bit R component.
+
+* 
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM](#) specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E4M3
+encoding that has a single 8-bit R component.
+
+* 
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM](#) specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E5M2
+encoding that has a single 8-bit R component.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html), [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html), [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html), [VkAccelerationStructureTrianglesDisplacementMicromapNV](VkAccelerationStructureTrianglesDisplacementMicromapNV.html), [VkAndroidHardwareBufferFormatProperties2ANDROID](VkAndroidHardwareBufferFormatProperties2ANDROID.html), [VkAndroidHardwareBufferFormatPropertiesANDROID](VkAndroidHardwareBufferFormatPropertiesANDROID.html), [VkAndroidHardwareBufferFormatResolvePropertiesANDROID](VkAndroidHardwareBufferFormatResolvePropertiesANDROID.html), [VkAttachmentDescription](VkAttachmentDescription.html), [VkAttachmentDescription2](VkAttachmentDescription2.html), [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html), [VkClusterAccelerationStructureTriangleClusterInputNV](VkClusterAccelerationStructureTriangleClusterInputNV.html), [VkCommandBufferInheritanceRenderingInfo](VkCommandBufferInheritanceRenderingInfo.html), [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html), [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html), [VkFramebufferAttachmentImageInfo](VkFramebufferAttachmentImageInfo.html), [VkGeometryTrianglesNV](VkGeometryTrianglesNV.html), [VkImageCreateInfo](VkImageCreateInfo.html), [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html), [VkImageViewASTCDecodeModeEXT](VkImageViewASTCDecodeModeEXT.html), [VkImageViewCreateInfo](VkImageViewCreateInfo.html), [VkNativeBufferFormatPropertiesOHOS](VkNativeBufferFormatPropertiesOHOS.html), [VkOpticalFlowImageFormatPropertiesNV](VkOpticalFlowImageFormatPropertiesNV.html), [VkOpticalFlowSessionCreateInfoNV](VkOpticalFlowSessionCreateInfoNV.html), [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html), [VkPhysicalDeviceSparseImageFormatInfo2](VkPhysicalDeviceSparseImageFormatInfo2.html), [VkPipelineRenderingCreateInfo](VkPipelineRenderingCreateInfo.html), [VkRenderingAreaInfo](VkRenderingAreaInfo.html), [VkSamplerCustomBorderColorCreateInfoEXT](VkSamplerCustomBorderColorCreateInfoEXT.html), [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html), [VkScreenBufferFormatPropertiesQNX](VkScreenBufferFormatPropertiesQNX.html), [VkSurfaceFormatKHR](VkSurfaceFormatKHR.html), [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html), [VkTensorDescriptionARM](VkTensorDescriptionARM.html), [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html), [VkTexelBufferDescriptorInfoEXT](VkTexelBufferDescriptorInfoEXT.html), [VkVertexInputAttributeDescription](VkVertexInputAttributeDescription.html), [VkVertexInputAttributeDescription2EXT](VkVertexInputAttributeDescription2EXT.html), [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html), [VkVideoSessionCreateInfoKHR](VkVideoSessionCreateInfoKHR.html), [vkGetPhysicalDeviceExternalImageFormatPropertiesNV](vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html), [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html), [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html), [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html), [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html), [vkGetPhysicalDeviceSparseImageFormatProperties](vkGetPhysicalDeviceSparseImageFormatProperties.html)
 

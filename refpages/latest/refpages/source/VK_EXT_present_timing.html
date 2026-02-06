@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -12991,7 +13018,7 @@ smooth to the user.</p>
 whether FRR vs. VRR, etc.</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED</strong>: the query returns two values: 1) a refresh-cycle duration
+<p>The query returns two values: 1) a refresh-cycle duration
 (<code>refreshDuration</code>), and 2) an indication whether the timing is
 currently fixed (FRR) or variable (VRR).
 If <code>refreshDuration</code> is zero, the platform cannot supply these values
@@ -13046,7 +13073,7 @@ over time.</p>
 <p>2) Do we return min/max values for refresh duration for VRR?</p>
 </div>
 <div class="paragraph">
-<p><strong>PROPOSED</strong>: return only the minimum value of refreshDuration for a VRR.</p>
+<p>Return only the minimum value of refreshDuration for a VRR.</p>
 </div>
 <div class="paragraph">
 <p>VRR displays have a minimum and maximum refresh rate, and therefore a
@@ -13121,12 +13148,12 @@ Later, once the application has obtained feedback, it can specify
 targetPresentTime by using the result&#8217;s actualPresentTime.</p>
 </div>
 <div class="paragraph">
-<p>7) How long before an application’s request for new image duration is
+<p>7) How long before an application&#8217;s request for new image duration is
 honored?</p>
 </div>
 <div class="paragraph">
-<p><strong>UNRESOLVED</strong>: Apparently, changes to some vendors' display hardware settings
-do not take effect immediately.
+<p>Apparently, changes to some vendors' display hardware settings do not take
+effect immediately.
 It is not clear what settings, and therefore, it is not clear how to address
 this issue.</p>
 </div>

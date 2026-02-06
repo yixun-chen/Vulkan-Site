@@ -1716,11 +1716,13 @@ A `OpTypeAccelerationStructureNV` variable
 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-11378) VUID-VkPipelineShaderStageCreateInfo-pNext-11378
 
-If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
-[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
-[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
-or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the
-`OpArrayLength` instruction **must** not be used on that resource
+    If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+    [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the
+    `OpArrayLength`
+or `OpUntypedArrayLengthKHR`
+    instruction **must** not be used on that resource
 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-11399) VUID-VkPipelineShaderStageCreateInfo-pNext-11399
 
@@ -7132,6 +7134,48 @@ If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::
 include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all
 libraries linked to this pipeline **must** also not have that flag set
 
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12355) VUID-VkGraphicsPipelineCreateInfo-flags-12355
+
+If `flags` includes
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12356) VUID-VkGraphicsPipelineCreateInfo-flags-12356
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12357) VUID-VkGraphicsPipelineCreateInfo-flags-12357
+
+If `flags` includes
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12358) VUID-VkGraphicsPipelineCreateInfo-flags-12358
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12359) VUID-VkGraphicsPipelineCreateInfo-flags-12359
+
+If `flags` includes
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12360) VUID-VkGraphicsPipelineCreateInfo-flags-12360
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also not have that flag set
+
 Valid Usage (Implicit)
 
 * 
@@ -9595,6 +9639,20 @@ to this pipeline **must** also have that flag set
 If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
 include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all
 libraries linked to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361) VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361
+
+If `flags` includes
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362) VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all libraries linked
+to this pipeline **must** also not have that flag set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-None-11369) VUID-VkRayTracingPipelineCreateInfoKHR-None-11369
@@ -13169,46 +13227,6 @@ If any library in `pLibraries` was created with a shader stage with
 `identifierSize` not equal to 0, the pipeline **must** be created with
 the [VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) flag
 set
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096
-
-If any element of `pLibraries` was created with
-[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all elements **must**
-have been created with
-[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404
-
-If `pipeline` is being created with
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), every element of
-`pLibraries` **must** have been created with
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405
-
-If `pipeline` is being created without
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), every element of
-`pLibraries` **must** have been created without
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406
-
-If `pipeline` is being created with
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), every element of
-`pLibraries` **must** have been created with
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407
-
-If `pipeline` is being created without
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), every element of
-`pLibraries` **must** have been created without
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 

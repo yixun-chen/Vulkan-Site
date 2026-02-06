@@ -210,9 +210,8 @@ Extending [VkStructureType](VkStructureType.html):
 1) Why do so many external memory capabilities need to be queried on a
 per-memory-handle-type basis?
 
-**PROPOSED RESOLUTION**: This is because some handle types are based on
-OS-native objects that have far more limited capabilities than the very
-generic Vulkan memory objects.
+This is because some handle types are based on OS-native objects that have
+far more limited capabilities than the very generic Vulkan memory objects.
 Not all memory handle types can name memory objects that support 3D images,
 for example.
 Some handle types cannot even support the deferred image and memory binding
@@ -223,7 +222,7 @@ importing the memory object.
 [VkExternalBufferPropertiesKHR](VkExternalBufferProperties.html) structs need to include a list of memory
 type bits that support the given handle type?
 
-**PROPOSED RESOLUTION**: No.
+No.
 The memory types that do not support the handle types will simply be
 filtered out of the results returned by [vkGetImageMemoryRequirements](vkGetImageMemoryRequirements.html)
 and [vkGetBufferMemoryRequirements](vkGetBufferMemoryRequirements.html) when a set of handle types was
@@ -231,7 +230,7 @@ specified at image or buffer creation time.
 
 3) Should the non-opaque handle types be moved to their own extension?
 
-**PROPOSED RESOLUTION**: Perhaps.
+Perhaps.
 However, defining the handle type bits does very little and does not require
 any platform-specific types on its own, and it is easier to maintain the
 bitfield values in a single extension for now.
@@ -241,7 +240,7 @@ the core spec and some in extensions
 
 4) Do we need a `D3D11_TILEPOOL` type?
 
-**PROPOSED RESOLUTION**: No.
+No.
 This is technically possible, but the synchronization is awkward.
 D3D11 surfaces must be synchronized using shared mutexes, and these
 synchronization primitives are shared by the entire memory object, so D3D11
@@ -251,13 +250,13 @@ difficult to synchronize.
 5) Should the Windows 7-compatible handle types be named “KMT” handles or
 “GLOBAL_SHARE” handles?
 
-**PROPOSED RESOLUTION**: KMT, simply because it is more concise.
+KMT, simply because it is more concise.
 
 6) How do applications identify compatible devices and drivers across
 instance, process, and API boundaries when sharing memory?
 
-**PROPOSED RESOLUTION**: New device properties are exposed that allow
-applications to correctly correlate devices and drivers.
+New device properties are exposed that allow applications to correctly
+correlate devices and drivers.
 A device and driver UUID that must both match to ensure sharing
 compatibility between two Vulkan instances, or a Vulkan instance and an
 extensible external API are added.

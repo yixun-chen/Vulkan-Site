@@ -90,82 +90,98 @@ Each command buffer is always in one of the following states:
 
 Initial
 
+Command buffers in the *initial state* **can** only be transitioned to the
+recording state, or freed.
 When a command buffer is [allocated](#vkAllocateCommandBuffers), it is
 in the *initial state*.
-Some commands are able to *reset* a command buffer (or a set of command
-buffers) back to this state from any of the executable, recording or
-invalid state.
-Command buffers in the initial state **can** only be moved to the recording
-state, or freed.
+Command buffers in any state other than the pending state **can** be
+transitioned to the initial state by calling [vkResetCommandPool](#vkResetCommandPool) on
+the pool they were allocated from.
+Command buffers allocated from a command pool created with
+[VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits) and in any state
+other than the pending state **can** also be transitioned to the initial
+state by calling [vkResetCommandBuffer](#vkResetCommandBuffer).
 
 Recording
 
-[vkBeginCommandBuffer](#vkBeginCommandBuffer) changes the state of a command buffer from
-the initial state to the *recording state*.
-Once a command buffer is in the recording state, `vkCmd*` commands
-**can** be used to record to the command buffer.
+Command buffers in the *recording state* **can** be used to record commands
+via `vkCmd*` commands, be reset, or be freed.
+Command buffers in the initial state **can** be transitioned to the
+recording state by [vkBeginCommandBuffer](#vkBeginCommandBuffer).
+Command buffers allocated from a command pool created with
+[VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits) in the invalid,
+recording, or executable state **can** also be transitioned to the
+recording state by [vkBeginCommandBuffer](#vkBeginCommandBuffer).
 
 Executable
 
-[vkEndCommandBuffer](#vkEndCommandBuffer) ends the recording of a command buffer, and
-moves it from the recording state to the *executable state*.
-Executable command buffers **can** be [    submitted](#commandbuffers-submission), reset, or [recorded to another    command buffer](#commandbuffers-secondary).
+A command buffer in the *executable state* **can** be
+[submitted for execution](#commandbuffers-submission), reset, freed, or
+[recorded to another command buffer](#commandbuffers-secondary).
+Command buffers in the recording state are transitioned to the
+executable state by [vkEndCommandBuffer](#vkEndCommandBuffer).
+Command buffers in the pending state that were recorded without the
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag immediately
+return to the executable state as the final command in the command
+buffer completes all execution, which can be observed via
+[synchronization commands](synchronization.html#synchronization).
 
 Pending
 
-[Queue submission](#commandbuffers-submission) of a command buffer
-changes the state of a command buffer from the executable state to the
-*pending state*.
-Whilst in the pending state, applications **must** not attempt to modify
-the command buffer in any way - as the device **may** be processing the
-commands recorded to it.
-Once execution of a command buffer completes, the command buffer either
-reverts back to the *executable state*, or if it was recorded with
-[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits), it moves to the
-*invalid state*.
-A [synchronization](synchronization.html#synchronization) command **should** be used to detect
-when this occurs.
+A command buffer in the *pending state* **must** not be modified by the
+application, as it **may** be executing on the device.
+Command buffers in the pending state that were recorded without the
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flag, or with the
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag, **must** not be
+submitted to the device for execution.
+Command buffers in the executable state **can** be transitioned to the
+pending state by [queue submission    commands](#commandbuffers-submission).
+Once commands in the command buffer have completed all execution, the
+command buffer is immediately in either the executable state, or in the
+invalid state if it was recorded with the
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag.
+A [synchronization](synchronization.html#synchronization) command **can** be used to detect
+when command execution is complete.
 
 Invalid
 
-Other than
-[VkCommandPool](#VkCommandPool) objects, destroying or freeing any object or memory
-that **may** be accessed when the command buffer is accessed (e.g. an
-object bound to the command buffer) will transition the state of that
-command buffer to the *invalid state*.
-The command buffer **must** not be in the *pending state* when this
-happens.
-Command buffers in the invalid state **can** only be reset or freed.
+A command buffer in the *invalid* state **can** be reset or freed.
+Command buffers in any state other than the pending state will
+transition to the invalid state if any memory or object, other than
+[VkCommandPool](#VkCommandPool), that **may** be accessed when the command buffer is
+accessed (e.g. an object bound to the command buffer) is destroyed or
+freed.
+Command buffers in any state other than the pending state will
+transition to the invalid state if any command buffer executed within it
+via [vkCmdExecuteCommands](#vkCmdExecuteCommands) transitions to any state other than the
+pending or executable state.
+Command buffers in the pending state that were recorded without the
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag are immediately
+invalid as the final command in the command buffer completes all
+execution, which can be observed via [synchronization    commands](synchronization.html#synchronization).
 
 ![commandbuffer lifecycle](../_images/commandbuffer_lifecycle.svg)
 
 Figure 1. Lifecycle of a command buffer
 
-Any given command that operates on a command buffer has its own requirements
-on what state a command buffer **must** be in, which are detailed in the valid
-usage constraints for that command.
+|  | The pending state is tied entirely to the status of execution of a command
+| --- | --- |
+buffer’s commands; once all commands are finished executing, the command
+buffer is in the subsequent state (executable or invalid) with no further
+intervention.
 
-Resetting a command buffer is an operation that discards any previously
-recorded commands and puts a command buffer in the *initial state*.
-Resetting occurs as a result of [vkResetCommandBuffer](#vkResetCommandBuffer) or
-[vkResetCommandPool](#vkResetCommandPool), or as part of [vkBeginCommandBuffer](#vkBeginCommandBuffer) (which
-additionally puts the command buffer in the *recording state*).
+Detection of the final command in a command buffer completing all stages of
+execution (i.e. [VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits)) with a
+[synchronization command](synchronization.html#synchronization) is sufficient to ensure the
+command buffer is in the expected state. |
 
 [Secondary command buffers](#commandbuffers-secondary) **can** be recorded to
 a primary command buffer via [vkCmdExecuteCommands](#vkCmdExecuteCommands).
 This partially ties the lifecycle of the two command buffers together - if
 the primary is submitted to a queue, both the primary and any secondaries
 recorded to it move to the *pending state*.
-Once execution of the primary completes, so it does for any secondary
-recorded within it.
-After all executions of each command buffer complete, they each move to
-their appropriate completion state (either to the *executable state* or the
-*invalid state*, as specified above).
-
-If a secondary moves to the *invalid state* or the *initial state*, then all
-primary buffers it is recorded in move to the *invalid state*.
-A primary moving to any other state does not affect the state of a secondary
-recorded in it.
+Similarly, once execution of the primary completes, it completes for any
+command buffer recorded within it.
 
 |  | Resetting or freeing a primary command buffer removes the lifecycle linkage
 | --- | --- |

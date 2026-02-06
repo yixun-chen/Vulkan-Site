@@ -382,36 +382,6 @@ access flags that are supported by one or more of the pipeline stages in
 [table of supported access    types](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types-supported)
 
 * 
-[](#VUID-vkCmdPipelineBarrier-None-07889) VUID-vkCmdPipelineBarrier-None-07889
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](VkRenderPass.html) object, the render pass **must** have been created with
-at least one subpass dependency that expresses a dependency from the
-current subpass to itself, does not include
-[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) if this command does not, does not
-include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) if this command does not, and
-has [synchronization scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) and
-[access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) that are
-all supersets of the scopes defined in this command
-
-* 
-[](#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](VkRenderPass.html) object, it **must** not include any buffer memory
-barriers
-
-* 
-[](#VUID-vkCmdPipelineBarrier-image-04073) VUID-vkCmdPipelineBarrier-image-04073
-
-If `vkCmdPipelineBarrier` is called within a render pass instance using a
-[VkRenderPass](VkRenderPass.html) object, the `image` member of any image memory
-barrier included in this command **must** be an attachment used in the
-current subpass both as an input attachment, and as either a color,
-color resolve,
-or depth/stencil attachment
-
-* 
 [](#VUID-vkCmdPipelineBarrier-image-09373) VUID-vkCmdPipelineBarrier-image-09373
 
 If `vkCmdPipelineBarrier` is called within a render pass instance using a
@@ -441,6 +411,37 @@ included in this command **must** be equal
 If `vkCmdPipelineBarrier` is called within a render pass instance, the
 `srcQueueFamilyIndex` and `dstQueueFamilyIndex` members of any
 memory barrier included in this command **must** be equal
+
+* 
+[](#VUID-vkCmdPipelineBarrier-None-07889) VUID-vkCmdPipelineBarrier-None-07889
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, the render pass **must** have been created with
+at least one subpass dependency that expresses a dependency from the
+current subpass to itself, does not include
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) if this command does not,
+does not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) if this command does
+not,
+and has [synchronization scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
+and [access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) that
+are all supersets of the scopes defined in this command
+
+* 
+[](#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178) VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, it **must** not include any buffer memory
+barriers
+
+* 
+[](#VUID-vkCmdPipelineBarrier-image-04073) VUID-vkCmdPipelineBarrier-image-04073
+
+If `vkCmdPipelineBarrier` is called within a render pass instance using a
+[VkRenderPass](VkRenderPass.html) object, the `image` member of any image memory
+barrier included in this command **must** be an attachment used in the
+current subpass both as an input attachment, and as either a color,
+color resolve,
+or depth/stencil attachment
 
 * 
 [](#VUID-vkCmdPipelineBarrier-None-07890) VUID-vkCmdPipelineBarrier-None-07890

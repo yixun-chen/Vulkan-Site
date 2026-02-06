@@ -50,6 +50,11 @@ Not ratified
 
 [VK_KHR_cooperative_matrix](VK_KHR_cooperative_matrix.html)
 
+**SPIR-V Dependencies**
+
+* 
+[SPV_QCOM_cooperative_matrix_conversion](https://github.khronos.org/SPIRV-Registry/extensions/QCOM/SPV_QCOM_cooperative_matrix_conversion.html)
+
 **Contact**
 
 * 

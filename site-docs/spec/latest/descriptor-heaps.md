@@ -34,7 +34,7 @@ tensor,
 and buffer descriptors.
 
 Descriptors can be obtained for the different heaps with commands that write
-sampler descriptors to host memory, with the application responsible for
+descriptors to a host address, with the application responsible for
 transferring those descriptors into device memory for access via heaps.
 
 To write sampler descriptors to memory, call:
@@ -63,7 +63,7 @@ written.
 [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT) structures defining the host address ranges
 that will be written to for each descriptor.
 
-Each descriptor will be written to `pDescriptors`[i]→address where
+Each descriptor will be written to `pDescriptors`[i].`address` where
 i is the index of its create info in `pSamplers`.
 
 Descriptors written using a fully identical [VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)
@@ -197,7 +197,7 @@ resource descriptors that will be written.
 [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT) structures defining the host address ranges
 that will be written to for each descriptor.
 
-Each descriptor will be written to `pDescriptors`[i]→address where
+Each descriptor will be written to `pDescriptors`[i].address where
 i is the index of its create info in `pResources`.
 
 If any image descriptor written by this command includes a

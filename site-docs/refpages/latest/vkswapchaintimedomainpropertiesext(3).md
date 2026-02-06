@@ -53,9 +53,9 @@ When calling [vkGetSwapchainTimeDomainPropertiesEXT](vkGetSwapchainTimeDomainPro
 `pTimeDomains` is `NULL` and `pTimeDomainIds` is `NULL`, then the
 number of time domains supported for the given `swapchain` is returned
 in `timeDomainCount`.
-Otherwise, `timeDomainCount` **must** specify the number of elements in the
-`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return is
-overwritten with the number of values actually written to either array.
+Otherwise, `timeDomainCount` **must** specify the number of elements in
+`pTimeDomains` and `pTimeDomainIds`, and on return is overwritten
+with the number of values actually written to each array.
 
 |  | Due to the dynamic nature of their underlying `VkSurfaceKHR` properties,
 | --- | --- |
@@ -64,6 +64,20 @@ using the same [VkTimeDomainKHR](VkTimeDomainKHR.html) value over time, for exam
 surface is moved from one display hardware to another.
 Arbitrary identifiers, provided in `timeDomainIds`, are used by the
 implementation to differentiate opaque time domains of identical scopes. |
+
+Valid Usage
+
+* 
+[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370
+
+`pTimeDomains` and `pTimeDomainIds` **must** both be `NULL` or both
+not be `NULL`
+
+* 
+[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371
+
+If `pTimeDomains` and `pTimeDomainIds` are not `NULL`, then
+`timeDomainCount` **must** not be zero
 
 Valid Usage (Implicit)
 

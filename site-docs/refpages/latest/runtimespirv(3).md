@@ -1500,16 +1500,19 @@ atomic operations to be supported
 
 [](#VUID-RuntimeSpirv-NonWritable-06340) VUID-RuntimeSpirv-NonWritable-06340
 
-If the [    `fragmentStoresAndAtomics`](../../../../spec/latest/chapters/features.html#features-fragmentStoresAndAtomics) feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-fragment stage **must** be decorated with the `NonWritable` decoration
+    If the [    `fragmentStoresAndAtomics`](../../../../spec/latest/chapters/features.html#features-fragmentStoresAndAtomics) feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the fragment stage **must** be decorated
+    with the `NonWritable` decoration
 
 [](#VUID-RuntimeSpirv-NonWritable-06341) VUID-RuntimeSpirv-NonWritable-06341
 
-If the [    `vertexPipelineStoresAndAtomics`](../../../../spec/latest/chapters/features.html#features-vertexPipelineStoresAndAtomics) feature is not enabled, then all
-storage image, storage texel buffer, and storage buffer variables in the
-vertex, tessellation, and geometry stages **must** be decorated with the
-`NonWritable` decoration
+    If the [    `vertexPipelineStoresAndAtomics`](../../../../spec/latest/chapters/features.html#features-vertexPipelineStoresAndAtomics) feature is not enabled, then all
+    storage image, storage texel buffer,
+storage tensor,
+    and storage buffer variables in the vertex, tessellation, and geometry
+    stages **must** be decorated with the `NonWritable` decoration
 
 [](#VUID-RuntimeSpirv-None-06342) VUID-RuntimeSpirv-None-06342
 

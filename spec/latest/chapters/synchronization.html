@@ -4041,12 +4041,29 @@ or in which <a href="cmdbuffers.html#VkSubmitInfo2" class="xref page">VkSubmitIn
 from lowest index to highest.</p>
 </li>
 <li>
-<p>The fence signal operation defined by the <code>fence</code> parameter of a
-    <a href="cmdbuffers.html#vkQueueSubmit" class="xref page">vkQueueSubmit</a>
-or <a href="cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a>
-or <a href="sparsemem.html#vkQueueBindSparse" class="xref page">vkQueueBindSparse</a>
-    command is ordered after all semaphore signal operations defined by that
-    command.</p>
+<p>The fence signal operation defined by the <code>fence</code> parameter of the
+following commands
+and the <a href="VK_KHR_surface/wsi.html#VkAcquireNextImageInfoKHR" class="xref page">VkAcquireNextImageInfoKHR</a>::<code>fence</code> member of the
+variable referred to by the <code>pAcquireInfo</code> parameter of
+<a href="VK_KHR_surface/wsi.html#vkAcquireNextImage2KHR" class="xref page">vkAcquireNextImage2KHR</a>
+is ordered after all semaphore signal operations defined by that
+command:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="cmdbuffers.html#vkQueueSubmit" class="xref page">vkQueueSubmit</a></p>
+</li>
+<li>
+<p><a href="cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a></p>
+</li>
+<li>
+<p><a href="sparsemem.html#vkQueueBindSparse" class="xref page">vkQueueBindSparse</a></p>
+</li>
+<li>
+<p><a href="VK_KHR_surface/wsi.html#vkAcquireNextImageKHR" class="xref page">vkAcquireNextImageKHR</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -5105,7 +5122,7 @@ VkResult vkGetFenceStatus(
 <p>Upon success, <code>vkGetFenceStatus</code> returns the status of the fence object,
 with the following return codes:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
+<table id="synchronization-fence-object-status-codes-table" class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 3. Fence Object Status Codes</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -6373,13 +6390,13 @@ If <code>handle</code> is not <code>NULL</code>, <code>name</code> <strong>must<
 <p><a id="VUID-VkImportFenceWin32HandleInfoKHR-handle-01539" href="#VUID-VkImportFenceWin32HandleInfoKHR-handle-01539"></a> <span class="vuid">VUID-VkImportFenceWin32HandleInfoKHR-handle-01539</span><br>
 
 If <code>handle</code> is not <code>NULL</code>, it <strong>must</strong> obey any requirements listed for
-<code>handleType</code> in <a href="capabilities.html#external-fence-handle-types-compatibility" class="xref page">external    fence handle types compatibility</a></p>
+<code>handleType</code> in <a href="capabilities.html#external-fence-handle-types-compatibility" class="xref page">    external fence handle types compatibility</a></p>
 </li>
 <li>
 <p><a id="VUID-VkImportFenceWin32HandleInfoKHR-name-01540" href="#VUID-VkImportFenceWin32HandleInfoKHR-name-01540"></a> <span class="vuid">VUID-VkImportFenceWin32HandleInfoKHR-name-01540</span><br>
 
 If <code>name</code> is not <code>NULL</code>, it <strong>must</strong> obey any requirements listed for
-<code>handleType</code> in <a href="capabilities.html#external-fence-handle-types-compatibility" class="xref page">external    fence handle types compatibility</a></p>
+<code>handleType</code> in <a href="capabilities.html#external-fence-handle-types-compatibility" class="xref page">    external fence handle types compatibility</a></p>
 </li>
 </ul>
 </div>
@@ -9460,15 +9477,13 @@ If <code>handle</code> is not <code>NULL</code>, <code>name</code> <strong>must<
 <p><a id="VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542" href="#VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542"></a> <span class="vuid">VUID-VkImportSemaphoreWin32HandleInfoKHR-handle-01542</span><br>
 
 If <code>handle</code> is not <code>NULL</code>, it <strong>must</strong> obey any requirements listed for
-<code>handleType</code> in
-<a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">external semaphore    handle types compatibility</a></p>
+<code>handleType</code> in <a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">    external semaphore handle types compatibility</a></p>
 </li>
 <li>
 <p><a id="VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543" href="#VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543"></a> <span class="vuid">VUID-VkImportSemaphoreWin32HandleInfoKHR-name-01543</span><br>
 
 If <code>name</code> is not <code>NULL</code>, it <strong>must</strong> obey any requirements listed for
-<code>handleType</code> in
-<a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">external semaphore    handle types compatibility</a></p>
+<code>handleType</code> in <a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">    external semaphore handle types compatibility</a></p>
 </li>
 <li>
 <p><a id="VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261" href="#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261"></a> <span class="vuid">VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261</span><br>
@@ -10037,8 +10052,7 @@ specifying the type of <code>zirconHandle</code>.</p>
 <p><a id="VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766" href="#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766"></a> <span class="vuid">VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766</span><br>
 
 <code>zirconHandle</code> <strong>must</strong> obey any requirements listed for
-<code>handleType</code> in
-<a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">external semaphore    handle types compatibility</a></p>
+<code>handleType</code> in <a href="capabilities.html#external-semaphore-handle-types-compatibility" class="xref page">    external semaphore handle types compatibility</a></p>
 </li>
 <li>
 <p><a id="VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767" href="#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767"></a> <span class="vuid">VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767</span><br>
@@ -10570,7 +10584,7 @@ VkResult vkGetEventStatus(
 <p>Upon success, <code>vkGetEventStatus</code> returns the state of the event object
 with the following return codes:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
+<table id="synchronization-event-object-status-codes-table" class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 9. Event Object Status Codes</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -12338,6 +12352,37 @@ condition.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><a id="VUID-vkCmdWaitEvents2-image-09373" href="#VUID-vkCmdWaitEvents2-image-09373"></a> <span class="vuid">VUID-vkCmdWaitEvents2-image-09373</span><br>
+
+If <code>vkCmdWaitEvents2</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment <strong>must</strong> be <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents2-image-09374" href="#VUID-vkCmdWaitEvents2-image-09374"></a> <span class="vuid">VUID-vkCmdWaitEvents2-image-09374</span><br>
+
+If <code>vkCmdWaitEvents2</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, it <strong>must</strong> have been created
+with a non-zero <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>::<code>externalFormat</code>
+value</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents2-oldLayout-01181" href="#VUID-vkCmdWaitEvents2-oldLayout-01181"></a> <span class="vuid">VUID-vkCmdWaitEvents2-oldLayout-01181</span><br>
+
+If <code>vkCmdWaitEvents2</code> is called within a render pass instance, the
+<code>oldLayout</code> and <code>newLayout</code> members of any image memory barrier
+included in this command <strong>must</strong> be equal</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182" href="#VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182"></a> <span class="vuid">VUID-vkCmdWaitEvents2-srcQueueFamilyIndex-01182</span><br>
+
+If <code>vkCmdWaitEvents2</code> is called within a render pass instance, the
+<code>srcQueueFamilyIndex</code> and <code>dstQueueFamilyIndex</code> members of any
+memory barrier included in this command <strong>must</strong> be equal</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdWaitEvents2-synchronization2-03836" href="#VUID-vkCmdWaitEvents2-synchronization2-03836"></a> <span class="vuid">VUID-vkCmdWaitEvents2-synchronization2-03836</span><br>
 
 The <a href="features.html#features-synchronization2" class="xref page"><code>synchronization2</code></a> feature <strong>must</strong>
@@ -12993,6 +13038,41 @@ access flags that are supported by one or more of the pipeline stages in
 <code>dstStageMask</code>, as specified in the
 <a href="#synchronization-access-types-supported">table of supported access    types</a></p>
 </li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdWaitEvents-image-09373" href="#VUID-vkCmdWaitEvents-image-09373"></a> <span class="vuid">VUID-vkCmdWaitEvents-image-09373</span><br>
+
+If <code>vkCmdWaitEvents</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment <strong>must</strong> be <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents-image-09374" href="#VUID-vkCmdWaitEvents-image-09374"></a> <span class="vuid">VUID-vkCmdWaitEvents-image-09374</span><br>
+
+If <code>vkCmdWaitEvents</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, it <strong>must</strong> have been created
+with a non-zero <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>::<code>externalFormat</code>
+value</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents-oldLayout-01181" href="#VUID-vkCmdWaitEvents-oldLayout-01181"></a> <span class="vuid">VUID-vkCmdWaitEvents-oldLayout-01181</span><br>
+
+If <code>vkCmdWaitEvents</code> is called within a render pass instance, the
+<code>oldLayout</code> and <code>newLayout</code> members of any image memory barrier
+included in this command <strong>must</strong> be equal</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdWaitEvents-srcQueueFamilyIndex-01182" href="#VUID-vkCmdWaitEvents-srcQueueFamilyIndex-01182"></a> <span class="vuid">VUID-vkCmdWaitEvents-srcQueueFamilyIndex-01182</span><br>
+
+If <code>vkCmdWaitEvents</code> is called within a render pass instance, the
+<code>srcQueueFamilyIndex</code> and <code>dstQueueFamilyIndex</code> members of any
+memory barrier included in this command <strong>must</strong> be equal</p>
+</li>
 <li>
 <p><a id="VUID-vkCmdWaitEvents-srcStageMask-06459" href="#VUID-vkCmdWaitEvents-srcStageMask-06459"></a> <span class="vuid">VUID-vkCmdWaitEvents-srcStageMask-06459</span><br>
 
@@ -13248,11 +13328,12 @@ If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance us
 <a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, the render pass <strong>must</strong> have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-<a href="#VkDependencyFlagBits">VK_DEPENDENCY_BY_REGION_BIT</a> if this command does not, does not
-include <a href="#VkDependencyFlagBits">VK_DEPENDENCY_VIEW_LOCAL_BIT</a> if this command does not, and
-has <a href="#synchronization-dependencies-scopes">synchronization scopes</a> and
-<a href="#synchronization-dependencies-access-scopes">access scopes</a> that are
-all supersets of the scopes defined in this command</p>
+<a href="#VkDependencyFlagBits">VK_DEPENDENCY_BY_REGION_BIT</a> if this command does not,
+does not include <a href="#VkDependencyFlagBits">VK_DEPENDENCY_VIEW_LOCAL_BIT</a> if this command does
+not,
+and has <a href="#synchronization-dependencies-scopes">synchronization scopes</a>
+and <a href="#synchronization-dependencies-access-scopes">access scopes</a> that
+are all supersets of the scopes defined in this command</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178" href="#VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-bufferMemoryBarrierCount-01178</span><br>
@@ -13270,37 +13351,6 @@ barrier included in this command <strong>must</strong> be an attachment used in 
 current subpass both as an input attachment, and as either a color,
 color resolve,
 or depth/stencil attachment</p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier2-image-09373" href="#VUID-vkCmdPipelineBarrier2-image-09373"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-image-09373</span><br>
-
-If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance using a
-<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
-memory barrier is a color resolve attachment, the corresponding color
-attachment <strong>must</strong> be <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier2-image-09374" href="#VUID-vkCmdPipelineBarrier2-image-09374"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-image-09374</span><br>
-
-If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance using a
-<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
-memory barrier is a color resolve attachment, it <strong>must</strong> have been created
-with a non-zero <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>::<code>externalFormat</code>
-value</p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier2-oldLayout-01181" href="#VUID-vkCmdPipelineBarrier2-oldLayout-01181"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-oldLayout-01181</span><br>
-
-If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance, the
-<code>oldLayout</code> and <code>newLayout</code> members of any image memory barrier
-included in this command <strong>must</strong> be equal</p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182" href="#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182</span><br>
-
-If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance, the
-<code>srcQueueFamilyIndex</code> and <code>dstQueueFamilyIndex</code> members of any
-memory barrier included in this command <strong>must</strong> be equal</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdPipelineBarrier2-None-07890" href="#VUID-vkCmdPipelineBarrier2-None-07890"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-None-07890</span><br>
@@ -13390,6 +13440,41 @@ If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance st
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, this command <strong>must</strong> only specify
 <a href="#synchronization-framebuffer-regions">framebuffer-space stages</a> in
 <code>srcStageMask</code> and <code>dstStageMask</code></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier2-image-09373" href="#VUID-vkCmdPipelineBarrier2-image-09373"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-image-09373</span><br>
+
+If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, the corresponding color
+attachment <strong>must</strong> be <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier2-image-09374" href="#VUID-vkCmdPipelineBarrier2-image-09374"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-image-09374</span><br>
+
+If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, and the <code>image</code> member of any image
+memory barrier is a color resolve attachment, it <strong>must</strong> have been created
+with a non-zero <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>::<code>externalFormat</code>
+value</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier2-oldLayout-01181" href="#VUID-vkCmdPipelineBarrier2-oldLayout-01181"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-oldLayout-01181</span><br>
+
+If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance, the
+<code>oldLayout</code> and <code>newLayout</code> members of any image memory barrier
+included in this command <strong>must</strong> be equal</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182" href="#VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-srcQueueFamilyIndex-01182</span><br>
+
+If <code>vkCmdPipelineBarrier2</code> is called within a render pass instance, the
+<code>srcQueueFamilyIndex</code> and <code>dstQueueFamilyIndex</code> members of any
+memory barrier included in this command <strong>must</strong> be equal</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdPipelineBarrier2-synchronization2-03848" href="#VUID-vkCmdPipelineBarrier2-synchronization2-03848"></a> <span class="vuid">VUID-vkCmdPipelineBarrier2-synchronization2-03848</span><br>
@@ -13948,36 +14033,6 @@ access flags that are supported by one or more of the pipeline stages in
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-vkCmdPipelineBarrier-None-07889" href="#VUID-vkCmdPipelineBarrier-None-07889"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-None-07889</span><br>
-
-If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
-<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, the render pass <strong>must</strong> have been created with
-at least one subpass dependency that expresses a dependency from the
-current subpass to itself, does not include
-<a href="#VkDependencyFlagBits">VK_DEPENDENCY_BY_REGION_BIT</a> if this command does not, does not
-include <a href="#VkDependencyFlagBits">VK_DEPENDENCY_VIEW_LOCAL_BIT</a> if this command does not, and
-has <a href="#synchronization-dependencies-scopes">synchronization scopes</a> and
-<a href="#synchronization-dependencies-access-scopes">access scopes</a> that are
-all supersets of the scopes defined in this command</p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178" href="#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178</span><br>
-
-If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
-<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, it <strong>must</strong> not include any buffer memory
-barriers</p>
-</li>
-<li>
-<p><a id="VUID-vkCmdPipelineBarrier-image-04073" href="#VUID-vkCmdPipelineBarrier-image-04073"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-image-04073</span><br>
-
-If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
-<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, the <code>image</code> member of any image memory
-barrier included in this command <strong>must</strong> be an attachment used in the
-current subpass both as an input attachment, and as either a color,
-color resolve,
-or depth/stencil attachment</p>
-</li>
-<li>
 <p><a id="VUID-vkCmdPipelineBarrier-image-09373" href="#VUID-vkCmdPipelineBarrier-image-09373"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-image-09373</span><br>
 
 If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
@@ -14007,6 +14062,41 @@ included in this command <strong>must</strong> be equal</p>
 If <code>vkCmdPipelineBarrier</code> is called within a render pass instance, the
 <code>srcQueueFamilyIndex</code> and <code>dstQueueFamilyIndex</code> members of any
 memory barrier included in this command <strong>must</strong> be equal</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier-None-07889" href="#VUID-vkCmdPipelineBarrier-None-07889"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-None-07889</span><br>
+
+If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, the render pass <strong>must</strong> have been created with
+at least one subpass dependency that expresses a dependency from the
+current subpass to itself, does not include
+<a href="#VkDependencyFlagBits">VK_DEPENDENCY_BY_REGION_BIT</a> if this command does not,
+does not include <a href="#VkDependencyFlagBits">VK_DEPENDENCY_VIEW_LOCAL_BIT</a> if this command does
+not,
+and has <a href="#synchronization-dependencies-scopes">synchronization scopes</a>
+and <a href="#synchronization-dependencies-access-scopes">access scopes</a> that
+are all supersets of the scopes defined in this command</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178" href="#VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-bufferMemoryBarrierCount-01178</span><br>
+
+If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, it <strong>must</strong> not include any buffer memory
+barriers</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdPipelineBarrier-image-04073" href="#VUID-vkCmdPipelineBarrier-image-04073"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-image-04073</span><br>
+
+If <code>vkCmdPipelineBarrier</code> is called within a render pass instance using a
+<a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> object, the <code>image</code> member of any image memory
+barrier included in this command <strong>must</strong> be an attachment used in the
+current subpass both as an input attachment, and as either a color,
+color resolve,
+or depth/stencil attachment</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdPipelineBarrier-None-07890" href="#VUID-vkCmdPipelineBarrier-None-07890"></a> <span class="vuid">VUID-vkCmdPipelineBarrier-None-07890</span><br>

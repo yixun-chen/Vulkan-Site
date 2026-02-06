@@ -431,6 +431,12 @@ typedef enum VkFormat {
     VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT = 1000288029,
   // Provided by VK_ARM_tensors
     VK_FORMAT_R8_BOOL_ARM = 1000460000,
+  // Provided by VK_KHR_shader_bfloat16 with VK_ARM_tensors
+    VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM = 1000460001,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM = 1000460002,
+  // Provided by VK_EXT_shader_float8 with VK_ARM_tensors
+    VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM = 1000460003,
   // Provided by VK_NV_optical_flow
     VK_FORMAT_R16G16_SFIXED5_NV = 1000464000,
   // Provided by VK_ARM_format_pack
@@ -2593,6 +2599,21 @@ This format only supports images with a width that is a multiple of two.
 format that has a single 8-bit R component.
 See [8-bit booleans](fundamentals.html#fundamentals-bool).
 
+* 
+[VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM](#VkFormat) specifies a
+one-component, 16-bit signed floating-point format with BFLOAT16
+encoding that has a single 16-bit R component.
+
+* 
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM](#VkFormat) specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E4M3
+encoding that has a single 8-bit R component.
+
+* 
+[VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM](#VkFormat) specifies a
+one-component, 8-bit signed floating-point format with FLOAT8E5M2
+encoding that has a single 8-bit R component.
+
 Individual planes of [multi-planar formats](#formats-multiplanar) are
 size-compatible with single-plane color formats if they occupy the same
 number of bits per texel block, and are compatible with those formats if
@@ -3012,6 +3033,16 @@ The suffix `_BLOCK` indicates that the format is a block-compressed
 format, with the representation of multiple texels encoded interdependently
 within a region.
 
+The suffix `_FPENCODING_` indicates that the format uses a
+floating-point encoding, specified by ``, that is different from
+IEEE754.
+
+| FP Encoding | Description |
+| --- | --- |
+| FLOAT8E4M3 | 8-bit signed float with 4-bit mantissa and 3-bit exponent |
+| FLOAT8E5M2 | 8-bit signed float with 5-bit mantissa and 2-bit exponent |
+| BFLOAT16 | 16-bit signed float with 7-bit mantissa and 8-bit exponent (a.k.a. "brain float 16") |
+
 | Compression scheme | Description |
 | --- | --- |
 | `BC` | Block Compression. See [Block-Compressed Image Formats](../appendices/compressedtex.html#appendix-compressedtex-bc). |
@@ -3051,7 +3082,7 @@ The texel block size for each format is shown in the
 The representation of non-packed formats is that the first component
 specified in the name of the format is in the lowest memory addresses and
 the last component specified is in the highest memory addresses.
-See [Byte mappings for non-packed/compressed color formats](#formats-non-packed).
+See [Byte Mappings for Non-Packed/Compressed Color Formats](#formats-non-packed).
 The in-memory ordering of bytes within a component is determined by the host
 endianness.
 
@@ -3201,6 +3232,10 @@ each texel block represents in each dimension.
 
   1 texel/block | [VK_FORMAT_R8_BOOL_ARM](#VkFormat),
 
+                    [VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM](#VkFormat),
+
+                    [VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM](#VkFormat),
+
                     [VK_FORMAT_R4G4_UNORM_PACK8](#VkFormat),
 
                     [VK_FORMAT_R8_UNORM](#VkFormat),
@@ -3239,6 +3274,8 @@ each texel block represents in each dimension.
                     [VK_FORMAT_R14X2_UINT_PACK16_ARM](#VkFormat),
 
                     [VK_FORMAT_R14X2_UNORM_PACK16_ARM](#VkFormat),
+
+                    [VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM](#VkFormat),
 
                     [VK_FORMAT_R4G4B4A4_UNORM_PACK16](#VkFormat),
 
@@ -5681,7 +5718,7 @@ be used as a destination tensor for [copy commands](copies.html#copies-tensors).
 * 
 [VK_FORMAT_FEATURE_2_TENSOR_SHADER_BIT_ARM](#VkFormatFeatureFlagBits2KHR) specifies that a tensor
 view **can** be used as a [storage tensor](descriptorsets.html#descriptorsets-storagetensor)
-with [compute pipelines](pipelines.html#pipelines-compute).
+in shaders.
 
 * 
 [VK_FORMAT_FEATURE_2_TENSOR_IMAGE_ALIASING_BIT_ARM](#VkFormatFeatureFlagBits2KHR) specifies that a

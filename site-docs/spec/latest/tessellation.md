@@ -106,10 +106,7 @@ tessellation shader stage.
 `SpacingEqual`, `SpacingFractionalEven`, and
 `SpacingFractionalOdd`.
 Controls the spacing of segments on the edges of tessellated primitives.
-When using [shader objects](shaders.html#shaders-objects), one mode **must** be set in
-at least the tessellation evaluation stage.
-When using pipelines, one
-mode **must** be set in at least one of the tessellation shader stages.
+One mode **must** be set in at least one of the tessellation shader stages.
 
 * 
 `OutputVertices`.

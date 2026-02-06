@@ -158,7 +158,7 @@ usage.
 
 Should we have a diagram in the “Image Operations” chapter demonstrating different texel sampling locations?
 
-**UNRESOLVED**: Probably, but later.
+**RESOLVED**: Maybe later.
 
 * 
 Revision 1, 2018-08-14 (Daniel Koch)

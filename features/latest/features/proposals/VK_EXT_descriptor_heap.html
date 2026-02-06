@@ -1243,8 +1243,7 @@ void vkCmdPushDataEXT(
 <div class="paragraph">
 <p>Device addresses in push data are intended as the replacement fast path for <code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</code> and <code>VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</code>.
 Note however that as they are not buffer descriptors and no size is provided, robust buffer access does not apply; out of bounds accesses are invalid.
-In order to maximize performance of constant data inputs, addresses should be aligned to <code>minUniformBufferOffsetAlignment</code>, and decorated with <code>Alignment</code> and <code>NonWritable</code> in the shader when using physical pointers.
-These addresses can also be mapped to an existing uniform buffer declaration in the shader using <a href="#SetAndBindingDecorations"><code>DescriptorSet</code> and <code>Binding</code> Decorations</a>, which will be the preferred path for some implementations initially, though such implementations are expected to lean less on this mechanism over time.</p>
+These addresses can also be mapped to an existing buffer declaration in the shader using <a href="#SetAndBindingDecorations"><code>DescriptorSet</code> and <code>Binding</code> Decorations</a>, which will be the preferred path for some implementations initially, though such implementations are expected to lean less on this mechanism over time.</p>
 </div>
 </td>
 </tr>

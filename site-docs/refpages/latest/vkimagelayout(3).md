@@ -322,9 +322,11 @@ the [VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFla
 
 * 
 [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#) specifies the layout that an
-image created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html) **must** be in for it and
-a tensor bound to the same aliased range of memory to consistently
-interpret the data in memory.
+image created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html) **must** be in, if the
+[`unifiedImageLayouts`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts) feature is
+disabled, or **may** be in if it is enabled, for it and a tensor bound to
+the same aliased range of memory to consistently interpret the data in
+memory.
 See [Memory Aliasing](../../../../spec/latest/chapters/resources.html#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.
 This layout is valid only for image subresources of images created with

@@ -61,46 +61,6 @@ If any library in `pLibraries` was created with a shader stage with
 the [VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html) flag
 set
 
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096
-
-If any element of `pLibraries` was created with
-[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), all elements **must**
-have been created with
-[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404
-
-If `pipeline` is being created with
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html), every element of
-`pLibraries` **must** have been created with
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405
-
-If `pipeline` is being created without
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html), every element of
-`pLibraries` **must** have been created without
-[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406
-
-If `pipeline` is being created with
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html), every element of
-`pLibraries` **must** have been created with
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
-
-* 
-[](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407
-
-If `pipeline` is being created without
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html), every element of
-`pLibraries` **must** have been created without
-[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
-
 Valid Usage (Implicit)
 
 * 

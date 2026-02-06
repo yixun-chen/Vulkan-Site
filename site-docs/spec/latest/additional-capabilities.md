@@ -1459,7 +1459,7 @@ property to determine the maximum descriptor size that will accommodate any
 and all [formats that require a sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion) supported by the implementation.
 
 To determine the number of image descriptors required to support a
-[multi-planar format](formats.html#formats-multiplanar), add
+subsampled image created with [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits), add
 [VkSubsampledImageFormatPropertiesEXT](#VkSubsampledImageFormatPropertiesEXT) to the `pNext` chain of the
 [VkImageFormatProperties2](#VkImageFormatProperties2) structure in a call to
 `vkGetPhysicalDeviceImageFormatProperties2`.

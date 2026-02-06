@@ -27,6 +27,7 @@
 - [QNX_Screen_Platform](#platformCreateSurface_screen)
 - [Open Harmony OS Platform Surface Creation](#platformCreateSurface_OHOS)
 - [Open_Harmony_OS_Platform_Surface_Creation](#platformCreateSurface_OHOS)
+- [UBM Platform](#_ubm_platform)
 - [Platform-Independent Information](#_platform_independent_information)
 - [Presenting Directly to Display Devices](#display)
 - [Presenting_Directly_to_Display_Devices](#display)
@@ -58,6 +59,7 @@
 - [QNX_Screen_Platform](#platformQuerySupport_screen)
 - [Open Harmony OS Platform](#platformQuerySupport_OHOS)
 - [Open_Harmony_OS_Platform](#platformQuerySupport_OHOS)
+- [UBM Platform](#platformQuerySupport_ubm)
 - [Surface Queries](#_surface_queries)
 - [Surface Capabilities](#_surface_capabilities)
 - [Surface Format Support](#_surface_format_support)
@@ -2197,6 +2199,139 @@ typedef VkFlags VkSurfaceCreateFlagsOHOS;
 
 `VkSurfaceCreateFlagsOHOS` is a bitmask type for setting a mask, but is
 currently reserved for future use.
+
+To create a `VkSurfaceKHR` object for a UBM surface, call:
+
+// Provided by VK_SEC_ubm_surface
+VkResult vkCreateUbmSurfaceSEC(
+    VkInstance                                  instance,
+    const VkUbmSurfaceCreateInfoSEC*            pCreateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkSurfaceKHR*                               pSurface);
+
+* 
+`instance` is the instance to associate the surface with.
+
+* 
+`pCreateInfo` is a pointer to a [VkUbmSurfaceCreateInfoSEC](#VkUbmSurfaceCreateInfoSEC)
+structure containing parameters affecting the creation of the surface
+object.
+
+* 
+`pAllocator` is the allocator used for host memory allocated for the
+surface object when there is no more specific allocator available (see
+[Memory Allocation](../memory.html#memory-allocation)).
+
+* 
+`pSurface` is a pointer to a [VkSurfaceKHR](#VkSurfaceKHR) handle in which the
+created surface object is returned.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCreateUbmSurfaceSEC-instance-parameter) VUID-vkCreateUbmSurfaceSEC-instance-parameter
+
+ `instance` **must** be a valid [VkInstance](../initialization.html#VkInstance) handle
+
+* 
+[](#VUID-vkCreateUbmSurfaceSEC-pCreateInfo-parameter) VUID-vkCreateUbmSurfaceSEC-pCreateInfo-parameter
+
+ `pCreateInfo` **must** be a valid pointer to a valid [VkUbmSurfaceCreateInfoSEC](#VkUbmSurfaceCreateInfoSEC) structure
+
+* 
+[](#VUID-vkCreateUbmSurfaceSEC-pAllocator-parameter) VUID-vkCreateUbmSurfaceSEC-pAllocator-parameter
+
+ If `pAllocator` is not `NULL`, `pAllocator` **must** be a valid pointer to a valid [VkAllocationCallbacks](../memory.html#VkAllocationCallbacks) structure
+
+* 
+[](#VUID-vkCreateUbmSurfaceSEC-pSurface-parameter) VUID-vkCreateUbmSurfaceSEC-pSurface-parameter
+
+ `pSurface` **must** be a valid pointer to a [VkSurfaceKHR](#VkSurfaceKHR) handle
+
+Return Codes
+
+[Success](../fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](../fundamentals.html#VkResult)
+
+[Failure](../fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
+
+The `VkUbmSurfaceCreateInfoSEC` structure is defined as:
+
+// Provided by VK_SEC_ubm_surface
+typedef struct VkUbmSurfaceCreateInfoSEC {
+    VkStructureType               sType;
+    const void*                   pNext;
+    VkUbmSurfaceCreateFlagsSEC    flags;
+    struct ubm_device*            ubm_device;
+    struct ubm_surface*           ubm_surface;
+} VkUbmSurfaceCreateInfoSEC;
+
+* 
+`sType` is a [VkStructureType](../fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`flags` is reserved for future use.
+
+* 
+`ubm_device` is a pointer to a `ubm_device` to associate the
+surface with.
+
+* 
+`ubm_surface` is a pointer to a `ubm_surface` to associate the
+surface with.
+
+Valid Usage
+
+* 
+[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366) VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366
+
+`ubm_device` **must** point to a valid UBM `ubm_device`
+
+* 
+[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367) VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367
+
+`ubm_surface` **must** point to a valid UBM `ubm_surface`
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkUbmSurfaceCreateInfoSEC-sType-sType) VUID-VkUbmSurfaceCreateInfoSEC-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC](../fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkUbmSurfaceCreateInfoSEC-pNext-pNext) VUID-VkUbmSurfaceCreateInfoSEC-pNext-pNext
+
+ `pNext` **must** be `NULL`
+
+* 
+[](#VUID-VkUbmSurfaceCreateInfoSEC-flags-zerobitmask) VUID-VkUbmSurfaceCreateInfoSEC-flags-zerobitmask
+
+ `flags` **must** be `0`
+
+// Provided by VK_SEC_ubm_surface
+typedef VkFlags VkUbmSurfaceCreateFlagsSEC;
+
+`VkUbmSurfaceCreateFlagsSEC` is a bitmask type for setting a mask, but
+is currently reserved for future use.
 
 Once created, `VkSurfaceKHR` objects **can** be used in this and other
 extensions, in particular the `[VK_KHR_swapchain](../../appendices/extensions.html#VK_KHR_swapchain)` extension.
@@ -5027,6 +5162,54 @@ On Open Harmony OS, all physical devices and queue families **must** be capable
 of presentation with any native window.
 As a result there is no Open Harmony OS platform-specific query for these
 capabilities.
+
+To determine whether a queue family of a physical device supports
+presentation to a UBM compositor, call:
+
+// Provided by VK_SEC_ubm_surface
+VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
+    VkPhysicalDevice                            physicalDevice,
+    uint32_t                                    queueFamilyIndex,
+    struct ubm_device*                          ubm_device);
+
+* 
+`physicalDevice` is the physical device.
+
+* 
+`queueFamilyIndex` is the queue family index.
+
+* 
+`ubm_device` is a pointer to the `ubm_device` associated with a
+UBM compositor.
+
+This platform-specific function **can** be called prior to creating a surface.
+
+Valid Usage
+
+* 
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368
+
+`ubm_device` **must** point to a valid UBM `ubm_device`
+
+* 
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369
+
+`queueFamilyIndex` **must** be less than
+`pQueueFamilyPropertyCount` returned by
+`vkGetPhysicalDeviceQueueFamilyProperties` for the given
+`physicalDevice`
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-physicalDevice-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-physicalDevice-parameter
+
+ `physicalDevice` **must** be a valid [VkPhysicalDevice](../devsandqueues.html#VkPhysicalDevice) handle
+
+* 
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter
+
+ `ubm_device` **must** be a valid pointer to a `ubm_device` value
 
 The capabilities of a swapchain targeting a surface are the intersection of
 the capabilities of the WSI platform, the native window or display, and the
@@ -8471,9 +8654,9 @@ When calling [vkGetSwapchainTimeDomainPropertiesEXT](#vkGetSwapchainTimeDomainPr
 `pTimeDomains` is `NULL` and `pTimeDomainIds` is `NULL`, then the
 number of time domains supported for the given `swapchain` is returned
 in `timeDomainCount`.
-Otherwise, `timeDomainCount` **must** specify the number of elements in the
-`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return is
-overwritten with the number of values actually written to either array.
+Otherwise, `timeDomainCount` **must** specify the number of elements in
+`pTimeDomains` and `pTimeDomainIds`, and on return is overwritten
+with the number of values actually written to each array.
 
 |  | Due to the dynamic nature of their underlying `VkSurfaceKHR` properties,
 | --- | --- |
@@ -8482,6 +8665,20 @@ using the same [VkTimeDomainKHR](../synchronization.html#VkTimeDomainKHR) value 
 surface is moved from one display hardware to another.
 Arbitrary identifiers, provided in `timeDomainIds`, are used by the
 implementation to differentiate opaque time domains of identical scopes. |
+
+Valid Usage
+
+* 
+[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12370
+
+`pTimeDomains` and `pTimeDomainIds` **must** both be `NULL` or both
+not be `NULL`
+
+* 
+[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-12371
+
+If `pTimeDomains` and `pTimeDomainIds` are not `NULL`, then
+`timeDomainCount` **must** not be zero
 
 Valid Usage (Implicit)
 
@@ -12991,7 +13188,7 @@ structure.
 
 * 
 `swapchainCount` is the number of swapchains being presented to the
-`vkQueuePresentKHR` command.
+[vkQueuePresentKHR](#vkQueuePresentKHR) command.
 
 * 
 `pPresentIds` is `NULL` or a pointer to an array of `uint64_t`
@@ -13001,14 +13198,14 @@ present id to be associated with the presentation of the swapchain with
 the same index in the [vkQueuePresentKHR](#vkQueuePresentKHR) call.
 
 For applications to be able to reference specific presentation events queued
-by a call to `vkQueuePresentKHR`, an identifier needs to be associated
+by a call to [vkQueuePresentKHR](#vkQueuePresentKHR), an identifier needs to be associated
 with them.
 When the [`presentId`](../features.html#features-presentId) feature is enabled,
 applications **can** include the `VkPresentIdKHR` structure in the
 `pNext` chain of the [VkPresentInfoKHR](#VkPresentInfoKHR) structure to supply
 identifiers.
 
-Each `VkSwapchainKHR` has a presentId associated with it.
+Each [VkSwapchainKHR](#VkSwapchainKHR) has a presentId associated with it.
 This value is initially zero when the `VkSwapchainKHR` is created.
 
 When a `VkPresentIdKHR` structure with a non-NULL `pPresentIds` is
@@ -13034,15 +13231,16 @@ Valid Usage
 [](#VUID-VkPresentIdKHR-swapchainCount-04998) VUID-VkPresentIdKHR-swapchainCount-04998
 
 `swapchainCount` **must** be the same value as
-`VkPresentInfoKHR`::`swapchainCount`, where this
+[VkPresentInfoKHR](#VkPresentInfoKHR)::`swapchainCount`, where this
 `VkPresentIdKHR` is in the `pNext` chain of the
-`VkPresentInfoKHR` structure
+[VkPresentInfoKHR](#VkPresentInfoKHR) structure
 
 * 
 [](#VUID-VkPresentIdKHR-presentIds-04999) VUID-VkPresentIdKHR-presentIds-04999
 
-Each `presentIds` entry **must** be greater than any previous
-`presentIds` entry passed for the associated `pSwapchains` entry
+Each non-zero entry in `presentIds` **must** be greater than all
+previously submitted present ids for the associated swapchain in
+[VkPresentInfoKHR](#VkPresentInfoKHR)::`pSwapchains`
 
 Valid Usage (Implicit)
 
@@ -13064,7 +13262,7 @@ Valid Usage (Implicit)
 When the [`presentWait`](../features.html#features-presentWait) feature is enabled, an
 application **can** wait for an image to be presented to the user by first
 specifying a presentId for the target presentation by adding a
-`VkPresentIdKHR` structure to the `pNext` chain of the
+[VkPresentIdKHR](#VkPresentIdKHR) structure to the `pNext` chain of the
 [VkPresentInfoKHR](#VkPresentInfoKHR) structure and then waiting for that presentation to
 complete by calling:
 
@@ -13092,25 +13290,6 @@ implementation-dependent timeout accuracy, which **may** be substantially
 longer than one nanosecond, and **may** be longer than the requested
 period.
 
-`vkWaitForPresentKHR` waits for the presentId associated with
-`swapchain` to be increased in value so that it is at least equal to
-`presentId`.
-
-For [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) (or other present mode where images
-may be replaced in the presentation queue) any wait of this type associated
-with such an image **must** be signaled no later than a wait associated with
-the replacing image would be signaled.
-
-When the presentation has completed, the presentId associated with the
-related `pSwapchains` entry will be increased in value so that it is at
-least equal to the value provided in the `VkPresentIdKHR` structure.
-
-There is no requirement for any precise timing relationship between the
-presentation of the image to the user and the update of the presentId value,
-but implementations **should** make this as close as possible to the
-presentation of the first pixel in the next image being presented to the
-user.
-
 The call to `vkWaitForPresentKHR` will block until either the presentId
 associated with `swapchain` is greater than or equal to `presentId`,
 or `timeout` nanoseconds passes.
@@ -13119,6 +13298,17 @@ When the swapchain becomes OUT_OF_DATE, the call will either return
 may have been presented to the user) or will return early with status
 [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) (if the image could not be presented to the
 user).
+
+There is no requirement for any precise timing relationship between the
+presentation of the image to the user and the update of the presentId value,
+but implementations **should** make this as close as possible to the
+presentation of the first pixel in the next image being presented to the
+user.
+
+For [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) (or other present mode where images
+may be replaced in the presentation queue) any wait of this type associated
+with such an image **must** be signaled no later than a wait associated with
+the replacing image would be signaled.
 
 As an exception to the normal rules for objects which are externally
 synchronized, the `swapchain` passed to `vkWaitForPresentKHR` **may**
@@ -13219,7 +13409,7 @@ structure.
 
 * 
 `swapchainCount` is the number of swapchains being presented to the
-`vkQueuePresentKHR` command.
+[vkQueuePresentKHR](#vkQueuePresentKHR) command.
 
 * 
 `pPresentIds` is `NULL` or a pointer to an array of uint64_t with
@@ -13229,7 +13419,7 @@ present id to be associated with the presentation of the swapchain with
 the same index in the [vkQueuePresentKHR](#vkQueuePresentKHR) call.
 
 For applications to be able to reference specific presentation events queued
-by a call to `vkQueuePresentKHR`, an identifier needs to be associated
+by a call to [vkQueuePresentKHR](#vkQueuePresentKHR), an identifier needs to be associated
 with them.
 
 When the [VkSurfaceCapabilitiesPresentId2KHR](#VkSurfaceCapabilitiesPresentId2KHR) surface capability is
@@ -13266,15 +13456,16 @@ Valid Usage
 [](#VUID-VkPresentId2KHR-swapchainCount-10818) VUID-VkPresentId2KHR-swapchainCount-10818
 
 `swapchainCount` **must** be the same value as
-`VkPresentInfoKHR`::`swapchainCount`, where this
+[VkPresentInfoKHR](#VkPresentInfoKHR)::`swapchainCount`, where this
 `VkPresentId2KHR` is in the `pNext` chain of the
-`VkPresentInfoKHR` structure
+[VkPresentInfoKHR](#VkPresentInfoKHR) structure
 
 * 
 [](#VUID-VkPresentId2KHR-presentIds-10819) VUID-VkPresentId2KHR-presentIds-10819
 
-Each `presentIds` entry **must** be greater than any previous
-`presentIds` entry passed for the associated `pSwapchains` entry
+Each non-zero entry in `presentIds` **must** be greater than all
+previously submitted present ids for the associated swapchain in
+[VkPresentInfoKHR](#VkPresentInfoKHR)::`pSwapchains`
 
 * 
 [](#VUID-VkPresentId2KHR-None-10820) VUID-VkPresentId2KHR-None-10820

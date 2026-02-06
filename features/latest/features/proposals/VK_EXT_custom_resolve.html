@@ -888,6 +888,28 @@ in a given rendering pass, and it must be <code>VK_TRUE</code> for all secondary
 end of the rendering pass will output to the resolve attachments. The contents of all resolve attachments become
 undefined upon recording this command.</p>
 </div>
+<div class="paragraph">
+<p><code>VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT</code> is also promoted from
+<a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_render_pass_shader_resolve">VK_QCOM_render_pass_shader_resolve</a>,
+and support is added for dynamic rendering too.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#define VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT  ((VkSubpassDescriptionFlagBits)0x00000004)
+#define VK_RENDERING_FRAGMENT_REGION_BIT_EXT  ((VkRenderingFlagBits)0x00000040)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Specifying either flag expands the framebuffer region used for dependencies with
+<code>VK_DEPENDENCY_BY_REGION_BIT</code> to always cover the entire fragment. This allows
+for multisample input attachments that contain the same sample count as
+<code>rasterizationSamples</code> to read from any sample of the fragment being rendered.
+This is not necessary for custom resolve operations, because the framebuffer
+region already equals the whole fragment when sample count is mismatched, but
+e.g. can be used to implement a custom resolve in an alternate way by drawing a
+fullscreen quad with <code>pSampleMask</code> to 1 to overwrite sample zero with the
+resolve result and then using <code>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT</code>.</p>
+</div>
 </div>
 </div>
 </div>

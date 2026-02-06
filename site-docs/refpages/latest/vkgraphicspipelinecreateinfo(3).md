@@ -3868,6 +3868,48 @@ If [VkPipelineCreateFlags2CreateInfoKHR](VkPipelineCreateFlags2CreateInfo.html):
 include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), all
 libraries linked to this pipeline **must** also not have that flag set
 
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12355) VUID-VkGraphicsPipelineCreateInfo-flags-12355
+
+If `flags` includes
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12356) VUID-VkGraphicsPipelineCreateInfo-flags-12356
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12357) VUID-VkGraphicsPipelineCreateInfo-flags-12357
+
+If `flags` includes
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12358) VUID-VkGraphicsPipelineCreateInfo-flags-12358
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12359) VUID-VkGraphicsPipelineCreateInfo-flags-12359
+
+If `flags` includes
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-12360) VUID-VkGraphicsPipelineCreateInfo-flags-12360
+
+If `flags` does not include
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html), all libraries linked
+to this pipeline **must** also not have that flag set
+
 Valid Usage (Implicit)
 
 * 

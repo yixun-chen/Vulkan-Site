@@ -8577,7 +8577,9 @@ whether or not the feature is enabled.
 | `maxBoundDescriptorSets` | - | 4 (Vulkan Core)
 
                                                    7 (Vulkan Roadmap 2024, Vulkan 1.4) | min |
-| `maxPerStageDescriptorSamplers` | - | 16 | min |
+| `maxPerStageDescriptorSamplers` | - | 16 (Vulkan Core)
+
+                                                   64 (Vulkan Roadmap 2022) | min |
 | `maxPerStageDescriptorUniformBuffers` | - | 12 (Vulkan Core)
 
                                                    15 (Vulkan Roadmap 2022, Vulkan 1.4)
@@ -9078,6 +9080,9 @@ whether or not the feature is enabled.
 | `maxTensorElements` | - | 65536 | min |
 | `maxPerDimensionTensorElements` | - | 65536 | min |
 | `maxTensorStride` | - | 65536 | min |
+| `maxTensorSize` | - | 65536 | min |
+| `maxTensorShaderAccessArrayLength` | - | 4 | min |
+| `maxTensorShaderAccessSize` | - | 4 | min |
 | `maxDescriptorSetStorageTensors` | - | 16 | min |
 | `maxPerStageDescriptorSetStorageTensors` | - | 16 | min |
 | `maxDescriptorSetUpdateAfterBindStorageTensors` | 0 | 500000 | min |

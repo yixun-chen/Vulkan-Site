@@ -194,6 +194,6 @@ However, for this tutorial, it’s okay to use a separate allocation for every r
 In the [next chapter,](03_Index_buffer.html) we’ll learn about index buffers for vertex reuse.
 
 [C++ code](../_attachments/20_staging_buffer.cpp) /
-[slang shader](../_attachments/18_shader_vertexbuffer.slang) /
-[GLSL Vertex shader](../_attachments/18_shader_vertexbuffer.vert) /
-[GLSL Fragment shader](../_attachments/18_shader_vertexbuffer.frag)
+[slang shader](../_attachments/19_shader_vertexbuffer.slang) /
+[GLSL Vertex shader](../_attachments/19_shader_vertexbuffer.vert) /
+[GLSL Fragment shader](../_attachments/19_shader_vertexbuffer.frag)

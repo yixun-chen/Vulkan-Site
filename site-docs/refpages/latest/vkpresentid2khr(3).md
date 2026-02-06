@@ -38,7 +38,7 @@ structure.
 
 * 
 `swapchainCount` is the number of swapchains being presented to the
-`vkQueuePresentKHR` command.
+[vkQueuePresentKHR](vkQueuePresentKHR.html) command.
 
 * 
 `pPresentIds` is `NULL` or a pointer to an array of uint64_t with
@@ -48,7 +48,7 @@ present id to be associated with the presentation of the swapchain with
 the same index in the [vkQueuePresentKHR](vkQueuePresentKHR.html) call.
 
 For applications to be able to reference specific presentation events queued
-by a call to `vkQueuePresentKHR`, an identifier needs to be associated
+by a call to [vkQueuePresentKHR](vkQueuePresentKHR.html), an identifier needs to be associated
 with them.
 
 When the [VkSurfaceCapabilitiesPresentId2KHR](VkSurfaceCapabilitiesPresentId2KHR.html) surface capability is
@@ -85,15 +85,16 @@ Valid Usage
 [](#VUID-VkPresentId2KHR-swapchainCount-10818) VUID-VkPresentId2KHR-swapchainCount-10818
 
 `swapchainCount` **must** be the same value as
-`VkPresentInfoKHR`::`swapchainCount`, where this
+[VkPresentInfoKHR](VkPresentInfoKHR.html)::`swapchainCount`, where this
 `VkPresentId2KHR` is in the `pNext` chain of the
-`VkPresentInfoKHR` structure
+[VkPresentInfoKHR](VkPresentInfoKHR.html) structure
 
 * 
 [](#VUID-VkPresentId2KHR-presentIds-10819) VUID-VkPresentId2KHR-presentIds-10819
 
-Each `presentIds` entry **must** be greater than any previous
-`presentIds` entry passed for the associated `pSwapchains` entry
+Each non-zero entry in `presentIds` **must** be greater than all
+previously submitted present ids for the associated swapchain in
+[VkPresentInfoKHR](VkPresentInfoKHR.html)::`pSwapchains`
 
 * 
 [](#VUID-VkPresentId2KHR-None-10820) VUID-VkPresentId2KHR-None-10820

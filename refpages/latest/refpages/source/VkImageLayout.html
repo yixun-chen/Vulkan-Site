@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -12946,9 +12973,11 @@ the <a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_E
 </li>
 <li>
 <p><a href="#">VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM</a> specifies the layout that an
-image created with <a href="VkImageTiling.html" class="xref page">VK_IMAGE_TILING_OPTIMAL</a> <strong>must</strong> be in for it and
-a tensor bound to the same aliased range of memory to consistently
-interpret the data in memory.
+image created with <a href="VkImageTiling.html" class="xref page">VK_IMAGE_TILING_OPTIMAL</a> <strong>must</strong> be in, if the
+<a href="../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts" class="xref page"><code>unifiedImageLayouts</code></a> feature is
+disabled, or <strong>may</strong> be in if it is enabled, for it and a tensor bound to
+the same aliased range of memory to consistently interpret the data in
+memory.
 See <a href="../../../../spec/latest/chapters/resources.html#resources-memory-aliasing" class="xref page">Memory Aliasing</a> for a complete set of rules for
 tensor/image aliasing.
 This layout is valid only for image subresources of images created with

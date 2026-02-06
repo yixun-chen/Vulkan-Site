@@ -1340,6 +1340,9 @@
     <a class="nav-link" href="vkCreateTensorViewARM.html">vkCreateTensorViewARM</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCreateUbmSurfaceSEC.html">vkCreateUbmSurfaceSEC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCreateValidationCacheEXT.html">vkCreateValidationCacheEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2130,6 +2133,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceUbmPresentationSupportSEC.html">vkGetPhysicalDeviceUbmPresentationSupportSEC</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
@@ -7143,6 +7149,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateInfoSEC.html">VkUbmSurfaceCreateInfoSEC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
     <span class="nav-text">V</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
@@ -9534,6 +9549,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkToolPurposeFlags.html">VkToolPurposeFlagsEXT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">U</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkUbmSurfaceCreateFlagsSEC.html">VkUbmSurfaceCreateFlagsSEC</a>
   </li>
 </ul>
   </li>
@@ -12393,6 +12417,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_SEC_pipeline_cache_incremental_mode.html">VK_SEC_pipeline_cache_incremental_mode</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_SEC_ubm_surface.html">VK_SEC_ubm_surface</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -13195,6 +13222,20 @@ to this pipeline <strong>must</strong> also have that flag set</p>
 If <a href="VkPipelineCreateFlags2CreateInfo.html" class="xref page">VkPipelineCreateFlags2CreateInfoKHR</a>::<code>flags</code> does not
 include <a href="VkPipelineCreateFlagBits2.html" class="xref page">VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT</a>, all
 libraries linked to this pipeline <strong>must</strong> also not have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361" href="#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-flags-12361</span><br>
+
+If <code>flags</code> includes
+<a href="VkPipelineCreateFlagBits.html" class="xref page">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also have that flag set</p>
+</li>
+<li>
+<p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362" href="#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-flags-12362</span><br>
+
+If <code>flags</code> does not include
+<a href="VkPipelineCreateFlagBits.html" class="xref page">VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</a>, all libraries linked
+to this pipeline <strong>must</strong> also not have that flag set</p>
 </li>
 <li>
 <p><a id="VUID-VkRayTracingPipelineCreateInfoKHR-None-11369" href="#VUID-VkRayTracingPipelineCreateInfoKHR-None-11369"></a> <span class="vuid">VUID-VkRayTracingPipelineCreateInfoKHR-None-11369</span><br>

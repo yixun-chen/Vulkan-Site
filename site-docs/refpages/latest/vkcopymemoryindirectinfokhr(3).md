@@ -130,19 +130,9 @@ Valid Usage (Implicit)
  `srcCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](VkAddressCopyFlagBitsKHR.html) values
 
 * 
-[](#VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask) VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-requiredbitmask
-
- `srcCopyFlags` **must** not be `0`
-
-* 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter
 
  `dstCopyFlags` **must** be a valid combination of [VkAddressCopyFlagBitsKHR](VkAddressCopyFlagBitsKHR.html) values
-
-* 
-[](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-requiredbitmask
-
- `dstCopyFlags` **must** not be `0`
 
 [VK_KHR_copy_memory_indirect](VK_KHR_copy_memory_indirect.html), [VkAddressCopyFlagsKHR](VkAddressCopyFlagsKHR.html), [VkStridedDeviceAddressRangeKHR](VkStridedDeviceAddressRangeKHR.html), [VkStructureType](VkStructureType.html), [vkCmdCopyMemoryIndirectKHR](vkCmdCopyMemoryIndirectKHR.html)
 

@@ -71,8 +71,7 @@ Valid Usage
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04766
 
 `zirconHandle` **must** obey any requirements listed for
-`handleType` in
-[external semaphore    handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
+`handleType` in [    external semaphore handle types compatibility](../../../../spec/latest/chapters/capabilities.html#external-semaphore-handle-types-compatibility)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-zirconHandle-04767

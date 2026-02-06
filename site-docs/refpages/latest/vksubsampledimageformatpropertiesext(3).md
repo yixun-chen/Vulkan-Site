@@ -20,7 +20,7 @@
 VkSubsampledImageFormatPropertiesEXT - Structure specifying image descriptor count for subsampled images
 
 To determine the number of image descriptors required to support a
-[multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), add
+subsampled image created with [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html), add
 [VkSubsampledImageFormatPropertiesEXT](#) to the `pNext` chain of the
 [VkImageFormatProperties2](VkImageFormatProperties2.html) structure in a call to
 `vkGetPhysicalDeviceImageFormatProperties2`.

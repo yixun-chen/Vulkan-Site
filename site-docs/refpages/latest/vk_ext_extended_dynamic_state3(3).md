@@ -495,14 +495,10 @@ Extending [VkDynamicState](VkDynamicState.html):
 1) What about the VkPipelineMultisampleStateCreateInfo state
 `sampleShadingEnable` and `minSampleShading`?
 
-**UNRESOLVED**
-
-* 
-`sampleShadingEnable` and `minSampleShading` are required when compiling
-the fragment shader, and it is not meaningful to set them dynamically
-since they always need to match the fragment shader state, so this
-hardware state may as well just come from the pipeline with the fragment
-shader.
+`sampleShadingEnable` and `minSampleShading` are required when compiling the
+fragment shader, and it is not meaningful to set them dynamically since they
+always need to match the fragment shader state, so this hardware state may
+as well just come from the pipeline with the fragment shader.
 
 * 
 Revision 2, 2022-07-18 (Piers Daniell)

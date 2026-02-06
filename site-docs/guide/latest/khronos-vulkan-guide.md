@@ -1,4 +1,4 @@
-# 
+# Khronos Vulkan Guide
 
 ## Metadata
 
