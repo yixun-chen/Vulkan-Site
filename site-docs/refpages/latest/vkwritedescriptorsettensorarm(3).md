@@ -69,6 +69,13 @@ Valid Usage (Implicit)
 
  `tensorViewCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](VkWriteDescriptorSet.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkStructureType](VkStructureType.html), [VkTensorViewARM](VkTensorViewARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkWriteDescriptorSetTensorARM).

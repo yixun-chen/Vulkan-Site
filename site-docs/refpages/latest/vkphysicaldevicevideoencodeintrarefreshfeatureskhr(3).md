@@ -64,6 +64,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_INTRA_REFRESH_FEATURES_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 [VK_KHR_video_encode_intra_refresh](VK_KHR_video_encode_intra_refresh.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR).

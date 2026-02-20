@@ -164,6 +164,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html)
+
 [VK_KHR_external_fence_capabilities](VK_KHR_external_fence_capabilities.html), [VK_KHR_external_memory_capabilities](VK_KHR_external_memory_capabilities.html), [VK_KHR_external_semaphore_capabilities](VK_KHR_external_semaphore_capabilities.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkPhysicalDeviceIDProperties).

@@ -75,6 +75,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_NV_fragment_shading_rate_enums](VK_NV_fragment_shading_rate_enums.html), [VkFragmentShadingRateCombinerOpKHR](VkFragmentShadingRateCombinerOpKHR.html), [VkFragmentShadingRateNV](VkFragmentShadingRateNV.html), [VkFragmentShadingRateTypeNV](VkFragmentShadingRateTypeNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV).

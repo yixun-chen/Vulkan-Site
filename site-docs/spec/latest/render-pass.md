@@ -1838,6 +1838,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkRenderingAttachmentFlagBitsKHR](#VkRenderingAttachmentFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingAttachmentInfo](#VkRenderingAttachmentInfo)
+
 Bits which **can** be set in
 [VkRenderingAttachmentFlagsInfoKHR](#VkRenderingAttachmentFlagsInfoKHR)::`flags`, describing additional
 properties of a rendering attachment, are:
@@ -1954,6 +1961,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType) VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingAttachmentInfo](#VkRenderingAttachmentInfo)
 
 The `VkRenderingFragmentShadingRateAttachmentInfoKHR` structure is
 defined as:
@@ -2084,6 +2098,13 @@ Valid Usage (Implicit)
 
  `imageLayout` **must** be a valid [VkImageLayout](resources.html#VkImageLayout) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
+
 The `VkRenderingFragmentDensityMapAttachmentInfoEXT` structure is
 defined as:
 
@@ -2163,6 +2184,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageLayout-parameter) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageLayout-parameter
 
  `imageLayout` **must** be a valid [VkImageLayout](resources.html#VkImageLayout) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 To query the render area granularity for a render pass instance, call:
 
@@ -2349,6 +2377,16 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassStripeBeginInfoARM-stripeInfoCount-arraylength) VUID-VkRenderPassStripeBeginInfoARM-stripeInfoCount-arraylength
 
  `stripeInfoCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 The `VkRenderPassStripeInfoARM` structure is defined as:
 
@@ -2561,6 +2599,16 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter
 
  `pCounterIndices` **must** be a valid pointer to a `uint32_t` value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 To begin resolving attachments using render pass draws, call:
 
@@ -3839,6 +3887,13 @@ Valid Usage (Implicit)
 
  If `correlationMaskCount` is not `0`, `pCorrelationMasks` **must** be a valid pointer to an array of `correlationMaskCount` `uint32_t` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](#VkRenderPassCreateInfo)
+
 The `VkMultiviewPerViewAttributesInfoNVX` structure is defined as:
 
 // Provided by VK_NVX_multiview_per_view_attributes with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
@@ -3888,6 +3943,19 @@ Valid Usage (Implicit)
 [](#VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType) VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 If the [VkRenderPassCreateInfo](#VkRenderPassCreateInfo)::`pNext` chain includes a
 `VkRenderPassFragmentDensityMapCreateInfoEXT` structure, then that
@@ -3989,6 +4057,16 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter
 
  `fragmentDensityMapAttachment` **must** be a valid [VkAttachmentReference](#VkAttachmentReference) structure
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](#VkRenderPassCreateInfo)
+
+* 
+[VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)
 
 The `VkAttachmentDescription` structure is defined as:
 
@@ -4537,6 +4615,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassInputAttachmentAspectCreateInfo-aspectReferenceCount-arraylength) VUID-VkRenderPassInputAttachmentAspectCreateInfo-aspectReferenceCount-arraylength
 
  `aspectReferenceCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](#VkRenderPassCreateInfo)
 
 The `VkInputAttachmentAspectReference` structure is defined as:
 
@@ -7011,6 +7096,13 @@ Valid Usage (Implicit)
 
  `stencilFinalLayout` **must** be a valid [VkImageLayout](resources.html#VkImageLayout) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAttachmentDescription2](#VkAttachmentDescription2)
+
 The `VkSubpassDescription2` structure is defined as:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
@@ -7902,6 +7994,13 @@ Valid Usage (Implicit)
 
  If `pDepthStencilResolveAttachment` is not `NULL`, `pDepthStencilResolveAttachment` **must** be a valid pointer to a valid [VkAttachmentReference2](#VkAttachmentReference2) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDescription2](#VkSubpassDescription2)
+
 The `VkFragmentShadingRateAttachmentInfoKHR` structure is defined as:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
@@ -8023,6 +8122,13 @@ Valid Usage (Implicit)
 
  If `pFragmentShadingRateAttachment` is not `NULL`, `pFragmentShadingRateAttachment` **must** be a valid pointer to a valid [VkAttachmentReference2](#VkAttachmentReference2) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDescription2](#VkSubpassDescription2)
+
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2)
 or [VkRenderingInfo](#VkRenderingInfo)
 includes a `VkMultisampledRenderToSingleSampledInfoEXT` structure, then
@@ -8086,6 +8192,16 @@ Valid Usage (Implicit)
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter) VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter
 
  `rasterizationSamples` **must** be a valid [VkSampleCountFlagBits](limits.html#VkSampleCountFlagBits) value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
+
+* 
+[VkSubpassDescription2](#VkSubpassDescription2)
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2)
 or [VkRenderingInfo](#VkRenderingInfo)
@@ -8298,6 +8414,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAttachmentReferenceStencilLayout-stencilLayout-parameter) VUID-VkAttachmentReferenceStencilLayout-stencilLayout-parameter
 
  `stencilLayout` **must** be a valid [VkImageLayout](resources.html#VkImageLayout) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAttachmentReference2](#VkAttachmentReference2)
 
 The `VkSubpassDependency2` structure is defined as:
 
@@ -9594,6 +9717,13 @@ Valid Usage (Implicit)
 [](#VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter) VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter
 
  If `attachmentImageInfoCount` is not `0`, `pAttachmentImageInfos` **must** be a valid pointer to an array of `attachmentImageInfoCount` valid [VkFramebufferAttachmentImageInfo](#VkFramebufferAttachmentImageInfo) structures
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFramebufferCreateInfo](#VkFramebufferCreateInfo)
 
 The `VkFramebufferAttachmentImageInfo` structure is defined as:
 
@@ -11316,6 +11446,13 @@ Valid Usage (Implicit)
 
  If `postSubpassSampleLocationsCount` is not `0`, `pPostSubpassSampleLocations` **must** be a valid pointer to an array of `postSubpassSampleLocationsCount` valid [VkSubpassSampleLocationsEXT](#VkSubpassSampleLocationsEXT) structures
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
 The `VkAttachmentSampleLocationsEXT` structure is defined as:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
@@ -11452,6 +11589,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
 The tile properties queried using [VK_QCOM_tile_properties](../appendices/extensions.html#VK_QCOM_tile_properties) depend on
 the size of the reserved tile memory by the application.
 This size **can** be specified by the following structure to
@@ -11513,6 +11657,19 @@ Valid Usage (Implicit)
 [](#VUID-VkTileMemorySizeInfoQCOM-sType-sType) VUID-VkTileMemorySizeInfoQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](#VkRenderPassCreateInfo)
+
+* 
+[VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 The `VkSubpassBeginInfo` structure is defined as:
 
@@ -11742,6 +11899,16 @@ Valid Usage (Implicit)
 
  If `deviceRenderAreaCount` is not `0`, `pDeviceRenderAreas` **must** be a valid pointer to an array of `deviceRenderAreaCount` [VkRect2D](fundamentals.html#VkRect2D) structures
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
+
 The `VkRenderPassAttachmentBeginInfo` structure is defined as:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
@@ -11815,6 +11982,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter) VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter
 
  If `attachmentCount` is not `0`, `pAttachments` **must** be a valid pointer to an array of `attachmentCount` valid [VkImageView](resources.html#VkImageView) handles
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
 
 If a render pass instance enables multiview and if the
 [`multiviewPerViewRenderAreas`](features.html#features-multiviewPerViewRenderAreas)
@@ -11934,6 +12108,16 @@ Valid Usage (Implicit)
 [](#VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter) VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter
 
  If `perViewRenderAreaCount` is not `0`, `pPerViewRenderAreas` **must** be a valid pointer to an array of `perViewRenderAreaCount` [VkRect2D](fundamentals.html#VkRect2D) structures
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](#VkRenderPassBeginInfo)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 To query the render area granularity, call:
 
@@ -12691,6 +12875,16 @@ Valid Usage (Implicit)
 
  If `fragmentDensityOffsetCount` is not `0`, `pFragmentDensityOffsets` **must** be a valid pointer to an array of `fragmentDensityOffsetCount` [VkOffset2D](fundamentals.html#VkOffset2D) structures
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingEndInfoKHR](#VkRenderingEndInfoKHR)
+
+* 
+[VkSubpassEndInfo](#VkSubpassEndInfo)
+
 A `VkRenderPassCreationControlEXT` structure **can** be included in the
 `pNext` chain of `VkRenderPassCreateInfo2` or `pNext` chain of
 [VkSubpassDescription2](#VkSubpassDescription2).
@@ -12733,6 +12927,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)
+
+* 
+[VkSubpassDescription2](#VkSubpassDescription2)
+
 To obtain feedback about the creation of a render pass, include a
 `VkRenderPassCreationFeedbackCreateInfoEXT` structure in the `pNext`
 chain of [VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2).
@@ -12771,6 +12975,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter) VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter
 
  `pRenderPassFeedback` **must** be a valid pointer to a [VkRenderPassCreationFeedbackInfoEXT](#VkRenderPassCreationFeedbackInfoEXT) structure
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)
 
 The `VkRenderPassCreationFeedbackInfoEXT` structure is defined as:
 
@@ -12823,6 +13034,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter) VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter
 
  `pSubpassFeedback` **must** be a valid pointer to a [VkRenderPassSubpassFeedbackInfoEXT](#VkRenderPassSubpassFeedbackInfoEXT) structure
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDescription2](#VkSubpassDescription2)
 
 The `VkRenderPassSubpassFeedbackInfoEXT` structure is defined as:
 
@@ -13173,6 +13391,22 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter
 
  `flags` **must** be a valid combination of [VkTileShadingRenderPassFlagBitsQCOM](#VkTileShadingRenderPassFlagBitsQCOM) values
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkRenderPassCreateInfo](#VkRenderPassCreateInfo)
+
+* 
+[VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)
+
+* 
+[VkRenderingInfo](#VkRenderingInfo)
 
 Bits which **can** be set in
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags` describing

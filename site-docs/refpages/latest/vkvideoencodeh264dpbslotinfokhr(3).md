@@ -131,6 +131,13 @@ Valid Usage (Implicit)
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoEncodeH264ReferenceInfo` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](VkVideoReferenceSlotInfoKHR.html)
+
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeH264DpbSlotInfoKHR).

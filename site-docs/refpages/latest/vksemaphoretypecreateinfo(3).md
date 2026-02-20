@@ -83,6 +83,16 @@ Valid Usage (Implicit)
 
  `semaphoreType` **must** be a valid [VkSemaphoreType](VkSemaphoreType.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceExternalSemaphoreInfo](VkPhysicalDeviceExternalSemaphoreInfo.html)
+
+* 
+[VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)
+
 [VK_KHR_timeline_semaphore](VK_KHR_timeline_semaphore.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkSemaphoreType](VkSemaphoreType.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkSemaphoreTypeCreateInfo).

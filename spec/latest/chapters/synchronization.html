@@ -972,8 +972,8 @@ static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT = 
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT = 0x00100000ULL;
 // Provided by VK_HUAWEI_subpass_shading
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI = 0x8000000000ULL;
-// VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI is a legacy alias
 // Provided by VK_HUAWEI_subpass_shading
+// VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI is a legacy alias
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI = 0x8000000000ULL;
 // Provided by VK_HUAWEI_invocation_mask
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000ULL;
@@ -2567,6 +2567,8 @@ in the <a href="#VkPipelineStageFlagBits2KHR">VK_PIPELINE_STAGE_2_FRAGMENT_SHADE
 via certain render pass <a href="renderpass.html#renderpass-load-operations" class="xref page">load</a>,
 <a href="renderpass.html#renderpass-store-operations" class="xref page">store</a>, and
 <a href="renderpass.html#renderpass-resolve-operations" class="xref page">multisample resolve</a> operations.
+This includes <a href="renderpass.html#renderpass-resolve-operations" class="xref page">multisample resolve</a>
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 <a href="#VkPipelineStageFlagBits2KHR">VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT</a> pipeline stage.</p>
 </li>
@@ -2944,6 +2946,31 @@ to be included in the <a href="#synchronization-dependencies-access-scopes">    
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferMemoryBarrier2">VkBufferMemoryBarrier2</a></p>
+</li>
+<li>
+<p><a href="#VkImageMemoryBarrier2">VkImageMemoryBarrier2</a></p>
+</li>
+<li>
+<p><a href="renderpass.html#VkSubpassDependency2" class="xref page">VkSubpassDependency2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -3172,9 +3199,12 @@ in the <a href="#VkPipelineStageFlagBits">VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT<
 </li>
 <li>
 <p><a href="#VkAccessFlagBits">VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</a> specifies write access to a
-<a href="renderpass.html#renderpass" class="xref page">color, resolve, or depth/stencil resolve attachment</a>
-during a <a href="renderpass.html#renderpass" class="xref page">render pass</a> or via certain render pass
-<a href="renderpass.html#renderpass-load-operations" class="xref page">load</a> and <a href="renderpass.html#renderpass-store-operations" class="xref page">    store</a> operations.
+<a href="renderpass.html#renderpass" class="xref page">color attachment</a> during a <a href="renderpass.html#renderpass" class="xref page">render pass</a> or
+via certain render pass <a href="renderpass.html#renderpass-load-operations" class="xref page">load</a>,
+<a href="renderpass.html#renderpass-store-operations" class="xref page">store</a>, and
+<a href="renderpass.html#renderpass-resolve-operations" class="xref page">multisample resolve</a> operations.
+This includes <a href="renderpass.html#renderpass-resolve-operations" class="xref page">multisample resolve</a>
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 <a href="#VkPipelineStageFlagBits">VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</a> pipeline stage.</p>
 </li>
@@ -4436,6 +4466,25 @@ reported by <a href="capabilities.html#VkExternalFenceProperties" class="xref pa
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkFenceCreateInfo">VkFenceCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -4543,6 +4592,25 @@ the <code>pNext</code> chain of <a href="#VkFenceCreateInfo">VkFenceCreateInfo</
  If <code>pAttributes</code> is not <code>NULL</code>, <code>pAttributes</code> <strong>must</strong> be a valid pointer to a valid <code>SECURITY_ATTRIBUTES</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkFenceCreateInfo">VkFenceCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -7115,6 +7183,28 @@ If <code>semaphoreType</code> is <a href="#VkSemaphoreTypeKHR">VK_SEMAPHORE_TYPE
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceExternalSemaphoreInfo" class="xref page">VkPhysicalDeviceExternalSemaphoreInfo</a></p>
+</li>
+<li>
+<p><a href="#VkSemaphoreCreateInfo">VkSemaphoreCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -7236,6 +7326,25 @@ reported by <a href="capabilities.html#VkExternalSemaphoreProperties" class="xre
  <code>handleTypes</code> <strong>must</strong> be a valid combination of <a href="capabilities.html#VkExternalSemaphoreHandleTypeFlagBits" class="xref page">VkExternalSemaphoreHandleTypeFlagBits</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSemaphoreCreateInfo">VkSemaphoreCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -7361,6 +7470,25 @@ If <a href="#VkExportSemaphoreCreateInfo">VkExportSemaphoreCreateInfo</a>::<code
  If <code>pAttributes</code> is not <code>NULL</code>, <code>pAttributes</code> <strong>must</strong> be a valid pointer to a valid <code>SECURITY_ATTRIBUTES</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSemaphoreCreateInfo">VkSemaphoreCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -7636,6 +7764,25 @@ structure.</p>
  <code>pQueriedLowLatencyData</code> <strong>must</strong> be a pointer value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSemaphoreCreateInfo">VkSemaphoreCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -15629,6 +15776,25 @@ If <code>dstAccessMask</code> includes
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="renderpass.html#VkSubpassDependency2" class="xref page">VkSubpassDependency2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20802,6 +20968,25 @@ contiguously to a single <a href="memory.html#VkDeviceMemory" class="xref page">
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkDependencyInfo">VkDependencyInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20854,6 +21039,25 @@ between tensors.</p>
  <code>pTensorMemoryBarriers</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkTensorMemoryBarrierARM">VkTensorMemoryBarrierARM</a> structure</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkDependencyInfo">VkDependencyInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -21284,6 +21488,34 @@ ownership to the queue family</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferMemoryBarrier">VkBufferMemoryBarrier</a></p>
+</li>
+<li>
+<p><a href="#VkBufferMemoryBarrier2">VkBufferMemoryBarrier2</a></p>
+</li>
+<li>
+<p><a href="#VkImageMemoryBarrier">VkImageMemoryBarrier</a></p>
+</li>
+<li>
+<p><a href="#VkImageMemoryBarrier2">VkImageMemoryBarrier2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -21706,7 +21938,9 @@ timestamps on a regular basis.</p>
 <p><a id="VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246" href="#VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246"></a> <span class="vuid">VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246</span><br>
 
 The <code>timeDomain</code> value of each <a href="#VkCalibratedTimestampInfoKHR">VkCalibratedTimestampInfoKHR</a> in
-<code>pTimestampInfos</code> <strong>must</strong> be unique</p>
+<code>pTimestampInfos</code> <strong>must</strong> be unique
+except for those with a value of
+<a href="#VkTimeDomainEXT">VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT</a></p>
 </li>
 </ul>
 </div>
@@ -22094,13 +22328,20 @@ specify one and only one present stage</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Host Synchronization</div>
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
 <div class="ulist">
 <ul>
 <li>
-<p>Host access to <code>swapchain</code> <strong>must</strong> be externally synchronized</p>
+<p><a href="#VkCalibratedTimestampInfoKHR">VkCalibratedTimestampInfoKHR</a></p>
 </li>
 </ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

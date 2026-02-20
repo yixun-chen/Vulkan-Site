@@ -54,6 +54,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](VkSubmitInfo.html)
+
+* 
+[VkSubmitInfo2](VkSubmitInfo2.html)
+
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkLatencySubmissionPresentIdNV).

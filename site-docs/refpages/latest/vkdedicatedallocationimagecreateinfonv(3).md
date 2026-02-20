@@ -66,6 +66,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
 [VK_NV_dedicated_allocation](VK_NV_dedicated_allocation.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkDedicatedAllocationImageCreateInfoNV).

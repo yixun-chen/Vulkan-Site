@@ -747,6 +747,18 @@ The corresponding core version is supported (as returned by
 | `DescriptorHeapEXT`
 
                 [`VkPhysicalDeviceDescriptorHeapFeaturesEXT`::`descriptorHeap`](../chapters/features.html#features-descriptorHeap) |
+| `DotProductFloat16AccFloat32VALVE`
+
+                [`VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE`::`shaderMixedFloatDotProductFloat16AccFloat32`](../chapters/features.html#features-shaderMixedFloatDotProductFloat16AccFloat32) |
+| `DotProductFloat16AccFloat16VALVE`
+
+                [`VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE`::`shaderMixedFloatDotProductFloat16AccFloat16`](../chapters/features.html#features-shaderMixedFloatDotProductFloat16AccFloat16) |
+| `DotProductBFloat16AccVALVE`
+
+                [`VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE`::`shaderMixedFloatDotProductBFloat16Acc`](../chapters/features.html#features-shaderMixedFloatDotProductBFloat16Acc) |
+| `DotProductFloat8AccFloat32VALVE`
+
+                [`VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE`::`shaderMixedFloatDotProductFloat8AccFloat32`](../chapters/features.html#features-shaderMixedFloatDotProductFloat8AccFloat32) |
 
 The application **must** not pass a SPIR-V module containing any of the
 following to [vkCreateShaderModule](../chapters/shaders.html#vkCreateShaderModule):
@@ -1131,6 +1143,9 @@ The corresponding core version is supported (as returned by
 | `SPV_EXT_descriptor_heap`
 
                 `[VK_EXT_descriptor_heap](extensions.html#VK_EXT_descriptor_heap)` |
+| `SPV_VALVE_mixed_float_dot_product`
+
+                `[VK_VALVE_shader_mixed_float_dot_product](extensions.html#VK_VALVE_shader_mixed_float_dot_product)` |
 
 A SPIR-V module passed to [vkCreateShaderModule](../chapters/shaders.html#vkCreateShaderModule) **must** conform to the
 following rules:
@@ -2067,12 +2082,6 @@ the pointed-to type
 `OpTypeForwardPointer` **must** have a `Storage` `Class` of
 `PhysicalStorageBuffer`
 
-[](#VUID-StandaloneSpirv-None-04745) VUID-StandaloneSpirv-None-04745
-
-All block members in a variable with a `Storage` `Class` of
-`PushConstant` declared as an array **must** only be accessed by
-dynamically uniform indices
-
 [](#VUID-StandaloneSpirv-OpVariable-06673) VUID-StandaloneSpirv-OpVariable-06673
 
 There **must** be at most one variable in the `PushConstant`
@@ -2600,6 +2609,13 @@ If the [effective subgroup size](../chapters/interfaces.html#interfaces-builtin-
 is not declared, and an instruction accesses memory through a storage
 texel buffer, the storage texel buffer through which that memory is
 accessed **must** be dynamically uniform within the invocation group
+
+* 
+[](#VUID-RuntimeSpirv-None-04745) VUID-RuntimeSpirv-None-04745
+
+All block members in a variable with a `Storage` `Class` of
+`PushConstant` declared as an array **must** only be accessed by
+dynamically uniform indices
 
 * 
 [](#VUID-RuntimeSpirv-None-10148) VUID-RuntimeSpirv-None-10148
@@ -5175,7 +5191,7 @@ Any pointer type whose `Type` parameter is a vector type with more
 than four components (or an aggregate containing such a type) **must** have
 `Storage` `Class` of `Function`, `Private`, `Uniform`,
 `Workgroup`, `StorageBuffer`, `PhysicalStorageBuffer`,
-`PushConstant`, or `ShaderRecordBufferKHR`.
+`PushConstant`, or `ShaderRecordBufferKHR`
 
 [](#VUID-RuntimeSpirv-samplerDescriptorAlignment-11348) VUID-RuntimeSpirv-samplerDescriptorAlignment-11348
 

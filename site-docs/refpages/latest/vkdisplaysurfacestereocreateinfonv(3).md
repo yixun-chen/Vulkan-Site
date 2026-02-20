@@ -52,6 +52,13 @@ Valid Usage (Implicit)
 
  `stereoType` **must** be a valid [VkDisplaySurfaceStereoTypeNV](VkDisplaySurfaceStereoTypeNV.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDisplaySurfaceCreateInfoKHR](VkDisplaySurfaceCreateInfoKHR.html)
+
 [VK_NV_display_stereo](VK_NV_display_stereo.html), [VkDisplaySurfaceStereoTypeNV](VkDisplaySurfaceStereoTypeNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkDisplaySurfaceStereoCreateInfoNV).

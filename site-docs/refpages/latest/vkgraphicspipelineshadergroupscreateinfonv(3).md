@@ -137,6 +137,13 @@ Valid Usage (Implicit)
 
  If `pipelineCount` is not `0`, `pPipelines` **must** be a valid pointer to an array of `pipelineCount` valid [VkPipeline](VkPipeline.html) handles
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html), [VkGraphicsShaderGroupCreateInfoNV](VkGraphicsShaderGroupCreateInfoNV.html), [VkPipeline](VkPipeline.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkGraphicsPipelineShaderGroupsCreateInfoNV).

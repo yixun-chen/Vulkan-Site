@@ -54,6 +54,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](VkVideoCapabilitiesKHR.html)
+
 [VK_KHR_video_decode_h265](VK_KHR_video_decode_h265.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoDecodeH265CapabilitiesKHR).

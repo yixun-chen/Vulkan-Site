@@ -55,6 +55,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_VALVE_fragment_density_map_layered](VK_VALVE_fragment_density_map_layered.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineFragmentDensityMapLayeredCreateInfoVALVE).

@@ -38,6 +38,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](VkSubmitInfo.html)
+
 [VK_SEC_amigo_profiling](VK_SEC_amigo_profiling.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/appendices/extensions.html#VkAmigoProfilingSubmitInfoSEC).

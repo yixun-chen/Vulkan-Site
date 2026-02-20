@@ -701,6 +701,31 @@ Valid Usage (Implicit)
 
  If `pushConstantRangeCount` is not `0`, `pPushConstantRanges` **must** be a valid pointer to an array of `pushConstantRangeCount` valid [VkPushConstantRange](VkPushConstantRange.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindDescriptorBufferEmbeddedSamplersInfoEXT](VkBindDescriptorBufferEmbeddedSamplersInfoEXT.html)
+
+* 
+[VkBindDescriptorSetsInfo](VkBindDescriptorSetsInfo.html)
+
+* 
+[VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html)
+
+* 
+[VkPushConstantsInfo](VkPushConstantsInfo.html)
+
+* 
+[VkPushDescriptorSetInfo](VkPushDescriptorSetInfo.html)
+
+* 
+[VkPushDescriptorSetWithTemplateInfo](VkPushDescriptorSetWithTemplateInfo.html)
+
+* 
+[VkSetDescriptorBufferOffsetsInfoEXT](VkSetDescriptorBufferOffsetsInfoEXT.html)
+
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDescriptorSetLayout](VkDescriptorSetLayout.html), [VkPipelineLayoutCreateFlags](VkPipelineLayoutCreateFlags.html), [VkPushConstantRange](VkPushConstantRange.html), [VkStructureType](VkStructureType.html), [vkCreatePipelineLayout](vkCreatePipelineLayout.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkPipelineLayoutCreateInfo).

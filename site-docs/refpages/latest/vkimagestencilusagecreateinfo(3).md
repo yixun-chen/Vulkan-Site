@@ -95,6 +95,16 @@ Valid Usage (Implicit)
 
  `stencilUsage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)
+
 [VK_EXT_separate_stencil_usage](VK_EXT_separate_stencil_usage.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkImageUsageFlags](VkImageUsageFlags.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo).

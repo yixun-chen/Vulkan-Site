@@ -59,6 +59,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 [VK_EXT_zero_initialize_device_memory](VK_EXT_zero_initialize_device_memory.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT).

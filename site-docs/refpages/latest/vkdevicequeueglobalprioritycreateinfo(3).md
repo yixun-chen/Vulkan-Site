@@ -67,6 +67,13 @@ Valid Usage (Implicit)
 
  `globalPriority` **must** be a valid [VkQueueGlobalPriority](VkQueueGlobalPriority.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceQueueCreateInfo](VkDeviceQueueCreateInfo.html)
+
 [VK_EXT_global_priority](VK_EXT_global_priority.html), [VK_KHR_global_priority](VK_KHR_global_priority.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkQueueGlobalPriority](VkQueueGlobalPriority.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkDeviceQueueGlobalPriorityCreateInfo).

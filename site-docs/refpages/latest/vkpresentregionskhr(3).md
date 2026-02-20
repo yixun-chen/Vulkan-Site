@@ -86,6 +86,13 @@ Valid Usage (Implicit)
 
  `swapchainCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](VkPresentInfoKHR.html)
+
 [VK_KHR_incremental_present](VK_KHR_incremental_present.html), [VkPresentRegionKHR](VkPresentRegionKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkPresentRegionsKHR).

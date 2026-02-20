@@ -67,6 +67,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 [VK_EXT_index_type_uint8](VK_EXT_index_type_uint8.html), [VK_KHR_index_type_uint8](VK_KHR_index_type_uint8.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceIndexTypeUint8Features).

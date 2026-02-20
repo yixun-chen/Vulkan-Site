@@ -59,6 +59,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 [VK_INTEL_shader_integer_functions2](VK_INTEL_shader_integer_functions2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL).

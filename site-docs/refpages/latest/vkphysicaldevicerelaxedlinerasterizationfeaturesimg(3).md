@@ -59,6 +59,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 [VK_IMG_relaxed_line_rasterization](VK_IMG_relaxed_line_rasterization.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG).

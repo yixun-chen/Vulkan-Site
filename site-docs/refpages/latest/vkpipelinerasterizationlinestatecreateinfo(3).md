@@ -140,6 +140,13 @@ Valid Usage (Implicit)
 
  `lineRasterizationMode` **must** be a valid [VkLineRasterizationMode](VkLineRasterizationMode.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 [VK_EXT_line_rasterization](VK_EXT_line_rasterization.html), [VK_KHR_line_rasterization](VK_KHR_line_rasterization.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkLineRasterizationMode](VkLineRasterizationMode.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineRasterizationLineStateCreateInfo).

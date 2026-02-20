@@ -805,6 +805,13 @@ Valid Usage (Implicit)
 
  `chromaBitDepth` **must** be a valid combination of [VkVideoComponentBitDepthFlagBitsKHR](#VkVideoComponentBitDepthFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
 Possible values of [VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)::`videoCodecOperation`,
 specifying the type of video coding operation and video compression standard
 used by a video profile, are:
@@ -971,6 +978,16 @@ Valid Usage (Implicit)
 
  `videoUsageHints` **must** be a valid combination of [VkVideoDecodeUsageFlagBitsKHR](#VkVideoDecodeUsageFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 The following bits **can** be specified in
 [VkVideoDecodeUsageInfoKHR](#VkVideoDecodeUsageInfoKHR)::`videoUsageHints` as a hint about the
 video decode use case:
@@ -1067,6 +1084,16 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeUsageInfoKHR-tuningMode-parameter) VUID-VkVideoEncodeUsageInfoKHR-tuningMode-parameter
 
  If `tuningMode` is not `0`, `tuningMode` **must** be a valid [VkVideoEncodeTuningModeKHR](#VkVideoEncodeTuningModeKHR) value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
 
 The following bits **can** be specified in
 [VkVideoEncodeUsageInfoKHR](#VkVideoEncodeUsageInfoKHR)::`videoUsageHints` as a hint about the
@@ -1244,6 +1271,22 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoProfileListInfoKHR-pProfiles-parameter) VUID-VkVideoProfileListInfoKHR-pProfiles-parameter
 
  If `profileCount` is not `0`, `pProfiles` **must** be a valid pointer to an array of `profileCount` valid [VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR) structures
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](resources.html#VkBufferCreateInfo)
+
+* 
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)
+
+* 
+[VkPhysicalDeviceVideoFormatInfoKHR](#VkPhysicalDeviceVideoFormatInfoKHR)
 
 To query video coding capabilities for a specific video profile, call:
 
@@ -4170,11 +4213,6 @@ Valid Usage (Implicit)
  `videoSession` **must** be a valid [VkVideoSessionKHR](#VkVideoSessionKHR) handle
 
 * 
-[](#VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent) VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent
-
- If `videoSessionParametersTemplate` is a valid handle, it **must** have been created, allocated, or retrieved from `videoSession`
-
-* 
 [](#VUID-VkVideoSessionParametersCreateInfoKHR-commonparent) VUID-VkVideoSessionParametersCreateInfoKHR-commonparent
 
  Both of `videoSession`, and `videoSessionParametersTemplate` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
@@ -4229,6 +4267,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR-sType-sType) VUID-VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
 
 To destroy a video session parameters object, call:
 
@@ -5367,11 +5412,6 @@ Valid Usage (Implicit)
  If `referenceSlotCount` is not `0`, `pReferenceSlots` **must** be a valid pointer to an array of `referenceSlotCount` valid [VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR) structures
 
 * 
-[](#VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent) VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent
-
- If `videoSessionParameters` is a valid handle, it **must** have been created, allocated, or retrieved from `videoSession`
-
-* 
 [](#VUID-VkVideoBeginCodingInfoKHR-commonparent) VUID-VkVideoBeginCodingInfoKHR-commonparent
 
  Both of `videoSession`, and `videoSessionParameters` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
@@ -5881,6 +5921,16 @@ Valid Usage (Implicit)
 
  If `queryPool` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `queryPool` **must** be a valid [VkQueryPool](queries.html#VkQueryPool) handle
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
+
 Video decode operations consume compressed video data from a video bitstream
 buffer and zero or more reference pictures, and produce a *decode output
 picture* and an optional [reconstructed picture](#reconstructed-picture).
@@ -6060,6 +6110,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeCapabilitiesKHR-sType-sType) VUID-VkVideoDecodeCapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 Bits which **may** be set in [VkVideoDecodeCapabilitiesKHR](#VkVideoDecodeCapabilitiesKHR)::`flags`,
 indicating the decoding capabilities supported, are:
@@ -7621,6 +7678,16 @@ Valid Usage (Implicit)
 
  If `pictureLayout` is not `0`, `pictureLayout` **must** be a valid [VkVideoDecodeH264PictureLayoutFlagBitsKHR](#VkVideoDecodeH264PictureLayoutFlagBitsKHR) value
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 The H.264 video decode picture layout flags are defined as follows:
 
 // Provided by VK_KHR_video_decode_h264
@@ -7699,6 +7766,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH264CapabilitiesKHR-sType-sType) VUID-VkVideoDecodeH264CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -7867,6 +7941,13 @@ Valid Usage (Implicit)
 
  If `pParametersAddInfo` is not `NULL`, `pParametersAddInfo` **must** be a valid pointer to a valid [VkVideoDecodeH264SessionParametersAddInfoKHR](#VkVideoDecodeH264SessionParametersAddInfoKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
+
 The `VkVideoDecodeH264SessionParametersAddInfoKHR` structure is defined
 as:
 
@@ -7960,6 +8041,13 @@ Valid Usage (Implicit)
 
  If `stdPPSCount` is not `0`, `pStdPPSs` **must** be a valid pointer to an array of `stdPPSCount` `StdVideoH264PictureParameterSet` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersUpdateInfoKHR](#VkVideoSessionParametersUpdateInfoKHR)
+
 In case of [video sessions](#video-session) created with the video codec
 operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR) and with
 [VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](#VkVideoSessionCreateFlagBitsKHR), the
@@ -8017,6 +8105,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH264InlineSessionParametersInfoKHR-pStdPPS-parameter) VUID-VkVideoDecodeH264InlineSessionParametersInfoKHR-pStdPPS-parameter
 
  If `pStdPPS` is not `NULL`, `pStdPPS` **must** be a valid pointer to a valid `StdVideoH264PictureParameterSet` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
 
 The `VkVideoDecodeH264PictureInfoKHR` structure is defined as:
 
@@ -8169,6 +8264,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH264PictureInfoKHR-sliceCount-arraylength) VUID-VkVideoDecodeH264PictureInfoKHR-sliceCount-arraylength
 
  `sliceCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
 
 The `VkVideoDecodeH264DpbSlotInfoKHR` structure is defined as:
 
@@ -8334,6 +8436,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoDecodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoDecodeH264ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 This section describes the **required** H.264 decoding capabilities for
 physical devices that have at least one queue family that supports the video
@@ -8510,6 +8619,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [H.265 decode profile](#decode-h265-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -8544,6 +8663,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH265CapabilitiesKHR-sType-sType) VUID-VkVideoDecodeH265CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -8906,6 +9032,13 @@ Valid Usage (Implicit)
 
  If `pParametersAddInfo` is not `NULL`, `pParametersAddInfo` **must** be a valid pointer to a valid [VkVideoDecodeH265SessionParametersAddInfoKHR](#VkVideoDecodeH265SessionParametersAddInfoKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
+
 The `VkVideoDecodeH265SessionParametersAddInfoKHR` structure is defined
 as:
 
@@ -9022,6 +9155,13 @@ Valid Usage (Implicit)
 
  If `stdPPSCount` is not `0`, `pStdPPSs` **must** be a valid pointer to an array of `stdPPSCount` `StdVideoH265PictureParameterSet` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersUpdateInfoKHR](#VkVideoSessionParametersUpdateInfoKHR)
+
 In case of [video sessions](#video-session) created with the video codec
 operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR) and with
 [VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](#VkVideoSessionCreateFlagBitsKHR), the
@@ -9090,6 +9230,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-pStdPPS-parameter) VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-pStdPPS-parameter
 
  If `pStdPPS` is not `NULL`, `pStdPPS` **must** be a valid pointer to a valid `StdVideoH265PictureParameterSet` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
 
 The `VkVideoDecodeH265PictureInfoKHR` structure is defined as:
 
@@ -9264,6 +9411,13 @@ Valid Usage (Implicit)
 
  `sliceSegmentCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
+
 The `VkVideoDecodeH265DpbSlotInfoKHR` structure is defined as:
 
 // Provided by VK_KHR_video_decode_h265
@@ -9366,6 +9520,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeH265DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoDecodeH265DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoDecodeH265ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 This section describes the **required** H.265 decoding capabilities for
 physical devices that have at least one queue family that supports the video
@@ -9564,6 +9725,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [VP9 decode profile](#decode-vp9-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -9597,6 +9768,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeVP9CapabilitiesKHR-sType-sType) VUID-VkVideoDecodeVP9CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 The `VkVideoDecodeVP9PictureInfoKHR` structure is defined as:
 
@@ -9763,6 +9941,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeVP9PictureInfoKHR-pStdPictureInfo-parameter) VUID-VkVideoDecodeVP9PictureInfoKHR-pStdPictureInfo-parameter
 
  `pStdPictureInfo` **must** be a valid pointer to a valid `StdVideoDecodeVP9PictureInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
 
 |  | VP9 decode operations do not need any std reference information to be
 | --- | --- |
@@ -10019,6 +10204,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [AV1 decode profile](#decode-av1-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -10052,6 +10247,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeAV1CapabilitiesKHR-sType-sType) VUID-VkVideoDecodeAV1CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -10143,6 +10345,13 @@ Valid Usage (Implicit)
 
  `pStdSequenceHeader` **must** be a valid pointer to a valid `StdVideoAV1SequenceHeader` value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
+
 In case of [video sessions](#video-session) created with the video codec
 operation [VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR) and with
 [VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](#VkVideoSessionCreateFlagBitsKHR), the
@@ -10188,6 +10397,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-pStdSequenceHeader-parameter) VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-pStdSequenceHeader-parameter
 
  If `pStdSequenceHeader` is not `NULL`, `pStdSequenceHeader` **must** be a valid pointer to a valid `StdVideoAV1SequenceHeader` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
 
 The `VkVideoDecodeAV1PictureInfoKHR` structure is defined as:
 
@@ -10300,6 +10516,17 @@ section 6.8.14 of the [AV1 Specification](introduction.html#aomedia-av1);
 `pMiRowStarts` is a pointer to an array of `TileRows` number of
 unsigned integers that corresponds to `MiRowStarts` defined in
 section 6.8.14 of the [AV1 Specification](introduction.html#aomedia-av1);
+
+|  | Historically some applications incorrectly specified the values in
+| --- | --- |
+`pMiColStarts` and `pMiRowStarts` in terms of superblocks instead of
+mode info blocks, therefore it is recommended for implementations to ignore
+the values specified in `pMiColStarts` and `pMiRowStarts`.
+Instead, the values should be calculated based on
+`flags.uniform_tile_spacing_flag`, `pWidthInSbsMinus1`,
+`pHeightInSbsMinus1`, the [sequence header](#decode-av1-sequence-header)
+parameter `flags.use_128x128_superblock`, and the coded extent of the
+decoded picture. |
 
 * 
 `pWidthInSbsMinus1` is a pointer to an array of `TileCols` number
@@ -10482,6 +10709,13 @@ Valid Usage (Implicit)
 
  `tileCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](#VkVideoDecodeInfoKHR)
+
 [VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](#VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR) is the length of the array
 of DPB slot or AV1 reference names passed in
 [VkVideoDecodeAV1PictureInfoKHR](#VkVideoDecodeAV1PictureInfoKHR)::`referenceNameSlotIndices`.
@@ -10628,6 +10862,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoDecodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoDecodeAV1ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 This section describes the **required** AV1 decoding capabilities for physical
 devices that have at least one queue family that supports the video codec
@@ -11005,6 +11246,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
+
 Bits which **may** be set in [VkVideoEncodeCapabilitiesKHR](#VkVideoEncodeCapabilitiesKHR)::`flags`,
 indicating the encoding tools supported, are:
 
@@ -11338,6 +11586,16 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeQualityLevelInfoKHR-sType-sType) VUID-VkVideoEncodeQualityLevelInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCodingControlInfoKHR](#VkVideoCodingControlInfoKHR)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
 
 Any codec-specific parameters stored in video session parameters objects
 **may** need to be separately encoded and included in the final video bitstream
@@ -13915,6 +14173,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
+
 The intra refresh modes are defined with the following enums:
 
 // Provided by VK_KHR_video_encode_intra_refresh
@@ -14026,6 +14291,13 @@ Valid Usage (Implicit)
 
  If `intraRefreshMode` is not `0`, `intraRefreshMode` **must** be a valid [VkVideoEncodeIntraRefreshModeFlagBitsKHR](#VkVideoEncodeIntraRefreshModeFlagBitsKHR) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
+
 If the video encode operation is issued with the
 [VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR](#VkVideoEncodeFlagBitsKHR) flag, the picture will be
 encoded with intra refresh, resulting in the [intra refresh region](#encode-intra-refresh-regions) identified by the specified
@@ -14067,6 +14339,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeIntraRefreshInfoKHR-sType-sType) VUID-VkVideoEncodeIntraRefreshInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
 
 When using pictures encoded with intra refresh as an
 [active reference picture](#active-reference-pictures) in a video encode
@@ -14114,6 +14393,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoReferenceIntraRefreshInfoKHR-sType-sType) VUID-VkVideoReferenceIntraRefreshInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_REFERENCE_INTRA_REFRESH_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 In order to use active reference pictures with a non-zero number of dirty
 intra refresh regions and therefore limit sample prediction to clean intra
@@ -14732,6 +15018,16 @@ Valid Usage (Implicit)
 
  If `layerCount` is not `0`, `pLayers` **must** be a valid pointer to an array of `layerCount` valid [VkVideoEncodeRateControlLayerInfoKHR](#VkVideoEncodeRateControlLayerInfoKHR) structures
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
+
+* 
+[VkVideoCodingControlInfoKHR](#VkVideoCodingControlInfoKHR)
+
 // Provided by VK_KHR_video_encode_queue
 typedef VkFlags VkVideoEncodeRateControlFlagsKHR;
 
@@ -15008,6 +15304,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities of an [H.264 encode profile](#encode-h264-profile), the
 `VkVideoEncodeH264QuantizationMapCapabilitiesKHR` structure **can** be
@@ -15047,6 +15350,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264QuantizationMapCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH264QuantizationMapCapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities of an [H.265 encode profile](#encode-h265-profile), the
@@ -15088,6 +15398,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities of an [AV1 encode profile](#encode-av1-profile), the
 `VkVideoEncodeAV1QuantizationMapCapabilitiesKHR` structure **can** be
@@ -15127,6 +15444,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1QuantizationMapCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeAV1QuantizationMapCapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 When calling [vkGetPhysicalDeviceVideoFormatPropertiesKHR](#vkGetPhysicalDeviceVideoFormatPropertiesKHR), the
 [VkVideoFormatQuantizationMapPropertiesKHR](#VkVideoFormatQuantizationMapPropertiesKHR) structure **can** be included
@@ -15174,6 +15498,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoFormatQuantizationMapPropertiesKHR-sType-sType) VUID-VkVideoFormatQuantizationMapPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoFormatPropertiesKHR](#VkVideoFormatPropertiesKHR)
 
 When calling [vkGetPhysicalDeviceVideoFormatPropertiesKHR](#vkGetPhysicalDeviceVideoFormatPropertiesKHR), the
 `VkVideoFormatH265QuantizationMapPropertiesKHR` structure **can** be
@@ -15227,6 +15558,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoFormatH265QuantizationMapPropertiesKHR-sType-sType) VUID-VkVideoFormatH265QuantizationMapPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoFormatPropertiesKHR](#VkVideoFormatPropertiesKHR)
 
 When calling [vkGetPhysicalDeviceVideoFormatPropertiesKHR](#vkGetPhysicalDeviceVideoFormatPropertiesKHR), the
 `VkVideoFormatAV1QuantizationMapPropertiesKHR` structure **can** be
@@ -15282,6 +15620,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoFormatAV1QuantizationMapPropertiesKHR-sType-sType) VUID-VkVideoFormatAV1QuantizationMapPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoFormatPropertiesKHR](#VkVideoFormatPropertiesKHR)
 
 The `VkVideoEncodeQuantizationMapInfoKHR` structure **can** be included in
 the `pNext` chain of the [VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR) structure passed to
@@ -15339,6 +15684,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeQuantizationMapInfoKHR-quantizationMap-parameter) VUID-VkVideoEncodeQuantizationMapInfoKHR-quantizationMap-parameter
 
  If `quantizationMap` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `quantizationMap` **must** be a valid [VkImageView](resources.html#VkImageView) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
 
 R′G′B′ to Y′CBCR conversion performs the following operations to the
 [encode input picture](#encode-input-picture) before video coding:
@@ -15408,6 +15760,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeRgbConversionCapabilitiesVALVE-sType-sType) VUID-VkVideoEncodeRgbConversionCapabilitiesVALVE-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 The video encode R′G′B′ range compression to be applied to color
 component values of the [encode input picture](#encode-input-picture) before
@@ -15607,6 +15966,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 The `VkVideoEncodeSessionRgbConversionCreateInfoVALVE` structure **can** be
 included in the `pNext` chain of the [VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
 to specify the R′G′B′ conversion parameters used by the issued video
@@ -15714,6 +16080,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-yChromaOffset-parameter) VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-yChromaOffset-parameter
 
  `yChromaOffset` **must** be a valid [VkVideoEncodeRgbChromaOffsetFlagBitsVALVE](#VkVideoEncodeRgbChromaOffsetFlagBitsVALVE) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
 
 Video encode operations using an [H.264 encode profile](#encode-h264-profile) **can** be used to encode elementary video stream sequences compliant
 to the [ITU-T H.264 Specification](introduction.html#itu-t-h264).
@@ -16059,6 +16432,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [H.264 encode profile](#encode-h264-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -16181,6 +16564,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH264CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 Bits which **may** be set in
 [VkVideoEncodeH264CapabilitiesKHR](#VkVideoEncodeH264CapabilitiesKHR)::`flags`, indicating the H.264
@@ -16582,6 +16972,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeQualityLevelPropertiesKHR](#VkVideoEncodeQualityLevelPropertiesKHR)
+
 Additional parameters can be specified when creating a video session with an
 H.264 encode profile by including an instance of the
 [VkVideoEncodeH264SessionCreateInfoKHR](#VkVideoEncodeH264SessionCreateInfoKHR) structure in the `pNext`
@@ -16625,6 +17022,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264SessionCreateInfoKHR-sType-sType) VUID-VkVideoEncodeH264SessionCreateInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -16810,6 +17214,13 @@ Valid Usage (Implicit)
 
  If `pParametersAddInfo` is not `NULL`, `pParametersAddInfo` **must** be a valid pointer to a valid [VkVideoEncodeH264SessionParametersAddInfoKHR](#VkVideoEncodeH264SessionParametersAddInfoKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
+
 The `VkVideoEncodeH264SessionParametersAddInfoKHR` structure is defined
 as:
 
@@ -16903,6 +17314,13 @@ Valid Usage (Implicit)
 
  If `stdPPSCount` is not `0`, and `pStdPPSs` is not `NULL`, `pStdPPSs` **must** be a valid pointer to an array of `stdPPSCount` `StdVideoH264PictureParameterSet` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersUpdateInfoKHR](#VkVideoSessionParametersUpdateInfoKHR)
+
 The `VkVideoEncodeH264SessionParametersGetInfoKHR` structure is defined
 as:
 
@@ -16967,6 +17385,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeSessionParametersGetInfoKHR](#VkVideoEncodeSessionParametersGetInfoKHR)
+
 The `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` structure is
 defined as:
 
@@ -17005,6 +17430,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264SessionParametersFeedbackInfoKHR-sType-sType) VUID-VkVideoEncodeH264SessionParametersFeedbackInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeSessionParametersFeedbackInfoKHR](#VkVideoEncodeSessionParametersFeedbackInfoKHR)
 
 The [VkVideoEncodeH264PictureInfoKHR](#VkVideoEncodeH264PictureInfoKHR) structure is defined as:
 
@@ -17244,6 +17676,13 @@ Valid Usage (Implicit)
 
  `naluSliceEntryCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
+
 The [VkVideoEncodeH264NaluSliceInfoKHR](#VkVideoEncodeH264NaluSliceInfoKHR) structure is defined as:
 
 // Provided by VK_KHR_video_encode_h264
@@ -17423,6 +17862,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoEncodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoEncodeH264ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 In case of H.264 encoding it is common practice to follow a regular pattern
 of different picture types in display order when encoding subsequent frames.
@@ -17673,6 +18119,16 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkVideoEncodeH264RateControlFlagBitsKHR](#VkVideoEncodeH264RateControlFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
+
+* 
+[VkVideoCodingControlInfoKHR](#VkVideoCodingControlInfoKHR)
+
 Bits which **can** be set in
 [VkVideoEncodeH264RateControlInfoKHR](#VkVideoEncodeH264RateControlInfoKHR)::`flags`, specifying H.264
 rate control flags, are:
@@ -17877,6 +18333,13 @@ Valid Usage (Implicit)
 
  `maxFrameSize` **must** be a valid [VkVideoEncodeH264FrameSizeKHR](#VkVideoEncodeH264FrameSizeKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeRateControlLayerInfoKHR](#VkVideoEncodeRateControlLayerInfoKHR)
+
 The `VkVideoEncodeH264QpKHR` structure is defined as:
 
 // Provided by VK_KHR_video_encode_h264
@@ -17990,6 +18453,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH264GopRemainingFrameInfoKHR-sType-sType) VUID-VkVideoEncodeH264GopRemainingFrameInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
 
 Quantization delta maps used with an [H.264 encode profile](#encode-h264-profile) are referred to as *QP delta maps* and their texels contain
 integer values representing QP delta values that are applied in the process
@@ -18611,6 +19081,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [H.265 encode profile](#encode-h265-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -18756,6 +19236,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH265CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 Bits which **may** be set in
 [VkVideoEncodeH265CapabilitiesKHR](#VkVideoEncodeH265CapabilitiesKHR)::`flags`, indicating the H.265
@@ -19238,6 +19725,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeQualityLevelPropertiesKHR](#VkVideoEncodeQualityLevelPropertiesKHR)
+
 Additional parameters can be specified when creating a video session with an
 H.265 encode profile by including an instance of the
 [VkVideoEncodeH265SessionCreateInfoKHR](#VkVideoEncodeH265SessionCreateInfoKHR) structure in the `pNext`
@@ -19281,6 +19775,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265SessionCreateInfoKHR-sType-sType) VUID-VkVideoEncodeH265SessionCreateInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -19660,6 +20161,13 @@ Valid Usage (Implicit)
 
  If `pParametersAddInfo` is not `NULL`, `pParametersAddInfo` **must** be a valid pointer to a valid [VkVideoEncodeH265SessionParametersAddInfoKHR](#VkVideoEncodeH265SessionParametersAddInfoKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
+
 The `VkVideoEncodeH265SessionParametersAddInfoKHR` structure is defined
 as:
 
@@ -19750,6 +20258,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-pStdPPSs-parameter) VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-pStdPPSs-parameter
 
  If `stdPPSCount` is not `0`, and `pStdPPSs` is not `NULL`, `pStdPPSs` **must** be a valid pointer to an array of `stdPPSCount` `StdVideoH265PictureParameterSet` values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersUpdateInfoKHR](#VkVideoSessionParametersUpdateInfoKHR)
 
 Valid Usage
 
@@ -19857,6 +20372,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeSessionParametersGetInfoKHR](#VkVideoEncodeSessionParametersGetInfoKHR)
+
 The `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` structure is
 defined as:
 
@@ -19903,6 +20425,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265SessionParametersFeedbackInfoKHR-sType-sType) VUID-VkVideoEncodeH265SessionParametersFeedbackInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeSessionParametersFeedbackInfoKHR](#VkVideoEncodeSessionParametersFeedbackInfoKHR)
 
 The [VkVideoEncodeH265PictureInfoKHR](#VkVideoEncodeH265PictureInfoKHR) structure is defined as:
 
@@ -20172,6 +20701,13 @@ Valid Usage (Implicit)
 
  `naluSliceSegmentEntryCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
+
 The [VkVideoEncodeH265NaluSliceSegmentInfoKHR](#VkVideoEncodeH265NaluSliceSegmentInfoKHR) structure is defined as:
 
 // Provided by VK_KHR_video_encode_h265
@@ -20355,6 +20891,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoEncodeH265DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoEncodeH265ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 In case of H.265 encoding it is common practice to follow a regular pattern
 of different picture types in display order when encoding subsequent frames.
@@ -20605,6 +21148,16 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkVideoEncodeH265RateControlFlagBitsKHR](#VkVideoEncodeH265RateControlFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
+
+* 
+[VkVideoCodingControlInfoKHR](#VkVideoCodingControlInfoKHR)
+
 Bits which **can** be set in
 [VkVideoEncodeH265RateControlInfoKHR](#VkVideoEncodeH265RateControlInfoKHR)::`flags`, specifying H.265
 rate control flags, are:
@@ -20809,6 +21362,13 @@ Valid Usage (Implicit)
 
  `maxFrameSize` **must** be a valid [VkVideoEncodeH265FrameSizeKHR](#VkVideoEncodeH265FrameSizeKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeRateControlLayerInfoKHR](#VkVideoEncodeRateControlLayerInfoKHR)
+
 The `VkVideoEncodeH265QpKHR` structure is defined as:
 
 // Provided by VK_KHR_video_encode_h265
@@ -20922,6 +21482,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeH265GopRemainingFrameInfoKHR-sType-sType) VUID-VkVideoEncodeH265GopRemainingFrameInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
 
 Quantization delta maps used with an [H.265 encode profile](#encode-h265-profile) are referred to as *QP delta maps* and their texels contain
 integer values representing QP delta values that are applied in the process
@@ -21689,6 +22256,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](queries.html#VkQueryPoolCreateInfo)
+
+* 
+[VkVideoProfileInfoKHR](#VkVideoProfileInfoKHR)
+
 When calling [vkGetPhysicalDeviceVideoCapabilitiesKHR](#vkGetPhysicalDeviceVideoCapabilitiesKHR) to query the
 capabilities for an [AV1 encode profile](#encode-av1-profile), the
 [VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)::`pNext` chain **must** include a
@@ -21910,6 +22487,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeAV1CapabilitiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](#VkVideoCapabilitiesKHR)
 
 Bits which **may** be set in
 [VkVideoEncodeAV1CapabilitiesKHR](#VkVideoEncodeAV1CapabilitiesKHR)::`flags`, indicating the AV1
@@ -22185,6 +22769,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeQualityLevelPropertiesKHR](#VkVideoEncodeQualityLevelPropertiesKHR)
+
 Additional parameters can be specified when creating a video session with an
 AV1 encode profile by including an instance of the
 [VkVideoEncodeAV1SessionCreateInfoKHR](#VkVideoEncodeAV1SessionCreateInfoKHR) structure in the `pNext`
@@ -22226,6 +22817,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1SessionCreateInfoKHR-sType-sType) VUID-VkVideoEncodeAV1SessionCreateInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](#VkVideoSessionCreateInfoKHR)
 
 [Video session parameters](#video-session-parameters) objects created with
 the video codec operation [VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](#VkVideoCodecOperationFlagBitsKHR)
@@ -22398,6 +22996,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1SessionParametersCreateInfoKHR-pStdOperatingPoints-parameter) VUID-VkVideoEncodeAV1SessionParametersCreateInfoKHR-pStdOperatingPoints-parameter
 
  If `stdOperatingPointCount` is not `0`, and `pStdOperatingPoints` is not `NULL`, `pStdOperatingPoints` **must** be a valid pointer to an array of `stdOperatingPointCount` `StdVideoEncodeAV1OperatingPointInfo` values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](#VkVideoSessionParametersCreateInfoKHR)
 
 The [VkVideoEncodeAV1PictureInfoKHR](#VkVideoEncodeAV1PictureInfoKHR) structure is defined as:
 
@@ -22740,6 +23345,13 @@ Valid Usage (Implicit)
 
  `pStdPictureInfo` **must** be a valid pointer to a valid `StdVideoEncodeAV1PictureInfo` value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](#VkVideoEncodeInfoKHR)
+
 The [VkVideoEncodeAV1DpbSlotInfoKHR](#VkVideoEncodeAV1DpbSlotInfoKHR) structure is defined as:
 
 // Provided by VK_KHR_video_encode_av1
@@ -22859,6 +23471,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoEncodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter
 
  `pStdReferenceInfo` **must** be a valid pointer to a valid `StdVideoEncodeAV1ReferenceInfo` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](#VkVideoReferenceSlotInfoKHR)
 
 In case of AV1 encoding it is common practice to follow a regular pattern of
 frame types and prediction directions in display order when encoding
@@ -23164,6 +23783,16 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkVideoEncodeAV1RateControlFlagBitsKHR](#VkVideoEncodeAV1RateControlFlagBitsKHR) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
+
+* 
+[VkVideoCodingControlInfoKHR](#VkVideoCodingControlInfoKHR)
+
 Bits which **can** be set in
 [VkVideoEncodeAV1RateControlInfoKHR](#VkVideoEncodeAV1RateControlInfoKHR)::`flags`, specifying AV1 rate
 control flags, are:
@@ -23372,6 +24001,13 @@ Valid Usage (Implicit)
 
  `maxFrameSize` **must** be a valid [VkVideoEncodeAV1FrameSizeKHR](#VkVideoEncodeAV1FrameSizeKHR) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeRateControlLayerInfoKHR](#VkVideoEncodeRateControlLayerInfoKHR)
+
 The `VkVideoEncodeAV1QIndexKHR` structure is defined as:
 
 // Provided by VK_KHR_video_encode_av1
@@ -23499,6 +24135,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoEncodeAV1GopRemainingFrameInfoKHR-sType-sType) VUID-VkVideoEncodeAV1GopRemainingFrameInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](#VkVideoBeginCodingInfoKHR)
 
 Quantization delta maps used with an [AV1 encode profile](#encode-av1-profile) are referred to as *quantizer index delta maps* and their texels
 contain integer values representing quantizer index delta values that are

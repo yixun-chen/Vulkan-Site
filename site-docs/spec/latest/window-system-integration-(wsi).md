@@ -2276,8 +2276,8 @@ typedef struct VkUbmSurfaceCreateInfoSEC {
     VkStructureType               sType;
     const void*                   pNext;
     VkUbmSurfaceCreateFlagsSEC    flags;
-    struct ubm_device*            ubm_device;
-    struct ubm_surface*           ubm_surface;
+    struct ubm_device*            device;
+    struct ubm_surface*           surface;
 } VkUbmSurfaceCreateInfoSEC;
 
 * 
@@ -2291,24 +2291,24 @@ structure.
 `flags` is reserved for future use.
 
 * 
-`ubm_device` is a pointer to a `ubm_device` to associate the
-surface with.
+`device` is a pointer to a `ubm_device` to associate the surface
+with.
 
 * 
-`ubm_surface` is a pointer to a `ubm_surface` to associate the
+`surface` is a pointer to a `ubm_surface` to associate the
 surface with.
 
 Valid Usage
 
 * 
-[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366) VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366
+[](#VUID-VkUbmSurfaceCreateInfoSEC-device-12366) VUID-VkUbmSurfaceCreateInfoSEC-device-12366
 
-`ubm_device` **must** point to a valid UBM `ubm_device`
+`device` **must** point to a valid UBM `ubm_device`
 
 * 
-[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367) VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367
+[](#VUID-VkUbmSurfaceCreateInfoSEC-surface-12367) VUID-VkUbmSurfaceCreateInfoSEC-surface-12367
 
-`ubm_surface` **must** point to a valid UBM `ubm_surface`
+`surface` **must** point to a valid UBM `ubm_surface`
 
 Valid Usage (Implicit)
 
@@ -3732,6 +3732,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDisplayModeProperties2KHR](#VkDisplayModeProperties2KHR)
+
 Additional modes **may** also be created by calling:
 
 // Provided by VK_KHR_display
@@ -4620,6 +4627,13 @@ Valid Usage (Implicit)
 
  `stereoType` **must** be a valid [VkDisplaySurfaceStereoTypeNV](#VkDisplaySurfaceStereoTypeNV) value
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDisplaySurfaceCreateInfoKHR](#VkDisplaySurfaceCreateInfoKHR)
+
 Possible values of
 [VkDisplaySurfaceStereoCreateInfoNV](#VkDisplaySurfaceStereoCreateInfoNV)::`stereoType`, specifying the
 type of 3D stereo presentation the display will be configured for, are:
@@ -5170,7 +5184,7 @@ presentation to a UBM compositor, call:
 VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
     VkPhysicalDevice                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
-    struct ubm_device*                          ubm_device);
+    struct ubm_device*                          device);
 
 * 
 `physicalDevice` is the physical device.
@@ -5179,17 +5193,17 @@ VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
 `queueFamilyIndex` is the queue family index.
 
 * 
-`ubm_device` is a pointer to the `ubm_device` associated with a
-UBM compositor.
+`device` is a pointer to the `ubm_device` associated with a UBM
+compositor.
 
 This platform-specific function **can** be called prior to creating a surface.
 
 Valid Usage
 
 * 
-[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368
 
-`ubm_device` **must** point to a valid UBM `ubm_device`
+`device` **must** point to a valid UBM `ubm_device`
 
 * 
 [](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369
@@ -5207,9 +5221,9 @@ Valid Usage (Implicit)
  `physicalDevice` **must** be a valid [VkPhysicalDevice](../devsandqueues.html#VkPhysicalDevice) handle
 
 * 
-[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter
 
- `ubm_device` **must** be a valid pointer to a `ubm_device` value
+ `device` **must** be a valid pointer to a `ubm_device` value
 
 The capabilities of a swapchain targeting a surface are the intersection of
 the capabilities of the WSI platform, the native window or display, and the
@@ -5642,6 +5656,16 @@ Valid Usage (Implicit)
 
  `fullScreenExclusive` **must** be a valid [VkFullScreenExclusiveEXT](#VkFullScreenExclusiveEXT) value
 
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceSurfaceInfo2KHR](#VkPhysicalDeviceSurfaceInfo2KHR)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
+
 Possible values of
 `VkSurfaceFullScreenExclusiveInfoEXT`::`fullScreenExclusive` are:
 
@@ -5721,6 +5745,16 @@ Valid Usage (Implicit)
 [](#VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType) VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceSurfaceInfo2KHR](#VkPhysicalDeviceSurfaceInfo2KHR)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
 
 The `VkSurfaceCapabilities2KHR` structure is defined as:
 
@@ -5822,6 +5856,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
+
 The `VkSurfacePresentScalingCapabilitiesKHR` structure is defined as:
 
 // Provided by VK_KHR_surface_maintenance1
@@ -5916,6 +5957,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentGravityY-parameter) VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentGravityY-parameter
 
  `supportedPresentGravityY` **must** be a valid combination of [VkPresentGravityFlagBitsKHR](#VkPresentGravityFlagBitsKHR) values
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 Bits which **may** be set in
 [VkSurfacePresentScalingCapabilitiesKHR](#VkSurfacePresentScalingCapabilitiesKHR)::`supportedPresentScaling`,
@@ -6088,6 +6136,13 @@ Valid Usage (Implicit)
 
  `presentMode` **must** be a valid [VkPresentModeKHR](#VkPresentModeKHR) value
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceSurfaceInfo2KHR](#VkPhysicalDeviceSurfaceInfo2KHR)
+
 The `VkSurfacePresentModeCompatibilityKHR` structure is defined as:
 
 // Provided by VK_KHR_surface_maintenance1
@@ -6152,6 +6207,13 @@ Valid Usage (Implicit)
 
  If `presentModeCount` is not `0`, and `pPresentModes` is not `NULL`, `pPresentModes` **must** be a valid pointer to an array of `presentModeCount` [VkPresentModeKHR](#VkPresentModeKHR) values
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
+
 The `VkSharedPresentSurfaceCapabilitiesKHR` structure is defined as:
 
 // Provided by VK_KHR_shared_presentable_image
@@ -6186,6 +6248,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
+
 The `VkDisplayNativeHdrSurfaceCapabilitiesAMD` structure is defined as:
 
 // Provided by VK_AMD_display_native_hdr
@@ -6217,6 +6286,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType) VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 The `VkSurfaceCapabilitiesFullScreenExclusiveEXT` structure is defined
 as:
@@ -6256,6 +6332,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
+
 The `VkSurfaceCapabilitiesPresentBarrierNV` structure is defined as:
 
 // Provided by VK_NV_present_barrier
@@ -6288,6 +6371,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType) VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 The `VkSurfaceCapabilitiesPresentId2KHR` structure is defined as:
 
@@ -6325,6 +6415,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
+
 The `VkSurfaceCapabilitiesPresentWait2KHR` structure is defined as:
 
 // Provided by VK_KHR_present_wait2
@@ -6359,6 +6456,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSurfaceCapabilitiesPresentWait2KHR-sType-sType) VUID-VkSurfaceCapabilitiesPresentWait2KHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 The `VkPresentTimingSurfaceCapabilitiesEXT` structure is defined as:
 
@@ -6407,6 +6511,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType) VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 To query the basic capabilities of a surface, needed in order to create a
 swapchain, call:
@@ -10518,6 +10629,13 @@ Valid Usage (Implicit)
 
  `modes` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
+
 If the `pNext` chain of [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) includes a
 `VkSwapchainDisplayNativeHdrCreateInfoAMD` structure, then that
 structure includes additional swapchain creation parameters specific to
@@ -10553,6 +10671,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType) VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
 
 Valid Usage
 
@@ -10656,6 +10781,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter) VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter
 
  `surfaceCounters` **must** be a valid combination of [VkSurfaceCounterFlagBitsEXT](#VkSurfaceCounterFlagBitsEXT) values
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
 
 The requested counters become active when the first presentation command for
 the associated swapchain is processed by the presentation engine.
@@ -10829,6 +10961,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeCount-arraylength) VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeCount-arraylength
 
  `presentModeCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
 
 When an application presents a swapchain image with dimensions different
 than those of the target surface, different behavior is possible on
@@ -11010,6 +11149,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSwapchainPresentScalingCreateInfoKHR-presentGravityY-parameter) VUID-VkSwapchainPresentScalingCreateInfoKHR-presentGravityY-parameter
 
  `presentGravityY` **must** be a valid combination of [VkPresentGravityFlagBitsKHR](#VkPresentGravityFlagBitsKHR) values
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
 
 To destroy a swapchain object call:
 
@@ -12471,6 +12617,13 @@ Valid Usage (Implicit)
 
  `swapchainCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 For a given image and swapchain, the region to present is specified by the
 `VkPresentRegionKHR` structure, which is defined as:
 
@@ -12637,6 +12790,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 If the `pNext` chain of [VkPresentInfoKHR](#VkPresentInfoKHR) includes a
 `VkDeviceGroupPresentInfoKHR` structure, then that structure includes an
 array of device masks and a device group present mode.
@@ -12780,6 +12940,13 @@ Valid Usage (Implicit)
 
  `mode` **must** be a valid [VkDeviceGroupPresentModeFlagBitsKHR](#VkDeviceGroupPresentModeFlagBitsKHR) value
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 When the [`presentAtAbsoluteTime`](../features.html#features-presentAtAbsoluteTime) or
 [`presentAtRelativeTime`](../features.html#features-presentAtRelativeTime) feature is
 enabled, an application **can** instruct the presentation engine to attempt to
@@ -12855,6 +13022,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPresentTimingsInfoEXT-swapchainCount-arraylength) VUID-VkPresentTimingsInfoEXT-swapchainCount-arraylength
 
  `swapchainCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
 
 The `VkPresentTimingInfoEXT` structure is defined as:
 
@@ -13142,6 +13316,13 @@ Valid Usage (Implicit)
 
  `swapchainCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 The `VkPresentTimeGOOGLE` structure is defined as:
 
 // Provided by VK_GOOGLE_display_timing
@@ -13258,6 +13439,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPresentIdKHR-swapchainCount-arraylength) VUID-VkPresentIdKHR-swapchainCount-arraylength
 
  `swapchainCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
 
 When the [`presentWait`](../features.html#features-presentWait) feature is enabled, an
 application **can** wait for an image to be presented to the user by first
@@ -13491,6 +13679,13 @@ Valid Usage (Implicit)
 
  `swapchainCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 When the `VkSurfaceCapabilitiesPresentWait2KHR` surface capability is
 present for a given surface, an application **can** wait for an image to be
 presented to the user by first specifying a `presentId` for the target
@@ -13673,6 +13868,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 The `VkSwapchainPresentModeInfoKHR` structure is defined as:
 
 // Provided by VK_KHR_swapchain_maintenance1
@@ -13812,6 +14014,13 @@ Valid Usage (Implicit)
 
  `swapchainCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
+
 The `VkSwapchainPresentFenceInfoKHR` structure is defined as:
 
 // Provided by VK_KHR_swapchain_maintenance1
@@ -13918,6 +14127,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSwapchainPresentFenceInfoKHR-swapchainCount-arraylength) VUID-VkSwapchainPresentFenceInfoKHR-swapchainCount-arraylength
 
  `swapchainCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)
 
 To release images previously acquired through
 [vkAcquireNextImage2KHR](#vkAcquireNextImage2KHR) or
@@ -14264,6 +14480,13 @@ Valid Usage (Implicit)
 [](#VUID-VkHdrVividDynamicMetadataHUAWEI-dynamicMetadataSize-arraylength) VUID-VkHdrVividDynamicMetadataHUAWEI-dynamicMetadataSize-arraylength
 
  `dynamicMetadataSize` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkHdrMetadataEXT](#VkHdrMetadataEXT)
 
 The `VkXYColorEXT` structure is defined as:
 
@@ -15070,6 +15293,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](../cmdbuffers.html#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](../cmdbuffers.html#VkSubmitInfo2)
+
 To mark a queue as *out of band*, so that all `vkQueueSubmit` calls on
 the queue are ignored for latency evaluation, call:
 
@@ -15184,6 +15417,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
+
 The `VkLatencySurfaceCapabilitiesNV` structure is defined as:
 
 // Provided by VK_NV_low_latency2
@@ -15229,6 +15469,13 @@ Valid Usage (Implicit)
 [](#VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter) VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter
 
  If `presentModeCount` is not `0`, and `pPresentModes` is not `NULL`, `pPresentModes` **must** be a valid pointer to an array of `presentModeCount` [VkPresentModeKHR](#VkPresentModeKHR) values
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR)
 
 The `[VK_NV_present_barrier](../../appendices/extensions.html#VK_NV_present_barrier)` extension allows applications to
 synchronize corresponding presentation requests across multiple swapchains
@@ -15302,6 +15549,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)
+
 Present Metering evenly paces out the next `numFramesPerBatch`
 [vkQueuePresentKHR](#vkQueuePresentKHR) presents.
 This gives smoother pacing between presents in applications with frame
@@ -15349,3 +15603,10 @@ Valid Usage (Implicit)
 [](#VUID-VkSetPresentConfigNV-sType-sType) VUID-VkSetPresentConfigNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](#VkPresentInfoKHR)

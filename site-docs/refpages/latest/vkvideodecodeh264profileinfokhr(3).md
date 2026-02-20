@@ -66,6 +66,16 @@ Valid Usage (Implicit)
 
  If `pictureLayout` is not `0`, `pictureLayout` **must** be a valid [VkVideoDecodeH264PictureLayoutFlagBitsKHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
+
+* 
+[VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)
+
 [VK_KHR_video_decode_h264](VK_KHR_video_decode_h264.html), [VkStructureType](VkStructureType.html), [VkVideoDecodeH264PictureLayoutFlagBitsKHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoDecodeH264ProfileInfoKHR).

@@ -90,6 +90,19 @@ Valid Usage (Implicit)
 
  If `binaryCount` is not `0`, `pPipelineBinaries` **must** be a valid pointer to an array of `binaryCount` valid [VkPipelineBinaryKHR](VkPipelineBinaryKHR.html) handles
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html)
+
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), [VkPipelineBinaryKHR](VkPipelineBinaryKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineBinaryInfoKHR).

@@ -178,6 +178,13 @@ Valid Usage (Implicit)
 
  `maxFrameSize` **must** be a valid [VkVideoEncodeH264FrameSizeKHR](VkVideoEncodeH264FrameSizeKHR.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeRateControlLayerInfoKHR](VkVideoEncodeRateControlLayerInfoKHR.html)
+
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkVideoEncodeH264FrameSizeKHR](VkVideoEncodeH264FrameSizeKHR.html), [VkVideoEncodeH264QpKHR](VkVideoEncodeH264QpKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeH264RateControlLayerInfoKHR).

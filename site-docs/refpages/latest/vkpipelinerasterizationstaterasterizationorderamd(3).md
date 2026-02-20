@@ -57,6 +57,13 @@ Valid Usage (Implicit)
 
  `rasterizationOrder` **must** be a valid [VkRasterizationOrderAMD](VkRasterizationOrderAMD.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 If the `[VK_AMD_rasterization_order](VK_AMD_rasterization_order.html)` device extension is not enabled
 or the application does not request a particular rasterization order through
 specifying a `VkPipelineRasterizationStateRasterizationOrderAMD`

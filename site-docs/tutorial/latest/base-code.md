@@ -16,12 +16,12 @@
 
 ## Content
 
-|  | We are going to use designated initializers introduced with C++ 20. By default,
+|  | We are going to use designated initializers introduced with C++ 20.
 | --- | --- |
-Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
-by using the `VULKAN_HPP_NO_STRUCT_CONSTRUCTORS` define. |
+By default, Vulkan-hpp uses a different way of initializing and we need to explicitly enable this by using the `VULKAN_HPP_NO_STRUCT_CONSTRUCTORS` define. |
 
-This provides a better meaning towards what each option relates to in the structures that we’re depending upon. For this tutorial, said define is declared in the [CMake build setup](../../02_Development_environment.html#cmake).
+This provides a better meaning towards what each option relates to in the structures that we’re depending upon.
+For this tutorial, said define is declared in the [CMake build setup](../../02_Development_environment.html#cmake).
 
 If you use a different build setup or want to write code from scratch, you need to manually define this before including the Vulkan-hpp headers like this:
 
@@ -30,9 +30,8 @@ If you use a different build setup or want to write code from scratch, you need 
 // or
 #include 
 
-In the previous chapter, you’ve created a Vulkan project with all the proper
- configurations and tested it with the sample code. In this chapter, we’re starting
-from scratch with the following code:
+In the previous chapter, you’ve created a Vulkan project with all the proper configurations and tested it with the sample code.
+In this chapter, we’re starting from scratch with the following code:
 
 #if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
 #include 
@@ -67,12 +66,15 @@ private:
     }
 };
 
-int main() {
-    HelloTriangleApplication app;
-
-    try {
+int main()
+{
+    try
+    {
+        HelloTriangleApplication app;
         app.run();
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e)
+    {
         std::cerr 
 
 We first include the Vulkan-Hpp RAII header by default, which provides the
@@ -107,11 +109,10 @@ we no longer need it. In c++ it is possible to perform automatic resource
 management using [RAII](https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization)
 or smart pointers provided in the `` header. This tutorial is an attempt
 to make Vulkan easier to work with, and demonstrate modern Vulkan
-programming.  This tutorial will not only use RAII with smart pointers, it
-will endeavor to demonstrate the latest methods and extensions which should
-hopefully make Vulkan a joy to use.  Just because we enjoy working with
-low level graphics APIs, we shouldn’t make the bar too high to learn how
-to do so.  Where appropriate, we will discuss concerns for resource
+programming.  This tutorial will not only use RAII, it will endeavor to demonstrate the
+latest methods and extensions which should hopefully make Vulkan a joy to use.  Just
+because we enjoy working with low level graphics APIs, we shouldn’t make the bar too
+high to learn how to do so.  Where appropriate, we will discuss concerns for resource
 management for freeing resources.  However, for this tutorial, we’ll
 demonstrate that we can get pretty far with a basic destructor to clean up
 after our work.
@@ -129,7 +130,7 @@ Using the Vulkan_hpp RAII module, we can rely upon the library to take care
 of `vkCreateXXX` `vkAllocateXXX` `vkDestroyXXX` and `vkFreeXXX` so a block
 of code that looks like this:
 
-vkInstance instance;
+VkInstance instance;
 VkApplicationInfo appInfo{};
 appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 appInfo.pApplicationName = "Hello Triangle";
@@ -143,8 +144,8 @@ createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 createInfo.pApplicationInfo = &appInfo;
 createInfo.enabledExtensionCount = 0;
 createInfo.ppEnabledExtensionNames = nullptr;
-
 createInfo.enabledLayerCount = 0;
+createInfo.ppEnabledLayerNames = nullptr;
 
 if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
     throw std::runtime_error("failed to create instance!");
@@ -154,11 +155,11 @@ vkDestroyInstance(instance, nullptr);
 
 can be directly replaced by this:
 
-constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
-    .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
-    .pEngineName        = "No Engine",
-    .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
-    .apiVersion         = vk::ApiVersion14 };
+constexpr vk::ApplicationInfo appInfo{.pApplicationName   = "Hello Triangle",
+                                      .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
+                                      .pEngineName        = "No Engine",
+                                      .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
+                                      .apiVersion         = vk::ApiVersion14};
 
 vk::InstanceCreateInfo createInfo{
     .pApplicationInfo = &appInfo

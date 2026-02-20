@@ -129,6 +129,13 @@ Valid Usage (Implicit)
 
  `drmFormatModifierPlaneCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
 [VK_EXT_image_drm_format_modifier](VK_EXT_image_drm_format_modifier.html), [VkStructureType](VkStructureType.html), [VkSubresourceLayout](VkSubresourceLayout.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageDrmFormatModifierExplicitCreateInfoEXT).

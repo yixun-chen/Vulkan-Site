@@ -120,6 +120,16 @@ Valid Usage (Implicit)
 
  `fragmentDensityMapAttachment` **must** be a valid [VkAttachmentReference](VkAttachmentReference.html) structure
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](VkRenderPassCreateInfo.html)
+
+* 
+[VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html)
+
 [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html), [VkAttachmentReference](VkAttachmentReference.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassFragmentDensityMapCreateInfoEXT).

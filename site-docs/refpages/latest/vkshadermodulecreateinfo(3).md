@@ -140,6 +140,16 @@ Valid Usage (Implicit)
 
  `pCode` **must** be a valid pointer to an array of    `uint32_t` values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkShaderModuleCreateFlags](VkShaderModuleCreateFlags.html), [VkStructureType](VkStructureType.html), [vkCreateShaderModule](vkCreateShaderModule.html), [vkGetShaderModuleCreateInfoIdentifierEXT](vkGetShaderModuleCreateInfoIdentifierEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/shaders.html#VkShaderModuleCreateInfo).

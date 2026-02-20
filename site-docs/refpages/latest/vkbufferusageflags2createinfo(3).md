@@ -69,6 +69,22 @@ Valid Usage (Implicit)
 
  `usage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](VkBufferCreateInfo.html)
+
+* 
+[VkBufferViewCreateInfo](VkBufferViewCreateInfo.html)
+
+* 
+[VkDescriptorBufferBindingInfoEXT](VkDescriptorBufferBindingInfoEXT.html)
+
+* 
+[VkPhysicalDeviceExternalBufferInfo](VkPhysicalDeviceExternalBufferInfo.html)
+
 [VK_KHR_maintenance5](VK_KHR_maintenance5.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkBufferUsageFlags2](VkBufferUsageFlags2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkBufferUsageFlags2CreateInfo).

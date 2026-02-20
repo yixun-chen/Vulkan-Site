@@ -163,6 +163,16 @@ Valid Usage (Implicit)
 
  `pCounterIndices` **must** be a valid pointer to a `uint32_t` value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_ARM_performance_counters_by_region](VK_ARM_performance_counters_by_region.html), `VkBool32`, `VkDeviceAddress`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassPerformanceCountersByRegionBeginInfoARM).

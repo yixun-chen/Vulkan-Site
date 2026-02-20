@@ -143,6 +143,13 @@ Valid Usage (Implicit)
 
  `pHostPointer` **must** be a pointer value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
+
 [VK_EXT_external_memory_host](VK_EXT_external_memory_host.html), [VkExternalMemoryHandleTypeFlagBits](VkExternalMemoryHandleTypeFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkImportMemoryHostPointerInfoEXT).

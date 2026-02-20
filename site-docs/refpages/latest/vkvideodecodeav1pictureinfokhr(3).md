@@ -131,6 +131,17 @@ section 6.8.14 of the [AV1 Specification](../../../../spec/latest/chapters/intro
 unsigned integers that corresponds to `MiRowStarts` defined in
 section 6.8.14 of the [AV1 Specification](../../../../spec/latest/chapters/introduction.html#aomedia-av1);
 
+|  | Historically some applications incorrectly specified the values in
+| --- | --- |
+`pMiColStarts` and `pMiRowStarts` in terms of superblocks instead of
+mode info blocks, therefore it is recommended for implementations to ignore
+the values specified in `pMiColStarts` and `pMiRowStarts`.
+Instead, the values should be calculated based on
+`flags.uniform_tile_spacing_flag`, `pWidthInSbsMinus1`,
+`pHeightInSbsMinus1`, the [sequence header](../../../../spec/latest/chapters/videocoding.html#decode-av1-sequence-header)
+parameter `flags.use_128x128_superblock`, and the coded extent of the
+decoded picture. |
+
 * 
 `pWidthInSbsMinus1` is a pointer to an array of `TileCols` number
 of unsigned integers that corresponds to `width_in_sbs_minus_1`
@@ -311,6 +322,13 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeAV1PictureInfoKHR-tileCount-arraylength) VUID-VkVideoDecodeAV1PictureInfoKHR-tileCount-arraylength
 
  `tileCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html)
 
 [VK_KHR_video_decode_av1](VK_KHR_video_decode_av1.html), [VkStructureType](VkStructureType.html)
 

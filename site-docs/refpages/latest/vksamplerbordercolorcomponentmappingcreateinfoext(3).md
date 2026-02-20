@@ -81,6 +81,13 @@ Valid Usage (Implicit)
 
  `components` **must** be a valid [VkComponentMapping](VkComponentMapping.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_EXT_border_color_swizzle](VK_EXT_border_color_swizzle.html), `VkBool32`, [VkComponentMapping](VkComponentMapping.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerBorderColorComponentMappingCreateInfoEXT).

@@ -73,6 +73,13 @@ Valid Usage (Implicit)
 
  `plane` **must** be a valid [VkImageAspectFlagBits](VkImageAspectFlagBits.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkImageAspectFlagBits](VkImageAspectFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkImportMetalTextureInfoEXT).

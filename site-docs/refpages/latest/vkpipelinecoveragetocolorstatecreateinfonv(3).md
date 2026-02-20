@@ -96,6 +96,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)
+
 [VK_NV_fragment_coverage_to_color](VK_NV_fragment_coverage_to_color.html), `VkBool32`, [VkPipelineCoverageToColorStateCreateFlagsNV](VkPipelineCoverageToColorStateCreateFlagsNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fragops.html#VkPipelineCoverageToColorStateCreateInfoNV).

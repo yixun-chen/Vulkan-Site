@@ -590,11 +590,6 @@ Valid Usage (Implicit)
  `videoSession` **must** be a valid [VkVideoSessionKHR](VkVideoSessionKHR.html) handle
 
 * 
-[](#VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent) VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent
-
- If `videoSessionParametersTemplate` is a valid handle, it **must** have been created, allocated, or retrieved from `videoSession`
-
-* 
 [](#VUID-VkVideoSessionParametersCreateInfoKHR-commonparent) VUID-VkVideoSessionParametersCreateInfoKHR-commonparent
 
  Both of `videoSession`, and `videoSessionParametersTemplate` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](VkDevice.html)

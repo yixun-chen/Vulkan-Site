@@ -1351,6 +1351,13 @@ Valid Usage (Implicit)
 
  `blendOverlap` **must** be a valid [VkBlendOverlapEXT](#VkBlendOverlapEXT) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo)
+
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the advanced blend state,
 call:
 
@@ -2160,6 +2167,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter) VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter
 
  If `attachmentCount` is not `0`, `pColorWriteEnables` **must** be a valid pointer to an array of `attachmentCount` `VkBool32` values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo)
 
 To [dynamically enable or disable](pipelines.html#pipelines-dynamic-state) writes to a
 color attachment, call:

@@ -67,6 +67,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html)
+
 [VK_KHR_maintenance9](VK_KHR_maintenance9.html), `VkBool32`, [VkDefaultVertexAttributeValueKHR](VkDefaultVertexAttributeValueKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/limits.html#VkPhysicalDeviceMaintenance9PropertiesKHR).

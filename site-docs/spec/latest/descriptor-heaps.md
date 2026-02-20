@@ -1538,6 +1538,22 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_CONSTANT_BANK_INFO_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorSetAndBindingMappingEXT](#VkDescriptorSetAndBindingMappingEXT)
+
+* 
+[VkIndirectCommandsLayoutTokenEXT](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutTokenEXT)
+
+* 
+[VkPushConstantsInfo](descriptorsets.html#VkPushConstantsInfo)
+
+* 
+[VkPushDataInfoEXT](#VkPushDataInfoEXT)
+
 While descriptor heaps can be accessed directly through the
 `SamplerHeapEXT` and `ResourceHeapEXT` built-ins, shaders using the
 existing `DescriptorSet` and `Binding` decorations **can** map these to
@@ -1609,6 +1625,16 @@ Valid Usage (Implicit)
 [](#VUID-VkShaderDescriptorSetAndBindingMappingInfoEXT-pMappings-parameter) VUID-VkShaderDescriptorSetAndBindingMappingInfoEXT-pMappings-parameter
 
  If `mappingCount` is not `0`, `pMappings` **must** be a valid pointer to an array of `mappingCount` valid [VkDescriptorSetAndBindingMappingEXT](#VkDescriptorSetAndBindingMappingEXT) structures
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo)
+
+* 
+[VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT)
 
 The `VkDescriptorSetAndBindingMappingEXT` structure is defined as:
 

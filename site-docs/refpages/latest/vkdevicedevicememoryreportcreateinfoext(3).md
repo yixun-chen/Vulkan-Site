@@ -76,6 +76,13 @@ Valid Usage (Implicit)
 
  `pfnUserCallback` **must** be a valid [PFN_vkDeviceMemoryReportCallbackEXT](PFN_vkDeviceMemoryReportCallbackEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
 [PFN_vkDeviceMemoryReportCallbackEXT](PFN_vkDeviceMemoryReportCallbackEXT.html), [VK_EXT_device_memory_report](VK_EXT_device_memory_report.html), [VkDeviceMemoryReportFlagsEXT](VkDeviceMemoryReportFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkDeviceDeviceMemoryReportCreateInfoEXT).

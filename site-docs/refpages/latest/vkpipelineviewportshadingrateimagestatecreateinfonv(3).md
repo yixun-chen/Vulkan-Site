@@ -87,6 +87,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
+
 [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html), `VkBool32`, [VkShadingRatePaletteNV](VkShadingRatePaletteNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV).

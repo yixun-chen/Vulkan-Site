@@ -85,6 +85,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 [VK_EXT_transform_feedback](VK_EXT_transform_feedback.html), [VkPipelineRasterizationStateStreamCreateFlagsEXT](VkPipelineRasterizationStateStreamCreateFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineRasterizationStateStreamCreateInfoEXT).

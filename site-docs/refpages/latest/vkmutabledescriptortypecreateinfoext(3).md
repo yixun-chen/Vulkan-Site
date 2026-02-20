@@ -74,6 +74,16 @@ Valid Usage (Implicit)
 
  If `mutableDescriptorTypeListCount` is not `0`, `pMutableDescriptorTypeLists` **must** be a valid pointer to an array of `mutableDescriptorTypeListCount` valid [VkMutableDescriptorTypeListEXT](VkMutableDescriptorTypeListEXT.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorPoolCreateInfo](VkDescriptorPoolCreateInfo.html)
+
+* 
+[VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)
+
 [VK_EXT_mutable_descriptor_type](VK_EXT_mutable_descriptor_type.html), [VK_VALVE_mutable_descriptor_type](VK_VALVE_mutable_descriptor_type.html), [VkMutableDescriptorTypeListEXT](VkMutableDescriptorTypeListEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkMutableDescriptorTypeCreateInfoEXT).

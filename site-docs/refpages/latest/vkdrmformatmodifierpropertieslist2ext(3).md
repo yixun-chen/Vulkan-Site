@@ -72,6 +72,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](VkFormatProperties2.html)
+
 [VK_EXT_image_drm_format_modifier](VK_EXT_image_drm_format_modifier.html), [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkDrmFormatModifierProperties2EXT](VkDrmFormatModifierProperties2EXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/formats.html#VkDrmFormatModifierPropertiesList2EXT).

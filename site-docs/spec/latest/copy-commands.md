@@ -5420,6 +5420,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferImageCopy2](#VkBufferImageCopy2)
+
+* 
+[VkImageBlit2](#VkImageBlit2)
+
 The following commands can be used to copy between host memory and images.
 Bytes in host memory and texels in images are accessed as specified in
 [Copying Data Between Buffers and Images](#copies-buffers-images), with
@@ -10068,6 +10078,13 @@ Valid Usage (Implicit)
 
  `cubicWeights` **must** be a valid [VkCubicFilterWeightsQCOM](samplers.html#VkCubicFilterWeightsQCOM) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBlitImageInfo2](#VkBlitImageInfo2)
+
 The `VkImageBlit2` structure is defined as:
 
 // Provided by VK_VERSION_1_3
@@ -11564,6 +11581,13 @@ Valid Usage (Implicit)
 [](#VUID-VkResolveImageModeInfoKHR-stencilResolveMode-parameter) VUID-VkResolveImageModeInfoKHR-stencilResolveMode-parameter
 
  If `stencilResolveMode` is not `0`, `stencilResolveMode` **must** be a valid [VkResolveModeFlagBits](renderpass.html#VkResolveModeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkResolveImageInfo2](#VkResolveImageInfo2)
 
 Bits which **can** be set in [VkResolveImageModeInfoKHR](#VkResolveImageModeInfoKHR)::`flags`,
 describing additional properties of a resolve operation, are:

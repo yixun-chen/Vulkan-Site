@@ -81,6 +81,13 @@ Valid Usage (Implicit)
 
  `viewportCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
+
 [VK_NV_viewport_swizzle](VK_NV_viewport_swizzle.html), [VkPipelineViewportSwizzleStateCreateFlagsNV](VkPipelineViewportSwizzleStateCreateFlagsNV.html), [VkStructureType](VkStructureType.html), [VkViewportSwizzleNV](VkViewportSwizzleNV.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV).

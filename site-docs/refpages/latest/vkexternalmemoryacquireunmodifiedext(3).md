@@ -105,6 +105,22 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferMemoryBarrier](VkBufferMemoryBarrier.html)
+
+* 
+[VkBufferMemoryBarrier2](VkBufferMemoryBarrier2.html)
+
+* 
+[VkImageMemoryBarrier](VkImageMemoryBarrier.html)
+
+* 
+[VkImageMemoryBarrier2](VkImageMemoryBarrier2.html)
+
 [VK_EXT_external_memory_acquire_unmodified](VK_EXT_external_memory_acquire_unmodified.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkExternalMemoryAcquireUnmodifiedEXT).

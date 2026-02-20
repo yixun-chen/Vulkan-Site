@@ -81,6 +81,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html)
+
 [VK_EXT_sample_locations](VK_EXT_sample_locations.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkSampleCountFlags](VkSampleCountFlags.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT).

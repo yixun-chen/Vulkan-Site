@@ -2421,3 +2421,10 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceGroupBindSparseInfo-sType-sType) VUID-VkDeviceGroupBindSparseInfo-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](#VkBindSparseInfo)

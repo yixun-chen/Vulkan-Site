@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html)
+
 [VK_KHR_surface_protected_capabilities](VK_KHR_surface_protected_capabilities.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkSurfaceProtectedCapabilitiesKHR).

@@ -222,6 +222,16 @@ Valid Usage (Implicit)
 
  `dimensionCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineConstantARM](VkDataGraphPipelineConstantARM.html)
+
+* 
+[VkDataGraphPipelineResourceInfoARM](VkDataGraphPipelineResourceInfoARM.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkFormat](VkFormat.html), [VkPhysicalDeviceExternalTensorInfoARM](VkPhysicalDeviceExternalTensorInfoARM.html), [VkStructureType](VkStructureType.html), [VkTensorCreateInfoARM](VkTensorCreateInfoARM.html), [VkTensorTilingARM](VkTensorTilingARM.html), [VkTensorUsageFlagsARM](VkTensorUsageFlagsARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkTensorDescriptionARM).

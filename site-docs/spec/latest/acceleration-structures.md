@@ -2677,6 +2677,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryTrianglesDataKHR](#VkAccelerationStructureGeometryTrianglesDataKHR)
+
 The `VkAccelerationStructureTrianglesOpacityMicromapEXT` structure is
 defined as:
 
@@ -2817,6 +2824,16 @@ Valid Usage (Implicit)
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-micromap-parameter) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-micromap-parameter
 
  If `micromap` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `micromap` **must** be a valid [VkMicromapEXT](resources.html#VkMicromapEXT) handle
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
+
+* 
+[VkAccelerationStructureGeometryTrianglesDataKHR](#VkAccelerationStructureGeometryTrianglesDataKHR)
 
 The [VkOpacityMicromapSpecialIndexEXT](#VkOpacityMicromapSpecialIndexEXT) enumeration is defined as:
 
@@ -3023,6 +3040,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-micromap-parameter) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-micromap-parameter
 
  If `micromap` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `micromap` **must** be a valid [VkMicromapEXT](resources.html#VkMicromapEXT) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryTrianglesDataKHR](#VkAccelerationStructureGeometryTrianglesDataKHR)
 
 To build an acceleration structure for the `[VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing)`
 extension call:
@@ -4148,6 +4172,13 @@ Valid Usage (Implicit)
 
  `format` **must** be a valid [VkCompressedTriangleFormatAMDX](#VkCompressedTriangleFormatAMDX) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryKHR](#VkAccelerationStructureGeometryKHR)
+
 [VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX](#VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX) is the
 alignment requirement in bytes for compressed triangle data as specified in
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)::`compressedData`.
@@ -4545,6 +4576,13 @@ Valid Usage (Implicit)
 
  `endCapsMode` **must** be a valid [VkRayTracingLssPrimitiveEndCapsModeNV](#VkRayTracingLssPrimitiveEndCapsModeNV) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryKHR](#VkAccelerationStructureGeometryKHR)
+
 Chaining LSS primitives **can** be achieved by specifying an index buffer in
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](#VkAccelerationStructureGeometryLinearSweptSpheresDataNV)::`indexData`
 and setting
@@ -4744,6 +4782,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-indexData-parameter) VUID-VkAccelerationStructureGeometrySpheresDataNV-indexData-parameter
 
  `indexData` **must** be a valid [VkDeviceOrHostAddressConstKHR](#VkDeviceOrHostAddressConstKHR) union
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryKHR](#VkAccelerationStructureGeometryKHR)
 
 An additional command exists for copying acceleration structures without
 updating their contents.
@@ -8411,6 +8456,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPartitionedAccelerationStructureFlagsNV-sType-sType) VUID-VkPartitionedAccelerationStructureFlagsNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPartitionedAccelerationStructureInstancesInputNV](#VkPartitionedAccelerationStructureInstancesInputNV)
 
 To build a partitioned top level acceleration structure, call:
 

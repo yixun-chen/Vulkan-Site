@@ -80,6 +80,13 @@ Valid Usage (Implicit)
 
  `coverageReductionMode` **must** be a valid [VkCoverageReductionModeNV](VkCoverageReductionModeNV.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)
+
 [VK_NV_coverage_reduction_mode](VK_NV_coverage_reduction_mode.html), [VkCoverageReductionModeNV](VkCoverageReductionModeNV.html), [VkPipelineCoverageReductionStateCreateFlagsNV](VkPipelineCoverageReductionStateCreateFlagsNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fragops.html#VkPipelineCoverageReductionStateCreateInfoNV).

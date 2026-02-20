@@ -82,6 +82,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkRenderingAttachmentFlagBitsKHR](VkRenderingAttachmentFlagBitsKHR.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingAttachmentInfo](VkRenderingAttachmentInfo.html)
+
 [VK_KHR_maintenance10](VK_KHR_maintenance10.html), [VkRenderingAttachmentFlagsKHR](VkRenderingAttachmentFlagsKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderingAttachmentFlagsInfoKHR).

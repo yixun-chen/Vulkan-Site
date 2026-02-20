@@ -79,6 +79,13 @@ Valid Usage (Implicit)
 
  Both of `event`, and `semaphore` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](VkDevice.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](VkExportMetalObjectsInfoEXT.html)
+
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkEvent](VkEvent.html), [VkSemaphore](VkSemaphore.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkExportMetalSharedEventInfoEXT).

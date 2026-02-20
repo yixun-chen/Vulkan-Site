@@ -47,6 +47,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDisplayModeProperties2KHR](VkDisplayModeProperties2KHR.html)
+
 [VK_NV_display_stereo](VK_NV_display_stereo.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkDisplayModeStereoPropertiesNV).

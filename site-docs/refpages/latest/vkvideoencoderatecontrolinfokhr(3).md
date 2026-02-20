@@ -268,6 +268,16 @@ Valid Usage (Implicit)
 
  If `layerCount` is not `0`, `pLayers` **must** be a valid pointer to an array of `layerCount` valid [VkVideoEncodeRateControlLayerInfoKHR](VkVideoEncodeRateControlLayerInfoKHR.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](VkVideoBeginCodingInfoKHR.html)
+
+* 
+[VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)
+
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeRateControlFlagsKHR](VkVideoEncodeRateControlFlagsKHR.html), [VkVideoEncodeRateControlLayerInfoKHR](VkVideoEncodeRateControlLayerInfoKHR.html), [VkVideoEncodeRateControlModeFlagBitsKHR](VkVideoEncodeRateControlModeFlagBitsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeRateControlInfoKHR).

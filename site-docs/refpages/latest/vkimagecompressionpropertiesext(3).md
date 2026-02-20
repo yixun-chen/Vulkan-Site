@@ -75,6 +75,19 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](VkImageFormatProperties2.html)
+
+* 
+[VkSubresourceLayout2](VkSubresourceLayout2.html)
+
+* 
+[VkSurfaceFormat2KHR](VkSurfaceFormat2KHR.html)
+
 [VK_EXT_image_compression_control](VK_EXT_image_compression_control.html), [VkImageCompressionFixedRateFlagsEXT](VkImageCompressionFixedRateFlagsEXT.html), [VkImageCompressionFlagsEXT](VkImageCompressionFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageCompressionPropertiesEXT).

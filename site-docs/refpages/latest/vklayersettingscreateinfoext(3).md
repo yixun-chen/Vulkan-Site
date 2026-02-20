@@ -58,6 +58,13 @@ Valid Usage (Implicit)
 
  If `settingCount` is not `0`, `pSettings` **must** be a valid pointer to an array of `settingCount` valid [VkLayerSettingEXT](VkLayerSettingEXT.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
 [VK_EXT_layer_settings](VK_EXT_layer_settings.html), [VkLayerSettingEXT](VkLayerSettingEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/initialization.html#VkLayerSettingsCreateInfoEXT).

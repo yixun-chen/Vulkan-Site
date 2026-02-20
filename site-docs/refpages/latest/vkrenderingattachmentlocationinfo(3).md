@@ -132,6 +132,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_KHR_dynamic_rendering_local_read](VK_KHR_dynamic_rendering_local_read.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkStructureType](VkStructureType.html), [vkCmdSetRenderingAttachmentLocations](vkCmdSetRenderingAttachmentLocations.html), [vkCmdSetRenderingAttachmentLocations](vkCmdSetRenderingAttachmentLocations.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/interfaces.html#VkRenderingAttachmentLocationInfo).

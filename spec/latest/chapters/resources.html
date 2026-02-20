@@ -1205,6 +1205,34 @@ query structure are also returned in that field.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkBufferViewCreateInfo">VkBufferViewCreateInfo</a></p>
+</li>
+<li>
+<p><a href="descriptorsets.html#VkDescriptorBufferBindingInfoEXT" class="xref page">VkDescriptorBufferBindingInfoEXT</a></p>
+</li>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceExternalBufferInfo" class="xref page">VkPhysicalDeviceExternalBufferInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -1229,8 +1257,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT = 0x0000
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT = 0x00000100ULL;
 // Provided by VK_VERSION_1_4
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT = 0x00020000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000ULL;
 #endif
 // Provided by VK_EXT_descriptor_heap
@@ -1271,7 +1299,7 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR =
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR = 0x00008000ULL;
 // Provided by VK_KHR_maintenance5 with VK_KHR_video_encode_queue
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR = 0x00010000ULL;
-// Provided by VK_KHR_maintenance5 with (VK_VERSION_1_2 or VK_KHR_buffer_device_address) or VK_EXT_buffer_device_address
+// Provided by VK_KHR_maintenance5 with VK_VERSION_1_2 or VK_KHR_buffer_device_address or VK_EXT_buffer_device_address
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR = 0x00020000ULL;
 // Provided by VK_KHR_acceleration_structure with VK_KHR_maintenance5
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR = 0x00080000ULL;
@@ -1287,8 +1315,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTO
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = 0x00800000ULL;
 // Provided by VK_KHR_maintenance5 with VK_EXT_opacity_micromap
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = 0x01000000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_dense_geometry_format
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX = 0x200000000ULL;
 #endif
 // Provided by VK_ARM_data_graph
@@ -1894,6 +1922,25 @@ dedicated allocation bound to it.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -1967,6 +2014,25 @@ memory handle types.</p>
  <code>handleTypes</code> <strong>must</strong> be a valid combination of <a href="capabilities.html#VkExternalMemoryHandleTypeFlagBits" class="xref page">VkExternalMemoryHandleTypeFlagBits</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -2070,6 +2136,25 @@ space allocation conflicts.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -2138,6 +2223,25 @@ reduce the likelihood of <a href="fundamentals.html#VkResult" class="xref page">
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -2203,6 +2307,25 @@ which the memory will be imported</p>
  <code>collection</code> <strong>must</strong> be a valid <a href="#VkBufferCollectionFUCHSIA">VkBufferCollectionFUCHSIA</a> handle</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBufferCreateInfo">VkBufferCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -5334,6 +5457,25 @@ which the memory will be imported</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -5439,6 +5581,28 @@ other than <a href="#VkImageUsageFlagBits">VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHME
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceImageFormatInfo2" class="xref page">VkPhysicalDeviceImageFormatInfo2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -5523,6 +5687,25 @@ If <code>dedicatedAllocation</code> is <a href="fundamentals.html#VK_TRUE" class
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -5599,6 +5782,25 @@ memory handle types.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -5656,6 +5858,37 @@ this structure is not present.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="renderpass.html#VkAttachmentDescription2" class="xref page">VkAttachmentDescription2</a></p>
+</li>
+<li>
+<p><a href="cmdbuffers.html#VkCommandBufferInheritanceInfo" class="xref page">VkCommandBufferInheritanceInfo</a></p>
+</li>
+<li>
+<p><a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="samplers.html#VkSamplerYcbcrConversionCreateInfo" class="xref page">VkSamplerYcbcrConversionCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -5710,6 +5943,25 @@ If the command fails, the implementation <strong>must</strong> not retain a refe
  <code>buffer</code> <strong>must</strong> be a valid pointer to an <code>OH_NativeBuffer</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="memory.html#VkMemoryAllocateInfo" class="xref page">VkMemoryAllocateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -5778,6 +6030,25 @@ flags.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="capabilities.html#VkImageFormatProperties2" class="xref page">VkImageFormatProperties2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -6097,6 +6368,25 @@ when used with an image bound to memory imported from <code>buffer</code>.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkNativeBufferPropertiesOHOS">VkNativeBufferPropertiesOHOS</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -6205,6 +6495,25 @@ external memory handle types.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -6273,6 +6582,37 @@ to <a href="memory.html#vkGetAndroidHardwareBufferPropertiesANDROID" class="xref
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="renderpass.html#VkAttachmentDescription2" class="xref page">VkAttachmentDescription2</a></p>
+</li>
+<li>
+<p><a href="cmdbuffers.html#VkCommandBufferInheritanceInfo" class="xref page">VkCommandBufferInheritanceInfo</a></p>
+</li>
+<li>
+<p><a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="samplers.html#VkSamplerYcbcrConversionCreateInfo" class="xref page">VkSamplerYcbcrConversionCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -6345,6 +6685,28 @@ by an earlier call to <a href="memory.html#vkGetScreenBufferPropertiesQNX" class
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="samplers.html#VkSamplerYcbcrConversionCreateInfo" class="xref page">VkSamplerYcbcrConversionCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -6414,6 +6776,25 @@ of the swapchain</p>
  If <code>swapchain</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, <code>swapchain</code> <strong>must</strong> be a valid <a href="VK_KHR_surface/wsi.html#VkSwapchainKHR" class="xref page">VkSwapchainKHR</a> handle</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -6504,6 +6885,31 @@ If <code>viewFormatCount</code> is not 0, each element of <code>pViewFormats</co
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceImageFormatInfo2" class="xref page">VkPhysicalDeviceImageFormatInfo2</a></p>
+</li>
+<li>
+<p><a href="VK_KHR_surface/wsi.html#VkSwapchainCreateInfoKHR" class="xref page">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -6582,6 +6988,25 @@ with <a href="capabilities.html#VkPhysicalDeviceImageDrmFormatModifierInfoEXT" c
  <code>drmFormatModifierCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -6721,6 +7146,25 @@ For each element of <code>pPlaneLayouts</code>, <code>depthPitch</code> <strong>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -6811,6 +7255,31 @@ If <code>flags</code> includes
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceImageFormatInfo2" class="xref page">VkPhysicalDeviceImageFormatInfo2</a></p>
+</li>
+<li>
+<p><a href="VK_KHR_surface/wsi.html#VkSwapchainCreateInfoKHR" class="xref page">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -7161,6 +7630,31 @@ compression rates that apply to the specified aspect of the image.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="capabilities.html#VkImageFormatProperties2" class="xref page">VkImageFormatProperties2</a></p>
+</li>
+<li>
+<p><a href="#VkSubresourceLayout2">VkSubresourceLayout2</a></p>
+</li>
+<li>
+<p><a href="VK_KHR_surface/wsi.html#VkSurfaceFormat2KHR" class="xref page">VkSurfaceFormat2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -7259,6 +7753,25 @@ enabled</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -8628,6 +9141,25 @@ structure.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSubresourceLayout2">VkSubresourceLayout2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9570,6 +10102,28 @@ tensor creation will fail and return
  If <code>pData</code> is not <code>NULL</code>, <code>pData</code> <strong>must</strong> be a valid pointer to a valid <a href="fundamentals.html#VkHostAddressRangeConstEXT" class="xref page">VkHostAddressRangeConstEXT</a> structure</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageCreateInfo">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkTensorCreateInfoARM">VkTensorCreateInfoARM</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -11821,6 +12375,25 @@ determining the valid usage conditions of <a href="#VkImageViewCreateInfo">VkIma
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageViewCreateInfo">VkImageViewCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -11946,6 +12519,25 @@ be enabled</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageViewCreateInfo">VkImageViewCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -12474,6 +13066,25 @@ If <code>decodeMode</code> is <a href="formats.html#VkFormat" class="xref page">
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageViewCreateInfo">VkImageViewCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -12582,6 +13193,25 @@ described in <a href="textures.html#textures-weightimage-filterphases" class="xr
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageViewCreateInfo">VkImageViewCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -13308,6 +13938,25 @@ level accessible to the view</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageViewCreateInfo">VkImageViewCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -13878,6 +14527,25 @@ in the motion top-level acceleration structure.</p>
  <code>flags</code> <strong>must</strong> be <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkAccelerationStructureCreateInfoKHR">VkAccelerationStructureCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -18727,6 +19395,25 @@ associated with the image&#8217;s <code>format</code> and
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkImageMemoryRequirementsInfo2">VkImageMemoryRequirementsInfo2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -18790,6 +19477,25 @@ property.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkMemoryRequirements2">VkMemoryRequirements2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -19009,6 +19715,25 @@ dedicated allocation, as reported by
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkMemoryRequirements2">VkMemoryRequirements2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -19931,6 +20656,25 @@ All elements of <code>pDeviceIndices</code> <strong>must</strong> be valid devic
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBindBufferMemoryInfo">VkBindBufferMemoryInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -19989,6 +20733,28 @@ value describing the result of the corresponding memory binding operation.</p>
  <code>pResult</code> <strong>must</strong> be a valid pointer to a <a href="fundamentals.html#VkResult" class="xref page">VkResult</a> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBindBufferMemoryInfo">VkBindBufferMemoryInfo</a></p>
+</li>
+<li>
+<p><a href="#VkBindImageMemoryInfo">VkBindImageMemoryInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -21096,6 +21862,25 @@ image subresource</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBindImageMemoryInfo">VkBindImageMemoryInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -21199,6 +21984,25 @@ If the <code>swapchain</code> has been created with
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBindImageMemoryInfo">VkBindImageMemoryInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -21284,6 +22088,25 @@ associated with the image&#8217;s <code>format</code> and
  <code>planeAspect</code> <strong>must</strong> be a valid <a href="#VkImageAspectFlagBits">VkImageAspectFlagBits</a> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkBindImageMemoryInfo">VkBindImageMemoryInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -23805,6 +24628,25 @@ structure</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="memory.html#VkMemoryAllocateInfo" class="xref page">VkMemoryAllocateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -24386,6 +25228,25 @@ memory handle types.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkTensorCreateInfoARM">VkTensorCreateInfoARM</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -24708,6 +25569,28 @@ If <code>tiling</code> is <a href="#VkTensorTilingARM">VK_TENSOR_TILING_LINEAR_A
  <code>dimensionCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="VK_ARM_data_graph/graphs.html#VkDataGraphPipelineConstantARM" class="xref page">VkDataGraphPipelineConstantARM</a></p>
+</li>
+<li>
+<p><a href="VK_ARM_data_graph/graphs.html#VkDataGraphPipelineResourceInfoARM" class="xref page">VkDataGraphPipelineResourceInfoARM</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

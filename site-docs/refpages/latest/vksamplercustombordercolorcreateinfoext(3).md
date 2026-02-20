@@ -106,6 +106,13 @@ Valid Usage (Implicit)
 
  `format` **must** be a valid [VkFormat](VkFormat.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_EXT_custom_border_color](VK_EXT_custom_border_color.html), [VkClearColorValue](VkClearColorValue.html), [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html), [vkRegisterCustomBorderColorEXT](vkRegisterCustomBorderColorEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerCustomBorderColorCreateInfoEXT).

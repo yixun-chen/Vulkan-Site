@@ -77,6 +77,13 @@ Valid Usage (Implicit)
 
  `buffer` **must** be a valid pointer to an `AHardwareBuffer` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
+
 [VK_ANDROID_external_memory_android_hardware_buffer](VK_ANDROID_external_memory_android_hardware_buffer.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkImportAndroidHardwareBufferInfoANDROID).

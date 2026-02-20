@@ -81,6 +81,16 @@ Valid Usage (Implicit)
 
  `stripeInfoCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_ARM_render_pass_striped](VK_ARM_render_pass_striped.html), [VkRenderPassStripeInfoARM](VkRenderPassStripeInfoARM.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassStripeBeginInfoARM).

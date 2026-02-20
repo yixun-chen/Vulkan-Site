@@ -70,6 +70,13 @@ Valid Usage (Implicit)
 
  `pStdSequenceHeader` **must** be a valid pointer to a valid `StdVideoAV1SequenceHeader` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](VkVideoSessionParametersCreateInfoKHR.html)
+
 [VK_KHR_video_decode_av1](VK_KHR_video_decode_av1.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoDecodeAV1SessionParametersCreateInfoKHR).

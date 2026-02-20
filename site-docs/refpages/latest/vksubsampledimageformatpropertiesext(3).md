@@ -52,6 +52,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](VkImageFormatProperties2.html)
+
 [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/capabilities.html#VkSubsampledImageFormatPropertiesEXT).

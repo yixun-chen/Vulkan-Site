@@ -79,6 +79,13 @@ Valid Usage (Implicit)
 
  `renderPass` **must** be a valid [VkRenderPass](VkRenderPass.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
 [VK_HUAWEI_subpass_shading](VK_HUAWEI_subpass_shading.html), [VkRenderPass](VkRenderPass.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkSubpassShadingPipelineCreateInfoHUAWEI).

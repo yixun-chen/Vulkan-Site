@@ -26,7 +26,7 @@ presentation to a UBM compositor, call:
 VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
     VkPhysicalDevice                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
-    struct ubm_device*                          ubm_device);
+    struct ubm_device*                          device);
 
 * 
 `physicalDevice` is the physical device.
@@ -35,17 +35,17 @@ VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
 `queueFamilyIndex` is the queue family index.
 
 * 
-`ubm_device` is a pointer to the `ubm_device` associated with a
-UBM compositor.
+`device` is a pointer to the `ubm_device` associated with a UBM
+compositor.
 
 This platform-specific function **can** be called prior to creating a surface.
 
 Valid Usage
 
 * 
-[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368
 
-`ubm_device` **must** point to a valid UBM `ubm_device`
+`device` **must** point to a valid UBM `ubm_device`
 
 * 
 [](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369
@@ -63,9 +63,9 @@ Valid Usage (Implicit)
  `physicalDevice` **must** be a valid [VkPhysicalDevice](VkPhysicalDevice.html) handle
 
 * 
-[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter
+[](#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter) VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter
 
- `ubm_device` **must** be a valid pointer to a `ubm_device` value
+ `device` **must** be a valid pointer to a `ubm_device` value
 
 [VK_SEC_ubm_surface](VK_SEC_ubm_surface.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

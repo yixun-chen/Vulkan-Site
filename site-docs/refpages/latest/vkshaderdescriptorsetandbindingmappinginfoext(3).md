@@ -77,6 +77,16 @@ Valid Usage (Implicit)
 
  If `mappingCount` is not `0`, `pMappings` **must** be a valid pointer to an array of `mappingCount` valid [VkDescriptorSetAndBindingMappingEXT](VkDescriptorSetAndBindingMappingEXT.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
+* 
+[VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html)
+
 [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkDescriptorSetAndBindingMappingEXT](VkDescriptorSetAndBindingMappingEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT).

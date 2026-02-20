@@ -73,6 +73,22 @@ Valid Usage (Implicit)
 
  If `profileCount` is not `0`, `pProfiles` **must** be a valid pointer to an array of `profileCount` valid [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](VkBufferCreateInfo.html)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)
+
+* 
+[VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)
+
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkStructureType](VkStructureType.html), [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoProfileListInfoKHR).

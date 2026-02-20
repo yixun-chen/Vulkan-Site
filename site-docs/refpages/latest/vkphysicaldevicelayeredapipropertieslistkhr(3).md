@@ -86,6 +86,13 @@ Valid Usage (Implicit)
 
  If `layeredApiCount` is not `0`, and `pLayeredApis` is not `NULL`, `pLayeredApis` **must** be a valid pointer to an array of `layeredApiCount` [VkPhysicalDeviceLayeredApiPropertiesKHR](VkPhysicalDeviceLayeredApiPropertiesKHR.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html)
+
 [VK_KHR_maintenance7](VK_KHR_maintenance7.html), [VkPhysicalDeviceLayeredApiPropertiesKHR](VkPhysicalDeviceLayeredApiPropertiesKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/limits.html#VkPhysicalDeviceLayeredApiPropertiesListKHR).

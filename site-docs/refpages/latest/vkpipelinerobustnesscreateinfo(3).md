@@ -239,6 +239,22 @@ Valid Usage (Implicit)
 
  `images` **must** be a valid [VkPipelineRobustnessImageBehavior](VkPipelineRobustnessImageBehavior.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html)
+
 [VK_EXT_pipeline_robustness](VK_EXT_pipeline_robustness.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkPipelineRobustnessBufferBehavior](VkPipelineRobustnessBufferBehavior.html), [VkPipelineRobustnessImageBehavior](VkPipelineRobustnessImageBehavior.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineRobustnessCreateInfo).

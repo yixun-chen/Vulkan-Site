@@ -62,6 +62,13 @@ Valid Usage (Implicit)
 
  `performanceCountersSampling` **must** be a valid [VkQueryPoolSamplingModeINTEL](VkQueryPoolSamplingModeINTEL.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
+
 [VK_INTEL_performance_query](VK_INTEL_performance_query.html), [VkQueryPoolSamplingModeINTEL](VkQueryPoolSamplingModeINTEL.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/queries.html#VkQueryPoolPerformanceQueryCreateInfoINTEL).

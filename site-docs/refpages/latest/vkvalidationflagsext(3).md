@@ -64,6 +64,13 @@ Valid Usage (Implicit)
 
  `disabledValidationCheckCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
 [VK_EXT_validation_flags](VK_EXT_validation_flags.html), [VkStructureType](VkStructureType.html), [VkValidationCheckEXT](VkValidationCheckEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/initialization.html#VkValidationFlagsEXT).

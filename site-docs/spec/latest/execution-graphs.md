@@ -741,6 +741,13 @@ Valid Usage (Implicit)
 
  If `pName` is not `NULL`, `pName` **must** be a null-terminated UTF-8 string
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo)
+
 To query the internal node index for a particular node in an execution
 graph, call:
 

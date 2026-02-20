@@ -284,6 +284,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
+
 // Provided by VK_EXT_depth_clip_enable
 typedef VkFlags VkPipelineRasterizationDepthClipStateCreateFlagsEXT;
 
@@ -648,6 +655,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
+
 // Provided by VK_EXT_transform_feedback
 typedef VkFlags VkPipelineRasterizationStateStreamCreateFlagsEXT;
 
@@ -798,6 +812,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter) VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter
 
  `rasterizationOrder` **must** be a valid [VkRasterizationOrderAMD](#VkRasterizationOrderAMD) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
 
 If the `[VK_AMD_rasterization_order](../appendices/extensions.html#VK_AMD_rasterization_order)` device extension is not enabled
 or the application does not request a particular rasterization order through
@@ -1162,6 +1183,13 @@ Valid Usage (Implicit)
 
  `sampleLocationsInfo` **must** be a valid [VkSampleLocationsInfoEXT](#VkSampleLocationsInfoEXT) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](#VkPipelineMultisampleStateCreateInfo)
+
 The `VkSampleLocationsInfoEXT` structure is defined as:
 
 // Provided by VK_EXT_sample_locations
@@ -1243,6 +1271,16 @@ Valid Usage (Implicit)
 [](#VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter) VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter
 
  If `sampleLocationsCount` is not `0`, `pSampleLocations` **must** be a valid pointer to an array of `sampleLocationsCount` [VkSampleLocationEXT](#VkSampleLocationEXT) structures
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageMemoryBarrier](synchronization.html#VkImageMemoryBarrier)
+
+* 
+[VkImageMemoryBarrier2](synchronization.html#VkImageMemoryBarrier2)
 
 The `VkSampleLocationEXT` structure is defined as:
 
@@ -1676,6 +1714,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType) VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the pipeline fragment
 shading rate and combiner operation, call:
@@ -2204,6 +2249,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
 The [VkFragmentShadingRateTypeNV](#VkFragmentShadingRateTypeNV) enumerated type specifies whether a
 graphics pipeline gets its pipeline fragment shading rates and combiners
 from the [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](#VkPipelineFragmentShadingRateEnumStateCreateInfoNV) structure
@@ -2518,6 +2570,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
 
 When shading rate image usage is enabled in the bound pipeline, the pipeline
 uses a shading rate image specified by the command:
@@ -3101,6 +3160,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-pCustomSampleOrders-parameter) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-pCustomSampleOrders-parameter
 
  If `customSampleOrderCount` is not `0`, `pCustomSampleOrders` **must** be a valid pointer to an array of `customSampleOrderCount` valid [VkCoarseSampleOrderCustomNV](#VkCoarseSampleOrderCustomNV) structures
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
 
 The type [VkCoarseSampleOrderTypeNV](#VkCoarseSampleOrderTypeNV) specifies the technique used to
 order coverage samples in fragments larger than one pixel, and is defined
@@ -3749,6 +3815,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter
 
  `lineRasterizationMode` **must** be a valid [VkLineRasterizationMode](#VkLineRasterizationMode) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
 
 Possible values of
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo)::`lineRasterizationMode`,
@@ -5373,6 +5446,16 @@ Valid Usage (Implicit)
 
  `depthBiasRepresentation` **must** be a valid [VkDepthBiasRepresentationEXT](#VkDepthBiasRepresentationEXT) value
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDepthBiasInfoEXT](#VkDepthBiasInfoEXT)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
+
 Possible values of
 [VkDepthBiasRepresentationInfoEXT](#VkDepthBiasRepresentationInfoEXT)::`depthBiasRepresentation`,
 specifying the depth bias representation are:
@@ -5607,6 +5690,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-conservativeRasterizationMode-parameter) VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-conservativeRasterizationMode-parameter
 
  `conservativeRasterizationMode` **must** be a valid [VkConservativeRasterizationModeEXT](#VkConservativeRasterizationModeEXT) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)
 
 // Provided by VK_EXT_conservative_rasterization
 typedef VkFlags VkPipelineRasterizationConservativeStateCreateFlagsEXT;

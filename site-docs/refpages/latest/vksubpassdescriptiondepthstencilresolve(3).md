@@ -250,6 +250,13 @@ Valid Usage (Implicit)
 
  If `pDepthStencilResolveAttachment` is not `NULL`, `pDepthStencilResolveAttachment` **must** be a valid pointer to a valid [VkAttachmentReference2](VkAttachmentReference2.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDescription2](VkSubpassDescription2.html)
+
 [VK_KHR_depth_stencil_resolve](VK_KHR_depth_stencil_resolve.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkAttachmentReference2](VkAttachmentReference2.html), [VkResolveModeFlagBits](VkResolveModeFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkSubpassDescriptionDepthStencilResolve).

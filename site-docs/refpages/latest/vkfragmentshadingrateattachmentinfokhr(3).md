@@ -140,6 +140,13 @@ Valid Usage (Implicit)
 
  If `pFragmentShadingRateAttachment` is not `NULL`, `pFragmentShadingRateAttachment` **must** be a valid pointer to a valid [VkAttachmentReference2](VkAttachmentReference2.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDescription2](VkSubpassDescription2.html)
+
 [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html), [VkAttachmentReference2](VkAttachmentReference2.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkFragmentShadingRateAttachmentInfoKHR).

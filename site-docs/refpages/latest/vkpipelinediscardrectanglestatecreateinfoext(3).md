@@ -112,6 +112,13 @@ Valid Usage (Implicit)
 
  `discardRectangleMode` **must** be a valid [VkDiscardRectangleModeEXT](VkDiscardRectangleModeEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_EXT_discard_rectangles](VK_EXT_discard_rectangles.html), [VkDiscardRectangleModeEXT](VkDiscardRectangleModeEXT.html), [VkPipelineDiscardRectangleStateCreateFlagsEXT](VkPipelineDiscardRectangleStateCreateFlagsEXT.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT).

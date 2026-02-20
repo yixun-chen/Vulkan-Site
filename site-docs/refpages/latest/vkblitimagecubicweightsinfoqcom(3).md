@@ -51,6 +51,13 @@ Valid Usage (Implicit)
 
  `cubicWeights` **must** be a valid [VkCubicFilterWeightsQCOM](VkCubicFilterWeightsQCOM.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBlitImageInfo2](VkBlitImageInfo2.html)
+
 [VK_QCOM_filter_cubic_weights](VK_QCOM_filter_cubic_weights.html), [VkCubicFilterWeightsQCOM](VkCubicFilterWeightsQCOM.html), [VkImageBlit2](VkImageBlit2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/copies.html#VkBlitImageCubicWeightsInfoQCOM).

@@ -65,6 +65,16 @@ Valid Usage (Implicit)
 
  `shaderCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGeneratedCommandsInfoEXT](VkGeneratedCommandsInfoEXT.html)
+
+* 
+[VkGeneratedCommandsMemoryRequirementsInfoEXT](VkGeneratedCommandsMemoryRequirementsInfoEXT.html)
+
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkShaderEXT](VkShaderEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#VkGeneratedCommandsShaderInfoEXT).

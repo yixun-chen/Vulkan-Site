@@ -92,6 +92,13 @@ Valid Usage (Implicit)
 
  If `identifierSize` is not `0`, `pIdentifier` **must** be a valid pointer to an array of `identifierSize` `uint8_t` values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
 [VK_EXT_shader_module_identifier](VK_EXT_shader_module_identifier.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineShaderStageModuleIdentifierCreateInfoEXT).

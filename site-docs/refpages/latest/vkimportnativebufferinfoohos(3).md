@@ -58,6 +58,13 @@ Valid Usage (Implicit)
 
  `buffer` **must** be a valid pointer to an `OH_NativeBuffer` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
+
 [VK_OHOS_external_memory](VK_OHOS_external_memory.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImportNativeBufferInfoOHOS).

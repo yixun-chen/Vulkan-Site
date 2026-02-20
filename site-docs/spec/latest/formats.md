@@ -4917,6 +4917,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](#VkFormatProperties2)
+
 The [VkDrmFormatModifierPropertiesEXT](#VkDrmFormatModifierPropertiesEXT) structure describes properties of
 a [VkFormat](#VkFormat) when that format is combined with a
 [Linux DRM format modifier](../appendices/glossary.html#glossary-drm-format-modifier).
@@ -5068,6 +5075,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](#VkFormatProperties2)
+
 The [VkDrmFormatModifierProperties2EXT](#VkDrmFormatModifierProperties2EXT) structure describes properties
 of a [VkFormat](#VkFormat) when that format is combined with a
 [Linux DRM format modifier](../appendices/glossary.html#glossary-drm-format-modifier).
@@ -5140,6 +5154,13 @@ Valid Usage (Implicit)
 [](#VUID-VkFormatProperties3-sType-sType) VUID-VkFormatProperties3-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](#VkFormatProperties2)
 
 Bits which **can** be set in the [VkFormatProperties3](#VkFormatProperties3) features
 `linearTilingFeatures`, `optimalTilingFeatures`, and
@@ -5702,6 +5723,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_FORMAT_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](#VkFormatProperties2)
+
 The following bits **may** be set in `linearTilingTensorFeatures` and
 `optimalTilingTensorFeatures`, specifying that the features are
 supported by tensors or tensor views created with the queried
@@ -5779,6 +5807,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSubpassResolvePerformanceQueryEXT-sType-sType) VUID-VkSubpassResolvePerformanceQueryEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](#VkFormatProperties2)
 
 Some [valid usage conditions](fundamentals.html#fundamentals-validusage) depend on the format
 features supported by a [VkImage](resources.html#VkImage) whose [VkImageTiling](resources.html#VkImageTiling) is unknown.

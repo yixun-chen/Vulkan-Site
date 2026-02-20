@@ -57,6 +57,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
 [VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkPhysicalDeviceFeatures](VkPhysicalDeviceFeatures.html), [VkStructureType](VkStructureType.html), [vkGetPhysicalDeviceFeatures2](vkGetPhysicalDeviceFeatures2.html), [vkGetPhysicalDeviceFeatures2](vkGetPhysicalDeviceFeatures2.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/features.html#VkPhysicalDeviceFeatures2).

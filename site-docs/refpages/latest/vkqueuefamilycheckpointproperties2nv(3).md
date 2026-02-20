@@ -50,6 +50,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](VkQueueFamilyProperties2.html)
+
 [VK_KHR_synchronization2](VK_KHR_synchronization2.html), [VK_NV_device_diagnostic_checkpoints](VK_NV_device_diagnostic_checkpoints.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkPipelineStageFlags2](VkPipelineStageFlags2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkQueueFamilyCheckpointProperties2NV).

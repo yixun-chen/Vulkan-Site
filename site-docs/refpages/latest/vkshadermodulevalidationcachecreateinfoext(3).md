@@ -61,6 +61,16 @@ Valid Usage (Implicit)
 
  `validationCache` **must** be a valid [VkValidationCacheEXT](VkValidationCacheEXT.html) handle
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
+* 
+[VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html)
+
 [VK_EXT_validation_cache](VK_EXT_validation_cache.html), [VkStructureType](VkStructureType.html), [VkValidationCacheEXT](VkValidationCacheEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/shaders.html#VkShaderModuleValidationCacheCreateInfoEXT).

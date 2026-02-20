@@ -1058,6 +1058,25 @@ chain <strong>must</strong> include a <a href="#VkVideoEncodeAV1ProfileInfoKHR">
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -1303,6 +1322,28 @@ use of the video decode profile.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -1444,6 +1485,28 @@ the tuning mode to use when encoding with the video profile.</p>
  If <code>tuningMode</code> is not <code>0</code>, <code>tuningMode</code> <strong>must</strong> be a valid <a href="#VkVideoEncodeTuningModeKHR">VkVideoEncodeTuningModeKHR</a> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -1731,6 +1794,34 @@ transcoding use cases without the need for manual data transformations.</p>
  If <code>profileCount</code> is not <code>0</code>, <code>pProfiles</code> <strong>must</strong> be a valid pointer to an array of <code>profileCount</code> valid <a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a> structures</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateInfo</a></p>
+</li>
+<li>
+<p><a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="capabilities.html#VkPhysicalDeviceImageFormatInfo2" class="xref page">VkPhysicalDeviceImageFormatInfo2</a></p>
+</li>
+<li>
+<p><a href="#VkPhysicalDeviceVideoFormatInfoKHR">VkPhysicalDeviceVideoFormatInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -5468,10 +5559,6 @@ profile <code>videoSession</code> was created with</p>
  <code>videoSession</code> <strong>must</strong> be a valid <a href="#VkVideoSessionKHR">VkVideoSessionKHR</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent" href="#VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent"></a> <span class="vuid">VUID-VkVideoSessionParametersCreateInfoKHR-videoSessionParametersTemplate-parent</span><br>
- If <code>videoSessionParametersTemplate</code> is a valid handle, it <strong>must</strong> have been created, allocated, or retrieved from <code>videoSession</code></p>
-</li>
-<li>
 <p><a id="VUID-VkVideoSessionParametersCreateInfoKHR-commonparent" href="#VUID-VkVideoSessionParametersCreateInfoKHR-commonparent"></a> <span class="vuid">VUID-VkVideoSessionParametersCreateInfoKHR-commonparent</span><br>
  Both of <code>videoSession</code>, and <code>videoSessionParametersTemplate</code> that are valid handles of non-ignored parameters <strong>must</strong> have been created, allocated, or retrieved from the same <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a></p>
 </li>
@@ -5565,6 +5652,25 @@ is compatible with.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -6972,10 +7078,6 @@ have been created with <code>videoSession</code> specified in
  If <code>referenceSlotCount</code> is not <code>0</code>, <code>pReferenceSlots</code> <strong>must</strong> be a valid pointer to an array of <code>referenceSlotCount</code> valid <a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent" href="#VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent"></a> <span class="vuid">VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent</span><br>
- If <code>videoSessionParameters</code> is a valid handle, it <strong>must</strong> have been created, allocated, or retrieved from <code>videoSession</code></p>
-</li>
-<li>
 <p><a id="VUID-VkVideoBeginCodingInfoKHR-commonparent" href="#VUID-VkVideoBeginCodingInfoKHR-commonparent"></a> <span class="vuid">VUID-VkVideoBeginCodingInfoKHR-commonparent</span><br>
  Both of <code>videoSession</code>, and <code>videoSessionParameters</code> that are valid handles of non-ignored parameters <strong>must</strong> have been created, allocated, or retrieved from the same <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a></p>
 </li>
@@ -7743,6 +7845,28 @@ number of queries in <code>queryPool</code></p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -7995,6 +8119,25 @@ describing the supported video decoding capabilities.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9944,6 +10087,28 @@ be decoded.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -10062,6 +10227,25 @@ picture layout
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -10310,6 +10494,25 @@ H.264 parameters to add upon object creation.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -10431,6 +10634,25 @@ of <code>pStdPPSs</code> <strong>must</strong> be unique within <code>pStdPPSs</
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersUpdateInfoKHR">VkVideoSessionParametersUpdateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -10506,6 +10728,25 @@ video session parameters object.</p>
  If <code>pStdPPS</code> is not <code>NULL</code>, <code>pStdPPS</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoH264PictureParameterSet</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -10711,6 +10952,25 @@ session parameters object.</p>
  <code>sliceCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -10929,6 +11189,25 @@ marked as &#8220;non-existing&#8221; as defined in section 8.2.5.2 of the
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoDecodeH264ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -11275,6 +11554,28 @@ the H.265 codec profile IDC, as defined in section A.3 of the
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -11329,6 +11630,25 @@ maximum H.265 level supported by the profile, where enum constant
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -11822,6 +12142,25 @@ H.265 parameters to add upon object creation.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -11965,6 +12304,25 @@ in the elements of <code>pStdPPSs</code> <strong>must</strong> be unique within 
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersUpdateInfoKHR">VkVideoSessionParametersUpdateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -12050,6 +12408,25 @@ sourced from the bound video session parameters object.</p>
  If <code>pStdPPS</code> is not <code>NULL</code>, <code>pStdPPS</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoH265PictureParameterSet</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -12272,6 +12649,25 @@ session parameters object.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -12414,6 +12810,25 @@ is marked as &#8220;unused for reference&#8221; as defined in section 8.3.2 of t
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoDecodeH265ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -12786,6 +13201,28 @@ codec profile, as defined in section 7.2 of the <a href="introduction.html#googl
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -12839,6 +13276,25 @@ VP9 level supported by the profile, as defined in section A.1 of the
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -13070,6 +13526,25 @@ then the corresponding picture reference associated with the <a href="#dpb-slot"
  <code>pStdPictureInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoDecodeVP9PictureInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -13548,6 +14023,28 @@ video sessions and/or video picture resources on some implementations.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -13601,6 +14098,25 @@ AV1 level supported by the profile, as defined in section A.3 of the
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -13749,6 +14265,25 @@ it.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -13813,6 +14348,25 @@ object.</p>
  If <code>pStdSequenceHeader</code> is not <code>NULL</code>, <code>pStdSequenceHeader</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoAV1SequenceHeader</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -13957,6 +14511,28 @@ section 6.8.14 of the <a href="introduction.html#aomedia-av1" class="xref page">
 <p><code>pMiRowStarts</code> is a pointer to an array of <code>TileRows</code> number of
 unsigned integers that corresponds to <code>MiRowStarts</code> defined in
 section 6.8.14 of the <a href="introduction.html#aomedia-av1" class="xref page">AV1 Specification</a>;</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Historically some applications incorrectly specified the values in
+<code>pMiColStarts</code> and <code>pMiRowStarts</code> in terms of superblocks instead of
+mode info blocks, therefore it is recommended for implementations to ignore
+the values specified in <code>pMiColStarts</code> and <code>pMiRowStarts</code>.
+Instead, the values should be calculated based on
+<code>flags.uniform_tile_spacing_flag</code>, <code>pWidthInSbsMinus1</code>,
+<code>pHeightInSbsMinus1</code>, the <a href="#decode-av1-sequence-header">sequence header</a>
+parameter <code>flags.use_128x128_superblock</code>, and the coded extent of the
+decoded picture.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p><code>pWidthInSbsMinus1</code> is a pointer to an array of <code>TileCols</code> number
@@ -14199,6 +14775,25 @@ active sequence header is specified
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoDecodeInfoKHR">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -14415,6 +15010,25 @@ not maintain any subset of these parameters as part of the DPB slot&#8217;s
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoDecodeAV1ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -15009,6 +15623,25 @@ portability, and reproducibility.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -15499,6 +16132,28 @@ profile</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCodingControlInfoKHR">VkVideoCodingControlInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -18475,6 +19130,25 @@ partitions a picture can be encoded with.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -18639,6 +19313,25 @@ structure.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionCreateInfoKHR">VkVideoSessionCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -18701,6 +19394,25 @@ structure.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -18782,6 +19494,25 @@ the reference picture.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_REFERENCE_INTRA_REFRESH_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -19610,6 +20341,28 @@ is greater than <code>1</code>, then <code>layerCount</code> <strong>must</stron
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoCodingControlInfoKHR">VkVideoCodingControlInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20002,6 +20755,25 @@ height of quantization maps.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20058,6 +20830,25 @@ structure.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20120,6 +20911,25 @@ structure.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20176,6 +20986,25 @@ supported for <a href="#encode-av1-qindex-delta-map">AV1 quantizer index delta  
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20247,6 +21076,25 @@ with different <code>quantizationMapTexelSize</code> values.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoFormatPropertiesKHR">VkVideoFormatPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20331,6 +21179,25 @@ format include
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoFormatPropertiesKHR">VkVideoFormatPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20420,6 +21287,25 @@ format include
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoFormatPropertiesKHR">VkVideoFormatPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -20502,6 +21388,25 @@ height of <code>quantizationMap</code></p>
  If <code>quantizationMap</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, <code>quantizationMap</code> <strong>must</strong> be a valid <a href="resources.html#VkImageView" class="xref page">VkImageView</a> handle</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20603,6 +21508,25 @@ the Y axis for video encode R′G′B′ conversion.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20959,6 +21883,25 @@ operation.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -21086,6 +22029,25 @@ chain of <code>VkVideoCapabilitiesKHR</code> with the given <code>pVideoProfile<
  <code>yChromaOffset</code> <strong>must</strong> be a valid <a href="#VkVideoEncodeRgbChromaOffsetFlagBitsVALVE">VkVideoEncodeRgbChromaOffsetFlagBitsVALVE</a> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionCreateInfoKHR">VkVideoSessionCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -21559,6 +22521,28 @@ section A.2 of the <a href="introduction.html#itu-t-h264" class="xref page">ITU-
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -21723,6 +22707,25 @@ H.264 syntax elements.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -22201,6 +23204,25 @@ use for <code>entropy_coding_mode_flag</code> in <code>StdVideoH264PpsFlags</cod
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeQualityLevelPropertiesKHR">VkVideoEncodeQualityLevelPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -22264,6 +23286,25 @@ created video session, where enum constant
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionCreateInfoKHR">VkVideoSessionCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -22531,6 +23572,25 @@ H.264 parameters to add upon object creation.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -22652,6 +23712,25 @@ of <code>pStdPPSs</code> <strong>must</strong> be unique within <code>pStdPPSs</
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersUpdateInfoKHR">VkVideoSessionParametersUpdateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -22748,6 +23827,25 @@ At least one of <code>writeStdSPS</code> and <code>writeStdPPS</code> <strong>mu
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeSessionParametersGetInfoKHR">VkVideoEncodeSessionParametersGetInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -22802,6 +23900,25 @@ were <a href="#encode-overrides">overridden</a> by the implementation.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeSessionParametersFeedbackInfoKHR">VkVideoEncodeSessionParametersFeedbackInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -23105,6 +24222,25 @@ then
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -23354,6 +24490,25 @@ section 7.4.3 of the <a href="introduction.html#itu-t-h264" class="xref page">IT
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoEncodeH264ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -23722,6 +24877,28 @@ If <code>consecutiveBFrameCount</code> is not <code>0</code>, then it <strong>mu
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoCodingControlInfoKHR">VkVideoCodingControlInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -23988,6 +25165,25 @@ less than or equal to the respective members of <code>maxQp</code></p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeRateControlLayerInfoKHR">VkVideoEncodeRateControlLayerInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -24148,6 +25344,25 @@ from the one expected by the application.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -25169,6 +26384,28 @@ the H.265 codec profile IDC, as defined in section A.3 of the
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -25356,6 +26593,25 @@ H.265 syntax elements.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -25957,6 +27213,25 @@ number of reference pictures to use in the reference list L1.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeQualityLevelPropertiesKHR">VkVideoEncodeQualityLevelPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -26020,6 +27295,25 @@ created video session, where enum constant
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionCreateInfoKHR">VkVideoSessionCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -26532,6 +27826,25 @@ H.265 parameters to add upon object creation.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -26640,6 +27953,25 @@ set of parameters to add to it (see
  If <code>stdPPSCount</code> is not <code>0</code>, and <code>pStdPPSs</code> is not <code>NULL</code>, <code>pStdPPSs</code> <strong>must</strong> be a valid pointer to an array of <code>stdPPSCount</code> <code>StdVideoH265PictureParameterSet</code> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersUpdateInfoKHR">VkVideoSessionParametersUpdateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -26789,6 +28121,25 @@ At least one of <code>writeStdVPS</code>, <code>writeStdSPS</code>, and
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeSessionParametersGetInfoKHR">VkVideoEncodeSessionParametersGetInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -26851,6 +28202,25 @@ were <a href="#encode-overrides">overridden</a> by the implementation.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeSessionParametersFeedbackInfoKHR">VkVideoEncodeSessionParametersFeedbackInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -27197,6 +28567,25 @@ and the slice segment corresponding to any element of
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -27450,6 +28839,25 @@ is marked as &#8220;unused for reference&#8221; as defined in section 8.3.2 of t
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoEncodeH265ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -27818,6 +29226,28 @@ If <code>consecutiveBFrameCount</code> is not <code>0</code>, then it <strong>mu
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoCodingControlInfoKHR">VkVideoCodingControlInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -28084,6 +29514,25 @@ less than or equal to the respective members of <code>maxQp</code></p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeRateControlLayerInfoKHR">VkVideoEncodeRateControlLayerInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -28244,6 +29693,25 @@ from the one expected by the application.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -29493,6 +30961,28 @@ codec profile, as defined in section A.2 of the <a href="introduction.html#aomed
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="queries.html#VkQueryPoolCreateInfo" class="xref page">VkQueryPoolCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkVideoProfileInfoKHR">VkVideoProfileInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -29758,6 +31248,25 @@ the encoded content.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoCapabilitiesKHR">VkVideoCapabilitiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -30120,6 +31629,25 @@ when bit index <span class="eq">i</span> is set, it indicates preference for usi
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeQualityLevelPropertiesKHR">VkVideoEncodeQualityLevelPropertiesKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -30181,6 +31709,25 @@ video session.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionCreateInfoKHR">VkVideoSessionCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -30415,6 +31962,25 @@ element <span class="eq">i</span> of the syntax elements defined in section 6.4 
  If <code>stdOperatingPointCount</code> is not <code>0</code>, and <code>pStdOperatingPoints</code> is not <code>NULL</code>, <code>pStdOperatingPoints</code> <strong>must</strong> be a valid pointer to an array of <code>stdOperatingPointCount</code> <code>StdVideoEncodeAV1OperatingPointInfo</code> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoSessionParametersCreateInfoKHR">VkVideoSessionParametersCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -30863,6 +32429,25 @@ If <code>generateObuExtensionHeader</code> is set to <a href="fundamentals.html#
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeInfoKHR">VkVideoEncodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -31022,6 +32607,25 @@ the reference frame, respectively.</p>
  <code>pStdReferenceInfo</code> <strong>must</strong> be a valid pointer to a valid <code>StdVideoEncodeAV1ReferenceInfo</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoReferenceSlotInfoKHR">VkVideoReferenceSlotInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -31457,6 +33061,28 @@ video profile</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkVideoCodingControlInfoKHR">VkVideoCodingControlInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -31727,6 +33353,25 @@ than or equal to the respective members of <code>maxQIndex</code></p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoEncodeRateControlLayerInfoKHR">VkVideoEncodeRateControlLayerInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -31901,6 +33546,25 @@ from the one expected by the application.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkVideoBeginCodingInfoKHR">VkVideoBeginCodingInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

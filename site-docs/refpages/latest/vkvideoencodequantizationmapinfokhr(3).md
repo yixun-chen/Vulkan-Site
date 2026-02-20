@@ -76,6 +76,13 @@ Valid Usage (Implicit)
 
  If `quantizationMap` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `quantizationMap` **must** be a valid [VkImageView](VkImageView.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)
+
 [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkExtent2D](VkExtent2D.html), [VkImageView](VkImageView.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeQuantizationMapInfoKHR).

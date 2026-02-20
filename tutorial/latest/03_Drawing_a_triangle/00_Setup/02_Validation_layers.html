@@ -806,11 +806,7 @@ and device specific. The idea was that instance layers would only check
 calls related to global Vulkan objects like instances, and device-specific layers
 would only check calls related to a specific GPU. Device-specific layers have now been
 deprecated, which means that instance validation layers apply to all Vulkan
-calls. The specification document still recommends that you enable validation
-layers at device level as well for compatibility, which is required by some
-implementations. We&#8217;ll simply specify the same layers as the instance at logical
-device level, which we&#8217;ll see
-<a href="04_Logical_device_and_queues.html" class="xref page">later on</a>.</p>
+calls.</p>
 </div>
 </div>
 </div>
@@ -853,29 +849,91 @@ supported by the Vulkan implementation. This check is performed directly in the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance() {
-    constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
-                .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
-                .pEngineName        = "No Engine",
-                .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
-                .apiVersion         = vk::ApiVersion14 };
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance()
+{
+    ...
 
     // Get the required layers
     std::vector&lt;char const*&gt; requiredLayers;
-    if (enableValidationLayers) {
+    if (enableValidationLayers)
+    {
         requiredLayers.assign(validationLayers.begin(), validationLayers.end());
     }
 
     // Check if the required layers are supported by the Vulkan implementation.
     auto layerProperties = context.enumerateInstanceLayerProperties();
-    if (std::ranges::any_of(requiredLayers, [&amp;layerProperties](auto const&amp; requiredLayer) {
-        return std::ranges::none_of(layerProperties,
-                                   [requiredLayer](auto const&amp; layerProperty)
-                                   { return strcmp(layerProperty.layerName, requiredLayer) == 0; });
-    }))
-    {
-        throw std::runtime_error("One or more required layers are not supported!");
-    }
+		auto unsupportedLayerIt = std::ranges::find_if(requiredLayers,
+		                                               [&amp;layerProperties](auto const &amp;requiredLayer) {
+			                                               return std::ranges::none_of(layerProperties,
+			                                                                           [requiredLayer](auto const &amp;layerProperty) { return strcmp(layerProperty.layerName, requiredLayer) == 0; });
+		                                               });
+		if (unsupportedLayerIt != requiredLayers.end())
+		{
+			throw std::runtime_error("Required layer not supported: " + std::string(*unsupportedLayerIt));
+		}
+
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_extensions"><a class="anchor" href="#_using_extensions"></a>Using extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As already mentioned above, extensions also need to be enabled by their name. But
+here, you have to distinguish between instance- and device-extensions.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll first create a getRequiredInstanceExtensions function that will return a
+list of the required instance extensions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;const char*&gt; getRequiredInstanceExtensions()
+{
+    uint32_t glfwExtensionCount = 0;
+    auto glfwExtensions = glfwGetRequiredInstanceExtensions(&amp;glfwExtensionCount);
+
+    std::vector extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+
+    return extensions;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The extensions specified by GLFW are always required, as we&#8217;re working with
+the GLFW dependency for windowing.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll check if all the required extensions are available. We first get a list of all
+supported instance extensions by using the
+<code>vk::raii::Context::enumerateInstanceLayerProperties</code> function and check that all
+required layers are listed in that list. This check is also performed directly in the
+<code>createInstance</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance()
+{
+    ...
+
+		// Get the required extensions.
+		auto requiredExtensions = getRequiredInstanceExtensions();
+
+		// Check if the required extensions are supported by the Vulkan implementation.
+		auto extensionProperties = context.enumerateInstanceExtensionProperties();
+		auto unsupportedPropertyIt =
+		    std::ranges::find_if(requiredExtensions,
+		                         [&amp;extensionProperties](auto const &amp;requiredExtension) {
+			                         return std::ranges::none_of(extensionProperties,
+			                                                     [requiredExtension](auto const &amp;extensionProperty) { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; });
+		                         });
+		if (unsupportedPropertyIt != requiredExtensions.end())
+		{
+			throw std::runtime_error("Required extension not supported: " + std::string(*unsupportedPropertyIt));
+		}
 
     ...
 }</code></pre>
@@ -886,22 +944,28 @@ supported by the Vulkan implementation. This check is performed directly in the
 it does, then have a look at the FAQ.</p>
 </div>
 <div class="paragraph">
-<p>Finally, modify the <code>VkInstanceCreateInfo</code> struct instantiation to include the
-validation layer names if they are enabled:</p>
+<p>Finally, modify the <code>vk::InstanceCreateInfo</code> struct instantiation to include the
+validation layer names and the extension names:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::InstanceCreateInfo createInfo{
-    .pApplicationInfo        = &amp;appInfo,
-    .enabledLayerCount       = static_cast&lt;uint32_t&gt;(requiredLayers.size()),
-    .ppEnabledLayerNames     = requiredLayers.data(),
-    .enabledExtensionCount   = 0,
-    .ppEnabledExtensionNames = nullptr };</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance()
+{
+    ...
+
+    vk::InstanceCreateInfo createInfo{.pApplicationInfo        = &amp;appInfo,
+                                      .enabledLayerCount       = static_cast&lt;uint32_t&gt;(requiredLayers.size()),
+                                      .ppEnabledLayerNames     = requiredLayers.data(),
+                                      .enabledExtensionCount   = static_cast&lt;uint32_t&gt;(requiredExtensions.size()),
+                                      .ppEnabledExtensionNames = requiredExtensions.data()};
+    instance = vk::raii::Instance(context, createInfo);
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the check was successful then <code>vkCreateInstance</code> should not ever return a
-<code>VK_ERROR_LAYER_NOT_PRESENT</code> error, but you should run the program to make sure.</p>
+<p>If the check was successful then the <code>vk::raii::Instance</code> constructor should not
+ever throw a <code>vk::Result::eErrorLayerNotPresent</code> error, but you should run the
+program to make sure.</p>
 </div>
 </div>
 </div>
@@ -922,19 +986,21 @@ details, we have to set up a debug messenger with a callback using the
 <code>VK_EXT_debug_utils</code> extension.</p>
 </div>
 <div class="paragraph">
-<p>We&#8217;ll first create a <code>getRequiredExtensions</code> function that will return the
-required list of extensions based on whether validation layers are enabled or
+<p>We&#8217;ll first extent the <code>getRequiredInstanceExtensions</code> function based on whether
+validation layers are enabled or
 not:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;const char*&gt; getRequiredExtensions() {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;const char*&gt; getRequiredInstanceExtensions()
+{
     uint32_t glfwExtensionCount = 0;
     auto glfwExtensions = glfwGetRequiredInstanceExtensions(&amp;glfwExtensionCount);
 
     std::vector extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
-    if (enableValidationLayers) {
-        extensions.push_back(vk::EXTDebugUtilsExtensionName );
+    if (enableValidationLayers)
+    {
+        extensions.push_back(vk::EXTDebugUtilsExtensionName);
     }
 
     return extensions;
@@ -942,26 +1008,9 @@ not:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The extensions specified by GLFW are always required, as we&#8217;re working with
-the GLFW dependency for windowing, but the debug messenger extension is
-conditionally added. Note that We&#8217;ve used the
-<code>VK_EXT_DEBUG_UTILS_EXTENSION_NAME</code> macro here which is equal to the literal
+<p>The debug messenger extension is conditionally added. Note that we&#8217;ve used the
+<code>vk::EXTDebugUtilsExtensionName</code> macro here which is equal to the literal
 string "VK_EXT_debug_utils". Using this macro lets you avoid typos.</p>
-</div>
-<div class="paragraph">
-<p>We can now use this function in <code>createInstance</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto extensions = getRequiredExtensions();
-vk::InstanceCreateInfo createInfo({}, &amp;appInfo, requiredLayers, extensions);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Run the program to make sure you don&#8217;t receive a
-<code>VK_ERROR_EXTENSION_NOT_PRESENT</code> error. We don&#8217;t really need to check for the
-existence of this extension because it should be implied by the availability of
-the validation layers.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s see what a debug callback function looks like. Add a new static member
@@ -971,10 +1020,14 @@ right signature for Vulkan to call it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">static VKAPI_ATTR vk::Bool32 VKAPI_CALL debugCallback(vk::DebugUtilsMessageSeverityFlagBitsEXT severity, vk::DebugUtilsMessageTypeFlagsEXT type, const vk::DebugUtilsMessengerCallbackDataEXT* pCallbackData, void*) {
-    std::cerr &lt;&lt; "validation layer: type " &lt;&lt; to_string(type) &lt;&lt; " msg: " &lt;&lt; pCallbackData-&gt;pMessage &lt;&lt; std::endl;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">static VKAPI_ATTR vk::Bool32 VKAPI_CALL debugCallback(vk::DebugUtilsMessageSeverityFlagBitsEXT       severity,
+                                                      vk::DebugUtilsMessageTypeFlagsEXT              type,
+                                                      const vk::DebugUtilsMessengerCallbackDataEXT * pCallbackData,
+                                                      void *                                         pUserData)
+{
+  std::cerr &lt;&lt; "validation layer: type " &lt;&lt; to_string(type) &lt;&lt; " msg: " &lt;&lt; pCallbackData-&gt;pMessage &lt;&lt; std::endl;
 
-    return vk::False;
+  return vk::False;
 }</code></pre>
 </div>
 </div>
@@ -985,19 +1038,16 @@ the following flags:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT</code>: Diagnostic message</p>
+<p><code>vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose</code>: Diagnostic message</p>
 </li>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</code>: Informational message
-like the creation of a resource</p>
+<p><code>vk::DebugUtilsMessageSeverityFlagBitsEXT::eInfo</code>   : Informational message like the creation of a resource</p>
 </li>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT</code>: Message about behavior
-that is not necessarily an error, but very likely a bug in your application</p>
+<p><code>vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning</code>: Message about behavior that is not necessarily an error, but very likely a bug in your application</p>
 </li>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT</code>: Message about behavior
-that is invalid and may cause crashes</p>
+<p><code>vk::DebugUtilsMessageSeverityFlagBitsEXT::eError</code>  : Message about behavior that is invalid and may cause crashes</p>
 </li>
 </ul>
 </div>
@@ -1019,26 +1069,26 @@ some level of severity, for example:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT</code>: Some event has happened that is unrelated to the specification or performance</p>
+<p><code>vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral</code>    : Some event has happened that is unrelated to the specification or performance</p>
 </li>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT</code>: Something has happened that violates the specification or indicates a possible mistake</p>
+<p><code>vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation</code> : Something has happened that violates the specification or indicates a possible mistake</p>
 </li>
 <li>
-<p><code>VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT</code>: Potential non-optimal use of Vulkan</p>
+<p><code>vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance</code>: Potential non-optimal use of Vulkan</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>pCallbackData</code> parameter refers to a <code>VkDebugUtilsMessengerCallbackDataEXT</code> struct containing the details of the message itself, with the most important members being:</p>
+<p>The <code>pCallbackData</code> parameter refers to a <code>vk::DebugUtilsMessengerCallbackDataEXT</code> struct containing the details of the message itself, with the most important members being:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>pMessage</code>: The debug message as a null-terminated string</p>
+<p><code>pMessage</code>   : The debug message as a null-terminated string</p>
 </li>
 <li>
-<p><code>pObjects</code>: Array of Vulkan object handles related to the message</p>
+<p><code>pObjects</code>   : Array of Vulkan object handles related to the message</p>
 </li>
 <li>
 <p><code>objectCount</code>: Number of objects in the array</p>
@@ -1052,13 +1102,13 @@ setup of the callback and allows you to pass your own data to it.</p>
 <div class="paragraph">
 <p>The callback returns a boolean that indicates if the Vulkan call that triggered
 the validation layer message should be aborted. If the callback returns true,
-then the call is aborted with the <code>VK_ERROR_VALIDATION_FAILED_EXT</code> error. This
+then the call is aborted with the <code>vk::Result::eErrorValidationFailedEXT</code> error. This
 is normally only used to test the validation layers themselves, so you should
-always return <code>VK_FALSE</code>.</p>
+always return <code>vk::False</code>.</p>
 </div>
 <div class="paragraph">
 <p>All that remains now is telling Vulkan about the callback function. Such a
-callback is part of a <strong>debug messenger,</strong> and you can have as many of them as
+callback is part of a <strong>debug messenger</strong>, and you can have as many of them as
 you want. Add a class member for this handle right under <code>instance</code>:</p>
 </div>
 <div class="listingblock">
@@ -1072,12 +1122,14 @@ after <code>createInstance</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void initVulkan() {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void initVulkan()
+{
     createInstance();
     setupDebugMessenger();
 }
 
-void setupDebugMessenger() {
+void setupDebugMessenger()
+{
     if (!enableValidationLayers) return;
 
 }</code></pre>
@@ -1088,20 +1140,25 @@ void setupDebugMessenger() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::DebugUtilsMessageSeverityFlagsEXT severityFlags( vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose | vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError );
-vk::DebugUtilsMessageTypeFlagsEXT    messageTypeFlags( vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation );
-vk::DebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoEXT{
-    .messageSeverity = severityFlags,
-    .messageType = messageTypeFlags,
-    .pfnUserCallback = &amp;debugCallback
-    };
-debugMessenger = instance.createDebugUtilsMessengerEXT(debugUtilsMessengerCreateInfoEXT);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void setupDebugMessenger()
+{
+    ...
+    vk::DebugUtilsMessageSeverityFlagsEXT severityFlags(vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose |
+                                                        vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+                                                        vk::DebugUtilsMessageSeverityFlagBitsEXT::eError);
+    vk::DebugUtilsMessageTypeFlagsEXT     messageTypeFlags(
+            vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation);
+    vk::DebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoEXT{.messageSeverity = severityFlags,
+                                                                          .messageType     = messageTypeFlags,
+                                                                          .pfnUserCallback = &amp;debugCallback};
+    debugMessenger = instance.createDebugUtilsMessengerEXT( debugUtilsMessengerCreateInfoEXT );
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>messageSeverity</code> field allows you to specify all the types of
 severities you would like your callback to be called for. We&#8217;ve specified
-all types except for <code>VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</code> here to
+all types except for <code>vk::DebugUtilsMessageSeverityFlagBitsEXT::eInfo</code> here to
 receive notifications about possible problems while leaving out verbose
 general debug info.</p>
 </div>
@@ -1124,11 +1181,12 @@ tutorial. See the <a href="https://docs.vulkan.org/spec/latest/chapters/debuggin
 for more info about the possibilities.</p>
 </div>
 <div class="paragraph">
-<p>We can now re-use this in the <code>createInstance</code> function:</p>
+<p>The complete <code>createInstance</code> function now looks like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance() {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance()
+{
     constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
                 .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
                 .pEngineName        = "No Engine",
@@ -1153,19 +1211,20 @@ for more info about the possibilities.</p>
     }
 
     // Get the required extensions.
-    auto requiredExtensions = getRequiredExtensions();
+    auto requiredExtensions = getRequiredInstanceExtensions();
 
     // Check if the required extensions are supported by the Vulkan implementation.
     auto extensionProperties = context.enumerateInstanceExtensionProperties();
-    for (auto const &amp; requiredExtension : requiredExtensions)
-    {
-        if (std::ranges::none_of(extensionProperties,
-                                 [requiredExtension](auto const&amp; extensionProperty)
-                                 { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; }))
-        {
-            throw std::runtime_error("Required extension not supported: " + std::string(requiredExtension));
-        }
-    }
+		auto unsupportedPropertyIt =
+		    std::ranges::find_if(requiredExtensions,
+		                         [&amp;extensionProperties](auto const &amp;requiredExtension) {
+			                         return std::ranges::none_of(extensionProperties,
+			                                                     [requiredExtension](auto const &amp;extensionProperty) { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; });
+		                         });
+		if (unsupportedPropertyIt != requiredExtensions.end())
+		{
+			throw std::runtime_error("Required extension not supported: " + std::string(*unsupportedPropertyIt));
+		}
 
     vk::InstanceCreateInfo createInfo{
         .pApplicationInfo        = &amp;appInfo,
@@ -1184,7 +1243,7 @@ for more info about the possibilities.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are a lot more settings for the behavior of validation layers than just
-the flags specified in the <code>VkDebugUtilsMessengerCreateInfoEXT</code> struct. Browse
+the flags specified in the <code>vk::DebugUtilsMessengerCreateInfoEXT</code> struct. Browse
 to the Vulkan SDK and go to the <code>Config</code> directory. There you will find a
 <code>vk_layer_settings.txt</code> file that explains how to configure the layers.</p>
 </div>

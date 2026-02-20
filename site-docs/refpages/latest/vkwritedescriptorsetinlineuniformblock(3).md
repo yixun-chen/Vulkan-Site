@@ -78,6 +78,13 @@ Valid Usage (Implicit)
 
  `dataSize` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](VkWriteDescriptorSet.html)
+
 [VK_EXT_inline_uniform_block](VK_EXT_inline_uniform_block.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkWriteDescriptorSetInlineUniformBlock).

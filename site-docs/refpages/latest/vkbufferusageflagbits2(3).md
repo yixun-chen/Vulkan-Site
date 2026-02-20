@@ -35,8 +35,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT = 0x0000
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT = 0x00000100ULL;
 // Provided by VK_VERSION_1_4
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT = 0x00020000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000ULL;
 #endif
 // Provided by VK_EXT_descriptor_heap
@@ -77,7 +77,7 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR =
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR = 0x00008000ULL;
 // Provided by VK_KHR_maintenance5 with VK_KHR_video_encode_queue
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR = 0x00010000ULL;
-// Provided by VK_KHR_maintenance5 with (VK_VERSION_1_2 or VK_KHR_buffer_device_address) or VK_EXT_buffer_device_address
+// Provided by VK_KHR_maintenance5 with VK_VERSION_1_2 or VK_KHR_buffer_device_address or VK_EXT_buffer_device_address
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR = 0x00020000ULL;
 // Provided by VK_KHR_acceleration_structure with VK_KHR_maintenance5
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR = 0x00080000ULL;
@@ -93,8 +93,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTO
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = 0x00800000ULL;
 // Provided by VK_KHR_maintenance5 with VK_EXT_opacity_micromap
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = 0x01000000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_dense_geometry_format
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX = 0x200000000ULL;
 #endif
 // Provided by VK_ARM_data_graph

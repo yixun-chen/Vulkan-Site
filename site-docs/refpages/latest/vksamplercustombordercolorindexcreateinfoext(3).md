@@ -73,6 +73,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_EXT_custom_border_color](VK_EXT_custom_border_color.html), [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT).

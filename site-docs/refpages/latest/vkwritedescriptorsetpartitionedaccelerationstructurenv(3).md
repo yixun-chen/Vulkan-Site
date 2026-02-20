@@ -83,6 +83,13 @@ Valid Usage (Implicit)
 
  `accelerationStructureCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](VkWriteDescriptorSet.html)
+
 [VK_NV_partitioned_acceleration_structure](VK_NV_partitioned_acceleration_structure.html), `VkDeviceAddress`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkWriteDescriptorSetPartitionedAccelerationStructureNV).

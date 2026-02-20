@@ -98,6 +98,13 @@ Valid Usage (Implicit)
 
  If `stencilResolveMode` is not `0`, `stencilResolveMode` **must** be a valid [VkResolveModeFlagBits](VkResolveModeFlagBits.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkResolveImageInfo2](VkResolveImageInfo2.html)
+
 [VK_KHR_maintenance10](VK_KHR_maintenance10.html), [VkResolveImageFlagsKHR](VkResolveImageFlagsKHR.html), [VkResolveModeFlagBits](VkResolveModeFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/copies.html#VkResolveImageModeInfoKHR).

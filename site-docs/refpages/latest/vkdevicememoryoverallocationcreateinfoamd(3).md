@@ -55,6 +55,13 @@ Valid Usage (Implicit)
 
  `overallocationBehavior` **must** be a valid [VkMemoryOverallocationBehaviorAMD](VkMemoryOverallocationBehaviorAMD.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
 [VK_AMD_memory_overallocation_behavior](VK_AMD_memory_overallocation_behavior.html), [VkMemoryOverallocationBehaviorAMD](VkMemoryOverallocationBehaviorAMD.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkDeviceMemoryOverallocationCreateInfoAMD).

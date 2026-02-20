@@ -202,6 +202,16 @@ Valid Usage (Implicit)
 
  If `pStencilInputAttachmentIndex` is not `NULL`, `pStencilInputAttachmentIndex` **must** be a valid pointer to a valid `uint32_t` value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_KHR_dynamic_rendering_local_read](VK_KHR_dynamic_rendering_local_read.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkStructureType](VkStructureType.html), [vkCmdSetRenderingInputAttachmentIndices](vkCmdSetRenderingInputAttachmentIndices.html), [vkCmdSetRenderingInputAttachmentIndices](vkCmdSetRenderingInputAttachmentIndices.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/interfaces.html#VkRenderingInputAttachmentIndexInfo).

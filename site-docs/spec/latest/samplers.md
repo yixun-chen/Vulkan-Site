@@ -789,6 +789,13 @@ Valid Usage (Implicit)
 
  `reductionMode` **must** be a valid [VkSamplerReductionMode](#VkSamplerReductionMode) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
+
 Reduction modes are specified by [VkSamplerReductionMode](#VkSamplerReductionMode), which takes
 values:
 
@@ -871,6 +878,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter) VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter
 
  `cubicWeights` **must** be a valid [VkCubicFilterWeightsQCOM](#VkCubicFilterWeightsQCOM) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
 
 Possible values of the
 [VkSamplerCubicWeightsCreateInfoQCOM](#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights`, specifying
@@ -1223,6 +1237,16 @@ Valid Usage (Implicit)
 [](#VUID-VkSamplerYcbcrConversionInfo-conversion-parameter) VUID-VkSamplerYcbcrConversionInfo-conversion-parameter
 
  `conversion` **must** be a valid [VkSamplerYcbcrConversion](#VkSamplerYcbcrConversion) handle
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
 
 A sampler Y′CBCR conversion is an opaque representation of a
 device-specific sampler Y′CBCR conversion description, represented as a
@@ -1797,6 +1821,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerYcbcrConversionCreateInfo](#VkSamplerYcbcrConversionCreateInfo)
+
 To destroy a sampler Y′CBCR conversion, call:
 
 // Provided by VK_VERSION_1_1
@@ -1936,6 +1967,13 @@ Valid Usage (Implicit)
 
  `format` **must** be a valid [VkFormat](formats.html#VkFormat) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
+
 If the sampler is created with [VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](#VkBorderColor),
 [VK_BORDER_COLOR_INT_OPAQUE_BLACK](#VkBorderColor),
 [VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor), or
@@ -1997,6 +2035,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter) VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter
 
  `components` **must** be a valid [VkComponentMapping](resources.html#VkComponentMapping) structure
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
 
 When using descriptor heaps, it is possible to create a sampler descriptor
 without creating a sampler object.
@@ -2194,6 +2239,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
+
 The `VkSamplerBlockMatchWindowCreateInfoQCOM` structure is defined as:
 
 // Provided by VK_QCOM_image_processing2
@@ -2238,6 +2290,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter) VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter
 
  `windowCompareMode` **must** be a valid [VkBlockMatchWindowCompareModeQCOM](#VkBlockMatchWindowCompareModeQCOM) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](#VkSamplerCreateInfo)
 
 The [VkBlockMatchWindowCompareModeQCOM](#VkBlockMatchWindowCompareModeQCOM) enum describes how block match
 values within the window are compared.

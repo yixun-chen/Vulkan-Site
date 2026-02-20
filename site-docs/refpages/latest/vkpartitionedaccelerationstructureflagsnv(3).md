@@ -48,6 +48,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPartitionedAccelerationStructureInstancesInputNV](VkPartitionedAccelerationStructureInstancesInputNV.html)
+
 [VK_NV_partitioned_acceleration_structure](VK_NV_partitioned_acceleration_structure.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/accelstructures.html#VkPartitionedAccelerationStructureFlagsNV).

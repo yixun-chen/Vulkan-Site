@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  If `attachmentImageInfoCount` is not `0`, `pAttachmentImageInfos` **must** be a valid pointer to an array of `attachmentImageInfoCount` valid [VkFramebufferAttachmentImageInfo](VkFramebufferAttachmentImageInfo.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)
+
 [VK_KHR_imageless_framebuffer](VK_KHR_imageless_framebuffer.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkFramebufferAttachmentImageInfo](VkFramebufferAttachmentImageInfo.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkFramebufferAttachmentsCreateInfo).

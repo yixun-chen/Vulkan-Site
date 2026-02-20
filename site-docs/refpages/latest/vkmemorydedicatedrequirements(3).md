@@ -141,6 +141,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryRequirements2](VkMemoryRequirements2.html)
+
 [VK_KHR_dedicated_allocation](VK_KHR_dedicated_allocation.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkMemoryDedicatedRequirements).

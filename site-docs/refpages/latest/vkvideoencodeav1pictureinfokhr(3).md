@@ -360,6 +360,13 @@ Valid Usage (Implicit)
 
  `pStdPictureInfo` **must** be a valid pointer to a valid `StdVideoEncodeAV1PictureInfo` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)
+
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkVideoEncodeAV1PredictionModeKHR](VkVideoEncodeAV1PredictionModeKHR.html), [VkVideoEncodeAV1RateControlGroupKHR](VkVideoEncodeAV1RateControlGroupKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeAV1PictureInfoKHR).

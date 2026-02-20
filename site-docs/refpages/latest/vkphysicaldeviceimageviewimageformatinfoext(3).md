@@ -52,6 +52,13 @@ Valid Usage (Implicit)
 
  `imageViewType` **must** be a valid [VkImageViewType](VkImageViewType.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)
+
 [VK_EXT_filter_cubic](VK_EXT_filter_cubic.html), [VkImageViewType](VkImageViewType.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/capabilities.html#VkPhysicalDeviceImageViewImageFormatInfoEXT).

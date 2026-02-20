@@ -628,6 +628,13 @@ Valid Usage (Implicit)
 
  `domainOrigin` **must** be a valid [VkTessellationDomainOrigin](#VkTessellationDomainOrigin) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineTessellationStateCreateInfo](#VkPipelineTessellationStateCreateInfo)
+
 The possible tessellation domain origins are specified by the
 [VkTessellationDomainOrigin](#VkTessellationDomainOrigin) enumeration:
 

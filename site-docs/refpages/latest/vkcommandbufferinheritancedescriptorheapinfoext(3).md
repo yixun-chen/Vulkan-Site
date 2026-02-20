@@ -102,6 +102,13 @@ Valid Usage (Implicit)
 
  If `pResourceHeapBindInfo` is not `NULL`, `pResourceHeapBindInfo` **must** be a valid pointer to a valid [VkBindHeapInfoEXT](VkBindHeapInfoEXT.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
 [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkBindHeapInfoEXT](VkBindHeapInfoEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT).

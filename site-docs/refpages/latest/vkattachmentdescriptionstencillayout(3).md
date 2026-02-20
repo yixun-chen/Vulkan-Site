@@ -103,6 +103,13 @@ Valid Usage (Implicit)
 
  `stencilFinalLayout` **must** be a valid [VkImageLayout](VkImageLayout.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAttachmentDescription2](VkAttachmentDescription2.html)
+
 [VK_KHR_separate_depth_stencil_layouts](VK_KHR_separate_depth_stencil_layouts.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkImageLayout](VkImageLayout.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkAttachmentDescriptionStencilLayout).

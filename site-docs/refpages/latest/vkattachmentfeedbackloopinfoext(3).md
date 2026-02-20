@@ -59,6 +59,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingAttachmentInfo](VkRenderingAttachmentInfo.html)
+
 [VK_EXT_attachment_feedback_loop_layout](VK_EXT_attachment_feedback_loop_layout.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_KHR_unified_image_layouts](VK_KHR_unified_image_layouts.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkAttachmentFeedbackLoopInfoEXT).

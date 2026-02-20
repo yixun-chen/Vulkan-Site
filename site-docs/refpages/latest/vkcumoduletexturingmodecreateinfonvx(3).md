@@ -37,6 +37,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCuModuleCreateInfoNVX](VkCuModuleCreateInfoNVX.html)
+
 [VK_NVX_binary_import](VK_NVX_binary_import.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/appendices/extensions.html#VkCuModuleTexturingModeCreateInfoNVX).

@@ -719,6 +719,34 @@ creation flags to be specified.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoKHR">VkRayTracingPipelineCreateInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoNV">VkRayTracingPipelineCreateInfoNV</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -742,8 +770,8 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COM
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT = 0x00000200ULL;
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT = 0x08000000ULL;
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT = 0x40000000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000ULL;
 #endif
 // Provided by VK_EXT_descriptor_heap
@@ -3032,6 +3060,28 @@ the shader being compiled has a required subgroup size.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPipelineShaderStageCreateInfo">VkPipelineShaderStageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="shaders.html#VkShaderCreateInfoEXT" class="xref page">VkShaderCreateInfoEXT</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -3114,6 +3164,25 @@ pipeline will be used.</p>
  <code>renderPass</code> <strong>must</strong> be a valid <a href="renderpass.html#VkRenderPass" class="xref page">VkRenderPass</a> handle</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -3491,6 +3560,34 @@ on the device, <a href="devsandqueues.html#limits-robustBufferAccessUpdateAfterB
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkPipelineShaderStageCreateInfo">VkPipelineShaderStageCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoKHR">VkRayTracingPipelineCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -3707,6 +3804,25 @@ equal to 0, the pipeline <strong>must</strong> be created with the
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPipelineShaderStageCreateInfo">VkPipelineShaderStageCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -3857,6 +3973,25 @@ If <code>pipelineDeviceAddressCaptureReplay</code> is non-zero, the
  If <code>pipelineDeviceAddressCaptureReplay</code> is not <code>0</code>, <code>pipelineDeviceAddressCaptureReplay</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -8393,6 +8528,25 @@ can be used with a fragment density map.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -8503,6 +8657,25 @@ external format of the resolve attachment that will be used.</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -8702,6 +8875,31 @@ If <code>depthAttachmentFormat</code> is not <a href="formats.html#VkFormat" cla
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="cmdbuffers.html#VkCommandBufferInheritanceInfo" class="xref page">VkCommandBufferInheritanceInfo</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="shaders.html#VkShaderCreateInfoEXT" class="xref page">VkShaderCreateInfoEXT</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -8804,6 +9002,31 @@ flag, and absence of any shader module identifiers, shader modules, or
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoKHR">VkRayTracingPipelineCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -8873,6 +9096,25 @@ possible subsets of the graphics pipeline (i.e. a
  <code>flags</code> <strong>must</strong> not be <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -10152,6 +10394,25 @@ feature <strong>must</strong> be enabled</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -11356,6 +11617,25 @@ feature <strong>must</strong> be enabled</p>
  <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoKHR">VkRayTracingPipelineCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -16152,6 +16432,25 @@ set</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -18298,6 +18597,31 @@ will be compiled.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX" class="xref page">VkExecutionGraphPipelineCreateInfoAMDX</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -18448,6 +18772,40 @@ When chained to <a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateIn
  If <code>pipelineStageCreationFeedbackCount</code> is not <code>0</code>, <code>pPipelineStageCreationFeedbacks</code> <strong>must</strong> be a valid pointer to an array of <code>pipelineStageCreationFeedbackCount</code> <a href="#VkPipelineCreationFeedback">VkPipelineCreationFeedback</a> structures</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkComputePipelineCreateInfo">VkComputePipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="VK_ARM_data_graph/graphs.html#VkDataGraphPipelineCreateInfoARM" class="xref page">VkDataGraphPipelineCreateInfoARM</a></p>
+</li>
+<li>
+<p><a href="executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX" class="xref page">VkExecutionGraphPipelineCreateInfoAMDX</a></p>
+</li>
+<li>
+<p><a href="#VkGraphicsPipelineCreateInfo">VkGraphicsPipelineCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoKHR">VkRayTracingPipelineCreateInfoKHR</a></p>
+</li>
+<li>
+<p><a href="#VkRayTracingPipelineCreateInfoNV">VkRayTracingPipelineCreateInfoNV</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

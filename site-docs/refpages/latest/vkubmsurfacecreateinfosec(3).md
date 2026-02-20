@@ -26,8 +26,8 @@ typedef struct VkUbmSurfaceCreateInfoSEC {
     VkStructureType               sType;
     const void*                   pNext;
     VkUbmSurfaceCreateFlagsSEC    flags;
-    struct ubm_device*            ubm_device;
-    struct ubm_surface*           ubm_surface;
+    struct ubm_device*            device;
+    struct ubm_surface*           surface;
 } VkUbmSurfaceCreateInfoSEC;
 
 * 
@@ -41,24 +41,24 @@ structure.
 `flags` is reserved for future use.
 
 * 
-`ubm_device` is a pointer to a `ubm_device` to associate the
-surface with.
+`device` is a pointer to a `ubm_device` to associate the surface
+with.
 
 * 
-`ubm_surface` is a pointer to a `ubm_surface` to associate the
+`surface` is a pointer to a `ubm_surface` to associate the
 surface with.
 
 Valid Usage
 
 * 
-[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366) VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366
+[](#VUID-VkUbmSurfaceCreateInfoSEC-device-12366) VUID-VkUbmSurfaceCreateInfoSEC-device-12366
 
-`ubm_device` **must** point to a valid UBM `ubm_device`
+`device` **must** point to a valid UBM `ubm_device`
 
 * 
-[](#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367) VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367
+[](#VUID-VkUbmSurfaceCreateInfoSEC-surface-12367) VUID-VkUbmSurfaceCreateInfoSEC-surface-12367
 
-`ubm_surface` **must** point to a valid UBM `ubm_surface`
+`surface` **must** point to a valid UBM `ubm_surface`
 
 Valid Usage (Implicit)
 

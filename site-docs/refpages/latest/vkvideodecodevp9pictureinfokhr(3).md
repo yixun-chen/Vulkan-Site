@@ -185,6 +185,13 @@ Valid Usage (Implicit)
 
  `pStdPictureInfo` **must** be a valid pointer to a valid `StdVideoDecodeVP9PictureInfo` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html)
+
 [VK_KHR_video_decode_vp9](VK_KHR_video_decode_vp9.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoDecodeVP9PictureInfoKHR).

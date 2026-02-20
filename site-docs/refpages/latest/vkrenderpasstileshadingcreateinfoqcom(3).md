@@ -115,6 +115,22 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkTileShadingRenderPassFlagBitsQCOM](VkTileShadingRenderPassFlagBitsQCOM.html) values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
+* 
+[VkRenderPassCreateInfo](VkRenderPassCreateInfo.html)
+
+* 
+[VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_QCOM_tile_shading](VK_QCOM_tile_shading.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html), [VkTileShadingRenderPassFlagsQCOM](VkTileShadingRenderPassFlagsQCOM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassTileShadingCreateInfoQCOM).

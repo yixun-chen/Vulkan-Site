@@ -76,6 +76,16 @@ Valid Usage (Implicit)
 
  If `pData` is not `NULL`, `pData` **must** be a valid pointer to a valid [VkHostAddressRangeConstEXT](VkHostAddressRangeConstEXT.html) structure
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkTensorCreateInfoARM](VkTensorCreateInfoARM.html)
+
 [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkHostAddressRangeConstEXT](VkHostAddressRangeConstEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkOpaqueCaptureDataCreateInfoEXT).

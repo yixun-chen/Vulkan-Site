@@ -79,6 +79,13 @@ Valid Usage (Implicit)
 
  `planeAspect` **must** be a valid [VkImageAspectFlagBits](VkImageAspectFlagBits.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindImageMemoryInfo](VkBindImageMemoryInfo.html)
+
 [VK_KHR_sampler_ycbcr_conversion](VK_KHR_sampler_ycbcr_conversion.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkImageAspectFlagBits](VkImageAspectFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkBindImagePlaneMemoryInfo).

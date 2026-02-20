@@ -70,6 +70,13 @@ Valid Usage (Implicit)
 
  `sampleLocationsInfo` **must** be a valid [VkSampleLocationsInfoEXT](VkSampleLocationsInfoEXT.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)
+
 [VK_EXT_sample_locations](VK_EXT_sample_locations.html), `VkBool32`, [VkSampleLocationsInfoEXT](VkSampleLocationsInfoEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT).

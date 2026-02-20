@@ -498,8 +498,8 @@ static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT = 
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT = 0x00100000ULL;
 // Provided by VK_HUAWEI_subpass_shading
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI = 0x8000000000ULL;
-// VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI is a legacy alias
 // Provided by VK_HUAWEI_subpass_shading
+// VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI is a legacy alias
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI = 0x8000000000ULL;
 // Provided by VK_HUAWEI_invocation_mask
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000ULL;
@@ -1660,6 +1660,8 @@ in the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) p
 via certain render pass [load](renderpass.html#renderpass-load-operations),
 [store](renderpass.html#renderpass-store-operations), and
 [multisample resolve](renderpass.html#renderpass-resolve-operations) operations.
+This includes [multisample resolve](renderpass.html#renderpass-resolve-operations)
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
@@ -1947,6 +1949,19 @@ Valid Usage (Implicit)
 
  `dstAccessMask3` **must** be a valid combination of [VkAccessFlagBits3KHR](#VkAccessFlagBits3KHR) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferMemoryBarrier2](#VkBufferMemoryBarrier2)
+
+* 
+[VkImageMemoryBarrier2](#VkImageMemoryBarrier2)
+
+* 
+[VkSubpassDependency2](renderpass.html#VkSubpassDependency2)
+
 Bits which **can** be set in the `srcAccessMask3` and `dstAccessMask3`
 members of [VkMemoryBarrierAccessFlags3KHR](#VkMemoryBarrierAccessFlags3KHR), specifying access behavior,
 are:
@@ -2132,9 +2147,12 @@ in the [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits) pipelin
 
 * 
 [VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits) specifies write access to a
-[color, resolve, or depth/stencil resolve attachment](renderpass.html#renderpass)
-during a [render pass](renderpass.html#renderpass) or via certain render pass
-[load](renderpass.html#renderpass-load-operations) and [    store](renderpass.html#renderpass-store-operations) operations.
+[color attachment](renderpass.html#renderpass) during a [render pass](renderpass.html#renderpass) or
+via certain render pass [load](renderpass.html#renderpass-load-operations),
+[store](renderpass.html#renderpass-store-operations), and
+[multisample resolve](renderpass.html#renderpass-resolve-operations) operations.
+This includes [multisample resolve](renderpass.html#renderpass-resolve-operations)
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
@@ -2989,6 +3007,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalFenceHandleTypeFlagBits](capabilities.html#VkExternalFenceHandleTypeFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFenceCreateInfo](#VkFenceCreateInfo)
+
 To specify additional attributes of NT handles exported from a fence, add a
 [VkExportFenceWin32HandleInfoKHR](#VkExportFenceWin32HandleInfoKHR) structure to the `pNext` chain of
 the [VkFenceCreateInfo](#VkFenceCreateInfo) structure.
@@ -3065,6 +3090,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter
 
  If `pAttributes` is not `NULL`, `pAttributes` **must** be a valid pointer to a valid `SECURITY_ATTRIBUTES` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFenceCreateInfo](#VkFenceCreateInfo)
 
 To export a Windows handle representing the state of a fence, call:
 
@@ -4783,6 +4815,16 @@ Valid Usage (Implicit)
 
  `semaphoreType` **must** be a valid [VkSemaphoreType](#VkSemaphoreType) value
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceExternalSemaphoreInfo](capabilities.html#VkPhysicalDeviceExternalSemaphoreInfo)
+
+* 
+[VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)
+
 Possible values of [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType`,
 specifying the type of a semaphore, are:
 
@@ -4864,6 +4906,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter) VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter
 
  `handleTypes` **must** be a valid combination of [VkExternalSemaphoreHandleTypeFlagBits](capabilities.html#VkExternalSemaphoreHandleTypeFlagBits) values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)
 
 To specify additional attributes of NT handles exported from a semaphore,
 add a `VkExportSemaphoreWin32HandleInfoKHR` structure to the `pNext`
@@ -4952,6 +5001,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter
 
  If `pAttributes` is not `NULL`, `pAttributes` **must** be a valid pointer to a valid `SECURITY_ATTRIBUTES` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)
 
 To export a Windows handle representing the payload of a semaphore, call:
 
@@ -5151,6 +5207,13 @@ Valid Usage (Implicit)
 [](#VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter) VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter
 
  `pQueriedLowLatencyData` **must** be a pointer value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)
 
 To export a POSIX file descriptor representing the payload of a semaphore,
 call:
@@ -11380,6 +11443,13 @@ Valid Usage (Implicit)
 
  `dstAccessMask` **must** be a valid combination of [VkAccessFlagBits2](#VkAccessFlagBits2) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubpassDependency2](renderpass.html#VkSubpassDependency2)
+
 The `VkMemoryBarrier` structure is defined as:
 
 // Provided by VK_VERSION_1_0
@@ -16219,6 +16289,13 @@ Valid Usage (Implicit)
 
  `tensor` **must** be a valid [VkTensorARM](resources.html#VkTensorARM) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDependencyInfo](#VkDependencyInfo)
+
 The `VkTensorDependencyInfoARM` structure is defined as:
 
 // Provided by VK_ARM_tensors
@@ -16256,6 +16333,13 @@ Valid Usage (Implicit)
 [](#VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter) VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter
 
  `pTensorMemoryBarriers` **must** be a valid pointer to a valid [VkTensorMemoryBarrierARM](#VkTensorMemoryBarrierARM) structure
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDependencyInfo](#VkDependencyInfo)
 
 Resources created with a [VkSharingMode](resources.html#VkSharingMode) of
 [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode) **must** have their ownership explicitly
@@ -16529,6 +16613,22 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferMemoryBarrier](#VkBufferMemoryBarrier)
+
+* 
+[VkBufferMemoryBarrier2](#VkBufferMemoryBarrier2)
+
+* 
+[VkImageMemoryBarrier](#VkImageMemoryBarrier)
+
+* 
+[VkImageMemoryBarrier2](#VkImageMemoryBarrier2)
+
 To wait on the host for the completion of outstanding queue operations for a
 given queue, call:
 
@@ -16756,6 +16856,8 @@ Valid Usage
 
 The `timeDomain` value of each [VkCalibratedTimestampInfoKHR](#VkCalibratedTimestampInfoKHR) in
 `pTimestampInfos` **must** be unique
+except for those with a value of
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#VkTimeDomainEXT)
 
 Valid Usage (Implicit)
 
@@ -17027,7 +17129,9 @@ Valid Usage (Implicit)
 
  `presentStage` **must** not be `0`
 
-Host Synchronization
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
 
 * 
-Host access to `swapchain` **must** be externally synchronized
+[VkCalibratedTimestampInfoKHR](#VkCalibratedTimestampInfoKHR)

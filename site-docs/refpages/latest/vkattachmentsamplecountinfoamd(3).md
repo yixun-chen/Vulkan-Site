@@ -93,6 +93,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_AMD_mixed_attachment_samples](VK_AMD_mixed_attachment_samples.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkSampleCountFlagBits](VkSampleCountFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/cmdbuffers.html#VkAttachmentSampleCountInfoAMD).

@@ -84,6 +84,13 @@ Valid Usage (Implicit)
 
  `decodeMode` **must** be a valid [VkFormat](VkFormat.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](VkImageViewCreateInfo.html)
+
 [VK_EXT_astc_decode_mode](VK_EXT_astc_decode_mode.html), [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageViewASTCDecodeModeEXT).

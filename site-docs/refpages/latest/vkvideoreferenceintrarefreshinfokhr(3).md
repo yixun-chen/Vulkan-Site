@@ -47,6 +47,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_REFERENCE_INTRA_REFRESH_INFO_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoReferenceSlotInfoKHR](VkVideoReferenceSlotInfoKHR.html)
+
 [VK_KHR_video_encode_intra_refresh](VK_KHR_video_encode_intra_refresh.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoReferenceIntraRefreshInfoKHR).

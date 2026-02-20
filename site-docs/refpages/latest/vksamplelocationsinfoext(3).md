@@ -101,6 +101,16 @@ Valid Usage (Implicit)
 
  If `sampleLocationsCount` is not `0`, `pSampleLocations` **must** be a valid pointer to an array of `sampleLocationsCount` [VkSampleLocationEXT](VkSampleLocationEXT.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageMemoryBarrier](VkImageMemoryBarrier.html)
+
+* 
+[VkImageMemoryBarrier2](VkImageMemoryBarrier2.html)
+
 [VK_EXT_sample_locations](VK_EXT_sample_locations.html), [VkAttachmentSampleLocationsEXT](VkAttachmentSampleLocationsEXT.html), [VkExtent2D](VkExtent2D.html), [VkPipelineSampleLocationsStateCreateInfoEXT](VkPipelineSampleLocationsStateCreateInfoEXT.html), [VkSampleCountFlagBits](VkSampleCountFlagBits.html), [VkSampleLocationEXT](VkSampleLocationEXT.html), [VkStructureType](VkStructureType.html), [VkSubpassSampleLocationsEXT](VkSubpassSampleLocationsEXT.html), [vkCmdSetSampleLocationsEXT](vkCmdSetSampleLocationsEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkSampleLocationsInfoEXT).

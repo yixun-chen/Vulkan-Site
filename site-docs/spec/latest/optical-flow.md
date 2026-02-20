@@ -199,6 +199,16 @@ Valid Usage (Implicit)
 
  `usage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](../resources.html#VkImageCreateInfo)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](../capabilities.html#VkPhysicalDeviceImageFormatInfo2)
+
 Bits which **can** be set in [VkOpticalFlowImageFormatInfoNV](#VkOpticalFlowImageFormatInfoNV)::`usage`,
 controlling optical flow usage, are:
 
@@ -617,6 +627,13 @@ Valid Usage (Implicit)
 [](#VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter) VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter
 
  `pPrivateData` **must** be a pointer value
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkOpticalFlowSessionCreateInfoNV](#VkOpticalFlowSessionCreateInfoNV)
 
 Optical flow vectors are generated block-wise, one vector for each block of
 NxN pixels (referred to as grid).

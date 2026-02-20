@@ -99,6 +99,13 @@ Valid Usage (Implicit)
 
  Each of `bufferView`, `image`, and `imageView` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](VkDevice.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](VkExportMetalObjectsInfoEXT.html)
+
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkBufferView](VkBufferView.html), [VkImage](VkImage.html), [VkImageAspectFlagBits](VkImageAspectFlagBits.html), [VkImageView](VkImageView.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkExportMetalTextureInfoEXT).

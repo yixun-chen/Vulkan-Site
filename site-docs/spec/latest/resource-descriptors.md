@@ -905,6 +905,16 @@ Valid Usage (Implicit)
 
  If `mutableDescriptorTypeListCount` is not `0`, `pMutableDescriptorTypeLists` **must** be a valid pointer to an array of `mutableDescriptorTypeListCount` valid [VkMutableDescriptorTypeListEXT](#VkMutableDescriptorTypeListEXT) structures
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo)
+
+* 
+[VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)
+
 The list of potential descriptor types a given mutable descriptor **can**
 mutate to is passed in a `VkMutableDescriptorTypeListEXT` structure.
 
@@ -1483,6 +1493,13 @@ Valid Usage (Implicit)
 
  If `bindingCount` is not `0`, `pBindingFlags` **must** be a valid pointer to an array of `bindingCount` valid combinations of [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)
+
 Bits which **can** be set in each element of
 [VkDescriptorSetLayoutBindingFlagsCreateInfo](#VkDescriptorSetLayoutBindingFlagsCreateInfo)::`pBindingFlags`,
 specifying options for the corresponding descriptor set layout binding, are:
@@ -1768,6 +1785,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType) VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorSetLayoutSupport](#VkDescriptorSetLayoutSupport)
 
 The following examples show a shader snippet using two descriptor sets, and
 application code that creates corresponding descriptor set layouts.
@@ -2731,6 +2755,31 @@ Valid Usage (Implicit)
 
  If `pushConstantRangeCount` is not `0`, `pPushConstantRanges` **must** be a valid pointer to an array of `pushConstantRangeCount` valid [VkPushConstantRange](#VkPushConstantRange) structures
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindDescriptorBufferEmbeddedSamplersInfoEXT](#VkBindDescriptorBufferEmbeddedSamplersInfoEXT)
+
+* 
+[VkBindDescriptorSetsInfo](#VkBindDescriptorSetsInfo)
+
+* 
+[VkIndirectCommandsLayoutCreateInfoEXT](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutCreateInfoEXT)
+
+* 
+[VkPushConstantsInfo](#VkPushConstantsInfo)
+
+* 
+[VkPushDescriptorSetInfo](#VkPushDescriptorSetInfo)
+
+* 
+[VkPushDescriptorSetWithTemplateInfo](#VkPushDescriptorSetWithTemplateInfo)
+
+* 
+[VkSetDescriptorBufferOffsetsInfoEXT](#VkSetDescriptorBufferOffsetsInfoEXT)
+
 // Provided by VK_EXT_graphics_pipeline_library
 typedef enum VkPipelineLayoutCreateFlagBits {
   // Provided by VK_EXT_graphics_pipeline_library
@@ -3366,6 +3415,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo)
+
 Bits which **can** be set in [VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo)::`flags`,
 enabling operations on a descriptor pool, are:
 
@@ -3913,6 +3969,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter) VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter
 
  If `descriptorSetCount` is not `0`, `pDescriptorCounts` **must** be a valid pointer to an array of `descriptorSetCount` `uint32_t` values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorSetAllocateInfo](#VkDescriptorSetAllocateInfo)
 
 To free allocated descriptor sets, call:
 
@@ -5314,6 +5377,13 @@ Valid Usage (Implicit)
 
  `dataSize` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)
+
 The `VkWriteDescriptorSetAccelerationStructureKHR` structure is defined
 as:
 
@@ -5374,6 +5444,13 @@ Valid Usage (Implicit)
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-accelerationStructureCount-arraylength) VUID-VkWriteDescriptorSetAccelerationStructureKHR-accelerationStructureCount-arraylength
 
  `accelerationStructureCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)
 
 If the `descriptorType` member of [VkWriteDescriptorSet](#VkWriteDescriptorSet) is
 [VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), then the
@@ -5439,6 +5516,13 @@ Valid Usage (Implicit)
 
  `accelerationStructureCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)
+
 The `VkWriteDescriptorSetAccelerationStructureNV` structure is defined
 as:
 
@@ -5498,6 +5582,13 @@ Valid Usage (Implicit)
 
  `accelerationStructureCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)
+
 The `VkWriteDescriptorSetTensorARM` structure is defined as:
 
 // Provided by VK_ARM_tensors
@@ -5547,6 +5638,13 @@ Valid Usage (Implicit)
 [](#VUID-VkWriteDescriptorSetTensorARM-tensorViewCount-arraylength) VUID-VkWriteDescriptorSetTensorARM-tensorViewCount-arraylength
 
  `tensorViewCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)
 
 The `VkCopyDescriptorSet` structure is defined as:
 
@@ -9459,6 +9557,13 @@ Valid Usage (Implicit)
 
  If `tensorView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `tensorView` **must** be a valid [VkTensorViewARM](resources.html#VkTensorViewARM) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)
+
 Descriptor buffers have their own separate binding point on the command
 buffer, with buffers bound using [vkCmdBindDescriptorBuffersEXT](#vkCmdBindDescriptorBuffersEXT).
 [vkCmdSetDescriptorBufferOffsetsEXT](#vkCmdSetDescriptorBufferOffsetsEXT) assigns pairs of buffer binding
@@ -9813,6 +9918,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter
 
  `buffer` **must** be a valid [VkBuffer](resources.html#VkBuffer) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorBufferBindingInfoEXT](#VkDescriptorBufferBindingInfoEXT)
 
 To set descriptor buffer offsets in a command buffer, call:
 
@@ -11474,6 +11586,34 @@ Valid Usage (Implicit)
 [](#VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter) VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter
 
  `opaqueCaptureDescriptorData` **must** be a pointer value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureCreateInfoKHR](resources.html#VkAccelerationStructureCreateInfoKHR)
+
+* 
+[VkAccelerationStructureCreateInfoNV](resources.html#VkAccelerationStructureCreateInfoNV)
+
+* 
+[VkBufferCreateInfo](resources.html#VkBufferCreateInfo)
+
+* 
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
+
+* 
+[VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)
+
+* 
+[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)
+
+* 
+[VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)
+
+* 
+[VkTensorViewCreateInfoARM](resources.html#VkTensorViewCreateInfoARM)
 
 To get the opaque capture descriptor data for a tensor, call:
 

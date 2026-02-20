@@ -102,6 +102,19 @@ Valid Usage (Implicit)
 
  `processingEngineCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandPoolCreateInfo](VkCommandPoolCreateInfo.html)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html)
+
+* 
+[VkDescriptorPoolCreateInfo](VkDescriptorPoolCreateInfo.html)
+
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkPhysicalDeviceDataGraphProcessingEngineARM](VkPhysicalDeviceDataGraphProcessingEngineARM.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM).

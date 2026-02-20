@@ -99,6 +99,13 @@ Valid Usage (Implicit)
 
  `imageLayout` **must** be a valid [VkImageLayout](VkImageLayout.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkImageLayout](VkImageLayout.html), [VkImageView](VkImageView.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderingFragmentDensityMapAttachmentInfoEXT).

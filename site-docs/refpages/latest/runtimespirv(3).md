@@ -241,6 +241,13 @@ texel buffer, the storage texel buffer through which that memory is
 accessed **must** be dynamically uniform within the invocation group
 
 * 
+[](#VUID-RuntimeSpirv-None-04745) VUID-RuntimeSpirv-None-04745
+
+All block members in a variable with a `Storage` `Class` of
+`PushConstant` declared as an array **must** only be accessed by
+dynamically uniform indices
+
+* 
 [](#VUID-RuntimeSpirv-None-10148) VUID-RuntimeSpirv-None-10148
 
 If an instruction accesses memory through any resource,
@@ -2814,7 +2821,7 @@ Any pointer type whose `Type` parameter is a vector type with more
 than four components (or an aggregate containing such a type) **must** have
 `Storage` `Class` of `Function`, `Private`, `Uniform`,
 `Workgroup`, `StorageBuffer`, `PhysicalStorageBuffer`,
-`PushConstant`, or `ShaderRecordBufferKHR`.
+`PushConstant`, or `ShaderRecordBufferKHR`
 
 [](#VUID-RuntimeSpirv-samplerDescriptorAlignment-11348) VUID-RuntimeSpirv-samplerDescriptorAlignment-11348
 

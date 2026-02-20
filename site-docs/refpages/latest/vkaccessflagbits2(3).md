@@ -276,6 +276,8 @@ in the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html) 
 via certain render pass [load](../../../../spec/latest/chapters/renderpass.html#renderpass-load-operations),
 [store](../../../../spec/latest/chapters/renderpass.html#renderpass-store-operations), and
 [multisample resolve](../../../../spec/latest/chapters/renderpass.html#renderpass-resolve-operations) operations.
+This includes [multisample resolve](../../../../spec/latest/chapters/renderpass.html#renderpass-resolve-operations)
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) pipeline stage.
 

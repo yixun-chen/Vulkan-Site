@@ -22,7 +22,7 @@ vkCmdDrawMeshTasksIndirectCountEXT - Perform an indirect mesh tasks draw with th
 To record an indirect mesh tasks drawing command with the draw count sourced
 from a buffer, call:
 
-// Provided by VK_EXT_mesh_shader with (VK_VERSION_1_2 or VK_KHR_draw_indirect_count) or VK_AMD_draw_indirect_count
+// Provided by VK_EXT_mesh_shader with VK_VERSION_1_2 or VK_KHR_draw_indirect_count or VK_AMD_draw_indirect_count
 void vkCmdDrawMeshTasksIndirectCountEXT(
     VkCommandBuffer                             commandBuffer,
     VkBuffer                                    buffer,

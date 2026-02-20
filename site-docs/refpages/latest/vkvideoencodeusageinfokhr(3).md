@@ -77,6 +77,16 @@ Valid Usage (Implicit)
 
  If `tuningMode` is not `0`, `tuningMode` **must** be a valid [VkVideoEncodeTuningModeKHR](VkVideoEncodeTuningModeKHR.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
+
+* 
+[VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)
+
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeContentFlagsKHR](VkVideoEncodeContentFlagsKHR.html), [VkVideoEncodeTuningModeKHR](VkVideoEncodeTuningModeKHR.html), [VkVideoEncodeUsageFlagsKHR](VkVideoEncodeUsageFlagsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeUsageInfoKHR).

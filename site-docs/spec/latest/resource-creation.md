@@ -736,6 +736,22 @@ Valid Usage (Implicit)
 
  `usage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
+
+* 
+[VkBufferViewCreateInfo](#VkBufferViewCreateInfo)
+
+* 
+[VkDescriptorBufferBindingInfoEXT](descriptorsets.html#VkDescriptorBufferBindingInfoEXT)
+
+* 
+[VkPhysicalDeviceExternalBufferInfo](capabilities.html#VkPhysicalDeviceExternalBufferInfo)
+
 Bits which **can** be set in [VkBufferUsageFlags2CreateInfo](#VkBufferUsageFlags2CreateInfo)::`usage`,
 specifying usage behavior of a buffer, are:
 
@@ -753,8 +769,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT = 0x0000
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT = 0x00000100ULL;
 // Provided by VK_VERSION_1_4
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT = 0x00020000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000ULL;
 #endif
 // Provided by VK_EXT_descriptor_heap
@@ -795,7 +811,7 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR =
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR = 0x00008000ULL;
 // Provided by VK_KHR_maintenance5 with VK_KHR_video_encode_queue
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR = 0x00010000ULL;
-// Provided by VK_KHR_maintenance5 with (VK_VERSION_1_2 or VK_KHR_buffer_device_address) or VK_EXT_buffer_device_address
+// Provided by VK_KHR_maintenance5 with VK_VERSION_1_2 or VK_KHR_buffer_device_address or VK_EXT_buffer_device_address
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR = 0x00020000ULL;
 // Provided by VK_KHR_acceleration_structure with VK_KHR_maintenance5
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR = 0x00080000ULL;
@@ -811,8 +827,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTO
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = 0x00800000ULL;
 // Provided by VK_KHR_maintenance5 with VK_EXT_opacity_micromap
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = 0x01000000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_dense_geometry_format
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX = 0x200000000ULL;
 #endif
 // Provided by VK_ARM_data_graph
@@ -1339,6 +1355,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
+
 To define a set of external memory handle types that **may** be used as backing
 store for a buffer, add a [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo) structure
 to the `pNext` chain of the [VkBufferCreateInfo](#VkBufferCreateInfo) structure.
@@ -1383,6 +1406,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter) VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
 
 To request a specific device address for a buffer, add a
 [VkBufferOpaqueCaptureAddressCreateInfo](#VkBufferOpaqueCaptureAddressCreateInfo) structure to the `pNext`
@@ -1447,6 +1477,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
+
 To request a specific device address for a buffer, add a
 `VkBufferDeviceAddressCreateInfoEXT` structure to the `pNext` chain
 of the [VkBufferCreateInfo](#VkBufferCreateInfo) structure.
@@ -1494,6 +1531,13 @@ Valid Usage (Implicit)
 
  If `deviceAddress` is not `0`, `deviceAddress` **must** be a valid `VkDeviceAddress` value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
+
 The `VkBufferCollectionBufferCreateInfoFUCHSIA` structure is defined as:
 
 // Provided by VK_FUCHSIA_buffer_collection
@@ -1537,6 +1581,13 @@ Valid Usage (Implicit)
 [](#VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-collection-parameter) VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-collection-parameter
 
  `collection` **must** be a valid [VkBufferCollectionFUCHSIA](#VkBufferCollectionFUCHSIA) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](#VkBufferCreateInfo)
 
 To destroy a buffer, call:
 
@@ -4195,6 +4246,13 @@ Valid Usage (Implicit)
 
  `collection` **must** be a valid [VkBufferCollectionFUCHSIA](#VkBufferCollectionFUCHSIA) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
 The `VkImageStencilUsageCreateInfo` structure is defined as:
 
 // Provided by VK_VERSION_1_2
@@ -4271,6 +4329,16 @@ Valid Usage (Implicit)
 
  `stencilUsage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)
+
 If the `pNext` chain includes a
 `VkDedicatedAllocationImageCreateInfoNV` structure, then that structure
 includes an enable controlling whether the image will have a dedicated
@@ -4318,6 +4386,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
 To define a set of external memory handle types that **may** be used as backing
 store for an image, add a [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure to
 the `pNext` chain of the [VkImageCreateInfo](#VkImageCreateInfo) structure.
@@ -4363,6 +4438,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
 The `VkExternalFormatOHOS` structure is defined as:
 
 // Provided by VK_OHOS_external_memory
@@ -4398,6 +4480,25 @@ Valid Usage (Implicit)
 [](#VUID-VkExternalFormatOHOS-sType-sType) VUID-VkExternalFormatOHOS-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAttachmentDescription2](renderpass.html#VkAttachmentDescription2)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo)
 
 To import memory created outside of the current Vulkan instance from an Open
 Harmony OS native buffer, add a `VkImportNativeBufferInfoOHOS` structure
@@ -4438,6 +4539,13 @@ Valid Usage (Implicit)
 
  `buffer` **must** be a valid pointer to an `OH_NativeBuffer` value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](memory.html#VkMemoryAllocateInfo)
+
 The `OH_NativeBuffer` structure is defined as:
 
 // Provided by VK_OHOS_external_memory
@@ -4477,6 +4585,13 @@ Valid Usage (Implicit)
 [](#VUID-VkNativeBufferUsageOHOS-sType-sType) VUID-VkNativeBufferUsageOHOS-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](capabilities.html#VkImageFormatProperties2)
 
 To determine the memory parameters to use when importing an Open Harmony OS
 native buffer:
@@ -4694,6 +4809,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkNativeBufferPropertiesOHOS](#VkNativeBufferPropertiesOHOS)
+
 The `VkMemoryGetNativeBufferInfoOHOS` structure is defined as:
 
 // Provided by VK_OHOS_external_memory
@@ -4768,6 +4890,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBitsNV](memory.html#VkExternalMemoryHandleTypeFlagBitsNV) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
 `VkExternalFormatANDROID` is defined as:
 
 // Provided by VK_ANDROID_external_memory_android_hardware_buffer
@@ -4813,6 +4942,25 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAttachmentDescription2](renderpass.html#VkAttachmentDescription2)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo)
+
 To create an image with an
 [QNX Screen external format](memory.html#memory-external-screen-buffer-external-formats), add a `VkExternalFormatQNX` structure in the `pNext` chain
 of [VkImageCreateInfo](#VkImageCreateInfo).
@@ -4855,6 +5003,16 @@ Valid Usage (Implicit)
 [](#VUID-VkExternalFormatQNX-sType-sType) VUID-VkExternalFormatQNX-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo)
 
 If the `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageSwapchainCreateInfoKHR` structure, then that structure includes
@@ -4902,6 +5060,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter) VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter
 
  If `swapchain` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `swapchain` **must** be a valid [VkSwapchainKHR](VK_KHR_surface/wsi.html#VkSwapchainKHR) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
 
 If the `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageFormatListCreateInfo` structure, then that structure contains a
@@ -4961,6 +5126,19 @@ Valid Usage (Implicit)
 
  If `viewFormatCount` is not `0`, `pViewFormats` **must** be a valid pointer to an array of `viewFormatCount` valid [VkFormat](formats.html#VkFormat) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)
+
+* 
+[VkSwapchainCreateInfoKHR](VK_KHR_surface/wsi.html#VkSwapchainCreateInfoKHR)
+
 If the `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT) structure, then the image
 will be created with one of the [Linux DRM format modifiers](../appendices/glossary.html#glossary-drm-format-modifier) listed in the structure.
@@ -5017,6 +5195,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImageDrmFormatModifierListCreateInfoEXT-drmFormatModifierCount-arraylength) VUID-VkImageDrmFormatModifierListCreateInfoEXT-drmFormatModifierCount-arraylength
 
  `drmFormatModifierCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
 
 If the `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 [VkImageDrmFormatModifierExplicitCreateInfoEXT](#VkImageDrmFormatModifierExplicitCreateInfoEXT) structure, then the
@@ -5128,6 +5313,13 @@ Valid Usage (Implicit)
 
  `drmFormatModifierPlaneCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
 If the `pNext` list of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageCompressionControlEXT` structure, then that structure describes
 compression controls for this image.
@@ -5193,6 +5385,19 @@ Valid Usage (Implicit)
 [](#VUID-VkImageCompressionControlEXT-sType-sType) VUID-VkImageCompressionControlEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)
+
+* 
+[VkSwapchainCreateInfoKHR](VK_KHR_surface/wsi.html#VkSwapchainCreateInfoKHR)
 
 |  | Some combinations of compression properties may not be supported.
 | --- | --- |
@@ -5434,6 +5639,19 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](capabilities.html#VkImageFormatProperties2)
+
+* 
+[VkSubresourceLayout2](#VkSubresourceLayout2)
+
+* 
+[VkSurfaceFormat2KHR](VK_KHR_surface/wsi.html#VkSurfaceFormat2KHR)
+
 If the `pNext` list of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageAlignmentControlCreateInfoMESA` structure, then that structure
 describes desired alignment for this image.
@@ -5506,6 +5724,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType) VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
 
 Bits which **can** be set in
 
@@ -6600,6 +6825,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubresourceLayout2](#VkSubresourceLayout2)
+
 To query the memory layout of an image subresource, without an image object,
 call:
 
@@ -7268,6 +7500,16 @@ Valid Usage (Implicit)
 [](#VUID-VkOpaqueCaptureDataCreateInfoEXT-pData-parameter) VUID-VkOpaqueCaptureDataCreateInfoEXT-pData-parameter
 
  If `pData` is not `NULL`, `pData` **must** be a valid pointer to a valid [VkHostAddressRangeConstEXT](fundamentals.html#VkHostAddressRangeConstEXT) structure
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](#VkImageCreateInfo)
+
+* 
+[VkTensorCreateInfoARM](#VkTensorCreateInfoARM)
 
 To allow for a replay tool to capture and replay tensor descriptors used
 with [descriptor heaps](descriptorheaps.html#descriptorheaps), opaque data **must** be captured
@@ -9076,6 +9318,13 @@ Valid Usage (Implicit)
 
  `usage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](#VkImageViewCreateInfo)
+
 The range of 3D slices for the created image view **can** be restricted to a
 subset of the parent image’s Z range by adding a
 `VkImageViewSlicedCreateInfoEXT` structure to the `pNext` chain of
@@ -9173,6 +9422,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImageViewSlicedCreateInfoEXT-sType-sType) VUID-VkImageViewSlicedCreateInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](#VkImageViewCreateInfo)
 
 [VK_REMAINING_3D_SLICES_EXT](#VK_REMAINING_3D_SLICES_EXT) is a special constant value used for
 [VkImageViewSlicedCreateInfoEXT](#VkImageViewSlicedCreateInfoEXT)::`sliceCount` to indicate that all
@@ -9562,6 +9818,13 @@ Valid Usage (Implicit)
 
  `decodeMode` **must** be a valid [VkFormat](formats.html#VkFormat) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](#VkImageViewCreateInfo)
+
 If the `pNext` chain includes a
 `VkImageViewSampleWeightCreateInfoQCOM` structure, then that structure
 includes a parameter specifying the parameters for weight image views used
@@ -9645,6 +9908,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType) VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](#VkImageViewCreateInfo)
 
 To destroy an image view, call:
 
@@ -10160,6 +10430,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](#VkImageViewCreateInfo)
+
 Acceleration structures are opaque data structures that are built by the
 implementation to more efficiently perform spatial queries on the provided
 geometric data.
@@ -10590,6 +10867,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask) VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask
 
  `flags` **must** be `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureCreateInfoKHR](#VkAccelerationStructureCreateInfoKHR)
 
 // Provided by VK_NV_ray_tracing_motion_blur
 typedef VkFlags VkAccelerationStructureMotionInfoFlagsNV;
@@ -14194,6 +14478,13 @@ Valid Usage (Implicit)
 
  `planeAspect` **must** be a valid [VkImageAspectFlagBits](#VkImageAspectFlagBits) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2)
+
 To determine the tile memory allocation requirements of a buffer or image
 resource, add a `VkTileMemoryRequirementsQCOM` structure to the
 `pNext` chain of the `VkMemoryRequirements2` structure passed as the
@@ -14239,6 +14530,13 @@ Valid Usage (Implicit)
 [](#VUID-VkTileMemoryRequirementsQCOM-sType-sType) VUID-VkTileMemoryRequirementsQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryRequirements2](#VkMemoryRequirements2)
 
 The `VkMemoryRequirements2` structure is defined as:
 
@@ -14402,6 +14700,13 @@ Valid Usage (Implicit)
 [](#VUID-VkMemoryDedicatedRequirements-sType-sType) VUID-VkMemoryDedicatedRequirements-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryRequirements2](#VkMemoryRequirements2)
 
 To attach memory to a buffer object, call:
 
@@ -15163,6 +15468,13 @@ Valid Usage (Implicit)
 
  If `deviceIndexCount` is not `0`, `pDeviceIndices` **must** be a valid pointer to an array of `deviceIndexCount` `uint32_t` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindBufferMemoryInfo](#VkBindBufferMemoryInfo)
+
 The `VkBindMemoryStatus` structure is defined as:
 
 // Provided by VK_VERSION_1_4
@@ -15202,6 +15514,16 @@ Valid Usage (Implicit)
 [](#VUID-VkBindMemoryStatus-pResult-parameter) VUID-VkBindMemoryStatus-pResult-parameter
 
  `pResult` **must** be a valid pointer to a [VkResult](fundamentals.html#VkResult) value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindBufferMemoryInfo](#VkBindBufferMemoryInfo)
+
+* 
+[VkBindImageMemoryInfo](#VkBindImageMemoryInfo)
 
 To attach memory to a `VkImage` object created without the
 [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set, call:
@@ -16140,6 +16462,13 @@ Valid Usage (Implicit)
 
  If `splitInstanceBindRegionCount` is not `0`, `pSplitInstanceBindRegions` **must** be a valid pointer to an array of `splitInstanceBindRegionCount` [VkRect2D](fundamentals.html#VkRect2D) structures
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindImageMemoryInfo](#VkBindImageMemoryInfo)
+
 If the `pNext` chain of [VkBindImageMemoryInfo](#VkBindImageMemoryInfo) includes a
 `VkBindImageMemorySwapchainInfoKHR` structure, then that structure
 includes a swapchain handle and image index indicating that the image will
@@ -16209,6 +16538,13 @@ Host Synchronization
 * 
 Host access to `swapchain` **must** be externally synchronized
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindImageMemoryInfo](#VkBindImageMemoryInfo)
+
 In order to bind *planes* of a *disjoint image*, add a
 `VkBindImagePlaneMemoryInfo` structure to the `pNext` chain of
 [VkBindImageMemoryInfo](#VkBindImageMemoryInfo).
@@ -16268,6 +16604,13 @@ Valid Usage (Implicit)
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter) VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter
 
  `planeAspect` **must** be a valid [VkImageAspectFlagBits](#VkImageAspectFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindImageMemoryInfo](#VkBindImageMemoryInfo)
 
 To attach memory to tensor objects call:
 
@@ -18106,6 +18449,13 @@ Valid Usage (Implicit)
 
  `collection` **must** be a valid [VkBufferCollectionFUCHSIA](#VkBufferCollectionFUCHSIA) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](memory.html#VkMemoryAllocateInfo)
+
 To release a [VkBufferCollectionFUCHSIA](#VkBufferCollectionFUCHSIA):
 
 // Provided by VK_FUCHSIA_buffer_collection
@@ -18524,6 +18874,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkTensorCreateInfoARM](#VkTensorCreateInfoARM)
+
 To destroy a tensor, call:
 
 // Provided by VK_ARM_tensors
@@ -18791,6 +19148,16 @@ Valid Usage (Implicit)
 [](#VUID-VkTensorDescriptionARM-dimensionCount-arraylength) VUID-VkTensorDescriptionARM-dimensionCount-arraylength
 
  `dimensionCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineConstantARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineConstantARM)
+
+* 
+[VkDataGraphPipelineResourceInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineResourceInfoARM)
 
 Bits which **can** be set in [VkTensorDescriptionARM](#VkTensorDescriptionARM)::`usage`,
 specifying usage behavior of a tensor, are:

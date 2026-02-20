@@ -75,6 +75,13 @@ Valid Usage (Implicit)
 
  If `pParametersAddInfo` is not `NULL`, `pParametersAddInfo` **must** be a valid pointer to a valid [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionParametersCreateInfoKHR](VkVideoSessionParametersCreateInfoKHR.html)
+
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeH265SessionParametersCreateInfoKHR).

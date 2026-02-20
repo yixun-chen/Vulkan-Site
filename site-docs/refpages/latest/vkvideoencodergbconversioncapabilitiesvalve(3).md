@@ -76,6 +76,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoCapabilitiesKHR](VkVideoCapabilitiesKHR.html)
+
 [VK_VALVE_video_encode_rgb_conversion](VK_VALVE_video_encode_rgb_conversion.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeRgbChromaOffsetFlagsVALVE](VkVideoEncodeRgbChromaOffsetFlagsVALVE.html), [VkVideoEncodeRgbModelConversionFlagsVALVE](VkVideoEncodeRgbModelConversionFlagsVALVE.html), [VkVideoEncodeRgbRangeCompressionFlagsVALVE](VkVideoEncodeRgbRangeCompressionFlagsVALVE.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeRgbConversionCapabilitiesVALVE).

@@ -139,6 +139,13 @@ Valid Usage (Implicit)
 
  If `pipelineDeviceAddressCaptureReplay` is not `0`, `pipelineDeviceAddressCaptureReplay` **must** be a valid `VkDeviceAddress` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
 [VK_NV_device_generated_commands_compute](VK_NV_device_generated_commands_compute.html), `VkDeviceAddress`, `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkComputePipelineIndirectBufferInfoNV).

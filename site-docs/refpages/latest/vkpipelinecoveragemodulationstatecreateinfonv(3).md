@@ -143,6 +143,13 @@ Valid Usage (Implicit)
 
  `coverageModulationMode` **must** be a valid [VkCoverageModulationModeNV](VkCoverageModulationModeNV.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)
+
 [VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html), `VkBool32`, [VkCoverageModulationModeNV](VkCoverageModulationModeNV.html), [VkPipelineCoverageModulationStateCreateFlagsNV](VkPipelineCoverageModulationStateCreateFlagsNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fragops.html#VkPipelineCoverageModulationStateCreateInfoNV).

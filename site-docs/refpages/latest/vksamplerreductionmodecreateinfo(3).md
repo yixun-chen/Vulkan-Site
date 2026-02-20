@@ -62,6 +62,13 @@ Valid Usage (Implicit)
 
  `reductionMode` **must** be a valid [VkSamplerReductionMode](VkSamplerReductionMode.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_EXT_sampler_filter_minmax](VK_EXT_sampler_filter_minmax.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkSamplerReductionMode](VkSamplerReductionMode.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerReductionModeCreateInfo).

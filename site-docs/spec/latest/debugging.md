@@ -418,6 +418,19 @@ Valid Usage (Implicit)
 
  If `pObjectName` is not `NULL`, `pObjectName` **must** be a null-terminated UTF-8 string
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo)
+
+* 
+[VkResourceDescriptorInfoEXT](descriptorheaps.html#VkResourceDescriptorInfoEXT)
+
+* 
+[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)
+
 In addition to setting a name for an object, debugging and validation layers
 **may** have uses for additional binary data on a per-object basis that have no
 other place in the Vulkan API.
@@ -1206,6 +1219,13 @@ Valid Usage (Implicit)
 
  `pfnUserCallback` **must** be a valid [PFN_vkDebugUtilsMessengerCallbackEXT](#PFN_vkDebugUtilsMessengerCallbackEXT) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo)
+
 // Provided by VK_EXT_debug_utils
 typedef VkFlags VkDebugUtilsMessengerCreateFlagsEXT;
 
@@ -1614,6 +1634,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceAddressBindingCallbackDataEXT-bindingType-parameter) VUID-VkDeviceAddressBindingCallbackDataEXT-bindingType-parameter
 
  `bindingType` **must** be a valid [VkDeviceAddressBindingTypeEXT](#VkDeviceAddressBindingTypeEXT) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDebugUtilsMessengerCallbackDataEXT](#VkDebugUtilsMessengerCallbackDataEXT)
 
 Bits which **can** be set in
 [VkDeviceAddressBindingCallbackDataEXT](#VkDeviceAddressBindingCallbackDataEXT)::`flags` specifying
@@ -2493,6 +2520,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDebugReportCallbackCreateInfoEXT-pfnCallback-parameter) VUID-VkDebugReportCallbackCreateInfoEXT-pfnCallback-parameter
 
  `pfnCallback` **must** be a valid [PFN_vkDebugReportCallbackEXT](#PFN_vkDebugReportCallbackEXT) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo)
 
 Bits which **can** be set in
 [VkDebugReportCallbackCreateInfoEXT](#VkDebugReportCallbackCreateInfoEXT)::`flags`, specifying events
@@ -4028,6 +4062,22 @@ Valid Usage (Implicit)
 
  Both of the elements of `pBuffers`, and the elements of `pImages` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](sparsemem.html#VkBindSparseInfo)
+
+* 
+[VkPresentInfoKHR](VK_KHR_surface/wsi.html#VkPresentInfoKHR)
+
+* 
+[VkSubmitInfo](cmdbuffers.html#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](cmdbuffers.html#VkSubmitInfo2)
+
 The bit which **can** be set in [VkFrameBoundaryEXT](#VkFrameBoundaryEXT)::`flags` is:
 
 // Provided by VK_EXT_frame_boundary
@@ -4093,3 +4143,19 @@ Valid Usage (Implicit)
 [](#VUID-VkFrameBoundaryTensorsARM-tensorCount-arraylength) VUID-VkFrameBoundaryTensorsARM-tensorCount-arraylength
 
  `tensorCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](sparsemem.html#VkBindSparseInfo)
+
+* 
+[VkPresentInfoKHR](VK_KHR_surface/wsi.html#VkPresentInfoKHR)
+
+* 
+[VkSubmitInfo](cmdbuffers.html#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](cmdbuffers.html#VkSubmitInfo2)

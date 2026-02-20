@@ -169,9 +169,12 @@ in the [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits.html) pip
 
 * 
 [VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](#) specifies write access to a
-[color, resolve, or depth/stencil resolve attachment](../../../../spec/latest/chapters/renderpass.html#renderpass)
-during a [render pass](../../../../spec/latest/chapters/renderpass.html#renderpass) or via certain render pass
-[load](../../../../spec/latest/chapters/renderpass.html#renderpass-load-operations) and [    store](../../../../spec/latest/chapters/renderpass.html#renderpass-store-operations) operations.
+[color attachment](../../../../spec/latest/chapters/renderpass.html#renderpass) during a [render pass](../../../../spec/latest/chapters/renderpass.html#renderpass) or
+via certain render pass [load](../../../../spec/latest/chapters/renderpass.html#renderpass-load-operations),
+[store](../../../../spec/latest/chapters/renderpass.html#renderpass-store-operations), and
+[multisample resolve](../../../../spec/latest/chapters/renderpass.html#renderpass-resolve-operations) operations.
+This includes [multisample resolve](../../../../spec/latest/chapters/renderpass.html#renderpass-resolve-operations)
+operations for depth/stencil resolve attachments.
 Such access occurs in the
 [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html) pipeline stage.
 

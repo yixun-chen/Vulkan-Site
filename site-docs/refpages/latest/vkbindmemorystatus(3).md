@@ -59,6 +59,16 @@ Valid Usage (Implicit)
 
  `pResult` **must** be a valid pointer to a [VkResult](VkResult.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindBufferMemoryInfo](VkBindBufferMemoryInfo.html)
+
+* 
+[VkBindImageMemoryInfo](VkBindImageMemoryInfo.html)
+
 [VK_KHR_maintenance6](VK_KHR_maintenance6.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkResult](VkResult.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkBindMemoryStatus).

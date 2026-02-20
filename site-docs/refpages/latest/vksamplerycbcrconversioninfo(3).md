@@ -73,6 +73,16 @@ Valid Usage (Implicit)
 
  `conversion` **must** be a valid [VkSamplerYcbcrConversion](VkSamplerYcbcrConversion.html) handle
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](VkImageViewCreateInfo.html)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_KHR_sampler_ycbcr_conversion](VK_KHR_sampler_ycbcr_conversion.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkSamplerYcbcrConversion](VkSamplerYcbcrConversion.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerYcbcrConversionInfo).

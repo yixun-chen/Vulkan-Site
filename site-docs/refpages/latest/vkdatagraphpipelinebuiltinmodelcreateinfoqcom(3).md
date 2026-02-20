@@ -84,6 +84,13 @@ Valid Usage (Implicit)
 
  `pOperation` **must** be a valid pointer to a valid [VkPhysicalDeviceDataGraphOperationSupportARM](VkPhysicalDeviceDataGraphOperationSupportARM.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html)
+
 [VK_QCOM_data_graph_model](VK_QCOM_data_graph_model.html), [VkPhysicalDeviceDataGraphOperationSupportARM](VkPhysicalDeviceDataGraphOperationSupportARM.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#VkDataGraphPipelineBuiltinModelCreateInfoQCOM).

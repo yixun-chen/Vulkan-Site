@@ -170,6 +170,16 @@ Valid Usage (Implicit)
 
  If `fragmentDensityOffsetCount` is not `0`, `pFragmentDensityOffsets` **must** be a valid pointer to an array of `fragmentDensityOffsetCount` [VkOffset2D](VkOffset2D.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingEndInfoKHR](VkRenderingEndInfoKHR.html)
+
+* 
+[VkSubpassEndInfo](VkSubpassEndInfo.html)
+
 [VK_EXT_fragment_density_map_offset](VK_EXT_fragment_density_map_offset.html), [VK_QCOM_fragment_density_map_offset](VK_QCOM_fragment_density_map_offset.html), [VkOffset2D](VkOffset2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassFragmentDensityMapOffsetEndInfoEXT).

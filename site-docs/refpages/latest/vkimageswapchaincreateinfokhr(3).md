@@ -66,6 +66,13 @@ Valid Usage (Implicit)
 
  If `swapchain` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `swapchain` **must** be a valid [VkSwapchainKHR](VkSwapchainKHR.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
 [VK_KHR_device_group](VK_KHR_device_group.html), [VK_KHR_swapchain](VK_KHR_swapchain.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkStructureType](VkStructureType.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageSwapchainCreateInfoKHR).

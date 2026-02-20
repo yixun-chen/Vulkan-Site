@@ -63,6 +63,13 @@ Valid Usage (Implicit)
 
  `domainOrigin` **must** be a valid [VkTessellationDomainOrigin](VkTessellationDomainOrigin.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineTessellationStateCreateInfo](VkPipelineTessellationStateCreateInfo.html)
+
 [VK_KHR_maintenance2](VK_KHR_maintenance2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkStructureType](VkStructureType.html), [VkTessellationDomainOrigin](VkTessellationDomainOrigin.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/tessellation.html#VkPipelineTessellationDomainOriginStateCreateInfo).

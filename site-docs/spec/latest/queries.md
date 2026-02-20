@@ -428,6 +428,13 @@ Valid Usage (Implicit)
 
  `counterIndexCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo)
+
 To query the number of passes required to query a performance query pool on
 a physical device, call:
 
@@ -4415,6 +4422,13 @@ Valid Usage (Implicit)
 
  `performanceCountersSampling` **must** be a valid [VkQueryPoolSamplingModeINTEL](#VkQueryPoolSamplingModeINTEL) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo)
+
 Possible values of
 [VkQueryPoolPerformanceQueryCreateInfoINTEL](#VkQueryPoolPerformanceQueryCreateInfoINTEL)::`performanceCountersSampling`
 are:
@@ -5165,6 +5179,13 @@ Valid Usage (Implicit)
 [](#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-requiredbitmask) VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-requiredbitmask
 
  `encodeFeedbackFlags` **must** not be `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo)
 
 Bits which **can** be set in
 [VkQueryPoolVideoEncodeFeedbackCreateInfoKHR](#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR)::`encodeFeedbackFlags`

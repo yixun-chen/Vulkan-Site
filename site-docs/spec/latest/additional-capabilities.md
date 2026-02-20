@@ -862,6 +862,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
+
 To determine the image capabilities compatible with an external memory
 handle type, add a [VkPhysicalDeviceExternalImageFormatInfo](#VkPhysicalDeviceExternalImageFormatInfo) structure
 to the `pNext` chain of the [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)
@@ -914,6 +921,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter) VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter
 
  If `handleType` is not `0`, `handleType` **must** be a valid [VkExternalMemoryHandleTypeFlagBits](#VkExternalMemoryHandleTypeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)
 
 Possible values of
 [VkPhysicalDeviceExternalImageFormatInfo](#VkPhysicalDeviceExternalImageFormatInfo)::`handleType`, specifying
@@ -1162,6 +1176,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
+
 The `VkExternalMemoryProperties` structure is defined as:
 
 // Provided by VK_VERSION_1_1
@@ -1381,6 +1402,13 @@ Valid Usage (Implicit)
 
  `sharingMode` **must** be a valid [VkSharingMode](resources.html#VkSharingMode) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)
+
 To determine the number of combined image samplers required to support a
 [multi-planar format](formats.html#formats-multiplanar), add
 [VkSamplerYcbcrConversionImageFormatProperties](#VkSamplerYcbcrConversionImageFormatProperties) to the `pNext` chain
@@ -1419,6 +1447,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType) VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
 
 `combinedImageSamplerDescriptorCount` is a number between 1 and the
 number of planes in the format.
@@ -1491,6 +1526,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
+
 To obtain optimal Android hardware buffer usage flags for specific image
 creation parameters, add a `VkAndroidHardwareBufferUsageANDROID`
 structure to the `pNext` chain of a [VkImageFormatProperties2](#VkImageFormatProperties2)
@@ -1539,6 +1581,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType) VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
 
 To query if using [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) has a negative
 impact on device performance when accessing an image, add
@@ -1630,6 +1679,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
+
 To determine if cubic filtering can be used with a given image format and a
 given image view type add a
 [VkPhysicalDeviceImageViewImageFormatInfoEXT](#VkPhysicalDeviceImageViewImageFormatInfoEXT) structure to the
@@ -1670,6 +1726,13 @@ Valid Usage (Implicit)
 
  `imageViewType` **must** be a valid [VkImageViewType](resources.html#VkImageViewType) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)
+
 The `VkFilterCubicImageViewImageFormatPropertiesEXT` structure is
 defined as:
 
@@ -1706,6 +1769,13 @@ Valid Usage (Implicit)
 [](#VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType) VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageFormatProperties2](#VkImageFormatProperties2)
 
 Valid Usage
 

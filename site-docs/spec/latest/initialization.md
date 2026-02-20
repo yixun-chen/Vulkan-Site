@@ -615,6 +615,13 @@ Valid Usage (Implicit)
 
  `disabledValidationCheckCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](#VkInstanceCreateInfo)
+
 Possible values of elements of the
 [VkValidationFlagsEXT](#VkValidationFlagsEXT)::`pDisabledValidationChecks` array,
 specifying validation checks to be disabled, are:
@@ -699,6 +706,19 @@ Valid Usage (Implicit)
 [](#VUID-VkValidationFeaturesEXT-pDisabledValidationFeatures-parameter) VUID-VkValidationFeaturesEXT-pDisabledValidationFeatures-parameter
 
  If `disabledValidationFeatureCount` is not `0`, `pDisabledValidationFeatures` **must** be a valid pointer to an array of `disabledValidationFeatureCount` valid [VkValidationFeatureDisableEXT](#VkValidationFeatureDisableEXT) values
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](#VkInstanceCreateInfo)
+
+* 
+[VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT)
+
+* 
+[VkShaderModuleCreateInfo](shaders.html#VkShaderModuleCreateInfo)
 
 Possible values of elements of the
 [VkValidationFeaturesEXT](#VkValidationFeaturesEXT)::`pEnabledValidationFeatures` array,
@@ -864,6 +884,13 @@ Valid Usage (Implicit)
 [](#VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter) VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter
 
  If `settingCount` is not `0`, `pSettings` **must** be a valid pointer to an array of `settingCount` valid [VkLayerSettingEXT](#VkLayerSettingEXT) structures
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](#VkInstanceCreateInfo)
 
 The values of elements of the
 [VkLayerSettingsCreateInfoEXT](#VkLayerSettingsCreateInfoEXT)::`pSettings` array, specifying layer
@@ -1031,6 +1058,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDirectDriverLoadingListLUNARG-driverCount-arraylength) VUID-VkDirectDriverLoadingListLUNARG-driverCount-arraylength
 
  `driverCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](#VkInstanceCreateInfo)
 
 The `VkDirectDriverLoadingInfoLUNARG` structure is defined as:
 

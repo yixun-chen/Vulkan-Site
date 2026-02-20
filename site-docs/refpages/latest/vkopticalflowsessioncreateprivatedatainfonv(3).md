@@ -63,6 +63,13 @@ Valid Usage (Implicit)
 
  `pPrivateData` **must** be a pointer value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkOpticalFlowSessionCreateInfoNV](VkOpticalFlowSessionCreateInfoNV.html)
+
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_NV_optical_flow/optical_flow.html#VkOpticalFlowSessionCreatePrivateDataInfoNV).

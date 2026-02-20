@@ -3725,8 +3725,8 @@ typedef struct VkUbmSurfaceCreateInfoSEC {
     VkStructureType               sType;
     const void*                   pNext;
     VkUbmSurfaceCreateFlagsSEC    flags;
-    struct ubm_device*            ubm_device;
-    struct ubm_surface*           ubm_surface;
+    struct ubm_device*            device;
+    struct ubm_surface*           surface;
 } VkUbmSurfaceCreateInfoSEC;</code></pre>
 </div>
 </div>
@@ -3743,11 +3743,11 @@ structure.</p>
 <p><code>flags</code> is reserved for future use.</p>
 </li>
 <li>
-<p><code>ubm_device</code> is a pointer to a <code>ubm_device</code> to associate the
-surface with.</p>
+<p><code>device</code> is a pointer to a <code>ubm_device</code> to associate the surface
+with.</p>
 </li>
 <li>
-<p><code>ubm_surface</code> is a pointer to a <code>ubm_surface</code> to associate the
+<p><code>surface</code> is a pointer to a <code>ubm_surface</code> to associate the
 surface with.</p>
 </li>
 </ul>
@@ -3758,14 +3758,14 @@ surface with.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366</span><br>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-device-12366" href="#VUID-VkUbmSurfaceCreateInfoSEC-device-12366"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-device-12366</span><br>
 
-<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+<code>device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
 </li>
 <li>
-<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367</span><br>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-surface-12367" href="#VUID-VkUbmSurfaceCreateInfoSEC-surface-12367"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-surface-12367</span><br>
 
-<code>ubm_surface</code> <strong>must</strong> point to a valid UBM <code>ubm_surface</code></p>
+<code>surface</code> <strong>must</strong> point to a valid UBM <code>ubm_surface</code></p>
 </li>
 </ul>
 </div>
@@ -5968,6 +5968,25 @@ for a display surface configured for
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkDisplayModeProperties2KHR">VkDisplayModeProperties2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -7228,6 +7247,25 @@ stereo presentation the display will be configured for.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkDisplaySurfaceCreateInfoKHR">VkDisplaySurfaceCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -8119,7 +8157,7 @@ presentation to a UBM compositor, call:</p>
 VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
     VkPhysicalDevice                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
-    struct ubm_device*                          ubm_device);</code></pre>
+    struct ubm_device*                          device);</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -8131,8 +8169,8 @@ VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
 <p><code>queueFamilyIndex</code> is the queue family index.</p>
 </li>
 <li>
-<p><code>ubm_device</code> is a pointer to the <code>ubm_device</code> associated with a
-UBM compositor.</p>
+<p><code>device</code> is a pointer to the <code>ubm_device</code> associated with a UBM
+compositor.</p>
 </li>
 </ul>
 </div>
@@ -8145,9 +8183,9 @@ UBM compositor.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368</span><br>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368</span><br>
 
-<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+<code>device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369</span><br>
@@ -8171,8 +8209,8 @@ UBM compositor.</p>
  <code>physicalDevice</code> <strong>must</strong> be a valid <a href="../devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter</span><br>
- <code>ubm_device</code> <strong>must</strong> be a valid pointer to a <code>ubm_device</code> value</p>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter</span><br>
+ <code>device</code> <strong>must</strong> be a valid pointer to a <code>ubm_device</code> value</p>
 </li>
 </ul>
 </div>
@@ -8791,6 +8829,28 @@ be <a href="#VkFullScreenExclusiveEXT">VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT</a>.
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPhysicalDeviceSurfaceInfo2KHR">VkPhysicalDeviceSurfaceInfo2KHR</a></p>
+</li>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -8927,6 +8987,28 @@ surface.</p>
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPhysicalDeviceSurfaceInfo2KHR">VkPhysicalDeviceSurfaceInfo2KHR</a></p>
+</li>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9071,6 +9153,25 @@ other structure chained to it will be <strong>undefined</strong>.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9183,6 +9284,25 @@ through the use of <a href="#VkSwapchainPresentScalingCreateInfoKHR">VkSwapchain
  <code>supportedPresentGravityY</code> <strong>must</strong> be a valid combination of <a href="#VkPresentGravityFlagBitsKHR">VkPresentGravityFlagBitsKHR</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9450,6 +9570,25 @@ surface</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPhysicalDeviceSurfaceInfo2KHR">VkPhysicalDeviceSurfaceInfo2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9537,6 +9676,25 @@ through the use of <a href="#VkSwapchainPresentModesCreateInfoKHR">VkSwapchainPr
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9589,6 +9747,25 @@ but implementations <strong>may</strong> support additional usages.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9636,6 +9813,25 @@ during the lifetime of the swapchain.</p>
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9697,6 +9893,25 @@ exclusive full-screen access is not obtainable for this surface.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9746,6 +9961,25 @@ present barrier feature is not obtainable for this surface.</p>
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9805,6 +10039,25 @@ is <a href="../fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -9857,6 +10110,25 @@ swapchain if <code>presentWait2Supported</code> is <a href="../fundamentals.html
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -9923,6 +10195,25 @@ timing information for.</p>
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -15739,6 +16030,25 @@ structure.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -15792,6 +16102,25 @@ this structure, the default value for <code>localDimmingEnable</code> is
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -15950,6 +16279,25 @@ The bits in <code>surfaceCounters</code> <strong>must</strong> be supported by
  <code>surfaceCounters</code> <strong>must</strong> be a valid combination of <a href="#VkSurfaceCounterFlagBitsEXT">VkSurfaceCounterFlagBitsEXT</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -16193,6 +16541,25 @@ returned in
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -16403,6 +16770,25 @@ feature is not enabled, then <code>scalingBehavior</code>,
  <code>presentGravityY</code> <strong>must</strong> be a valid combination of <a href="#VkPresentGravityFlagBitsKHR">VkPresentGravityFlagBitsKHR</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -18397,6 +18783,25 @@ entry in the <code>VkPresentInfoKHR</code>::<code>pSwapchains</code> array.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -18628,6 +19033,25 @@ be <a href="../fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -18800,6 +19224,25 @@ included in <a href="#VkDeviceGroupSwapchainCreateInfoKHR">VkDeviceGroupSwapchai
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -18897,6 +19340,25 @@ the swapchain&#8217;s current present mode <strong>must</strong> be
  <code>swapchainCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -19307,6 +19769,25 @@ to present the image corresponding to the entry in the
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -19460,6 +19941,25 @@ previously submitted present ids for the associated swapchain in
  <code>swapchainCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -19785,6 +20285,25 @@ The swapchain must have been created with
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20044,6 +20563,25 @@ structure.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20215,6 +20753,25 @@ creating the entry&#8217;s corresponding swapchain</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -20354,6 +20911,25 @@ execution on that queue</p>
  <code>swapchainCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -20865,6 +21441,25 @@ The validity and use of this data is outside the scope of Vulkan.</p>
  <code>dynamicMetadataSize</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkHdrMetadataEXT">VkHdrMetadataEXT</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -22009,6 +22604,28 @@ To associate a submission with <code>presentID</code> for low latency mode, the
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structures</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../cmdbuffers.html#VkSubmitInfo" class="xref page">VkSubmitInfo</a></p>
+</li>
+<li>
+<p><a href="../cmdbuffers.html#VkSubmitInfo2" class="xref page">VkSubmitInfo2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -22216,6 +22833,25 @@ utilize low latency mode, <a href="../fundamentals.html#VK_FALSE" class="xref pa
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="openblock">
@@ -22277,6 +22913,25 @@ present modes, at most <code>presentModeCount</code> values will be written to
  If <code>presentModeCount</code> is not <code>0</code>, and <code>pPresentModes</code> is not <code>NULL</code>, <code>pPresentModes</code> <strong>must</strong> be a valid pointer to an array of <code>presentModeCount</code> <a href="#VkPresentModeKHR">VkPresentModeKHR</a> values</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSurfaceCapabilities2KHR">VkSurfaceCapabilities2KHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -22381,6 +23036,25 @@ present barrier.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkSwapchainCreateInfoKHR">VkSwapchainCreateInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -22455,6 +23129,25 @@ be updated every <code>numFramesPerBatch</code> presents.</p>
  <code>sType</code> <strong>must</strong> be <a href="../fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkPresentInfoKHR">VkPresentInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

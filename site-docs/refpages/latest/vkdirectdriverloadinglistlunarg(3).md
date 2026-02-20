@@ -75,6 +75,13 @@ Valid Usage (Implicit)
 
  `driverCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
 [VK_LUNARG_direct_driver_loading](VK_LUNARG_direct_driver_loading.html), [VkDirectDriverLoadingInfoLUNARG](VkDirectDriverLoadingInfoLUNARG.html), [VkDirectDriverLoadingModeLUNARG](VkDirectDriverLoadingModeLUNARG.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/initialization.html#VkDirectDriverLoadingListLUNARG).

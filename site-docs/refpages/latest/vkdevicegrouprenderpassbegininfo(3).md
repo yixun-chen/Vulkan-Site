@@ -158,6 +158,16 @@ Valid Usage (Implicit)
 
  If `deviceRenderAreaCount` is not `0`, `pDeviceRenderAreas` **must** be a valid pointer to an array of `deviceRenderAreaCount` [VkRect2D](VkRect2D.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_KHR_device_group](VK_KHR_device_group.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkDeviceGroupRenderPassBeginInfo).

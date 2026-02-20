@@ -80,6 +80,13 @@ Valid Usage (Implicit)
 
  If `pDepthClampRange` is not `NULL`, `pDepthClampRange` **must** be a valid pointer to a valid [VkDepthClampRangeEXT](VkDepthClampRangeEXT.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
+
 [VK_EXT_depth_clamp_control](VK_EXT_depth_clamp_control.html), [VkDepthClampModeEXT](VkDepthClampModeEXT.html), [VkDepthClampRangeEXT](VkDepthClampRangeEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fragops.html#VkPipelineViewportDepthClampControlCreateInfoEXT).

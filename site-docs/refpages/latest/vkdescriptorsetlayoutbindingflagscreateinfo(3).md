@@ -225,6 +225,13 @@ Valid Usage (Implicit)
 
  If `bindingCount` is not `0`, `pBindingFlags` **must** be a valid pointer to an array of `bindingCount` valid combinations of [VkDescriptorBindingFlagBits](VkDescriptorBindingFlagBits.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)
+
 [VK_EXT_descriptor_indexing](VK_EXT_descriptor_indexing.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkDescriptorBindingFlags](VkDescriptorBindingFlags.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkDescriptorSetLayoutBindingFlagsCreateInfo).

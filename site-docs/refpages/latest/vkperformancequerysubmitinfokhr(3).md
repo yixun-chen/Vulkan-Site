@@ -59,6 +59,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](VkSubmitInfo.html)
+
+* 
+[VkSubmitInfo2](VkSubmitInfo2.html)
+
 [VK_KHR_performance_query](VK_KHR_performance_query.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/cmdbuffers.html#VkPerformanceQuerySubmitInfoKHR).

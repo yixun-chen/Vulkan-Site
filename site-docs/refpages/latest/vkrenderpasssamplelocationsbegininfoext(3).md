@@ -109,6 +109,13 @@ Valid Usage (Implicit)
 
  If `postSubpassSampleLocationsCount` is not `0`, `pPostSubpassSampleLocations` **must** be a valid pointer to an array of `postSubpassSampleLocationsCount` valid [VkSubpassSampleLocationsEXT](VkSubpassSampleLocationsEXT.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)
+
 [VK_EXT_sample_locations](VK_EXT_sample_locations.html), [VkAttachmentSampleLocationsEXT](VkAttachmentSampleLocationsEXT.html), [VkStructureType](VkStructureType.html), [VkSubpassSampleLocationsEXT](VkSubpassSampleLocationsEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassSampleLocationsBeginInfoEXT).

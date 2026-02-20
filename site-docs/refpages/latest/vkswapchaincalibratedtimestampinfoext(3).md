@@ -87,10 +87,12 @@ Valid Usage (Implicit)
 
  `presentStage` **must** not be `0`
 
-Host Synchronization
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
 
 * 
-Host access to `swapchain` **must** be externally synchronized
+[VkCalibratedTimestampInfoKHR](VkCalibratedTimestampInfoKHR.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkPresentStageFlagsEXT](VkPresentStageFlagsEXT.html), [VkStructureType](VkStructureType.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

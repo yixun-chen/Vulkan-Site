@@ -54,6 +54,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkDeviceDiagnosticsConfigFlagBitsNV](VkDeviceDiagnosticsConfigFlagBitsNV.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
 [VK_NV_device_diagnostics_config](VK_NV_device_diagnostics_config.html), [VkDeviceDiagnosticsConfigFlagsNV](VkDeviceDiagnosticsConfigFlagsNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/devsandqueues.html#VkDeviceDiagnosticsConfigCreateInfoNV).

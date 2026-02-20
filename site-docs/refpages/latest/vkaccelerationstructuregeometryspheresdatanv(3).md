@@ -164,6 +164,13 @@ Valid Usage (Implicit)
 
  `indexData` **must** be a valid [VkDeviceOrHostAddressConstKHR](VkDeviceOrHostAddressConstKHR.html) union
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryKHR](VkAccelerationStructureGeometryKHR.html)
+
 [VK_NV_ray_tracing_linear_swept_spheres](VK_NV_ray_tracing_linear_swept_spheres.html), [VkDeviceOrHostAddressConstKHR](VkDeviceOrHostAddressConstKHR.html), `VkDeviceSize`, [VkFormat](VkFormat.html), [VkIndexType](VkIndexType.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/accelstructures.html#VkAccelerationStructureGeometrySpheresDataNV).

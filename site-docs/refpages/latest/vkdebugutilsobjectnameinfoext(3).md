@@ -102,6 +102,19 @@ Valid Usage (Implicit)
 
  If `pObjectName` is not `NULL`, `pObjectName` **must** be a null-terminated UTF-8 string
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
+* 
+[VkResourceDescriptorInfoEXT](VkResourceDescriptorInfoEXT.html)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_EXT_debug_utils](VK_EXT_debug_utils.html), [VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html), [VkObjectType](VkObjectType.html), [VkStructureType](VkStructureType.html), [vkSetDebugUtilsObjectNameEXT](vkSetDebugUtilsObjectNameEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkDebugUtilsObjectNameInfoEXT).

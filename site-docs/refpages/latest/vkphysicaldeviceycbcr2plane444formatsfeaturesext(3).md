@@ -70,6 +70,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](VkDeviceCreateInfo.html)
+
+* 
+[VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html)
+
 |  | Although the formats defined by the `[VK_EXT_ycbcr_2plane_444_formats](VK_EXT_ycbcr_2plane_444_formats.html)`
 | --- | --- |
 were promoted to Vulkan 1.3 as optional formats, the

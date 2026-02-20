@@ -78,6 +78,16 @@ Valid Usage (Implicit)
 
  `depthBiasRepresentation` **must** be a valid [VkDepthBiasRepresentationEXT](VkDepthBiasRepresentationEXT.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDepthBiasInfoEXT](VkDepthBiasInfoEXT.html)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 [VK_EXT_depth_bias_control](VK_EXT_depth_bias_control.html), `VkBool32`, [VkDepthBiasRepresentationEXT](VkDepthBiasRepresentationEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkDepthBiasRepresentationInfoEXT).

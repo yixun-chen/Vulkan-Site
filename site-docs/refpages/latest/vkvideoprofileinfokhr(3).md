@@ -203,6 +203,13 @@ Valid Usage (Implicit)
 
  `chromaBitDepth` **must** be a valid combination of [VkVideoComponentBitDepthFlagBitsKHR](VkVideoComponentBitDepthFlagBitsKHR.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
+
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR](VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.html), [VkStructureType](VkStructureType.html), [VkVideoChromaSubsamplingFlagsKHR](VkVideoChromaSubsamplingFlagsKHR.html), [VkVideoCodecOperationFlagBitsKHR](VkVideoCodecOperationFlagBitsKHR.html), [VkVideoComponentBitDepthFlagsKHR](VkVideoComponentBitDepthFlagsKHR.html), [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html), [VkVideoSessionCreateInfoKHR](VkVideoSessionCreateInfoKHR.html), [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoProfileInfoKHR).

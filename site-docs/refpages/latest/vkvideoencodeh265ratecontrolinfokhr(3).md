@@ -148,6 +148,16 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkVideoEncodeH265RateControlFlagBitsKHR](VkVideoEncodeH265RateControlFlagBitsKHR.html) values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoBeginCodingInfoKHR](VkVideoBeginCodingInfoKHR.html)
+
+* 
+[VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)
+
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeH265RateControlFlagsKHR](VkVideoEncodeH265RateControlFlagsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeH265RateControlInfoKHR).

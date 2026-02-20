@@ -2588,9 +2588,6 @@ if it was not created with
 <p>The <code>objectHandle</code> member of <a href="debugging.html#VkDebugUtilsObjectTagInfoEXT" class="xref page">VkDebugUtilsObjectTagInfoEXT</a></p>
 </li>
 <li>
-<p>The <code>swapchain</code> member of <a href="synchronization.html#VkSwapchainCalibratedTimestampInfoEXT" class="xref page">VkSwapchainCalibratedTimestampInfoEXT</a></p>
-</li>
-<li>
 <p>The <code>swapchain</code> member of <a href="VK_KHR_surface/wsi.html#VkPastPresentationTimingInfoEXT" class="xref page">VkPastPresentationTimingInfoEXT</a></p>
 </li>
 <li>
@@ -5587,6 +5584,8 @@ typedef enum VkStructureType {
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES = 1000063000,
   // Provided by VK_VERSION_1_2
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES = 1000196000,
+  // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES = 49,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES = 50,
@@ -5596,8 +5595,6 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES = 52,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO = 1000147000,
-  // Provided by VK_VERSION_1_2
-    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES = 1000196000,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES = 1000211000,
   // Provided by VK_VERSION_1_2
@@ -7726,6 +7723,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT = 1000662000,
   // Provided by VK_SEC_ubm_surface
     VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC = 1000664000,
+  // Provided by VK_VALVE_shader_mixed_float_dot_product
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE = 1000673000,
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
   // Provided by VK_VERSION_1_1

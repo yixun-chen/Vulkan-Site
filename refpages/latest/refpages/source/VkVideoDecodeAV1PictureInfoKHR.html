@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -12800,6 +12806,28 @@ section 6.8.14 of the <a href="../../../../spec/latest/chapters/introduction.htm
 <p><code>pMiRowStarts</code> is a pointer to an array of <code>TileRows</code> number of
 unsigned integers that corresponds to <code>MiRowStarts</code> defined in
 section 6.8.14 of the <a href="../../../../spec/latest/chapters/introduction.html#aomedia-av1" class="xref page">AV1 Specification</a>;</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Historically some applications incorrectly specified the values in
+<code>pMiColStarts</code> and <code>pMiRowStarts</code> in terms of superblocks instead of
+mode info blocks, therefore it is recommended for implementations to ignore
+the values specified in <code>pMiColStarts</code> and <code>pMiRowStarts</code>.
+Instead, the values should be calculated based on
+<code>flags.uniform_tile_spacing_flag</code>, <code>pWidthInSbsMinus1</code>,
+<code>pHeightInSbsMinus1</code>, the <a href="../../../../spec/latest/chapters/videocoding.html#decode-av1-sequence-header" class="xref page">sequence header</a>
+parameter <code>flags.use_128x128_superblock</code>, and the coded extent of the
+decoded picture.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p><code>pWidthInSbsMinus1</code> is a pointer to an array of <code>TileCols</code> number
@@ -13039,6 +13067,25 @@ active sequence header is specified
  <code>tileCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="VkVideoDecodeInfoKHR.html" class="xref page">VkVideoDecodeInfoKHR</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

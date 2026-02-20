@@ -67,6 +67,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html)
+
 [VK_EXT_present_timing](VK_EXT_present_timing.html), `VkBool32`, [VkPresentStageFlagsEXT](VkPresentStageFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkPresentTimingSurfaceCapabilitiesEXT).

@@ -66,6 +66,13 @@ Valid Usage (Implicit)
 
  If `deviceAddress` is not `0`, `deviceAddress` **must** be a valid `VkDeviceAddress` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferCreateInfo](VkBufferCreateInfo.html)
+
 [VK_EXT_buffer_device_address](VK_EXT_buffer_device_address.html), `VkDeviceAddress`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkBufferDeviceAddressCreateInfoEXT).

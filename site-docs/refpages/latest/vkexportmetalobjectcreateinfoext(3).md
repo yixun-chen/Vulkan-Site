@@ -61,6 +61,31 @@ Valid Usage (Implicit)
 
  If `exportObjectType` is not `0`, `exportObjectType` **must** be a valid [VkExportMetalObjectTypeFlagBitsEXT](VkExportMetalObjectTypeFlagBitsEXT.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferViewCreateInfo](VkBufferViewCreateInfo.html)
+
+* 
+[VkEventCreateInfo](VkEventCreateInfo.html)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkImageViewCreateInfo](VkImageViewCreateInfo.html)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
+* 
+[VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
+
+* 
+[VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)
+
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkExportMetalObjectTypeFlagBitsEXT](VkExportMetalObjectTypeFlagBitsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkExportMetalObjectCreateInfoEXT).

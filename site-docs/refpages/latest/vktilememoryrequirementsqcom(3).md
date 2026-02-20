@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryRequirements2](VkMemoryRequirements2.html)
+
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkTileMemoryRequirementsQCOM).

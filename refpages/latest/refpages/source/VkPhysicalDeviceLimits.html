@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -13433,15 +13439,14 @@ See <a href="../../../../spec/latest/chapters/vertexpostproc.html#vertexpostproc
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The intent of the <code>viewportBoundsRange</code> limit is to allow a maximum
-sized viewport to be arbitrarily shifted relative to the output target as
-long as at least some portion intersects.
-This would give a bounds limit of <span class="eq">[-<code>size</code> +  1, 2 ×
-<code>size</code> - 1]</span> which would allow all possible non-empty-set intersections
-of the output target and the viewport.
-Since these numbers are typically powers of two, picking the signed number
-range using the smallest possible number of bits ends up with the specified
-range.</p>
+<p>The wide range of values required for <code>viewportBoundsRange</code> allows the
+viewport to be arbitrarily shifted relative to the output render target
+while still partially overlapping.
+However, the minimum range required to achieve this would actually be
+<span class="eq">[-<code>size</code> +  1, 2 × <code>size</code> - 1]</span>.
+As these limits in implementations are typically simple power-of-two values,
+the specification reflects this convention, rounding the lower bound
+accordingly.</p>
 </div>
 </td>
 </tr>

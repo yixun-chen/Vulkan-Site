@@ -76,6 +76,13 @@ Valid Usage (Implicit)
 
  `provokingVertexMode` **must** be a valid [VkProvokingVertexModeEXT](VkProvokingVertexModeEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 [VK_EXT_provoking_vertex](VK_EXT_provoking_vertex.html), [VkProvokingVertexModeEXT](VkProvokingVertexModeEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/vertexpostproc.html#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT).

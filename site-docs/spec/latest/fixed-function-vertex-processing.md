@@ -1268,6 +1268,13 @@ Valid Usage (Implicit)
 
  `vertexBindingDivisorCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineVertexInputStateCreateInfo](#VkPipelineVertexInputStateCreateInfo)
+
 The individual divisor values per binding are specified using the
 `VkVertexInputBindingDivisorDescription` structure which is defined as:
 

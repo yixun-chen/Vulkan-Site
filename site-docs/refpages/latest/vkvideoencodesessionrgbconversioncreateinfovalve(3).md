@@ -122,6 +122,13 @@ Valid Usage (Implicit)
 
  `yChromaOffset` **must** be a valid [VkVideoEncodeRgbChromaOffsetFlagBitsVALVE](VkVideoEncodeRgbChromaOffsetFlagBitsVALVE.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](VkVideoSessionCreateInfoKHR.html)
+
 [VK_VALVE_video_encode_rgb_conversion](VK_VALVE_video_encode_rgb_conversion.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeRgbChromaOffsetFlagBitsVALVE](VkVideoEncodeRgbChromaOffsetFlagBitsVALVE.html), [VkVideoEncodeRgbModelConversionFlagBitsVALVE](VkVideoEncodeRgbModelConversionFlagBitsVALVE.html), [VkVideoEncodeRgbRangeCompressionFlagBitsVALVE](VkVideoEncodeRgbRangeCompressionFlagBitsVALVE.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeSessionRgbConversionCreateInfoVALVE).

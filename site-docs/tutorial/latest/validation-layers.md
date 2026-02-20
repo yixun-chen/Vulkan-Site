@@ -12,6 +12,7 @@
 - [What_are_validation_layers?](#_what_are_validation_layers)
 - [Using validation layers](#_using_validation_layers)
 - [Using_validation_layers](#_using_validation_layers)
+- [Using extensions](#_using_extensions)
 - [Message callback](#_message_callback)
 - [Configuration](#_configuration)
 
@@ -89,11 +90,7 @@ and device specific. The idea was that instance layers would only check
 calls related to global Vulkan objects like instances, and device-specific layers
 would only check calls related to a specific GPU. Device-specific layers have now been
 deprecated, which means that instance validation layers apply to all Vulkan
-calls. The specification document still recommends that you enable validation
-layers at device level as well for compatibility, which is required by some
-implementations. We’ll simply specify the same layers as the instance at logical
-device level, which we’ll see
-[later on](04_Logical_device_and_queues.html).
+calls.
 
 In this section, we’ll see how to enable the standard diagnostics layers provided
 by the Vulkan SDK. Just like extensions, validation layers need to be enabled by
@@ -123,29 +120,76 @@ through the requested layers and validate that all the required layers are
 supported by the Vulkan implementation. This check is performed directly in the
 `createInstance` function:
 
-void createInstance() {
-    constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
-                .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
-                .pEngineName        = "No Engine",
-                .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
-                .apiVersion         = vk::ApiVersion14 };
+void createInstance()
+{
+    ...
 
     // Get the required layers
     std::vector requiredLayers;
-    if (enableValidationLayers) {
+    if (enableValidationLayers)
+    {
         requiredLayers.assign(validationLayers.begin(), validationLayers.end());
     }
 
     // Check if the required layers are supported by the Vulkan implementation.
     auto layerProperties = context.enumerateInstanceLayerProperties();
-    if (std::ranges::any_of(requiredLayers, [&layerProperties](auto const& requiredLayer) {
-        return std::ranges::none_of(layerProperties,
-                                   [requiredLayer](auto const& layerProperty)
-                                   { return strcmp(layerProperty.layerName, requiredLayer) == 0; });
-    }))
-    {
-        throw std::runtime_error("One or more required layers are not supported!");
-    }
+		auto unsupportedLayerIt = std::ranges::find_if(requiredLayers,
+		                                               [&layerProperties](auto const &requiredLayer) {
+			                                               return std::ranges::none_of(layerProperties,
+			                                                                           [requiredLayer](auto const &layerProperty) { return strcmp(layerProperty.layerName, requiredLayer) == 0; });
+		                                               });
+		if (unsupportedLayerIt != requiredLayers.end())
+		{
+			throw std::runtime_error("Required layer not supported: " + std::string(*unsupportedLayerIt));
+		}
+
+    ...
+}
+
+As already mentioned above, extensions also need to be enabled by their name. But
+here, you have to distinguish between instance- and device-extensions.
+
+We’ll first create a getRequiredInstanceExtensions function that will return a
+list of the required instance extensions.
+
+std::vector getRequiredInstanceExtensions()
+{
+    uint32_t glfwExtensionCount = 0;
+    auto glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+
+    std::vector extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+
+    return extensions;
+}
+
+The extensions specified by GLFW are always required, as we’re working with
+the GLFW dependency for windowing.
+
+We’ll check if all the required extensions are available. We first get a list of all
+supported instance extensions by using the
+`vk::raii::Context::enumerateInstanceLayerProperties` function and check that all
+required layers are listed in that list. This check is also performed directly in the
+`createInstance` function:
+
+void createInstance()
+{
+    ...
+
+		// Get the required extensions.
+		auto requiredExtensions = getRequiredInstanceExtensions();
+
+		// Check if the required extensions are supported by the Vulkan implementation.
+		auto extensionProperties = context.enumerateInstanceExtensionProperties();
+		auto unsupportedPropertyIt =
+		    std::ranges::find_if(requiredExtensions,
+		                         [&extensionProperties](auto const &requiredExtension) {
+			                         return std::ranges::none_of(extensionProperties,
+			                                                     [requiredExtension](auto const &extensionProperty) { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; });
+		                         });
+		if (unsupportedPropertyIt != requiredExtensions.end())
+		{
+			throw std::runtime_error("Required extension not supported: " + std::string(*unsupportedPropertyIt));
+		}
 
     ...
 }
@@ -153,18 +197,24 @@ void createInstance() {
 Now run the program in debug mode and ensure that the error does not occur. If
 it does, then have a look at the FAQ.
 
-Finally, modify the `VkInstanceCreateInfo` struct instantiation to include the
-validation layer names if they are enabled:
+Finally, modify the `vk::InstanceCreateInfo` struct instantiation to include the
+validation layer names and the extension names:
 
-vk::InstanceCreateInfo createInfo{
-    .pApplicationInfo        = &appInfo,
-    .enabledLayerCount       = static_cast(requiredLayers.size()),
-    .ppEnabledLayerNames     = requiredLayers.data(),
-    .enabledExtensionCount   = 0,
-    .ppEnabledExtensionNames = nullptr };
+void createInstance()
+{
+    ...
 
-If the check was successful then `vkCreateInstance` should not ever return a
-`VK_ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
+    vk::InstanceCreateInfo createInfo{.pApplicationInfo        = &appInfo,
+                                      .enabledLayerCount       = static_cast(requiredLayers.size()),
+                                      .ppEnabledLayerNames     = requiredLayers.data(),
+                                      .enabledExtensionCount   = static_cast(requiredExtensions.size()),
+                                      .ppEnabledExtensionNames = requiredExtensions.data()};
+    instance = vk::raii::Instance(context, createInfo);
+}
+
+If the check was successful then the `vk::raii::Instance` constructor should not
+ever throw a `vk::Result::eErrorLayerNotPresent` error, but you should run the
+program to make sure.
 
 The validation layers will print debug messages to the standard output by
 default, but we can also handle them ourselves by providing an explicit
@@ -177,63 +227,54 @@ To set up a callback in the program to handle messages and the associated
 details, we have to set up a debug messenger with a callback using the
 `VK_EXT_debug_utils` extension.
 
-We’ll first create a `getRequiredExtensions` function that will return the
-required list of extensions based on whether validation layers are enabled or
+We’ll first extent the `getRequiredInstanceExtensions` function based on whether
+validation layers are enabled or
 not:
 
-std::vector getRequiredExtensions() {
+std::vector getRequiredInstanceExtensions()
+{
     uint32_t glfwExtensionCount = 0;
     auto glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
     std::vector extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
-    if (enableValidationLayers) {
-        extensions.push_back(vk::EXTDebugUtilsExtensionName );
+    if (enableValidationLayers)
+    {
+        extensions.push_back(vk::EXTDebugUtilsExtensionName);
     }
 
     return extensions;
 }
 
-The extensions specified by GLFW are always required, as we’re working with
-the GLFW dependency for windowing, but the debug messenger extension is
-conditionally added. Note that We’ve used the
-`VK_EXT_DEBUG_UTILS_EXTENSION_NAME` macro here which is equal to the literal
+The debug messenger extension is conditionally added. Note that we’ve used the
+`vk::EXTDebugUtilsExtensionName` macro here which is equal to the literal
 string "VK_EXT_debug_utils". Using this macro lets you avoid typos.
-
-We can now use this function in `createInstance`:
-
-auto extensions = getRequiredExtensions();
-vk::InstanceCreateInfo createInfo({}, &appInfo, requiredLayers, extensions);
-
-Run the program to make sure you don’t receive a
-`VK_ERROR_EXTENSION_NOT_PRESENT` error. We don’t really need to check for the
-existence of this extension because it should be implied by the availability of
-the validation layers.
 
 Now let’s see what a debug callback function looks like. Add a new static member
 function called `debugCallback` with the `PFN_vkDebugUtilsMessengerCallbackEXT`
 prototype. The `VKAPI_ATTR` and `VKAPI_CALL` ensure that the function has the
 right signature for Vulkan to call it.
 
-static VKAPI_ATTR vk::Bool32 VKAPI_CALL debugCallback(vk::DebugUtilsMessageSeverityFlagBitsEXT severity, vk::DebugUtilsMessageTypeFlagsEXT type, const vk::DebugUtilsMessengerCallbackDataEXT* pCallbackData, void*) {
-    std::cerr pMessage 
+static VKAPI_ATTR vk::Bool32 VKAPI_CALL debugCallback(vk::DebugUtilsMessageSeverityFlagBitsEXT       severity,
+                                                      vk::DebugUtilsMessageTypeFlagsEXT              type,
+                                                      const vk::DebugUtilsMessengerCallbackDataEXT * pCallbackData,
+                                                      void *                                         pUserData)
+{
+  std::cerr pMessage 
 
 The first parameter specifies the severity of the message, which is one of
 the following flags:
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT`: Diagnostic message
+`vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose`: Diagnostic message
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT`: Informational message
-like the creation of a resource
+`vk::DebugUtilsMessageSeverityFlagBitsEXT::eInfo`   : Informational message like the creation of a resource
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT`: Message about behavior
-that is not necessarily an error, but very likely a bug in your application
+`vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning`: Message about behavior that is not necessarily an error, but very likely a bug in your application
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT`: Message about behavior
-that is invalid and may cause crashes
+`vk::DebugUtilsMessageSeverityFlagBitsEXT::eError`  : Message about behavior that is invalid and may cause crashes
 
 The values of this enumeration are set up in such a way that you can use a
 comparison operation to check if a message is equal or worse compared to
@@ -246,21 +287,21 @@ if (messageSeverity >= vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning) {
 The `messageType` parameter can have the following values:
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT`: Some event has happened that is unrelated to the specification or performance
+`vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral`    : Some event has happened that is unrelated to the specification or performance
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT`: Something has happened that violates the specification or indicates a possible mistake
+`vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation` : Something has happened that violates the specification or indicates a possible mistake
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT`: Potential non-optimal use of Vulkan
+`vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance`: Potential non-optimal use of Vulkan
 
-The `pCallbackData` parameter refers to a `VkDebugUtilsMessengerCallbackDataEXT` struct containing the details of the message itself, with the most important members being:
-
-* 
-`pMessage`: The debug message as a null-terminated string
+The `pCallbackData` parameter refers to a `vk::DebugUtilsMessengerCallbackDataEXT` struct containing the details of the message itself, with the most important members being:
 
 * 
-`pObjects`: Array of Vulkan object handles related to the message
+`pMessage`   : The debug message as a null-terminated string
+
+* 
+`pObjects`   : Array of Vulkan object handles related to the message
 
 * 
 `objectCount`: Number of objects in the array
@@ -270,12 +311,12 @@ setup of the callback and allows you to pass your own data to it.
 
 The callback returns a boolean that indicates if the Vulkan call that triggered
 the validation layer message should be aborted. If the callback returns true,
-then the call is aborted with the `VK_ERROR_VALIDATION_FAILED_EXT` error. This
+then the call is aborted with the `vk::Result::eErrorValidationFailedEXT` error. This
 is normally only used to test the validation layers themselves, so you should
-always return `VK_FALSE`.
+always return `vk::False`.
 
 All that remains now is telling Vulkan about the callback function. Such a
-callback is part of a **debug messenger,** and you can have as many of them as
+callback is part of a **debug messenger**, and you can have as many of them as
 you want. Add a class member for this handle right under `instance`:
 
 vk::raii::DebugUtilsMessengerEXT debugMessenger = nullptr;
@@ -283,30 +324,37 @@ vk::raii::DebugUtilsMessengerEXT debugMessenger = nullptr;
 Now add a function `setupDebugMessenger` to be called from `initVulkan` right
 after `createInstance`:
 
-void initVulkan() {
+void initVulkan()
+{
     createInstance();
     setupDebugMessenger();
 }
 
-void setupDebugMessenger() {
+void setupDebugMessenger()
+{
     if (!enableValidationLayers) return;
 
 }
 
 We’ll need to fill in a structure with details about the messenger and its callback:
 
-vk::DebugUtilsMessageSeverityFlagsEXT severityFlags( vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose | vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError );
-vk::DebugUtilsMessageTypeFlagsEXT    messageTypeFlags( vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation );
-vk::DebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoEXT{
-    .messageSeverity = severityFlags,
-    .messageType = messageTypeFlags,
-    .pfnUserCallback = &debugCallback
-    };
-debugMessenger = instance.createDebugUtilsMessengerEXT(debugUtilsMessengerCreateInfoEXT);
+void setupDebugMessenger()
+{
+    ...
+    vk::DebugUtilsMessageSeverityFlagsEXT severityFlags(vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose |
+                                                        vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+                                                        vk::DebugUtilsMessageSeverityFlagBitsEXT::eError);
+    vk::DebugUtilsMessageTypeFlagsEXT     messageTypeFlags(
+            vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation);
+    vk::DebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoEXT{.messageSeverity = severityFlags,
+                                                                          .messageType     = messageTypeFlags,
+                                                                          .pfnUserCallback = &debugCallback};
+    debugMessenger = instance.createDebugUtilsMessengerEXT( debugUtilsMessengerCreateInfoEXT );
+}
 
 The `messageSeverity` field allows you to specify all the types of
 severities you would like your callback to be called for. We’ve specified
-all types except for `VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT` here to
+all types except for `vk::DebugUtilsMessageSeverityFlagBitsEXT::eInfo` here to
 receive notifications about possible problems while leaving out verbose
 general debug info.
 
@@ -325,9 +373,10 @@ and debug callbacks, but this is a good setup to get started with for this
 tutorial. See the [extension specification](https://docs.vulkan.org/spec/latest/chapters/debugging.html#VK_EXT_debug_utils)
 for more info about the possibilities.
 
-We can now re-use this in the `createInstance` function:
+The complete `createInstance` function now looks like:
 
-void createInstance() {
+void createInstance()
+{
     constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
                 .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
                 .pEngineName        = "No Engine",
@@ -352,19 +401,20 @@ void createInstance() {
     }
 
     // Get the required extensions.
-    auto requiredExtensions = getRequiredExtensions();
+    auto requiredExtensions = getRequiredInstanceExtensions();
 
     // Check if the required extensions are supported by the Vulkan implementation.
     auto extensionProperties = context.enumerateInstanceExtensionProperties();
-    for (auto const & requiredExtension : requiredExtensions)
-    {
-        if (std::ranges::none_of(extensionProperties,
-                                 [requiredExtension](auto const& extensionProperty)
-                                 { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; }))
-        {
-            throw std::runtime_error("Required extension not supported: " + std::string(requiredExtension));
-        }
-    }
+		auto unsupportedPropertyIt =
+		    std::ranges::find_if(requiredExtensions,
+		                         [&extensionProperties](auto const &requiredExtension) {
+			                         return std::ranges::none_of(extensionProperties,
+			                                                     [requiredExtension](auto const &extensionProperty) { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; });
+		                         });
+		if (unsupportedPropertyIt != requiredExtensions.end())
+		{
+			throw std::runtime_error("Required extension not supported: " + std::string(*unsupportedPropertyIt));
+		}
 
     vk::InstanceCreateInfo createInfo{
         .pApplicationInfo        = &appInfo,
@@ -376,7 +426,7 @@ void createInstance() {
 }
 
 There are a lot more settings for the behavior of validation layers than just
-the flags specified in the `VkDebugUtilsMessengerCreateInfoEXT` struct. Browse
+the flags specified in the `vk::DebugUtilsMessengerCreateInfoEXT` struct. Browse
 to the Vulkan SDK and go to the `Config` directory. There you will find a
 `vk_layer_settings.txt` file that explains how to configure the layers.
 

@@ -57,6 +57,16 @@ Valid Usage (Implicit)
 
  `usage` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)
+
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkOpticalFlowUsageFlagsNV](VkOpticalFlowUsageFlagsNV.html), [VkStructureType](VkStructureType.html), [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](vkGetPhysicalDeviceOpticalFlowImageFormatsNV.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_NV_optical_flow/optical_flow.html#VkOpticalFlowImageFormatInfoNV).

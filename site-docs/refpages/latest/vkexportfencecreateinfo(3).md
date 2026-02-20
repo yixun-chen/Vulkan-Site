@@ -68,6 +68,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalFenceHandleTypeFlagBits](VkExternalFenceHandleTypeFlagBits.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFenceCreateInfo](VkFenceCreateInfo.html)
+
 [VK_KHR_external_fence](VK_KHR_external_fence.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkExternalFenceHandleTypeFlags](VkExternalFenceHandleTypeFlags.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkExportFenceCreateInfo).

@@ -752,16 +752,17 @@ vk::raii::Instance instance = nullptr;</code></pre>
 information about our application. This data is technically optional, but it may
 provide some useful information to the driver to optimize our specific
  application, (e.g., because it uses a well-known graphics engine with
-certain special behavior). This struct is called <code>VkApplicationInfo</code>:</p>
+certain special behavior). This struct is called <code>vk::ApplicationInfo</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance() {
-    constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
-            .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
-            .pEngineName        = "No Engine",
-            .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
-            .apiVersion         = vk::ApiVersion14 };
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createInstance()
+{
+    constexpr vk::ApplicationInfo appInfo{.pApplicationName   = "Hello Triangle",
+                                          .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
+                                          .pEngineName        = "No Engine",
+                                          .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
+                                          .apiVersion         = vk::ApiVersion14};
 }</code></pre>
 </div>
 </div>
@@ -789,13 +790,13 @@ device, which will become clear in the next few chapters.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first parameter is the flags for the structure, the second is the
-appInfo that we just created. The next is an array of layers being
-requested, and the final is an array of the desired global extensions. As
-mentioned in the overview chapter, Vulkan is a platform-agnostic API, which
-means that you need an extension to interface with the window system. GLFW
-has a handy built-in function that returns the  extension(s) it needs to do
-that which we can pass to the struct:</p>
+<p>This structure has a member named flags, which we will handle later in this chapter.
+The member pApplicationInfo points to the appInfo that we just created.
+The next is an array of layers being requested, and the final is an array of
+the desired global extensions. As mentioned in the overview chapter, Vulkan
+is a platform-agnostic API, which means that you need an extension to interface
+with the window system. GLFW has a handy built-in function that returns the
+extension(s) it needs to do that which we can pass to the struct:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -829,7 +830,7 @@ in-depth in the next chapter, so leave this empty for now.</p>
 </div>
 <div class="paragraph">
 <p>We&#8217;ve now specified everything Vulkan needs to create an instance, and we can
-finally issue the <code>vk:CreateInstance</code> call:</p>
+finally create the vk::raii::Instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -859,14 +860,15 @@ it is optional if you&#8217;re using the default.</p>
 </div>
 <div class="paragraph">
 <p>If everything went well, then the handle to the instance was returned. We can
-check that everything worked by use of c&#43;&#43; exceptions, or a more advanced
-way is to turn off exceptions by defining VULKAN_HPP_NO_EXCEPTIONS.  Then
+check that everything worked by use of c&#43;&#43; exceptions. If you can&#8217;t use c&#43;&#43;
+exceptions, you can turn them off by defining VULKAN_HPP_NO_EXCEPTIONS.  Then
 the calls will return a std::tuple with a VKResult and the returned object.
 Here&#8217;s an example of checking for errors in Vulkan calls:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    try {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    try
+    {
         vk::raii::Context context;
         vk::raii::Instance instance(context, vk::InstanceCreateInfo{});
         vk::raii::PhysicalDevice physicalDevice = instance.enumeratePhysicalDevices().front();
@@ -874,10 +876,14 @@ Here&#8217;s an example of checking for errors in Vulkan calls:</p>
 
         // Use Vulkan objects
         vk::raii::Buffer buffer(device, vk::BufferCreateInfo{});
-    } catch (const vk::SystemError&amp; err) {
+    }
+    catch (const vk::SystemError&amp; err)
+    {
         std::cerr &lt;&lt; "Vulkan error: " &lt;&lt; err.what() &lt;&lt; std::endl;
         return 1;
-    } catch (const std::exception&amp; err) {
+    }
+    catch (const std::exception&amp; err)
+    {
         std::cerr &lt;&lt; "Error: " &lt;&lt; err.what() &lt;&lt; std::endl;
         return 1;
     }</code></pre>
@@ -888,51 +894,56 @@ Here&#8217;s an example of checking for errors in Vulkan calls:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">		auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
-
-		if (result == vk::Result::eErrorOutOfDateKHR)
-		{
-			recreateSwapChain();
-			return;
-		}
-		if (result != vk::Result::eSuccess &amp;&amp; result != vk::Result::eSuboptimalKHR)
-		{
-			throw std::runtime_error("failed to acquire swap chain image!");
-		}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    vk::raii::Context context;
+    ...
+    auto instanceRV = context.createInstance(...);
+    if (!instanceRV.has_value())
+    {
+        std::cerr &lt;&lt; "Error: Instance creation failed with " &lt;&lt; vk::to_string(instanceVR.result) &lt;&lt; std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+    vk::raii::Instance instance = std::move(instanceRV.value);
+    ...
+    auto physicalDevicesRV = instance.enumeratePhysicalDevices();
+    if (!physicalDevicesRV.hasValue())
+    {
+        std::cerr &lt;&lt; "Error: Enumerating PhysicalDevices failed with " &lt;&lt; vk::to_string(physicalDevicesRV) &lt;&lt; std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+    vk::raii::PhysicalDevice physicalDevice = std::move(physicalDevicesRV.value.front());
+    ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Those examples are from later parts of our tutorial, this is just an example
+<p>This example is from later parts of our tutorial, it is just an example
 of how to check for errors in all of your calls.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_encountered_vk_error_incompatible_driver"><a class="anchor" href="#_encountered_vk_error_incompatible_driver"></a>Encountered VK_ERROR_INCOMPATIBLE_DRIVER:</h2>
+<h2 id="_encountered_vkresulteerrorincompatibledriver"><a class="anchor" href="#_encountered_vkresulteerrorincompatibledriver"></a>Encountered vk::Result::eErrorIncompatibleDriver:</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If using macOS with the latest MoltenVK sdk, you may get <code>VK_ERROR_INCOMPATIBLE_DRIVER</code>
-returned from <code>vkCreateInstance</code>. According to the
+<p>If using macOS with the latest MoltenVK sdk, you may get <code>vk::Result::eErrorIncompatibleDriver</code>,
+thrown from <code>vk::raii::createInstance</code> or the vk::raii::Instance constructor. According to the
 <a href="https://vulkan.lunarg.com/doc/sdk/1.3.216.0/mac/getting_started.html">Getting Start Notes</a>.
-Beginning with the 1.3.216 Vulkan SDK, the <code>VK_KHR_PORTABILITY_subset</code>
-extension is mandatory.</p>
+Beginning with the 1.3.216 Vulkan SDK, the <code>VK_KHR_PORTABILITY_subset</code> extension is mandatory.</p>
 </div>
 <div class="paragraph">
 <p>To get over this error, first add the <code>vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR</code> bit
-to <code>VkInstanceCreateInfo</code> struct flags, then add
-<code>vk::KHRPortabilityEnumerationExtensionName</code> to instance enabled
-extension list.</p>
+to <code>vk::InstanceCreateInfo</code> struct flags, then add <code>vk::KHRPortabilityEnumerationExtensionName</code>
+to instance enabled extension list.</p>
 </div>
 <div class="paragraph">
 <p>Typically, the code could be like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
-            .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
-            .pEngineName        = "No Engine",
-            .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
-            .apiVersion         = vk::ApiVersion14 };
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">constexpr vk::ApplicationInfo appInfo{.pApplicationName   = "Hello Triangle",
+                                      .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
+                                      .pEngineName        = "No Engine",
+                                      .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
+                                      .apiVersion         = vk::ApiVersion14};
 vk::InstanceCreateInfo createInfo{
     .flags = vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR,
     .pApplicationInfo = &amp;appInfo,
@@ -955,10 +966,9 @@ what if we want to check for optional functionality?</p>
 </div>
 <div class="paragraph">
 <p>To retrieve a list of supported extensions before creating an instance, there&#8217;s
-the <code>vkEnumerateInstanceExtensionProperties</code> function. We can call it on the
-context object; it returns a vector of the extensions available, which
-allows us to filter extensions by a specific validation layer, which we&#8217;ll
-ignore for now.</p>
+the <code>vk::raii::Context::enumerateInstanceExtensionProperties</code> function. It returns
+a vector of the available extensions, which allows us to filter extensions by a
+specific validation layer, which we&#8217;ll ignore for now.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -966,7 +976,7 @@ ignore for now.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Each <code>VkExtensionProperties</code> struct contains the name and version of an
+<p>Each <code>vk::ExtensionProperties</code> struct contains the name and version of an
 extension. We can list them with a simple for loop (<code>\t</code> is a tab for
 indentation):</p>
 </div>
@@ -981,10 +991,7 @@ for (const auto&amp; extension : extensions) {
 </div>
 <div class="paragraph">
 <p>You can add this code to the <code>createInstance</code> function if you&#8217;d like to provide
-some details about the Vulkan support. As a challenge, try to create a function
-that checks if all the extensions returned by
-<code>glfwGetRequiredInstanceExtensions</code> are included in the supported extensions
-list.</p>
+some details about the Vulkan support.</p>
 </div>
 <div class="paragraph">
 <p>Before continuing with the more complex steps after instance creation, it&#8217;s time

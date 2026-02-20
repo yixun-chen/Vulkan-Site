@@ -106,6 +106,28 @@ Valid Usage (Implicit)
 
  If `pipelineStageCreationFeedbackCount` is not `0`, `pPipelineStageCreationFeedbacks` **must** be a valid pointer to an array of `pipelineStageCreationFeedbackCount` [VkPipelineCreationFeedback](VkPipelineCreationFeedback.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html)
+
+* 
+[VkExecutionGraphPipelineCreateInfoAMDX](VkExecutionGraphPipelineCreateInfoAMDX.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html)
+
+* 
+[VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)
+
 [VK_EXT_pipeline_creation_feedback](VK_EXT_pipeline_creation_feedback.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html), [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), [VkPipelineCreationFeedback](VkPipelineCreationFeedback.html), [VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html), [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineCreationFeedbackCreateInfo).

@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -12667,7 +12673,7 @@ presentation to a UBM compositor, call:</p>
 VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
     VkPhysicalDevice                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
-    struct ubm_device*                          ubm_device);</code></pre>
+    struct ubm_device*                          device);</code></pre>
 </div>
 </div>
 </div>
@@ -12684,8 +12690,8 @@ VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(
 <p><code>queueFamilyIndex</code> is the queue family index.</p>
 </li>
 <li>
-<p><code>ubm_device</code> is a pointer to the <code>ubm_device</code> associated with a
-UBM compositor.</p>
+<p><code>device</code> is a pointer to the <code>ubm_device</code> associated with a UBM
+compositor.</p>
 </li>
 </ul>
 </div>
@@ -12703,9 +12709,9 @@ UBM compositor.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-12368</span><br>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-12368</span><br>
 
-<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+<code>device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-queueFamilyIndex-12369</span><br>
@@ -12729,8 +12735,8 @@ UBM compositor.</p>
  <code>physicalDevice</code> <strong>must</strong> be a valid <a href="VkPhysicalDevice.html" class="xref page">VkPhysicalDevice</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-ubm_device-parameter</span><br>
- <code>ubm_device</code> <strong>must</strong> be a valid pointer to a <code>ubm_device</code> value</p>
+<p><a id="VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter" href="#VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter"></a> <span class="vuid">VUID-vkGetPhysicalDeviceUbmPresentationSupportSEC-device-parameter</span><br>
+ <code>device</code> <strong>must</strong> be a valid pointer to a <code>ubm_device</code> value</p>
 </li>
 </ul>
 </div>

@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -12761,7 +12767,9 @@ timestamps on a regular basis.</p>
 <p><a id="VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246" href="#VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246"></a> <span class="vuid">VUID-vkGetCalibratedTimestampsKHR-timeDomain-09246</span><br>
 
 The <code>timeDomain</code> value of each <a href="VkCalibratedTimestampInfoKHR.html" class="xref page">VkCalibratedTimestampInfoKHR</a> in
-<code>pTimestampInfos</code> <strong>must</strong> be unique</p>
+<code>pTimestampInfos</code> <strong>must</strong> be unique
+except for those with a value of
+<a href="VkTimeDomainKHR.html" class="xref page">VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT</a></p>
 </li>
 </ul>
 </div>

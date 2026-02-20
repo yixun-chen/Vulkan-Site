@@ -136,6 +136,13 @@ Valid Usage (Implicit)
 
  `format` **must** be a valid [VkCompressedTriangleFormatAMDX](VkCompressedTriangleFormatAMDX.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryKHR](VkAccelerationStructureGeometryKHR.html)
+
 [VK_AMDX_dense_geometry_format](VK_AMDX_dense_geometry_format.html), [VkCompressedTriangleFormatAMDX](VkCompressedTriangleFormatAMDX.html), [VkDeviceOrHostAddressConstKHR](VkDeviceOrHostAddressConstKHR.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX).

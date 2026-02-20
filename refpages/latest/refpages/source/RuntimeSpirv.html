@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -12884,6 +12890,13 @@ If the <a href="../../../../spec/latest/chapters/interfaces.html#interfaces-buil
 is not declared, and an instruction accesses memory through a storage
 texel buffer, the storage texel buffer through which that memory is
 accessed <strong>must</strong> be dynamically uniform within the invocation group</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-None-04745" href="#VUID-RuntimeSpirv-None-04745"></a> <span class="vuid">VUID-RuntimeSpirv-None-04745</span><br>
+
+All block members in a variable with a <code>Storage</code> <code>Class</code> of
+<code>PushConstant</code> declared as an array <strong>must</strong> only be accessed by
+dynamically uniform indices</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-None-10148" href="#VUID-RuntimeSpirv-None-10148"></a> <span class="vuid">VUID-RuntimeSpirv-None-10148</span><br>
@@ -15800,7 +15813,7 @@ Any pointer type whose <code>Type</code> parameter is a vector type with more
 than four components (or an aggregate containing such a type) <strong>must</strong> have
 <code>Storage</code> <code>Class</code> of <code>Function</code>, <code>Private</code>, <code>Uniform</code>,
 <code>Workgroup</code>, <code>StorageBuffer</code>, <code>PhysicalStorageBuffer</code>,
-<code>PushConstant</code>, or <code>ShaderRecordBufferKHR</code>.</p>
+<code>PushConstant</code>, or <code>ShaderRecordBufferKHR</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-samplerDescriptorAlignment-11348" href="#VUID-RuntimeSpirv-samplerDescriptorAlignment-11348"></a> <span class="vuid">VUID-RuntimeSpirv-samplerDescriptorAlignment-11348</span><br>

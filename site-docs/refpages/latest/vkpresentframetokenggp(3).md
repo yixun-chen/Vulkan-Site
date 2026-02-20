@@ -57,6 +57,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](VkPresentInfoKHR.html)
+
 [VK_GGP_frame_token](VK_GGP_frame_token.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkPresentFrameTokenGGP).

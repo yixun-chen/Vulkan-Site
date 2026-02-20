@@ -586,6 +586,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceVulkan12Properties` structure is defined as:
 
 // Provided by VK_VERSION_1_2
@@ -1092,6 +1099,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceVulkan13Properties` structure is defined as:
 
 // Provided by VK_VERSION_1_3
@@ -1481,6 +1495,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceVulkan14Properties` structure is defined as:
 
 // Provided by VK_VERSION_1_4
@@ -1673,6 +1694,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceIDProperties` structure is defined as:
 
 // Provided by VK_VERSION_1_1
@@ -1818,6 +1846,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 [VK_UUID_SIZE](#VK_UUID_SIZE) is the length in `uint8_t` values of an array
 containing a universally unique device or driver build identifier, as
 returned in [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties)::`deviceUUID` and
@@ -1891,6 +1926,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDriverProperties-sType-sType) VUID-VkPhysicalDeviceDriverProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
 
 Khronos driver IDs which **may** be returned in
 [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties)::`driverID` are:
@@ -2055,6 +2097,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceDrmPropertiesEXT` structure is defined as:
 
 // Provided by VK_EXT_physical_device_drm
@@ -2109,6 +2158,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderIntegerDotProductProperties` structure is
 defined as:
@@ -2384,6 +2440,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceImageProcessingPropertiesQCOM` structure is defined
 as:
 
@@ -2443,6 +2506,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceShaderTileImagePropertiesEXT` structure is defined
 as:
 
@@ -2491,6 +2561,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceImageProcessing2PropertiesQCOM` structure is
 defined as:
 
@@ -2528,6 +2605,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceLayeredDriverPropertiesMSFT` structure is defined
 as:
 
@@ -2560,6 +2644,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType) VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
 
 Underlying APIs which **may** be returned in
 [VkPhysicalDeviceLayeredDriverPropertiesMSFT](#VkPhysicalDeviceLayeredDriverPropertiesMSFT)::`underlyingAPI` are:
@@ -2596,6 +2687,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType) VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2)
 
 Bits which **can** be set in
 [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM)::`schedulingControlsFlags`,
@@ -3027,6 +3125,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
+
 [VK_MAX_GLOBAL_PRIORITY_SIZE](#VK_MAX_GLOBAL_PRIORITY_SIZE) is the length of an array of
 [VkQueueGlobalPriority](#VkQueueGlobalPriority) enumerants representing supported queue
 priorities, as returned in
@@ -3069,6 +3174,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
+
 The [VkQueueFamilyCheckpointPropertiesNV](#VkQueueFamilyCheckpointPropertiesNV) structure is defined as:
 
 // Provided by VK_NV_device_diagnostic_checkpoints
@@ -3099,6 +3211,13 @@ Valid Usage (Implicit)
 [](#VUID-VkQueueFamilyCheckpointPropertiesNV-sType-sType) VUID-VkQueueFamilyCheckpointPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
 
 The [VkQueueFamilyVideoPropertiesKHR](#VkQueueFamilyVideoPropertiesKHR) structure is defined as:
 
@@ -3133,6 +3252,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
+
 The [VkQueueFamilyQueryResultStatusPropertiesKHR](#VkQueueFamilyQueryResultStatusPropertiesKHR) structure is defined
 as:
 
@@ -3166,6 +3292,13 @@ Valid Usage (Implicit)
 [](#VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType) VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
 
 To enumerate the performance query counters available on a queue family of a
 physical device, call:
@@ -3559,6 +3692,13 @@ Valid Usage (Implicit)
 [](#VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType) VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueueFamilyProperties2](#VkQueueFamilyProperties2)
 
 To enumerate the by region performance counters available on a queue family
 of a physical device, call:
@@ -4042,9 +4182,9 @@ typedef struct VkDeviceCreateInfo {
     VkDeviceCreateFlags                flags;
     uint32_t                           queueCreateInfoCount;
     const VkDeviceQueueCreateInfo*     pQueueCreateInfos;
-    // enabledLayerCount is legacy and should not be used
+    // enabledLayerCount is legacy and ignored
     uint32_t                           enabledLayerCount;
-    // ppEnabledLayerNames is legacy and should not be used
+    // ppEnabledLayerNames is legacy and ignored
     const char* const*                 ppEnabledLayerNames;
     uint32_t                           enabledExtensionCount;
     const char* const*                 ppEnabledExtensionNames;
@@ -4432,7 +4572,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceCreateInfo-pNext-pNext) VUID-VkDeviceCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDeviceDeviceMemoryReportCreateInfoEXT](#VkDeviceDeviceMemoryReportCreateInfoEXT), [VkDeviceDiagnosticsConfigCreateInfoNV](#VkDeviceDiagnosticsConfigCreateInfoNV), [VkDeviceGroupDeviceCreateInfo](#VkDeviceGroupDeviceCreateInfo), [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD), [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR), [VkDevicePrivateDataCreateInfo](#VkDevicePrivateDataCreateInfo), [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM), [VkExternalComputeQueueDeviceCreateInfoNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkExternalComputeQueueDeviceCreateInfoNV), [VkPhysicalDevice16BitStorageFeatures](features.html#VkPhysicalDevice16BitStorageFeatures), [VkPhysicalDevice4444FormatsFeaturesEXT](features.html#VkPhysicalDevice4444FormatsFeaturesEXT), [VkPhysicalDevice8BitStorageFeatures](features.html#VkPhysicalDevice8BitStorageFeatures), [VkPhysicalDeviceASTCDecodeFeaturesEXT](features.html#VkPhysicalDeviceASTCDecodeFeaturesEXT), [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR), [VkPhysicalDeviceAddressBindingReportFeaturesEXT](features.html#VkPhysicalDeviceAddressBindingReportFeaturesEXT), [VkPhysicalDeviceAmigoProfilingFeaturesSEC](../appendices/extensions.html#VkPhysicalDeviceAmigoProfilingFeaturesSEC), [VkPhysicalDeviceAntiLagFeaturesAMD](features.html#VkPhysicalDeviceAntiLagFeaturesAMD), [VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT), [VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT), [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](features.html#VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT), [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT), [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures), [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT), [VkPhysicalDeviceClusterAccelerationStructureFeaturesNV](features.html#VkPhysicalDeviceClusterAccelerationStructureFeaturesNV), [VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI](features.html#VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI), [VkPhysicalDeviceCoherentMemoryFeaturesAMD](features.html#VkPhysicalDeviceCoherentMemoryFeaturesAMD), [VkPhysicalDeviceColorWriteEnableFeaturesEXT](features.html#VkPhysicalDeviceColorWriteEnableFeaturesEXT), [VkPhysicalDeviceCommandBufferInheritanceFeaturesNV](features.html#VkPhysicalDeviceCommandBufferInheritanceFeaturesNV), [VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV](features.html#VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV), [VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR](features.html#VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR), [VkPhysicalDeviceConditionalRenderingFeaturesEXT](features.html#VkPhysicalDeviceConditionalRenderingFeaturesEXT), [VkPhysicalDeviceCooperativeMatrix2FeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrix2FeaturesNV), [VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM](features.html#VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM), [VkPhysicalDeviceCooperativeMatrixFeaturesKHR](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesKHR), [VkPhysicalDeviceCooperativeMatrixFeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesNV), [VkPhysicalDeviceCooperativeVectorFeaturesNV](features.html#VkPhysicalDeviceCooperativeVectorFeaturesNV), [VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR), [VkPhysicalDeviceCopyMemoryIndirectFeaturesNV](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesNV), [VkPhysicalDeviceCornerSampledImageFeaturesNV](features.html#VkPhysicalDeviceCornerSampledImageFeaturesNV), [VkPhysicalDeviceCoverageReductionModeFeaturesNV](features.html#VkPhysicalDeviceCoverageReductionModeFeaturesNV), [VkPhysicalDeviceCubicClampFeaturesQCOM](features.html#VkPhysicalDeviceCubicClampFeaturesQCOM), [VkPhysicalDeviceCubicWeightsFeaturesQCOM](features.html#VkPhysicalDeviceCubicWeightsFeaturesQCOM), [VkPhysicalDeviceCudaKernelLaunchFeaturesNV](features.html#VkPhysicalDeviceCudaKernelLaunchFeaturesNV), [VkPhysicalDeviceCustomBorderColorFeaturesEXT](features.html#VkPhysicalDeviceCustomBorderColorFeaturesEXT), [VkPhysicalDeviceCustomResolveFeaturesEXT](features.html#VkPhysicalDeviceCustomResolveFeaturesEXT), [VkPhysicalDeviceDataGraphFeaturesARM](features.html#VkPhysicalDeviceDataGraphFeaturesARM), [VkPhysicalDeviceDataGraphModelFeaturesQCOM](features.html#VkPhysicalDeviceDataGraphModelFeaturesQCOM), [VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV](features.html#VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV), [VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX](features.html#VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX), [VkPhysicalDeviceDepthBiasControlFeaturesEXT](features.html#VkPhysicalDeviceDepthBiasControlFeaturesEXT), [VkPhysicalDeviceDepthClampControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClampControlFeaturesEXT), [VkPhysicalDeviceDepthClampZeroOneFeaturesKHR](features.html#VkPhysicalDeviceDepthClampZeroOneFeaturesKHR), [VkPhysicalDeviceDepthClipControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClipControlFeaturesEXT), [VkPhysicalDeviceDepthClipEnableFeaturesEXT](features.html#VkPhysicalDeviceDepthClipEnableFeaturesEXT), [VkPhysicalDeviceDescriptorBufferFeaturesEXT](features.html#VkPhysicalDeviceDescriptorBufferFeaturesEXT), [VkPhysicalDeviceDescriptorBufferTensorFeaturesARM](features.html#VkPhysicalDeviceDescriptorBufferTensorFeaturesARM), [VkPhysicalDeviceDescriptorHeapFeaturesEXT](features.html#VkPhysicalDeviceDescriptorHeapFeaturesEXT), [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures), [VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV](features.html#VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV), [VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE](../appendices/extensions.html#VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE), [VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV), [VkPhysicalDeviceDeviceMemoryReportFeaturesEXT](features.html#VkPhysicalDeviceDeviceMemoryReportFeaturesEXT), [VkPhysicalDeviceDiagnosticsConfigFeaturesNV](features.html#VkPhysicalDeviceDiagnosticsConfigFeaturesNV), [VkPhysicalDeviceDisplacementMicromapFeaturesNV](features.html#VkPhysicalDeviceDisplacementMicromapFeaturesNV), [VkPhysicalDeviceDynamicRenderingFeatures](features.html#VkPhysicalDeviceDynamicRenderingFeatures), [VkPhysicalDeviceDynamicRenderingLocalReadFeatures](features.html#VkPhysicalDeviceDynamicRenderingLocalReadFeatures), [VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT](features.html#VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT), [VkPhysicalDeviceExclusiveScissorFeaturesNV](features.html#VkPhysicalDeviceExclusiveScissorFeaturesNV), [VkPhysicalDeviceExtendedDynamicState2FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState2FeaturesEXT), [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState3FeaturesEXT), [VkPhysicalDeviceExtendedDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicStateFeaturesEXT), [VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV](features.html#VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV), [VkPhysicalDeviceExternalFormatResolveFeaturesANDROID](features.html#VkPhysicalDeviceExternalFormatResolveFeaturesANDROID), [VkPhysicalDeviceExternalMemoryRDMAFeaturesNV](features.html#VkPhysicalDeviceExternalMemoryRDMAFeaturesNV), [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](features.html#VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX), [VkPhysicalDeviceFaultFeaturesEXT](features.html#VkPhysicalDeviceFaultFeaturesEXT), [VkPhysicalDeviceFeatures2](features.html#VkPhysicalDeviceFeatures2), [VkPhysicalDeviceFormatPackFeaturesARM](features.html#VkPhysicalDeviceFormatPackFeaturesARM), [VkPhysicalDeviceFragmentDensityMap2FeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMap2FeaturesEXT), [VkPhysicalDeviceFragmentDensityMapFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapFeaturesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE](features.html#VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT), [VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR](features.html#VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR), [VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT](features.html#VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT), [VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV](features.html#VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV), [VkPhysicalDeviceFragmentShadingRateFeaturesKHR](features.html#VkPhysicalDeviceFragmentShadingRateFeaturesKHR), [VkPhysicalDeviceFrameBoundaryFeaturesEXT](features.html#VkPhysicalDeviceFrameBoundaryFeaturesEXT), [VkPhysicalDeviceGlobalPriorityQueryFeatures](features.html#VkPhysicalDeviceGlobalPriorityQueryFeatures), [VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT](features.html#VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT), [VkPhysicalDeviceHdrVividFeaturesHUAWEI](features.html#VkPhysicalDeviceHdrVividFeaturesHUAWEI), [VkPhysicalDeviceHostImageCopyFeatures](features.html#VkPhysicalDeviceHostImageCopyFeatures), [VkPhysicalDeviceHostQueryResetFeatures](features.html#VkPhysicalDeviceHostQueryResetFeatures), [VkPhysicalDeviceImage2DViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImage2DViewOf3DFeaturesEXT), [VkPhysicalDeviceImageAlignmentControlFeaturesMESA](features.html#VkPhysicalDeviceImageAlignmentControlFeaturesMESA), [VkPhysicalDeviceImageCompressionControlFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlFeaturesEXT), [VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT), [VkPhysicalDeviceImageProcessing2FeaturesQCOM](features.html#VkPhysicalDeviceImageProcessing2FeaturesQCOM), [VkPhysicalDeviceImageProcessingFeaturesQCOM](features.html#VkPhysicalDeviceImageProcessingFeaturesQCOM), [VkPhysicalDeviceImageRobustnessFeatures](features.html#VkPhysicalDeviceImageRobustnessFeatures), [VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT), [VkPhysicalDeviceImageViewMinLodFeaturesEXT](features.html#VkPhysicalDeviceImageViewMinLodFeaturesEXT), [VkPhysicalDeviceImagelessFramebufferFeatures](features.html#VkPhysicalDeviceImagelessFramebufferFeatures), [VkPhysicalDeviceIndexTypeUint8Features](features.html#VkPhysicalDeviceIndexTypeUint8Features), [VkPhysicalDeviceInheritedViewportScissorFeaturesNV](features.html#VkPhysicalDeviceInheritedViewportScissorFeaturesNV), [VkPhysicalDeviceInlineUniformBlockFeatures](features.html#VkPhysicalDeviceInlineUniformBlockFeatures), [VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR](features.html#VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR), [VkPhysicalDeviceInvocationMaskFeaturesHUAWEI](features.html#VkPhysicalDeviceInvocationMaskFeaturesHUAWEI), [VkPhysicalDeviceLegacyDitheringFeaturesEXT](features.html#VkPhysicalDeviceLegacyDitheringFeaturesEXT), [VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT](features.html#VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT), [VkPhysicalDeviceLineRasterizationFeatures](features.html#VkPhysicalDeviceLineRasterizationFeatures), [VkPhysicalDeviceLinearColorAttachmentFeaturesNV](features.html#VkPhysicalDeviceLinearColorAttachmentFeaturesNV), [VkPhysicalDeviceMaintenance10FeaturesKHR](features.html#VkPhysicalDeviceMaintenance10FeaturesKHR), [VkPhysicalDeviceMaintenance4Features](features.html#VkPhysicalDeviceMaintenance4Features), [VkPhysicalDeviceMaintenance5Features](features.html#VkPhysicalDeviceMaintenance5Features), [VkPhysicalDeviceMaintenance6Features](features.html#VkPhysicalDeviceMaintenance6Features), [VkPhysicalDeviceMaintenance7FeaturesKHR](features.html#VkPhysicalDeviceMaintenance7FeaturesKHR), [VkPhysicalDeviceMaintenance8FeaturesKHR](features.html#VkPhysicalDeviceMaintenance8FeaturesKHR), [VkPhysicalDeviceMaintenance9FeaturesKHR](features.html#VkPhysicalDeviceMaintenance9FeaturesKHR), [VkPhysicalDeviceMapMemoryPlacedFeaturesEXT](features.html#VkPhysicalDeviceMapMemoryPlacedFeaturesEXT), [VkPhysicalDeviceMemoryDecompressionFeaturesEXT](features.html#VkPhysicalDeviceMemoryDecompressionFeaturesEXT), [VkPhysicalDeviceMemoryPriorityFeaturesEXT](features.html#VkPhysicalDeviceMemoryPriorityFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesEXT](features.html#VkPhysicalDeviceMeshShaderFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesNV](features.html#VkPhysicalDeviceMeshShaderFeaturesNV), [VkPhysicalDeviceMultiDrawFeaturesEXT](features.html#VkPhysicalDeviceMultiDrawFeaturesEXT), [VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT](features.html#VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT), [VkPhysicalDeviceMultiviewFeatures](features.html#VkPhysicalDeviceMultiviewFeatures), [VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM), [VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM), [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT), [VkPhysicalDeviceNestedCommandBufferFeaturesEXT](features.html#VkPhysicalDeviceNestedCommandBufferFeaturesEXT), [VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT](features.html#VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT), [VkPhysicalDeviceOpacityMicromapFeaturesEXT](features.html#VkPhysicalDeviceOpacityMicromapFeaturesEXT), [VkPhysicalDeviceOpticalFlowFeaturesNV](features.html#VkPhysicalDeviceOpticalFlowFeaturesNV), [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](features.html#VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT), [VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV](features.html#VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV), [VkPhysicalDevicePerStageDescriptorSetFeaturesNV](features.html#VkPhysicalDevicePerStageDescriptorSetFeaturesNV), [VkPhysicalDevicePerformanceCountersByRegionFeaturesARM](features.html#VkPhysicalDevicePerformanceCountersByRegionFeaturesARM), [VkPhysicalDevicePerformanceQueryFeaturesKHR](features.html#VkPhysicalDevicePerformanceQueryFeaturesKHR), [VkPhysicalDevicePipelineBinaryFeaturesKHR](features.html#VkPhysicalDevicePipelineBinaryFeaturesKHR), [VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC](../appendices/extensions.html#VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC), [VkPhysicalDevicePipelineCreationCacheControlFeatures](features.html#VkPhysicalDevicePipelineCreationCacheControlFeatures), [VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR](features.html#VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR), [VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT](features.html#VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT), [VkPhysicalDevicePipelineOpacityMicromapFeaturesARM](features.html#VkPhysicalDevicePipelineOpacityMicromapFeaturesARM), [VkPhysicalDevicePipelinePropertiesFeaturesEXT](features.html#VkPhysicalDevicePipelinePropertiesFeaturesEXT), [VkPhysicalDevicePipelineProtectedAccessFeatures](features.html#VkPhysicalDevicePipelineProtectedAccessFeatures), [VkPhysicalDevicePipelineRobustnessFeatures](features.html#VkPhysicalDevicePipelineRobustnessFeatures), [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR), [VkPhysicalDevicePresentBarrierFeaturesNV](features.html#VkPhysicalDevicePresentBarrierFeaturesNV), [VkPhysicalDevicePresentId2FeaturesKHR](features.html#VkPhysicalDevicePresentId2FeaturesKHR), [VkPhysicalDevicePresentIdFeaturesKHR](features.html#VkPhysicalDevicePresentIdFeaturesKHR), [VkPhysicalDevicePresentMeteringFeaturesNV](features.html#VkPhysicalDevicePresentMeteringFeaturesNV), [VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR](features.html#VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR), [VkPhysicalDevicePresentTimingFeaturesEXT](features.html#VkPhysicalDevicePresentTimingFeaturesEXT), [VkPhysicalDevicePresentWait2FeaturesKHR](features.html#VkPhysicalDevicePresentWait2FeaturesKHR), [VkPhysicalDevicePresentWaitFeaturesKHR](features.html#VkPhysicalDevicePresentWaitFeaturesKHR), [VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT](features.html#VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT), [VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT](features.html#VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT), [VkPhysicalDevicePrivateDataFeatures](features.html#VkPhysicalDevicePrivateDataFeatures), [VkPhysicalDeviceProtectedMemoryFeatures](features.html#VkPhysicalDeviceProtectedMemoryFeatures), [VkPhysicalDeviceProvokingVertexFeaturesEXT](features.html#VkPhysicalDeviceProvokingVertexFeaturesEXT), [VkPhysicalDevicePushConstantBankFeaturesNV](features.html#VkPhysicalDevicePushConstantBankFeaturesNV), [VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT](features.html#VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT), [VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT](features.html#VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT), [VkPhysicalDeviceRawAccessChainsFeaturesNV](features.html#VkPhysicalDeviceRawAccessChainsFeaturesNV), [VkPhysicalDeviceRayQueryFeaturesKHR](features.html#VkPhysicalDeviceRayQueryFeaturesKHR), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV), [VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV](features.html#VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV), [VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR), [VkPhysicalDeviceRayTracingMotionBlurFeaturesNV](features.html#VkPhysicalDeviceRayTracingMotionBlurFeaturesNV), [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR), [VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR), [VkPhysicalDeviceRayTracingValidationFeaturesNV](features.html#VkPhysicalDeviceRayTracingValidationFeaturesNV), [VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG](features.html#VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG), [VkPhysicalDeviceRenderPassStripedFeaturesARM](features.html#VkPhysicalDeviceRenderPassStripedFeaturesARM), [VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV](features.html#VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV), [VkPhysicalDeviceRobustness2FeaturesKHR](features.html#VkPhysicalDeviceRobustness2FeaturesKHR), [VkPhysicalDeviceSamplerYcbcrConversionFeatures](features.html#VkPhysicalDeviceSamplerYcbcrConversionFeatures), [VkPhysicalDeviceScalarBlockLayoutFeatures](features.html#VkPhysicalDeviceScalarBlockLayoutFeatures), [VkPhysicalDeviceSchedulingControlsFeaturesARM](features.html#VkPhysicalDeviceSchedulingControlsFeaturesARM), [VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures](features.html#VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures), [VkPhysicalDeviceShader64BitIndexingFeaturesEXT](features.html#VkPhysicalDeviceShader64BitIndexingFeaturesEXT), [VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV](features.html#VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV), [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT), [VkPhysicalDeviceShaderAtomicFloatFeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT), [VkPhysicalDeviceShaderAtomicInt64Features](features.html#VkPhysicalDeviceShaderAtomicInt64Features), [VkPhysicalDeviceShaderBfloat16FeaturesKHR](features.html#VkPhysicalDeviceShaderBfloat16FeaturesKHR), [VkPhysicalDeviceShaderClockFeaturesKHR](features.html#VkPhysicalDeviceShaderClockFeaturesKHR), [VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM](features.html#VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM), [VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures](features.html#VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures), [VkPhysicalDeviceShaderDrawParametersFeatures](features.html#VkPhysicalDeviceShaderDrawParametersFeatures), [VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD](features.html#VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD), [VkPhysicalDeviceShaderEnqueueFeaturesAMDX](features.html#VkPhysicalDeviceShaderEnqueueFeaturesAMDX), [VkPhysicalDeviceShaderExpectAssumeFeatures](features.html#VkPhysicalDeviceShaderExpectAssumeFeatures), [VkPhysicalDeviceShaderFloat16Int8Features](features.html#VkPhysicalDeviceShaderFloat16Int8Features), [VkPhysicalDeviceShaderFloat8FeaturesEXT](features.html#VkPhysicalDeviceShaderFloat8FeaturesEXT), [VkPhysicalDeviceShaderFloatControls2Features](features.html#VkPhysicalDeviceShaderFloatControls2Features), [VkPhysicalDeviceShaderFmaFeaturesKHR](features.html#VkPhysicalDeviceShaderFmaFeaturesKHR), [VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT](features.html#VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT), [VkPhysicalDeviceShaderImageFootprintFeaturesNV](features.html#VkPhysicalDeviceShaderImageFootprintFeaturesNV), [VkPhysicalDeviceShaderIntegerDotProductFeatures](features.html#VkPhysicalDeviceShaderIntegerDotProductFeatures), [VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL](features.html#VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL), [VkPhysicalDeviceShaderLongVectorFeaturesEXT](features.html#VkPhysicalDeviceShaderLongVectorFeaturesEXT), [VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR](features.html#VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR), [VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT](features.html#VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT), [VkPhysicalDeviceShaderObjectFeaturesEXT](features.html#VkPhysicalDeviceShaderObjectFeaturesEXT), [VkPhysicalDeviceShaderQuadControlFeaturesKHR](features.html#VkPhysicalDeviceShaderQuadControlFeaturesKHR), [VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR](features.html#VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR), [VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT](features.html#VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT), [VkPhysicalDeviceShaderSMBuiltinsFeaturesNV](features.html#VkPhysicalDeviceShaderSMBuiltinsFeaturesNV), [VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures](features.html#VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures), [VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT](features.html#VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT), [VkPhysicalDeviceShaderSubgroupRotateFeatures](features.html#VkPhysicalDeviceShaderSubgroupRotateFeatures), [VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR](features.html#VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR), [VkPhysicalDeviceShaderTerminateInvocationFeatures](features.html#VkPhysicalDeviceShaderTerminateInvocationFeatures), [VkPhysicalDeviceShaderTileImageFeaturesEXT](features.html#VkPhysicalDeviceShaderTileImageFeaturesEXT), [VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT](features.html#VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT), [VkPhysicalDeviceShaderUntypedPointersFeaturesKHR](features.html#VkPhysicalDeviceShaderUntypedPointersFeaturesKHR), [VkPhysicalDeviceShadingRateImageFeaturesNV](features.html#VkPhysicalDeviceShadingRateImageFeaturesNV), [VkPhysicalDeviceSubgroupSizeControlFeatures](features.html#VkPhysicalDeviceSubgroupSizeControlFeatures), [VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT](features.html#VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT), [VkPhysicalDeviceSubpassShadingFeaturesHUAWEI](features.html#VkPhysicalDeviceSubpassShadingFeaturesHUAWEI), [VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR), [VkPhysicalDeviceSynchronization2Features](features.html#VkPhysicalDeviceSynchronization2Features), [VkPhysicalDeviceTensorFeaturesARM](features.html#VkPhysicalDeviceTensorFeaturesARM), [VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT](features.html#VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT](features.html#VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTCHDRFeatures](features.html#VkPhysicalDeviceTextureCompressionASTCHDRFeatures), [VkPhysicalDeviceTileMemoryHeapFeaturesQCOM](features.html#VkPhysicalDeviceTileMemoryHeapFeaturesQCOM), [VkPhysicalDeviceTilePropertiesFeaturesQCOM](features.html#VkPhysicalDeviceTilePropertiesFeaturesQCOM), [VkPhysicalDeviceTileShadingFeaturesQCOM](features.html#VkPhysicalDeviceTileShadingFeaturesQCOM), [VkPhysicalDeviceTimelineSemaphoreFeatures](features.html#VkPhysicalDeviceTimelineSemaphoreFeatures), [VkPhysicalDeviceTransformFeedbackFeaturesEXT](features.html#VkPhysicalDeviceTransformFeedbackFeaturesEXT), [VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR](features.html#VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR), [VkPhysicalDeviceUniformBufferStandardLayoutFeatures](features.html#VkPhysicalDeviceUniformBufferStandardLayoutFeatures), [VkPhysicalDeviceVariablePointersFeatures](features.html#VkPhysicalDeviceVariablePointersFeatures), [VkPhysicalDeviceVertexAttributeDivisorFeatures](features.html#VkPhysicalDeviceVertexAttributeDivisorFeatures), [VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT](features.html#VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT), [VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT), [VkPhysicalDeviceVideoDecodeVP9FeaturesKHR](features.html#VkPhysicalDeviceVideoDecodeVP9FeaturesKHR), [VkPhysicalDeviceVideoEncodeAV1FeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeAV1FeaturesKHR), [VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR), [VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR), [VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE](features.html#VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE), [VkPhysicalDeviceVideoMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance1FeaturesKHR), [VkPhysicalDeviceVideoMaintenance2FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance2FeaturesKHR), [VkPhysicalDeviceVulkan11Features](features.html#VkPhysicalDeviceVulkan11Features), [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features), [VkPhysicalDeviceVulkan13Features](features.html#VkPhysicalDeviceVulkan13Features), [VkPhysicalDeviceVulkan14Features](features.html#VkPhysicalDeviceVulkan14Features), [VkPhysicalDeviceVulkanMemoryModelFeatures](features.html#VkPhysicalDeviceVulkanMemoryModelFeatures), [VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR](features.html#VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR), [VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT](features.html#VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT), [VkPhysicalDeviceYcbcrDegammaFeaturesQCOM](features.html#VkPhysicalDeviceYcbcrDegammaFeaturesQCOM), [VkPhysicalDeviceYcbcrImageArraysFeaturesEXT](features.html#VkPhysicalDeviceYcbcrImageArraysFeaturesEXT), [VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT](features.html#VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT), or [VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures](features.html#VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDeviceDeviceMemoryReportCreateInfoEXT](#VkDeviceDeviceMemoryReportCreateInfoEXT), [VkDeviceDiagnosticsConfigCreateInfoNV](#VkDeviceDiagnosticsConfigCreateInfoNV), [VkDeviceGroupDeviceCreateInfo](#VkDeviceGroupDeviceCreateInfo), [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD), [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR), [VkDevicePrivateDataCreateInfo](#VkDevicePrivateDataCreateInfo), [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM), [VkExternalComputeQueueDeviceCreateInfoNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkExternalComputeQueueDeviceCreateInfoNV), [VkPhysicalDevice16BitStorageFeatures](features.html#VkPhysicalDevice16BitStorageFeatures), [VkPhysicalDevice4444FormatsFeaturesEXT](features.html#VkPhysicalDevice4444FormatsFeaturesEXT), [VkPhysicalDevice8BitStorageFeatures](features.html#VkPhysicalDevice8BitStorageFeatures), [VkPhysicalDeviceASTCDecodeFeaturesEXT](features.html#VkPhysicalDeviceASTCDecodeFeaturesEXT), [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR), [VkPhysicalDeviceAddressBindingReportFeaturesEXT](features.html#VkPhysicalDeviceAddressBindingReportFeaturesEXT), [VkPhysicalDeviceAmigoProfilingFeaturesSEC](../appendices/extensions.html#VkPhysicalDeviceAmigoProfilingFeaturesSEC), [VkPhysicalDeviceAntiLagFeaturesAMD](features.html#VkPhysicalDeviceAntiLagFeaturesAMD), [VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT), [VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT), [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](features.html#VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT), [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT), [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures), [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT), [VkPhysicalDeviceClusterAccelerationStructureFeaturesNV](features.html#VkPhysicalDeviceClusterAccelerationStructureFeaturesNV), [VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI](features.html#VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI), [VkPhysicalDeviceCoherentMemoryFeaturesAMD](features.html#VkPhysicalDeviceCoherentMemoryFeaturesAMD), [VkPhysicalDeviceColorWriteEnableFeaturesEXT](features.html#VkPhysicalDeviceColorWriteEnableFeaturesEXT), [VkPhysicalDeviceCommandBufferInheritanceFeaturesNV](features.html#VkPhysicalDeviceCommandBufferInheritanceFeaturesNV), [VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV](features.html#VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV), [VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR](features.html#VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR), [VkPhysicalDeviceConditionalRenderingFeaturesEXT](features.html#VkPhysicalDeviceConditionalRenderingFeaturesEXT), [VkPhysicalDeviceCooperativeMatrix2FeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrix2FeaturesNV), [VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM](features.html#VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM), [VkPhysicalDeviceCooperativeMatrixFeaturesKHR](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesKHR), [VkPhysicalDeviceCooperativeMatrixFeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesNV), [VkPhysicalDeviceCooperativeVectorFeaturesNV](features.html#VkPhysicalDeviceCooperativeVectorFeaturesNV), [VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR), [VkPhysicalDeviceCopyMemoryIndirectFeaturesNV](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesNV), [VkPhysicalDeviceCornerSampledImageFeaturesNV](features.html#VkPhysicalDeviceCornerSampledImageFeaturesNV), [VkPhysicalDeviceCoverageReductionModeFeaturesNV](features.html#VkPhysicalDeviceCoverageReductionModeFeaturesNV), [VkPhysicalDeviceCubicClampFeaturesQCOM](features.html#VkPhysicalDeviceCubicClampFeaturesQCOM), [VkPhysicalDeviceCubicWeightsFeaturesQCOM](features.html#VkPhysicalDeviceCubicWeightsFeaturesQCOM), [VkPhysicalDeviceCudaKernelLaunchFeaturesNV](features.html#VkPhysicalDeviceCudaKernelLaunchFeaturesNV), [VkPhysicalDeviceCustomBorderColorFeaturesEXT](features.html#VkPhysicalDeviceCustomBorderColorFeaturesEXT), [VkPhysicalDeviceCustomResolveFeaturesEXT](features.html#VkPhysicalDeviceCustomResolveFeaturesEXT), [VkPhysicalDeviceDataGraphFeaturesARM](features.html#VkPhysicalDeviceDataGraphFeaturesARM), [VkPhysicalDeviceDataGraphModelFeaturesQCOM](features.html#VkPhysicalDeviceDataGraphModelFeaturesQCOM), [VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV](features.html#VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV), [VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX](features.html#VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX), [VkPhysicalDeviceDepthBiasControlFeaturesEXT](features.html#VkPhysicalDeviceDepthBiasControlFeaturesEXT), [VkPhysicalDeviceDepthClampControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClampControlFeaturesEXT), [VkPhysicalDeviceDepthClampZeroOneFeaturesKHR](features.html#VkPhysicalDeviceDepthClampZeroOneFeaturesKHR), [VkPhysicalDeviceDepthClipControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClipControlFeaturesEXT), [VkPhysicalDeviceDepthClipEnableFeaturesEXT](features.html#VkPhysicalDeviceDepthClipEnableFeaturesEXT), [VkPhysicalDeviceDescriptorBufferFeaturesEXT](features.html#VkPhysicalDeviceDescriptorBufferFeaturesEXT), [VkPhysicalDeviceDescriptorBufferTensorFeaturesARM](features.html#VkPhysicalDeviceDescriptorBufferTensorFeaturesARM), [VkPhysicalDeviceDescriptorHeapFeaturesEXT](features.html#VkPhysicalDeviceDescriptorHeapFeaturesEXT), [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures), [VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV](features.html#VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV), [VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE](../appendices/extensions.html#VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE), [VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV), [VkPhysicalDeviceDeviceMemoryReportFeaturesEXT](features.html#VkPhysicalDeviceDeviceMemoryReportFeaturesEXT), [VkPhysicalDeviceDiagnosticsConfigFeaturesNV](features.html#VkPhysicalDeviceDiagnosticsConfigFeaturesNV), [VkPhysicalDeviceDisplacementMicromapFeaturesNV](features.html#VkPhysicalDeviceDisplacementMicromapFeaturesNV), [VkPhysicalDeviceDynamicRenderingFeatures](features.html#VkPhysicalDeviceDynamicRenderingFeatures), [VkPhysicalDeviceDynamicRenderingLocalReadFeatures](features.html#VkPhysicalDeviceDynamicRenderingLocalReadFeatures), [VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT](features.html#VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT), [VkPhysicalDeviceExclusiveScissorFeaturesNV](features.html#VkPhysicalDeviceExclusiveScissorFeaturesNV), [VkPhysicalDeviceExtendedDynamicState2FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState2FeaturesEXT), [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState3FeaturesEXT), [VkPhysicalDeviceExtendedDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicStateFeaturesEXT), [VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV](features.html#VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV), [VkPhysicalDeviceExternalFormatResolveFeaturesANDROID](features.html#VkPhysicalDeviceExternalFormatResolveFeaturesANDROID), [VkPhysicalDeviceExternalMemoryRDMAFeaturesNV](features.html#VkPhysicalDeviceExternalMemoryRDMAFeaturesNV), [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](features.html#VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX), [VkPhysicalDeviceFaultFeaturesEXT](features.html#VkPhysicalDeviceFaultFeaturesEXT), [VkPhysicalDeviceFeatures2](features.html#VkPhysicalDeviceFeatures2), [VkPhysicalDeviceFormatPackFeaturesARM](features.html#VkPhysicalDeviceFormatPackFeaturesARM), [VkPhysicalDeviceFragmentDensityMap2FeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMap2FeaturesEXT), [VkPhysicalDeviceFragmentDensityMapFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapFeaturesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE](features.html#VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT), [VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR](features.html#VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR), [VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT](features.html#VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT), [VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV](features.html#VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV), [VkPhysicalDeviceFragmentShadingRateFeaturesKHR](features.html#VkPhysicalDeviceFragmentShadingRateFeaturesKHR), [VkPhysicalDeviceFrameBoundaryFeaturesEXT](features.html#VkPhysicalDeviceFrameBoundaryFeaturesEXT), [VkPhysicalDeviceGlobalPriorityQueryFeatures](features.html#VkPhysicalDeviceGlobalPriorityQueryFeatures), [VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT](features.html#VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT), [VkPhysicalDeviceHdrVividFeaturesHUAWEI](features.html#VkPhysicalDeviceHdrVividFeaturesHUAWEI), [VkPhysicalDeviceHostImageCopyFeatures](features.html#VkPhysicalDeviceHostImageCopyFeatures), [VkPhysicalDeviceHostQueryResetFeatures](features.html#VkPhysicalDeviceHostQueryResetFeatures), [VkPhysicalDeviceImage2DViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImage2DViewOf3DFeaturesEXT), [VkPhysicalDeviceImageAlignmentControlFeaturesMESA](features.html#VkPhysicalDeviceImageAlignmentControlFeaturesMESA), [VkPhysicalDeviceImageCompressionControlFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlFeaturesEXT), [VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT), [VkPhysicalDeviceImageProcessing2FeaturesQCOM](features.html#VkPhysicalDeviceImageProcessing2FeaturesQCOM), [VkPhysicalDeviceImageProcessingFeaturesQCOM](features.html#VkPhysicalDeviceImageProcessingFeaturesQCOM), [VkPhysicalDeviceImageRobustnessFeatures](features.html#VkPhysicalDeviceImageRobustnessFeatures), [VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT), [VkPhysicalDeviceImageViewMinLodFeaturesEXT](features.html#VkPhysicalDeviceImageViewMinLodFeaturesEXT), [VkPhysicalDeviceImagelessFramebufferFeatures](features.html#VkPhysicalDeviceImagelessFramebufferFeatures), [VkPhysicalDeviceIndexTypeUint8Features](features.html#VkPhysicalDeviceIndexTypeUint8Features), [VkPhysicalDeviceInheritedViewportScissorFeaturesNV](features.html#VkPhysicalDeviceInheritedViewportScissorFeaturesNV), [VkPhysicalDeviceInlineUniformBlockFeatures](features.html#VkPhysicalDeviceInlineUniformBlockFeatures), [VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR](features.html#VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR), [VkPhysicalDeviceInvocationMaskFeaturesHUAWEI](features.html#VkPhysicalDeviceInvocationMaskFeaturesHUAWEI), [VkPhysicalDeviceLegacyDitheringFeaturesEXT](features.html#VkPhysicalDeviceLegacyDitheringFeaturesEXT), [VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT](features.html#VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT), [VkPhysicalDeviceLineRasterizationFeatures](features.html#VkPhysicalDeviceLineRasterizationFeatures), [VkPhysicalDeviceLinearColorAttachmentFeaturesNV](features.html#VkPhysicalDeviceLinearColorAttachmentFeaturesNV), [VkPhysicalDeviceMaintenance10FeaturesKHR](features.html#VkPhysicalDeviceMaintenance10FeaturesKHR), [VkPhysicalDeviceMaintenance4Features](features.html#VkPhysicalDeviceMaintenance4Features), [VkPhysicalDeviceMaintenance5Features](features.html#VkPhysicalDeviceMaintenance5Features), [VkPhysicalDeviceMaintenance6Features](features.html#VkPhysicalDeviceMaintenance6Features), [VkPhysicalDeviceMaintenance7FeaturesKHR](features.html#VkPhysicalDeviceMaintenance7FeaturesKHR), [VkPhysicalDeviceMaintenance8FeaturesKHR](features.html#VkPhysicalDeviceMaintenance8FeaturesKHR), [VkPhysicalDeviceMaintenance9FeaturesKHR](features.html#VkPhysicalDeviceMaintenance9FeaturesKHR), [VkPhysicalDeviceMapMemoryPlacedFeaturesEXT](features.html#VkPhysicalDeviceMapMemoryPlacedFeaturesEXT), [VkPhysicalDeviceMemoryDecompressionFeaturesEXT](features.html#VkPhysicalDeviceMemoryDecompressionFeaturesEXT), [VkPhysicalDeviceMemoryPriorityFeaturesEXT](features.html#VkPhysicalDeviceMemoryPriorityFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesEXT](features.html#VkPhysicalDeviceMeshShaderFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesNV](features.html#VkPhysicalDeviceMeshShaderFeaturesNV), [VkPhysicalDeviceMultiDrawFeaturesEXT](features.html#VkPhysicalDeviceMultiDrawFeaturesEXT), [VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT](features.html#VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT), [VkPhysicalDeviceMultiviewFeatures](features.html#VkPhysicalDeviceMultiviewFeatures), [VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM), [VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM), [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT), [VkPhysicalDeviceNestedCommandBufferFeaturesEXT](features.html#VkPhysicalDeviceNestedCommandBufferFeaturesEXT), [VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT](features.html#VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT), [VkPhysicalDeviceOpacityMicromapFeaturesEXT](features.html#VkPhysicalDeviceOpacityMicromapFeaturesEXT), [VkPhysicalDeviceOpticalFlowFeaturesNV](features.html#VkPhysicalDeviceOpticalFlowFeaturesNV), [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](features.html#VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT), [VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV](features.html#VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV), [VkPhysicalDevicePerStageDescriptorSetFeaturesNV](features.html#VkPhysicalDevicePerStageDescriptorSetFeaturesNV), [VkPhysicalDevicePerformanceCountersByRegionFeaturesARM](features.html#VkPhysicalDevicePerformanceCountersByRegionFeaturesARM), [VkPhysicalDevicePerformanceQueryFeaturesKHR](features.html#VkPhysicalDevicePerformanceQueryFeaturesKHR), [VkPhysicalDevicePipelineBinaryFeaturesKHR](features.html#VkPhysicalDevicePipelineBinaryFeaturesKHR), [VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC](../appendices/extensions.html#VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC), [VkPhysicalDevicePipelineCreationCacheControlFeatures](features.html#VkPhysicalDevicePipelineCreationCacheControlFeatures), [VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR](features.html#VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR), [VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT](features.html#VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT), [VkPhysicalDevicePipelineOpacityMicromapFeaturesARM](features.html#VkPhysicalDevicePipelineOpacityMicromapFeaturesARM), [VkPhysicalDevicePipelinePropertiesFeaturesEXT](features.html#VkPhysicalDevicePipelinePropertiesFeaturesEXT), [VkPhysicalDevicePipelineProtectedAccessFeatures](features.html#VkPhysicalDevicePipelineProtectedAccessFeatures), [VkPhysicalDevicePipelineRobustnessFeatures](features.html#VkPhysicalDevicePipelineRobustnessFeatures), [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR), [VkPhysicalDevicePresentBarrierFeaturesNV](features.html#VkPhysicalDevicePresentBarrierFeaturesNV), [VkPhysicalDevicePresentId2FeaturesKHR](features.html#VkPhysicalDevicePresentId2FeaturesKHR), [VkPhysicalDevicePresentIdFeaturesKHR](features.html#VkPhysicalDevicePresentIdFeaturesKHR), [VkPhysicalDevicePresentMeteringFeaturesNV](features.html#VkPhysicalDevicePresentMeteringFeaturesNV), [VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR](features.html#VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR), [VkPhysicalDevicePresentTimingFeaturesEXT](features.html#VkPhysicalDevicePresentTimingFeaturesEXT), [VkPhysicalDevicePresentWait2FeaturesKHR](features.html#VkPhysicalDevicePresentWait2FeaturesKHR), [VkPhysicalDevicePresentWaitFeaturesKHR](features.html#VkPhysicalDevicePresentWaitFeaturesKHR), [VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT](features.html#VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT), [VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT](features.html#VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT), [VkPhysicalDevicePrivateDataFeatures](features.html#VkPhysicalDevicePrivateDataFeatures), [VkPhysicalDeviceProtectedMemoryFeatures](features.html#VkPhysicalDeviceProtectedMemoryFeatures), [VkPhysicalDeviceProvokingVertexFeaturesEXT](features.html#VkPhysicalDeviceProvokingVertexFeaturesEXT), [VkPhysicalDevicePushConstantBankFeaturesNV](features.html#VkPhysicalDevicePushConstantBankFeaturesNV), [VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT](features.html#VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT), [VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT](features.html#VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT), [VkPhysicalDeviceRawAccessChainsFeaturesNV](features.html#VkPhysicalDeviceRawAccessChainsFeaturesNV), [VkPhysicalDeviceRayQueryFeaturesKHR](features.html#VkPhysicalDeviceRayQueryFeaturesKHR), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV), [VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV](features.html#VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV), [VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR), [VkPhysicalDeviceRayTracingMotionBlurFeaturesNV](features.html#VkPhysicalDeviceRayTracingMotionBlurFeaturesNV), [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR), [VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR), [VkPhysicalDeviceRayTracingValidationFeaturesNV](features.html#VkPhysicalDeviceRayTracingValidationFeaturesNV), [VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG](features.html#VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG), [VkPhysicalDeviceRenderPassStripedFeaturesARM](features.html#VkPhysicalDeviceRenderPassStripedFeaturesARM), [VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV](features.html#VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV), [VkPhysicalDeviceRobustness2FeaturesKHR](features.html#VkPhysicalDeviceRobustness2FeaturesKHR), [VkPhysicalDeviceSamplerYcbcrConversionFeatures](features.html#VkPhysicalDeviceSamplerYcbcrConversionFeatures), [VkPhysicalDeviceScalarBlockLayoutFeatures](features.html#VkPhysicalDeviceScalarBlockLayoutFeatures), [VkPhysicalDeviceSchedulingControlsFeaturesARM](features.html#VkPhysicalDeviceSchedulingControlsFeaturesARM), [VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures](features.html#VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures), [VkPhysicalDeviceShader64BitIndexingFeaturesEXT](features.html#VkPhysicalDeviceShader64BitIndexingFeaturesEXT), [VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV](features.html#VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV), [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT), [VkPhysicalDeviceShaderAtomicFloatFeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT), [VkPhysicalDeviceShaderAtomicInt64Features](features.html#VkPhysicalDeviceShaderAtomicInt64Features), [VkPhysicalDeviceShaderBfloat16FeaturesKHR](features.html#VkPhysicalDeviceShaderBfloat16FeaturesKHR), [VkPhysicalDeviceShaderClockFeaturesKHR](features.html#VkPhysicalDeviceShaderClockFeaturesKHR), [VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM](features.html#VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM), [VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures](features.html#VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures), [VkPhysicalDeviceShaderDrawParametersFeatures](features.html#VkPhysicalDeviceShaderDrawParametersFeatures), [VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD](features.html#VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD), [VkPhysicalDeviceShaderEnqueueFeaturesAMDX](features.html#VkPhysicalDeviceShaderEnqueueFeaturesAMDX), [VkPhysicalDeviceShaderExpectAssumeFeatures](features.html#VkPhysicalDeviceShaderExpectAssumeFeatures), [VkPhysicalDeviceShaderFloat16Int8Features](features.html#VkPhysicalDeviceShaderFloat16Int8Features), [VkPhysicalDeviceShaderFloat8FeaturesEXT](features.html#VkPhysicalDeviceShaderFloat8FeaturesEXT), [VkPhysicalDeviceShaderFloatControls2Features](features.html#VkPhysicalDeviceShaderFloatControls2Features), [VkPhysicalDeviceShaderFmaFeaturesKHR](features.html#VkPhysicalDeviceShaderFmaFeaturesKHR), [VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT](features.html#VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT), [VkPhysicalDeviceShaderImageFootprintFeaturesNV](features.html#VkPhysicalDeviceShaderImageFootprintFeaturesNV), [VkPhysicalDeviceShaderIntegerDotProductFeatures](features.html#VkPhysicalDeviceShaderIntegerDotProductFeatures), [VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL](features.html#VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL), [VkPhysicalDeviceShaderLongVectorFeaturesEXT](features.html#VkPhysicalDeviceShaderLongVectorFeaturesEXT), [VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR](features.html#VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR), [VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE](features.html#VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE), [VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT](features.html#VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT), [VkPhysicalDeviceShaderObjectFeaturesEXT](features.html#VkPhysicalDeviceShaderObjectFeaturesEXT), [VkPhysicalDeviceShaderQuadControlFeaturesKHR](features.html#VkPhysicalDeviceShaderQuadControlFeaturesKHR), [VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR](features.html#VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR), [VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT](features.html#VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT), [VkPhysicalDeviceShaderSMBuiltinsFeaturesNV](features.html#VkPhysicalDeviceShaderSMBuiltinsFeaturesNV), [VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures](features.html#VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures), [VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT](features.html#VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT), [VkPhysicalDeviceShaderSubgroupRotateFeatures](features.html#VkPhysicalDeviceShaderSubgroupRotateFeatures), [VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR](features.html#VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR), [VkPhysicalDeviceShaderTerminateInvocationFeatures](features.html#VkPhysicalDeviceShaderTerminateInvocationFeatures), [VkPhysicalDeviceShaderTileImageFeaturesEXT](features.html#VkPhysicalDeviceShaderTileImageFeaturesEXT), [VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT](features.html#VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT), [VkPhysicalDeviceShaderUntypedPointersFeaturesKHR](features.html#VkPhysicalDeviceShaderUntypedPointersFeaturesKHR), [VkPhysicalDeviceShadingRateImageFeaturesNV](features.html#VkPhysicalDeviceShadingRateImageFeaturesNV), [VkPhysicalDeviceSubgroupSizeControlFeatures](features.html#VkPhysicalDeviceSubgroupSizeControlFeatures), [VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT](features.html#VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT), [VkPhysicalDeviceSubpassShadingFeaturesHUAWEI](features.html#VkPhysicalDeviceSubpassShadingFeaturesHUAWEI), [VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR), [VkPhysicalDeviceSynchronization2Features](features.html#VkPhysicalDeviceSynchronization2Features), [VkPhysicalDeviceTensorFeaturesARM](features.html#VkPhysicalDeviceTensorFeaturesARM), [VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT](features.html#VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT](features.html#VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTCHDRFeatures](features.html#VkPhysicalDeviceTextureCompressionASTCHDRFeatures), [VkPhysicalDeviceTileMemoryHeapFeaturesQCOM](features.html#VkPhysicalDeviceTileMemoryHeapFeaturesQCOM), [VkPhysicalDeviceTilePropertiesFeaturesQCOM](features.html#VkPhysicalDeviceTilePropertiesFeaturesQCOM), [VkPhysicalDeviceTileShadingFeaturesQCOM](features.html#VkPhysicalDeviceTileShadingFeaturesQCOM), [VkPhysicalDeviceTimelineSemaphoreFeatures](features.html#VkPhysicalDeviceTimelineSemaphoreFeatures), [VkPhysicalDeviceTransformFeedbackFeaturesEXT](features.html#VkPhysicalDeviceTransformFeedbackFeaturesEXT), [VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR](features.html#VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR), [VkPhysicalDeviceUniformBufferStandardLayoutFeatures](features.html#VkPhysicalDeviceUniformBufferStandardLayoutFeatures), [VkPhysicalDeviceVariablePointersFeatures](features.html#VkPhysicalDeviceVariablePointersFeatures), [VkPhysicalDeviceVertexAttributeDivisorFeatures](features.html#VkPhysicalDeviceVertexAttributeDivisorFeatures), [VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT](features.html#VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT), [VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT), [VkPhysicalDeviceVideoDecodeVP9FeaturesKHR](features.html#VkPhysicalDeviceVideoDecodeVP9FeaturesKHR), [VkPhysicalDeviceVideoEncodeAV1FeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeAV1FeaturesKHR), [VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR), [VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR), [VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE](features.html#VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE), [VkPhysicalDeviceVideoMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance1FeaturesKHR), [VkPhysicalDeviceVideoMaintenance2FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance2FeaturesKHR), [VkPhysicalDeviceVulkan11Features](features.html#VkPhysicalDeviceVulkan11Features), [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features), [VkPhysicalDeviceVulkan13Features](features.html#VkPhysicalDeviceVulkan13Features), [VkPhysicalDeviceVulkan14Features](features.html#VkPhysicalDeviceVulkan14Features), [VkPhysicalDeviceVulkanMemoryModelFeatures](features.html#VkPhysicalDeviceVulkanMemoryModelFeatures), [VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR](features.html#VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR), [VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT](features.html#VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT), [VkPhysicalDeviceYcbcrDegammaFeaturesQCOM](features.html#VkPhysicalDeviceYcbcrDegammaFeaturesQCOM), [VkPhysicalDeviceYcbcrImageArraysFeaturesEXT](features.html#VkPhysicalDeviceYcbcrImageArraysFeaturesEXT), [VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT](features.html#VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT), or [VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures](features.html#VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures)
 
 * 
 [](#VUID-VkDeviceCreateInfo-sType-unique) VUID-VkDeviceCreateInfo-sType-unique
@@ -4448,11 +4588,6 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceCreateInfo-pQueueCreateInfos-parameter) VUID-VkDeviceCreateInfo-pQueueCreateInfos-parameter
 
  If `queueCreateInfoCount` is not `0`, `pQueueCreateInfos` **must** be a valid pointer to an array of `queueCreateInfoCount` valid [VkDeviceQueueCreateInfo](#VkDeviceQueueCreateInfo) structures
-
-* 
-[](#VUID-VkDeviceCreateInfo-ppEnabledLayerNames-parameter) VUID-VkDeviceCreateInfo-ppEnabledLayerNames-parameter
-
- If `enabledLayerCount` is not `0`, `ppEnabledLayerNames` **must** be a valid pointer to an array of `enabledLayerCount` null-terminated UTF-8 strings
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-parameter) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-parameter
@@ -4550,6 +4685,13 @@ Valid Usage (Implicit)
 
  If `physicalDeviceCount` is not `0`, `pPhysicalDevices` **must** be a valid pointer to an array of `physicalDeviceCount` valid [VkPhysicalDevice](#VkPhysicalDevice) handles
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
+
 To specify whether device memory allocation is allowed beyond the size
 reported by [VkPhysicalDeviceMemoryProperties](memory.html#VkPhysicalDeviceMemoryProperties), add a
 [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD) structure to the `pNext`
@@ -4585,6 +4727,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter) VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter
 
  `overallocationBehavior` **must** be a valid [VkMemoryOverallocationBehaviorAMD](#VkMemoryOverallocationBehaviorAMD) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
 
 Possible values for
 [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD)::`overallocationBehavior`
@@ -4646,6 +4795,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter) VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter
 
  `flags` **must** be a valid combination of [VkDeviceDiagnosticsConfigFlagBitsNV](#VkDeviceDiagnosticsConfigFlagBitsNV) values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
 
 Bits which **can** be set in
 [VkDeviceDiagnosticsConfigCreateInfoNV](#VkDeviceDiagnosticsConfigCreateInfoNV)::`flags` include:
@@ -4741,6 +4897,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pfnUserCallback-parameter) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pfnUserCallback-parameter
 
  `pfnUserCallback` **must** be a valid [PFN_vkDeviceMemoryReportCallbackEXT](#PFN_vkDeviceMemoryReportCallbackEXT) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
 
 The prototype for the
 [VkDeviceDeviceMemoryReportCreateInfoEXT](#VkDeviceDeviceMemoryReportCreateInfoEXT)::`pfnUserCallback`
@@ -4950,6 +5113,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
+
 To disable the implementation’s internal pipeline cache, add a
 [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR) structure to the
 `pNext` chain of the [VkDeviceCreateInfo](#VkDeviceCreateInfo) structure.
@@ -4990,6 +5160,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType) VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
 
 The number of shader cores used by all the queues of a device **can** be
 controlled by adding a `VkDeviceQueueShaderCoreControlCreateInfoARM`
@@ -5447,6 +5624,13 @@ Valid Usage (Implicit)
 
  `globalPriority` **must** be a valid [VkQueueGlobalPriority](#VkQueueGlobalPriority) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceQueueCreateInfo](#VkDeviceQueueCreateInfo)
+
 Possible values of
 [VkDeviceQueueGlobalPriorityCreateInfo](#VkDeviceQueueGlobalPriorityCreateInfo)::`globalPriority`,
 specifying a system-wide priority level are:
@@ -5576,6 +5760,16 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType) VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](#VkDeviceCreateInfo)
+
+* 
+[VkDeviceQueueCreateInfo](#VkDeviceQueueCreateInfo)
 
 To retrieve a handle to a [VkQueue](#VkQueue) object, call:
 

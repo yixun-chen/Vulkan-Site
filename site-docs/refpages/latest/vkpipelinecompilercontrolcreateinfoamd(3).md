@@ -55,6 +55,19 @@ Valid Usage (Implicit)
 
  `compilerControlFlags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
+* 
+[VkExecutionGraphPipelineCreateInfoAMDX](VkExecutionGraphPipelineCreateInfoAMDX.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_AMD_pipeline_compiler_control](VK_AMD_pipeline_compiler_control.html), [VkPipelineCompilerControlFlagsAMD](VkPipelineCompilerControlFlagsAMD.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineCompilerControlCreateInfoAMD).

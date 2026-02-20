@@ -92,6 +92,13 @@ Valid Usage (Implicit)
 
  `stripeSemaphoreInfoCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferSubmitInfo](VkCommandBufferSubmitInfo.html)
+
 [VK_ARM_render_pass_striped](VK_ARM_render_pass_striped.html), [VkSemaphoreSubmitInfo](VkSemaphoreSubmitInfo.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/cmdbuffers.html#VkRenderPassStripeSubmitInfoARM).

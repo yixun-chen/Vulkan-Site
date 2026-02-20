@@ -58,6 +58,16 @@ Valid Usage (Implicit)
 
  `fullScreenExclusive` **must** be a valid [VkFullScreenExclusiveEXT](VkFullScreenExclusiveEXT.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceSurfaceInfo2KHR](VkPhysicalDeviceSurfaceInfo2KHR.html)
+
+* 
+[VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html)
+
 [VK_EXT_full_screen_exclusive](VK_EXT_full_screen_exclusive.html), [VkFullScreenExclusiveEXT](VkFullScreenExclusiveEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkSurfaceFullScreenExclusiveInfoEXT).

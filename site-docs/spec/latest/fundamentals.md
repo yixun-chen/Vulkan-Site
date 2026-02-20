@@ -1946,9 +1946,6 @@ The `object` member of [VkDebugMarkerObjectTagInfoEXT](debugging.html#VkDebugMar
 The `objectHandle` member of [VkDebugUtilsObjectTagInfoEXT](debugging.html#VkDebugUtilsObjectTagInfoEXT)
 
 * 
-The `swapchain` member of [VkSwapchainCalibratedTimestampInfoEXT](synchronization.html#VkSwapchainCalibratedTimestampInfoEXT)
-
-* 
 The `swapchain` member of [VkPastPresentationTimingInfoEXT](VK_KHR_surface/wsi.html#VkPastPresentationTimingInfoEXT)
 
 * 
@@ -4333,6 +4330,8 @@ typedef enum VkStructureType {
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES = 1000063000,
   // Provided by VK_VERSION_1_2
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES = 1000196000,
+  // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES = 49,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES = 50,
@@ -4342,8 +4341,6 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES = 52,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO = 1000147000,
-  // Provided by VK_VERSION_1_2
-    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES = 1000196000,
   // Provided by VK_VERSION_1_2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES = 1000211000,
   // Provided by VK_VERSION_1_2
@@ -6472,6 +6469,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT = 1000662000,
   // Provided by VK_SEC_ubm_surface
     VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC = 1000664000,
+  // Provided by VK_VALVE_shader_mixed_float_dot_product
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE = 1000673000,
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
   // Provided by VK_VERSION_1_1

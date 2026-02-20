@@ -189,6 +189,13 @@ Valid Usage (Implicit)
 
  If `micromap` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `micromap` **must** be a valid [VkMicromapEXT](VkMicromapEXT.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)
+
 [VK_NV_displacement_micromap](VK_NV_displacement_micromap.html), [VkDeviceOrHostAddressConstKHR](VkDeviceOrHostAddressConstKHR.html), `VkDeviceSize`, [VkFormat](VkFormat.html), [VkIndexType](VkIndexType.html), [VkMicromapEXT](VkMicromapEXT.html), [VkMicromapUsageEXT](VkMicromapUsageEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/accelstructures.html#VkAccelerationStructureTrianglesDisplacementMicromapNV).

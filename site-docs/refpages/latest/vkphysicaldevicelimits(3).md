@@ -760,16 +760,15 @@ This range **must** be at least [-2 × `size`, 2 ×
 max(`maxViewportDimensions`[0], `maxViewportDimensions`[1]).
 See [Controlling the Viewport](../../../../spec/latest/chapters/vertexpostproc.html#vertexpostproc-viewport).
 
-|  | The intent of the `viewportBoundsRange` limit is to allow a maximum
+|  | The wide range of values required for `viewportBoundsRange` allows the
 | --- | --- |
-sized viewport to be arbitrarily shifted relative to the output target as
-long as at least some portion intersects.
-This would give a bounds limit of [-`size` +  1, 2 ×
-`size` - 1] which would allow all possible non-empty-set intersections
-of the output target and the viewport.
-Since these numbers are typically powers of two, picking the signed number
-range using the smallest possible number of bits ends up with the specified
-range. |
+viewport to be arbitrarily shifted relative to the output render target
+while still partially overlapping.
+However, the minimum range required to achieve this would actually be
+[-`size` +  1, 2 × `size` - 1].
+As these limits in implementations are typically simple power-of-two values,
+the specification reflects this convention, rounding the lower bound
+accordingly. |
 
 * 
  `viewportSubPixelBits` is the number

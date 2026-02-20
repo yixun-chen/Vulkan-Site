@@ -132,6 +132,13 @@ Valid Usage (Implicit)
 
  `pfnUserCallback` **must** be a valid [PFN_vkDebugUtilsMessengerCallbackEXT](PFN_vkDebugUtilsMessengerCallbackEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
 [PFN_vkDebugUtilsMessengerCallbackEXT](PFN_vkDebugUtilsMessengerCallbackEXT.html), [VK_EXT_debug_utils](VK_EXT_debug_utils.html), [VkDebugUtilsMessageSeverityFlagsEXT](VkDebugUtilsMessageSeverityFlagsEXT.html), [VkDebugUtilsMessageTypeFlagsEXT](VkDebugUtilsMessageTypeFlagsEXT.html), [VkDebugUtilsMessengerCreateFlagsEXT](VkDebugUtilsMessengerCreateFlagsEXT.html), [VkStructureType](VkStructureType.html), [vkCreateDebugUtilsMessengerEXT](vkCreateDebugUtilsMessengerEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkDebugUtilsMessengerCreateInfoEXT).

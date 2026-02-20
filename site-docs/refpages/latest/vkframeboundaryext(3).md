@@ -141,6 +141,22 @@ Valid Usage (Implicit)
 
  Both of the elements of `pBuffers`, and the elements of `pImages` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](VkDevice.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](VkBindSparseInfo.html)
+
+* 
+[VkPresentInfoKHR](VkPresentInfoKHR.html)
+
+* 
+[VkSubmitInfo](VkSubmitInfo.html)
+
+* 
+[VkSubmitInfo2](VkSubmitInfo2.html)
+
 [VK_EXT_frame_boundary](VK_EXT_frame_boundary.html), [VkBuffer](VkBuffer.html), [VkFrameBoundaryFlagsEXT](VkFrameBoundaryFlagsEXT.html), [VkImage](VkImage.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkFrameBoundaryEXT).

@@ -55,6 +55,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)
+
 [VK_NV_ray_tracing_motion_blur](VK_NV_ray_tracing_motion_blur.html), [VkAccelerationStructureMotionInfoFlagsNV](VkAccelerationStructureMotionInfoFlagsNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkAccelerationStructureMotionInfoNV).

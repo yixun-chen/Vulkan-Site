@@ -80,6 +80,13 @@ Valid Usage (Implicit)
 
  `aspectReferenceCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo](VkRenderPassCreateInfo.html)
+
 [VK_KHR_maintenance2](VK_KHR_maintenance2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkInputAttachmentAspectReference](VkInputAttachmentAspectReference.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassInputAttachmentAspectCreateInfo).

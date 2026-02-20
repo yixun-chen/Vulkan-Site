@@ -76,6 +76,34 @@ Valid Usage (Implicit)
 
  `opaqueCaptureDescriptorData` **must** be a pointer value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)
+
+* 
+[VkAccelerationStructureCreateInfoNV](VkAccelerationStructureCreateInfoNV.html)
+
+* 
+[VkBufferCreateInfo](VkBufferCreateInfo.html)
+
+* 
+[VkImageCreateInfo](VkImageCreateInfo.html)
+
+* 
+[VkImageViewCreateInfo](VkImageViewCreateInfo.html)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
+* 
+[VkTensorCreateInfoARM](VkTensorCreateInfoARM.html)
+
+* 
+[VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html)
+
 [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT).

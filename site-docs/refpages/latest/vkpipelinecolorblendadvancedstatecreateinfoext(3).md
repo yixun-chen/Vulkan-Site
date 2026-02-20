@@ -93,6 +93,13 @@ Valid Usage (Implicit)
 
  `blendOverlap` **must** be a valid [VkBlendOverlapEXT](VkBlendOverlapEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html)
+
 [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html), [VkBlendOverlapEXT](VkBlendOverlapEXT.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/framebuffer.html#VkPipelineColorBlendAdvancedStateCreateInfoEXT).

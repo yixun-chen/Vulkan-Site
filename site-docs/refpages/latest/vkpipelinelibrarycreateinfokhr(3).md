@@ -73,6 +73,13 @@ Valid Usage (Implicit)
 
  If `libraryCount` is not `0`, `pLibraries` **must** be a valid pointer to an array of `libraryCount` valid [VkPipeline](VkPipeline.html) handles
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_KHR_pipeline_library](VK_KHR_pipeline_library.html), [VkExecutionGraphPipelineCreateInfoAMDX](VkExecutionGraphPipelineCreateInfoAMDX.html), [VkPipeline](VkPipeline.html), [VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineLibraryCreateInfoKHR).

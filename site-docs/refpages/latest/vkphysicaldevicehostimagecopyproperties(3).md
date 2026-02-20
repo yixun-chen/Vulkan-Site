@@ -138,6 +138,13 @@ Valid Usage (Implicit)
 
  If `copyDstLayoutCount` is not `0`, and `pCopyDstLayouts` is not `NULL`, `pCopyDstLayouts` **must** be a valid pointer to an array of `copyDstLayoutCount` [VkImageLayout](VkImageLayout.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html)
+
 [VK_EXT_host_image_copy](VK_EXT_host_image_copy.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkImageLayout](VkImageLayout.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/limits.html#VkPhysicalDeviceHostImageCopyProperties).

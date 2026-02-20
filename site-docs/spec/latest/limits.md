@@ -772,16 +772,15 @@ This range **must** be at least [-2 × `size`, 2 ×
 max(`maxViewportDimensions`[0], `maxViewportDimensions`[1]).
 See [Controlling the Viewport](vertexpostproc.html#vertexpostproc-viewport).
 
-|  | The intent of the `viewportBoundsRange` limit is to allow a maximum
+|  | The wide range of values required for `viewportBoundsRange` allows the
 | --- | --- |
-sized viewport to be arbitrarily shifted relative to the output target as
-long as at least some portion intersects.
-This would give a bounds limit of [-`size` +  1, 2 ×
-`size` - 1] which would allow all possible non-empty-set intersections
-of the output target and the viewport.
-Since these numbers are typically powers of two, picking the signed number
-range using the smallest possible number of bits ends up with the specified
-range. |
+viewport to be arbitrarily shifted relative to the output render target
+while still partially overlapping.
+However, the minimum range required to achieve this would actually be
+[-`size` +  1, 2 × `size` - 1].
+As these limits in implementations are typically simple power-of-two values,
+the specification reflects this convention, rounding the lower bound
+accordingly. |
 
 * 
  `viewportSubPixelBits` is the number
@@ -1202,6 +1201,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMultiviewProperties` structure is defined as:
 
 // Provided by VK_VERSION_1_1
@@ -1245,6 +1251,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMultiviewProperties-sType-sType) VUID-VkPhysicalDeviceMultiviewProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceFloatControlsProperties` structure is defined as:
 
@@ -1426,6 +1439,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 Values which **may** be returned in the `denormBehaviorIndependence` and
 `roundingModeIndependence` fields of
 `VkPhysicalDeviceFloatControlsProperties` are:
@@ -1493,6 +1513,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceSampleLocationsPropertiesEXT` structure is defined
 as:
 
@@ -1555,6 +1582,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` structure is
 defined as:
 
@@ -1595,6 +1629,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` structure is
 defined as:
 
@@ -1631,6 +1672,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` structure
 is defined as:
 
@@ -1665,6 +1713,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType) VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDevicePointClippingProperties` structure is defined as:
 
@@ -1702,6 +1757,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDevicePointClippingProperties-sType-sType) VUID-VkPhysicalDevicePointClippingProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceSubgroupProperties` structure is defined as:
 
@@ -1806,6 +1868,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceSubgroupProperties-sType-sType) VUID-VkPhysicalDeviceSubgroupProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 Bits which **can** be set in
 [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations`
@@ -1973,6 +2042,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` structure is
 defined as:
 
@@ -2047,6 +2123,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` structure is
 defined as:
 
@@ -2080,6 +2163,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceVertexAttributeDivisorProperties` structure is
 defined as:
@@ -2127,6 +2217,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceSamplerFilterMinmaxProperties` structure is defined
 as:
@@ -2229,6 +2326,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceProtectedMemoryProperties` structure is defined as:
 
 // Provided by VK_VERSION_1_1
@@ -2269,6 +2373,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceProtectedMemoryProperties-sType-sType) VUID-VkPhysicalDeviceProtectedMemoryProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceMaintenance3Properties` structure is defined as:
 
@@ -2319,6 +2430,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMaintenance4Properties` structure is defined as:
 
 // Provided by VK_VERSION_1_3
@@ -2354,6 +2472,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMaintenance4Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance4Properties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceMaintenance5Properties` structure is defined as:
 
@@ -2425,6 +2550,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMaintenance6Properties` structure is defined as:
 
 // Provided by VK_VERSION_1_4
@@ -2475,6 +2607,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceMaintenance7PropertiesKHR` structure is defined as:
 
@@ -2603,6 +2742,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceLayeredApiPropertiesListKHR` structure is defined
 as:
 
@@ -2669,6 +2815,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter) VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter
 
  If `layeredApiCount` is not `0`, and `pLayeredApis` is not `NULL`, `pLayeredApis` **must** be a valid pointer to an array of `layeredApiCount` [VkPhysicalDeviceLayeredApiPropertiesKHR](#VkPhysicalDeviceLayeredApiPropertiesKHR) structures
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceLayeredApiPropertiesKHR` structure is defined as:
 
@@ -2804,6 +2957,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceLayeredApiPropertiesKHR](#VkPhysicalDeviceLayeredApiPropertiesKHR)
+
 The `VkPhysicalDeviceMaintenance9PropertiesKHR` structure is defined as:
 
 // Provided by VK_KHR_maintenance9
@@ -2851,6 +3011,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The possible values returned by the implementation when the vertex shader
 reads an unbound vertex attribute are:
@@ -2931,6 +3098,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceMeshShaderPropertiesNV` structure is defined as:
 
@@ -3056,6 +3230,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType) VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceMeshShaderPropertiesEXT` structure is defined as:
 
@@ -3323,6 +3504,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceDescriptorIndexingProperties` structure is defined
 as:
 
@@ -3587,6 +3775,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceInlineUniformBlockProperties` structure is defined
 as:
 
@@ -3667,6 +3862,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType) VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` structure
 is defined as:
@@ -3789,6 +3991,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` structure is
 defined as:
 
@@ -3832,6 +4041,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` structure is
 defined as:
@@ -3888,6 +4104,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT` structure is
 defined as:
 
@@ -3926,6 +4149,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE` structure
 is defined as:
 
@@ -3959,6 +4189,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` structure is defined
 as:
@@ -3998,6 +4235,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderCorePropertiesAMD` structure is defined as:
 
@@ -4112,6 +4356,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceShaderCoreProperties2AMD` structure is defined as:
 
 // Provided by VK_AMD_shader_core_properties2
@@ -4150,6 +4401,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType) VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 Bits for this type **may** be defined by future extensions, or new versions of
 the `[VK_AMD_shader_core_properties2](../appendices/extensions.html#VK_AMD_shader_core_properties2)` extension.
@@ -4235,6 +4493,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDevicePerformanceQueryPropertiesKHR` structure is defined
 as:
 
@@ -4267,6 +4532,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShadingRateImagePropertiesNV` structure is defined
 as:
@@ -4320,6 +4592,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMemoryDecompressionPropertiesEXT` structure is
 defined as:
 
@@ -4368,6 +4647,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMemoryDecompressionPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMemoryDecompressionPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceTransformFeedbackPropertiesEXT` structure is
 defined as:
@@ -4477,6 +4763,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceCopyMemoryIndirectPropertiesNV` structure is
 defined as:
 
@@ -4521,6 +4814,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceRayTracingPropertiesNV` structure is defined as:
 
@@ -4596,6 +4896,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceAccelerationStructurePropertiesKHR` structure is
 defined as:
@@ -4704,6 +5011,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` structure is
 defined as:
 
@@ -4777,6 +5091,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceCooperativeMatrixPropertiesNV` structure is defined
 as:
 
@@ -4814,6 +5135,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCooperativeMatrixPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` structure is
 defined as:
@@ -4855,6 +5183,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` structure is
 defined as:
@@ -4906,6 +5241,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceCooperativeVectorPropertiesNV` structure is defined
 as:
@@ -4965,6 +5307,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceShaderLongVectorPropertiesEXT` structure is defined
 as:
 
@@ -4997,6 +5346,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderLongVectorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderLongVectorPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderSMBuiltinsPropertiesNV` structure is defined
 as:
@@ -5035,6 +5391,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceTexelBufferAlignmentProperties` structure is
 defined as:
@@ -5110,6 +5473,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceTimelineSemaphoreProperties` structure is defined
 as:
 
@@ -5148,6 +5518,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType) VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceLineRasterizationProperties` structure is defined
 as:
@@ -5191,6 +5568,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceLineRasterizationProperties-sType-sType) VUID-VkPhysicalDeviceLineRasterizationProperties-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceRobustness2PropertiesKHR` structure is defined as:
 
@@ -5238,6 +5622,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV` structure is
 defined as:
@@ -5315,6 +5706,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` structure is
 defined as:
@@ -5426,6 +5824,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDevicePortabilitySubsetPropertiesKHR` structure is
 defined as:
 
@@ -5463,6 +5868,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
 structure is defined as:
 
@@ -5496,6 +5908,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType) VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` structure
 is defined as:
@@ -5570,6 +5989,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceClusterAccelerationStructurePropertiesNV-sType-sType) VUID-VkPhysicalDeviceClusterAccelerationStructurePropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` structure is
 defined as:
@@ -5808,6 +6234,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` structure is
 defined as:
 
@@ -5846,6 +6279,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceCustomBorderColorPropertiesEXT` structure is
 defined as:
 
@@ -5873,6 +6313,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceProvokingVertexPropertiesEXT` structure is defined
 as:
@@ -5915,6 +6362,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceDescriptorBufferPropertiesEXT` structure is defined
 as:
@@ -6195,6 +6649,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` structure
 is defined as:
 
@@ -6230,6 +6691,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` structure is
 defined as:
@@ -6274,6 +6742,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceHostImageCopyProperties` structure is defined as:
 
@@ -6394,6 +6869,13 @@ Valid Usage (Implicit)
 
  If `copyDstLayoutCount` is not `0`, and `pCopyDstLayouts` is not `NULL`, `pCopyDstLayouts` **must** be a valid pointer to an array of `copyDstLayoutCount` [VkImageLayout](resources.html#VkImageLayout) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI` structure is
 defined as:
 
@@ -6432,6 +6914,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMultiDrawPropertiesEXT` structure is defined as:
 
 // Provided by VK_EXT_multi_draw
@@ -6460,6 +6949,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` structure is
 defined as:
@@ -6492,6 +6988,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` structure is
 defined as:
@@ -6537,6 +7040,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` structure
 is defined as:
 
@@ -6569,6 +7079,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` structure is
 defined as:
@@ -6620,6 +7137,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDevicePipelineRobustnessProperties` structure is defined
 as:
@@ -6684,6 +7208,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` structure is
 defined as:
 
@@ -6712,6 +7243,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType) VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceOpticalFlowPropertiesNV` structure is defined as:
 
@@ -6803,6 +7341,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceOpacityMicromapPropertiesEXT` structure is defined
 as:
 
@@ -6843,6 +7388,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceDisplacementMicromapPropertiesNV` structure is
 defined as:
 
@@ -6875,6 +7427,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` structure is
 defined as:
@@ -6921,6 +7480,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM-sType-sType) VUID-VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 Values which **may** be returned in the
 `rayTracingInvocationReorderReorderingHint` field of
@@ -7021,6 +7587,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV` structure
 is defined as:
 
@@ -7058,6 +7631,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` structure is
 defined as:
@@ -7123,6 +7703,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceShaderCorePropertiesARM` structure is defined as:
 
 // Provided by VK_ARM_shader_core_properties
@@ -7169,6 +7756,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceShaderObjectPropertiesEXT` structure is defined as:
 
 // Provided by VK_EXT_shader_object
@@ -7211,6 +7805,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` structure is defined
 as:
@@ -7296,6 +7897,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` structure
 is defined as:
 
@@ -7350,6 +7958,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` structure is defined
 as:
 
@@ -7383,6 +7998,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDevicePushConstantBankPropertiesNV` structure is defined
 as:
@@ -7446,6 +8068,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` structure
 is defined as:
 
@@ -7502,6 +8131,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType) VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDevicePipelineBinaryPropertiesKHR` structure is defined
 as:
@@ -7591,6 +8227,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceRenderPassStripedPropertiesARM` structure is
 defined as:
 
@@ -7633,6 +8276,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` structure is
 defined as:
 
@@ -7665,6 +8315,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT` structure is defined
 as:
 
@@ -7694,6 +8351,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceImageAlignmentControlPropertiesMESA` structure is
 defined as:
@@ -7732,6 +8396,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType) VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceTileShadingPropertiesQCOM` structure is defined as:
 
@@ -7785,6 +8456,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceTileShadingPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceTileShadingPropertiesQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceTensorPropertiesARM` structure is defined as:
 
@@ -7917,6 +8595,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDevicePerformanceCountersByRegionPropertiesARM` structure
 is defined as:
 
@@ -7966,6 +8651,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDevicePerformanceCountersByRegionPropertiesARM-sType-sType) VUID-VkPhysicalDevicePerformanceCountersByRegionPropertiesARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The `VkPhysicalDeviceDescriptorHeapPropertiesEXT` structure is defined
 as:
@@ -8127,6 +8819,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The `VkPhysicalDeviceDescriptorHeapTensorPropertiesARM` structure is
 defined as:
 
@@ -8174,6 +8873,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceDescriptorHeapTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorHeapTensorPropertiesARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
 The following table specifies the **required** minimum/maximum for all Vulkan
 graphics implementations.

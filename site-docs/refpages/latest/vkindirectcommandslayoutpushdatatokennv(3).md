@@ -77,6 +77,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkIndirectCommandsLayoutTokenNV](VkIndirectCommandsLayoutTokenNV.html)
+
 [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutPushDataTokenNV).

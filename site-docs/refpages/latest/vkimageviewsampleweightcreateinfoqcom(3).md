@@ -103,6 +103,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageViewCreateInfo](VkImageViewCreateInfo.html)
+
 [VK_QCOM_image_processing](VK_QCOM_image_processing.html), [VkExtent2D](VkExtent2D.html), [VkOffset2D](VkOffset2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageViewSampleWeightCreateInfoQCOM).

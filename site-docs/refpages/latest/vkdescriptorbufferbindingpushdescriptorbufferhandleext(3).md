@@ -62,6 +62,13 @@ Valid Usage (Implicit)
 
  `buffer` **must** be a valid [VkBuffer](VkBuffer.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorBufferBindingInfoEXT](VkDescriptorBufferBindingInfoEXT.html)
+
 [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkBuffer](VkBuffer.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkDescriptorBufferBindingPushDescriptorBufferHandleEXT).

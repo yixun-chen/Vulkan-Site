@@ -121,6 +121,13 @@ Valid Usage (Implicit)
 
  `bindingType` **must** be a valid [VkDeviceAddressBindingTypeEXT](VkDeviceAddressBindingTypeEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html)
+
 [VK_EXT_device_address_binding_report](VK_EXT_device_address_binding_report.html), `VkDeviceAddress`, [VkDeviceAddressBindingFlagsEXT](VkDeviceAddressBindingFlagsEXT.html), [VkDeviceAddressBindingTypeEXT](VkDeviceAddressBindingTypeEXT.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkDeviceAddressBindingCallbackDataEXT).

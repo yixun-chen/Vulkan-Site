@@ -61,6 +61,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html)
+
+* 
+[VkSubpassDescription2](VkSubpassDescription2.html)
+
 [VK_EXT_subpass_merge_feedback](VK_EXT_subpass_merge_feedback.html), `VkBool32`, [VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html), [VkStructureType](VkStructureType.html), [VkSubpassDescription2](VkSubpassDescription2.html), [vkCreateRenderPass2](vkCreateRenderPass2.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassCreationControlEXT).

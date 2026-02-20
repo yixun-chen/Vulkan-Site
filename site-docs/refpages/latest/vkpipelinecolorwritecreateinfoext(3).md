@@ -108,6 +108,13 @@ Valid Usage (Implicit)
 
  If `attachmentCount` is not `0`, `pColorWriteEnables` **must** be a valid pointer to an array of `attachmentCount` `VkBool32` values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html)
+
 [VK_EXT_color_write_enable](VK_EXT_color_write_enable.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/framebuffer.html#VkPipelineColorWriteCreateInfoEXT).

@@ -162,6 +162,13 @@ Valid Usage (Implicit)
 
  `mode` **must** be a valid [VkDeviceGroupPresentModeFlagBitsKHR](VkDeviceGroupPresentModeFlagBitsKHR.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPresentInfoKHR](VkPresentInfoKHR.html)
+
 [VK_KHR_device_group](VK_KHR_device_group.html), [VK_KHR_swapchain](VK_KHR_swapchain.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkDeviceGroupPresentModeFlagBitsKHR](VkDeviceGroupPresentModeFlagBitsKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkDeviceGroupPresentInfoKHR).

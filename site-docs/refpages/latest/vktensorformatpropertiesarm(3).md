@@ -60,6 +60,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_FORMAT_PROPERTIES_ARM](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFormatProperties2](VkFormatProperties2.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkFormatFeatureFlags2](VkFormatFeatureFlags2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/formats.html#VkTensorFormatPropertiesARM).

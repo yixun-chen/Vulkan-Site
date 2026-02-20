@@ -83,6 +83,16 @@ Valid Usage (Implicit)
 
  `rasterizationSamples` **must** be a valid [VkSampleCountFlagBits](VkSampleCountFlagBits.html) value
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
+* 
+[VkSubpassDescription2](VkSubpassDescription2.html)
+
 [VK_EXT_multisampled_render_to_single_sampled](VK_EXT_multisampled_render_to_single_sampled.html), `VkBool32`, [VkSampleCountFlagBits](VkSampleCountFlagBits.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT).

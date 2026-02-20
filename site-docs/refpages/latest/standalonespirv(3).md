@@ -949,12 +949,6 @@ the pointed-to type
 `OpTypeForwardPointer` **must** have a `Storage` `Class` of
 `PhysicalStorageBuffer`
 
-[](#VUID-StandaloneSpirv-None-04745) VUID-StandaloneSpirv-None-04745
-
-All block members in a variable with a `Storage` `Class` of
-`PushConstant` declared as an array **must** only be accessed by
-dynamically uniform indices
-
 [](#VUID-StandaloneSpirv-OpVariable-06673) VUID-StandaloneSpirv-OpVariable-06673
 
 There **must** be at most one variable in the `PushConstant`

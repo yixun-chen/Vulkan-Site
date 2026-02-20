@@ -115,6 +115,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkMemoryAllocateFlagBits](VkMemoryAllocateFlagBits.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
+
 [VK_KHR_device_group](VK_KHR_device_group.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkMemoryAllocateFlags](VkMemoryAllocateFlags.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkMemoryAllocateFlagsInfo).

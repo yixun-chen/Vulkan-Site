@@ -63,6 +63,13 @@ Valid Usage (Implicit)
 
  `queue` **must** be a valid [VkQueue](VkQueue.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](VkExportMetalObjectsInfoEXT.html)
+
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkQueue](VkQueue.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkExportMetalCommandQueueInfoEXT).

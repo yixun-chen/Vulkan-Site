@@ -806,6 +806,13 @@ Valid Usage (Implicit)
 
  `viewportCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)
+
 // Provided by VK_NV_viewport_swizzle
 typedef VkFlags VkPipelineViewportSwizzleStateCreateFlagsNV;
 
@@ -1101,6 +1108,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter
 
  `provokingVertexMode` **must** be a valid [VkProvokingVertexModeEXT](#VkProvokingVertexModeEXT) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo)
 
 Possible values of
 [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT](#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT)::`provokingVertexMode`
@@ -1569,6 +1583,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)
+
 To [dynamically set](pipelines.html#pipelines-dynamic-state) `negativeOneToOne`,
 call:
 
@@ -1747,6 +1768,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength) VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength
 
  `viewportCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)
 
 The `VkPipelineViewportWScalingStateCreateInfoNV` state is set by adding
 this structure to the `pNext` chain of a

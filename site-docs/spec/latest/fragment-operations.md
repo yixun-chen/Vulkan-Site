@@ -356,6 +356,13 @@ Valid Usage (Implicit)
 
  `discardRectangleMode` **must** be a valid [VkDiscardRectangleModeEXT](#VkDiscardRectangleModeEXT) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
 // Provided by VK_EXT_discard_rectangles
 typedef VkFlags VkPipelineDiscardRectangleStateCreateFlagsEXT;
 
@@ -904,6 +911,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the exclusive scissor
 rectangles, call:
@@ -2999,6 +3013,13 @@ Valid Usage (Implicit)
 
  If `pDepthClampRange` is not `NULL`, `pDepthClampRange` **must** be a valid pointer to a valid [VkDepthClampRangeEXT](#VkDepthClampRangeEXT) structure
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
+
 Possible values of
 [VkPipelineViewportDepthClampControlCreateInfoEXT](#VkPipelineViewportDepthClampControlCreateInfoEXT)::`depthClampMode`,
 specifying which range should be used for depth clamping, are:
@@ -3509,6 +3530,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the
 `representativeFragmentTestEnable` state, call:
 
@@ -3676,6 +3704,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask
 
  `flags` **must** be `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)
 
 // Provided by VK_NV_fragment_coverage_to_color
 typedef VkFlags VkPipelineCoverageToColorStateCreateFlagsNV;
@@ -3963,6 +3998,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineCoverageReductionStateCreateInfoNV-coverageReductionMode-parameter) VUID-VkPipelineCoverageReductionStateCreateInfoNV-coverageReductionMode-parameter
 
  `coverageReductionMode` **must** be a valid [VkCoverageReductionModeNV](#VkCoverageReductionModeNV) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)
 
 // Provided by VK_NV_coverage_reduction_mode
 typedef VkFlags VkPipelineCoverageReductionStateCreateFlagsNV;
@@ -4329,6 +4371,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationMode-parameter) VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationMode-parameter
 
  `coverageModulationMode` **must** be a valid [VkCoverageModulationModeNV](#VkCoverageModulationModeNV) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)
 
 // Provided by VK_NV_framebuffer_mixed_samples
 typedef VkFlags VkPipelineCoverageModulationStateCreateFlagsNV;

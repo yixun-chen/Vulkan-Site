@@ -60,6 +60,22 @@ Valid Usage (Implicit)
 
  `tensorCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](VkBindSparseInfo.html)
+
+* 
+[VkPresentInfoKHR](VkPresentInfoKHR.html)
+
+* 
+[VkSubmitInfo](VkSubmitInfo.html)
+
+* 
+[VkSubmitInfo2](VkSubmitInfo2.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_frame_boundary](VK_EXT_frame_boundary.html), [VkStructureType](VkStructureType.html), [VkTensorARM](VkTensorARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkFrameBoundaryTensorsARM).

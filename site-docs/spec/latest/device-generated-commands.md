@@ -2342,6 +2342,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkIndirectCommandsLayoutTokenNV](#VkIndirectCommandsLayoutTokenNV)
+
 The following code provides detailed information on how an individual
 sequence is processed.
 For valid usage, all restrictions from the regular commands apply.
@@ -2600,6 +2607,16 @@ Valid Usage (Implicit)
 
  `pipeline` **must** be a valid [VkPipeline](../pipelines.html#VkPipeline) handle
 
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)
+
+* 
+[VkGeneratedCommandsMemoryRequirementsInfoEXT](#VkGeneratedCommandsMemoryRequirementsInfoEXT)
+
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkGeneratedCommandsShaderInfoEXT {
     VkStructureType       sType;
@@ -2645,6 +2662,16 @@ Valid Usage (Implicit)
 [](#VUID-VkGeneratedCommandsShaderInfoEXT-shaderCount-arraylength) VUID-VkGeneratedCommandsShaderInfoEXT-shaderCount-arraylength
 
  `shaderCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)
+
+* 
+[VkGeneratedCommandsMemoryRequirementsInfoEXT](#VkGeneratedCommandsMemoryRequirementsInfoEXT)
 
 With `[VK_NV_device_generated_commands](../../appendices/extensions.html#VK_NV_device_generated_commands)`, to retrieve the memory size
 and alignment requirements of a particular execution state call:

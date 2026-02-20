@@ -1309,6 +1309,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceMemoryProperties2](#VkPhysicalDeviceMemoryProperties2)
+
 A Vulkan device operates on data in device memory via memory objects that
 are represented in the API by a `VkDeviceMemory` handle:
 
@@ -2374,6 +2381,13 @@ Valid Usage (Implicit)
 
  Both of `buffer`, and `image` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 To bind a range of tile memory to the command buffer, call:
 
 // Provided by VK_QCOM_tile_memory_heap
@@ -2492,6 +2506,13 @@ Valid Usage (Implicit)
 
  `memory` **must** be a valid [VkDeviceMemory](#VkDeviceMemory) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
 If the `pNext` chain includes a
 `VkMemoryDedicatedAllocateInfoTensorARM` structure, then that structure
 includes a handle of the sole tensor resource that the memory **can** be bound
@@ -2544,6 +2565,13 @@ Valid Usage (Implicit)
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter) VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter
 
  `tensor` **must** be a valid [VkTensorARM](resources.html#VkTensorARM) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 If the `pNext` chain includes a
 `VkDedicatedAllocationMemoryAllocateInfoNV` structure, then that
@@ -2653,6 +2681,13 @@ Valid Usage (Implicit)
 
  Both of `buffer`, and `image` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 If the `pNext` chain includes a `VkMemoryPriorityAllocateInfoEXT`
 structure, then that structure includes a priority for the memory.
 
@@ -2697,6 +2732,13 @@ Valid Usage (Implicit)
 [](#VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType) VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To modify the priority of an existing memory allocation, call:
 
@@ -2801,6 +2843,13 @@ Valid Usage (Implicit)
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 When allocating memory that **may** be exported to another process or Vulkan
 instance, add a [VkExportMemoryAllocateInfoNV](#VkExportMemoryAllocateInfoNV) structure to the
 `pNext` chain of the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure, specifying
@@ -2841,6 +2890,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter) VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter
 
  `handleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBitsNV](#VkExternalMemoryHandleTypeFlagBitsNV) values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To specify additional attributes of NT handles exported from a memory
 object, add a [VkExportMemoryWin32HandleInfoKHR](#VkExportMemoryWin32HandleInfoKHR) structure to the
@@ -2920,6 +2976,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter
 
  If `pAttributes` is not `NULL`, `pAttributes` **must** be a valid pointer to a valid `SECURITY_ATTRIBUTES` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To import memory from a Windows handle, add a
 [VkImportMemoryWin32HandleInfoKHR](#VkImportMemoryWin32HandleInfoKHR) structure to the `pNext` chain of
@@ -3049,6 +3112,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter
 
  If `handleType` is not `0`, `handleType` **must** be a valid [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To export a Windows handle representing the payload of a Vulkan device
 memory object, call:
@@ -3358,6 +3428,13 @@ Valid Usage (Implicit)
 
  If `pAttributes` is not `NULL`, `pAttributes` **must** be a valid pointer to a valid `SECURITY_ATTRIBUTES` value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 To import memory created on the same physical device but outside of the
 current Vulkan instance, add a [VkImportMemoryWin32HandleInfoNV](#VkImportMemoryWin32HandleInfoNV)
 structure to the `pNext` chain of the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
@@ -3414,6 +3491,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter
 
  `handleType` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBitsNV](#VkExternalMemoryHandleTypeFlagBitsNV) values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 Bits which **can** be set in `handleType` are:
 
@@ -3636,6 +3720,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-parameter) VUID-VkImportMemoryFdInfoKHR-handleType-parameter
 
  If `handleType` is not `0`, `handleType` **must** be a valid [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To export a POSIX file descriptor referencing the payload of a Vulkan device
 memory object, call:
@@ -4016,6 +4107,13 @@ Valid Usage (Implicit)
 
  `pHostPointer` **must** be a pointer value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 To determine the correct parameters to use when importing host pointers,
 call:
 
@@ -4210,6 +4308,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter) VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter
 
  `buffer` **must** be a valid pointer to an `AHardwareBuffer` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To export an Android hardware buffer referencing the payload of a Vulkan
 device memory object, call:
@@ -4586,6 +4691,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAndroidHardwareBufferPropertiesANDROID](#VkAndroidHardwareBufferPropertiesANDROID)
+
 The format properties of an Android hardware buffer **can** be obtained by
 including a `VkAndroidHardwareBufferFormatProperties2ANDROID` structure
 in the `pNext` chain of the
@@ -4659,6 +4771,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAndroidHardwareBufferPropertiesANDROID](#VkAndroidHardwareBufferPropertiesANDROID)
+
 The [VkAndroidHardwareBufferFormatResolvePropertiesANDROID](#VkAndroidHardwareBufferFormatResolvePropertiesANDROID) structure is
 defined as:
 
@@ -4708,6 +4827,13 @@ Valid Usage (Implicit)
 [](#VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkAndroidHardwareBufferPropertiesANDROID](#VkAndroidHardwareBufferPropertiesANDROID)
 
 To export an address representing the payload of a Vulkan device memory
 object accessible by remote devices, call:
@@ -4906,6 +5032,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter
 
  If `handleType` is not `0`, `handleType` **must** be a valid [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To obtain the memoryTypeIndex for the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure,
 call `vkGetMemoryZirconHandlePropertiesFUCHSIA`:
@@ -5214,6 +5347,31 @@ Valid Usage (Implicit)
 
  If `exportObjectType` is not `0`, `exportObjectType` **must** be a valid [VkExportMetalObjectTypeFlagBitsEXT](#VkExportMetalObjectTypeFlagBitsEXT) value
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo)
+
+* 
+[VkEventCreateInfo](synchronization.html#VkEventCreateInfo)
+
+* 
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
+
+* 
+[VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)
+
+* 
+[VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
+* 
+[VkSemaphoreCreateInfo](synchronization.html#VkSemaphoreCreateInfo)
+
 Bits which indicate the types of Metal objects that may be exported from a
 corresponding Vulkan object are:
 
@@ -5519,6 +5677,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
+
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
 of `MTLDevice_id` is provided in the Vulkan headers:
@@ -5574,6 +5739,13 @@ Valid Usage (Implicit)
 [](#VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter) VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter
 
  `queue` **must** be a valid [VkQueue](devsandqueues.html#VkQueue) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -5631,6 +5803,13 @@ Valid Usage (Implicit)
 
  `memory` **must** be a valid [VkDeviceMemory](#VkDeviceMemory) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
+
 To import a Metal `MTLBuffer` object to underlie a [VkDeviceMemory](#VkDeviceMemory)
 object, include a `VkImportMetalBufferInfoEXT` structure in the
 `pNext` chain of the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure in a
@@ -5666,6 +5845,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMetalBufferInfoEXT-sType-sType) VUID-VkImportMetalBufferInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_BUFFER_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -5759,6 +5945,13 @@ Valid Usage (Implicit)
 
  Each of `bufferView`, `image`, and `imageView` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
+
 To import one or more existing Metal `MTLTexture` objects to underlie a
 [VkImage](resources.html#VkImage) object, include one or more `VkImportMetalTextureInfoEXT`
 structures in the `pNext` chain of the [VkImageCreateInfo](resources.html#VkImageCreateInfo) structure
@@ -5812,6 +6005,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMetalTextureInfoEXT-plane-parameter) VUID-VkImportMetalTextureInfoEXT-plane-parameter
 
  `plane` **must** be a valid [VkImageAspectFlagBits](resources.html#VkImageAspectFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -5869,6 +6069,13 @@ Valid Usage (Implicit)
 
  `image` **must** be a valid [VkImage](resources.html#VkImage) handle
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
+
 To import, or create, a Metal `IOSurfaceRef` object to underlie a
 [VkImage](resources.html#VkImage) object, include a `VkImportMetalIOSurfaceInfoEXT`
 structure in the `pNext` chain of the [VkImageCreateInfo](resources.html#VkImageCreateInfo) structure
@@ -5910,6 +6117,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType) VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
 
 The type `IOSurfaceRef` is defined in Apple’s CoreGraphics framework,
 but to remove an unnecessary compile time dependency, an incomplete type
@@ -5978,6 +6192,13 @@ Valid Usage (Implicit)
 
  Both of `event`, and `semaphore` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkExportMetalObjectsInfoEXT](#VkExportMetalObjectsInfoEXT)
+
 To import a Metal `id` object to underlie a
 [VkSemaphore](synchronization.html#VkSemaphore) or [VkEvent](synchronization.html#VkEvent) object, include a
 `VkImportMetalSharedEventInfoEXT` structure in the `pNext` chain of
@@ -6016,6 +6237,16 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMetalSharedEventInfoEXT-sType-sType) VUID-VkImportMetalSharedEventInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkEventCreateInfo](synchronization.html#VkEventCreateInfo)
+
+* 
+[VkSemaphoreCreateInfo](synchronization.html#VkSemaphoreCreateInfo)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -6079,6 +6310,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportScreenBufferInfoQNX-sType-sType) VUID-VkImportScreenBufferInfoQNX-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To determine the memory parameters to use when importing a QNX Screen
 buffer, call:
@@ -6268,6 +6506,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkScreenBufferPropertiesQNX](#VkScreenBufferPropertiesQNX)
+
 To import memory from a Metal handle, add a
 [VkImportMemoryMetalHandleInfoEXT](#VkImportMemoryMetalHandleInfoEXT) structure to the `pNext` chain of
 the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure.
@@ -6351,6 +6596,13 @@ Valid Usage (Implicit)
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter
 
  If `handleType` is not `0`, `handleType` **must** be a valid [VkExternalMemoryHandleTypeFlagBits](capabilities.html#VkExternalMemoryHandleTypeFlagBits) value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To export a Metal handle representing the payload of a Vulkan device memory
 object, call:
@@ -6704,6 +6956,13 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkMemoryAllocateFlagBits](#VkMemoryAllocateFlagBits) values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
+
 Bits which **can** be set in [VkMemoryAllocateFlagsInfo](#VkMemoryAllocateFlagsInfo)::`flags`,
 controlling device memory allocation, are:
 
@@ -6813,6 +7072,13 @@ Valid Usage (Implicit)
 [](#VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType) VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
 To free a memory object, call:
 
@@ -7407,6 +7673,13 @@ Valid Usage (Implicit)
 [](#VUID-VkMemoryMapPlacedInfoEXT-sType-sType) VUID-VkMemoryMapPlacedInfoEXT-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryMapInfo](#VkMemoryMapInfo)
 
 Two commands are provided to enable applications to work with non-coherent
 memory allocations: `vkFlushMappedMemoryRanges` and

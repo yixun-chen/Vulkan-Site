@@ -59,6 +59,13 @@ Valid Usage (Implicit)
 
  If `tensorView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `tensorView` **must** be a valid [VkTensorViewARM](VkTensorViewARM.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkStructureType](VkStructureType.html), [VkTensorViewARM](VkTensorViewARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/descriptorsets.html#VkDescriptorGetTensorInfoARM).

@@ -97,6 +97,16 @@ Valid Usage (Implicit)
 
  If `queryPool` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `queryPool` **must** be a valid [VkQueryPool](VkQueryPool.html) handle
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html)
+
+* 
+[VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)
+
 [VK_KHR_video_maintenance1](VK_KHR_video_maintenance1.html), [VkQueryPool](VkQueryPool.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoInlineQueryInfoKHR).

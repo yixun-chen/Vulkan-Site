@@ -53,6 +53,13 @@ Valid Usage (Implicit)
 
  If `intraRefreshMode` is not `0`, `intraRefreshMode` **must** be a valid [VkVideoEncodeIntraRefreshModeFlagBitsKHR](VkVideoEncodeIntraRefreshModeFlagBitsKHR.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkVideoSessionCreateInfoKHR](VkVideoSessionCreateInfoKHR.html)
+
 [VK_KHR_video_encode_intra_refresh](VK_KHR_video_encode_intra_refresh.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeIntraRefreshModeFlagBitsKHR](VkVideoEncodeIntraRefreshModeFlagBitsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/videocoding.html#VkVideoEncodeSessionIntraRefreshCreateInfoKHR).

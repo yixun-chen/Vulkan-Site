@@ -73,6 +73,13 @@ Valid Usage (Implicit)
 
  `flags` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
 [VK_EXT_graphics_pipeline_library](VK_EXT_graphics_pipeline_library.html), [VkGraphicsPipelineLibraryFlagsEXT](VkGraphicsPipelineLibraryFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkGraphicsPipelineLibraryCreateInfoEXT).

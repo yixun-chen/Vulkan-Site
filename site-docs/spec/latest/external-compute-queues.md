@@ -210,6 +210,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](../devsandqueues.html#VkDeviceCreateInfo)
+
 The `VkExternalComputeQueueCreateInfoNV` structure is defined as:
 
 // Provided by VK_NV_external_compute_queue
@@ -316,3 +323,10 @@ Valid Usage (Implicit)
 [](#VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType) VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](../devsandqueues.html#VkPhysicalDeviceProperties2)

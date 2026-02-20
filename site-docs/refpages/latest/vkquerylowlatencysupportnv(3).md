@@ -52,6 +52,13 @@ Valid Usage (Implicit)
 
  `pQueriedLowLatencyData` **must** be a pointer value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)
+
 [VK_NV_low_latency](VK_NV_low_latency.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkQueryLowLatencySupportNV).

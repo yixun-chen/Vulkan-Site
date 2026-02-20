@@ -69,6 +69,13 @@ Valid Usage (Implicit)
 
  `dynamicMetadataSize` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkHdrMetadataEXT](VkHdrMetadataEXT.html)
+
 [VK_HUAWEI_hdr_vivid](VK_HUAWEI_hdr_vivid.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkHdrVividDynamicMetadataHUAWEI).

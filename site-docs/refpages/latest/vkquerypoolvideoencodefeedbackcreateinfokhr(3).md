@@ -59,6 +59,13 @@ Valid Usage (Implicit)
 
  `encodeFeedbackFlags` **must** not be `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
+
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeFeedbackFlagsKHR](VkVideoEncodeFeedbackFlagsKHR.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/queries.html#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR).

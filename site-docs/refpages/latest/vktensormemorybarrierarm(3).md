@@ -169,6 +169,13 @@ Valid Usage (Implicit)
 
  `tensor` **must** be a valid [VkTensorARM](VkTensorARM.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDependencyInfo](VkDependencyInfo.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkAccessFlags2](VkAccessFlags2.html), [VkPipelineStageFlags2](VkPipelineStageFlags2.html), [VkStructureType](VkStructureType.html), [VkTensorARM](VkTensorARM.html), [VkTensorDependencyInfoARM](VkTensorDependencyInfoARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkTensorMemoryBarrierARM).

@@ -60,6 +60,22 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkPipelineCreateFlagBits2](VkPipelineCreateFlagBits2.html) values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)
+
+* 
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](VkRayTracingPipelineCreateInfoKHR.html)
+
+* 
+[VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)
+
 [VK_KHR_maintenance5](VK_KHR_maintenance5.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkPipelineCreateFlags2](VkPipelineCreateFlags2.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/pipelines.html#VkPipelineCreateFlags2CreateInfo).

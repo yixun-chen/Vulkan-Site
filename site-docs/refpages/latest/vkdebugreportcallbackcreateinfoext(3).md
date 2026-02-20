@@ -84,6 +84,13 @@ Valid Usage (Implicit)
 
  `pfnCallback` **must** be a valid [PFN_vkDebugReportCallbackEXT](PFN_vkDebugReportCallbackEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
 [PFN_vkDebugReportCallbackEXT](PFN_vkDebugReportCallbackEXT.html), [VK_EXT_debug_report](VK_EXT_debug_report.html), [VkDebugReportFlagsEXT](VkDebugReportFlagsEXT.html), [VkStructureType](VkStructureType.html), [vkCreateDebugReportCallbackEXT](vkCreateDebugReportCallbackEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#VkDebugReportCallbackCreateInfoEXT).

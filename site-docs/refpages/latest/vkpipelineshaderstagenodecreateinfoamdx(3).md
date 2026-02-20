@@ -79,6 +79,13 @@ Valid Usage (Implicit)
 
  If `pName` is not `NULL`, `pName` **must** be a null-terminated UTF-8 string
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html)
+
 [VK_AMDX_shader_enqueue](VK_AMDX_shader_enqueue.html), [VkStructureType](VkStructureType.html), [vkGetExecutionGraphPipelineNodeIndexAMDX](vkGetExecutionGraphPipelineNodeIndexAMDX.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/executiongraphs.html#VkPipelineShaderStageNodeCreateInfoAMDX).

@@ -1509,6 +1509,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
+
 To begin recording a secondary command buffer compatible with execution
 inside a render pass using [render pass transform](vertexpostproc.html#vertexpostproc-renderpass-transform), add the
 [VkCommandBufferInheritanceRenderPassTransformInfoQCOM](#VkCommandBufferInheritanceRenderPassTransformInfoQCOM) to the
@@ -1566,6 +1573,13 @@ Valid Usage (Implicit)
 [](#VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType) VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
 
 The `VkCommandBufferInheritanceViewportScissorInfoNV` structure is
 defined as:
@@ -1727,6 +1741,13 @@ Valid Usage (Implicit)
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
 
 The `VkCommandBufferInheritanceRenderingInfo` structure is defined as:
 
@@ -1903,6 +1924,13 @@ Valid Usage (Implicit)
 
  If `rasterizationSamples` is not `0`, `rasterizationSamples` **must** be a valid [VkSampleCountFlagBits](limits.html#VkSampleCountFlagBits) value
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
+
 The
 `VkAttachmentSampleCountInfoAMD`
 or
@@ -1976,6 +2004,16 @@ Valid Usage (Implicit)
 [](#VUID-VkAttachmentSampleCountInfoAMD-sType-sType) VUID-VkAttachmentSampleCountInfoAMD-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
 
 If the `pNext` chain of [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) includes a
 `VkCommandBufferInheritanceDescriptorHeapInfoEXT` structure, then that
@@ -2059,6 +2097,13 @@ Valid Usage (Implicit)
 [](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-parameter) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-parameter
 
  If `pResourceHeapBindInfo` is not `NULL`, `pResourceHeapBindInfo` **must** be a valid pointer to a valid [VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) structure
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
 
 Once recording starts, an application records a sequence of commands
 (`vkCmd*`) to set state in the command buffer, draw, dispatch, and other
@@ -3069,6 +3114,13 @@ Valid Usage (Implicit)
 
  `stripeSemaphoreInfoCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferSubmitInfo](#VkCommandBufferSubmitInfo)
+
 To submit command buffers to a queue, call:
 
 // Provided by VK_VERSION_1_0
@@ -3827,6 +3879,16 @@ Valid Usage (Implicit)
 
  If `signalSemaphoreValueCount` is not `0`, and `pSignalSemaphoreValues` is not `NULL`, `pSignalSemaphoreValues` **must** be a valid pointer to an array of `signalSemaphoreValueCount` `uint64_t` values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindSparseInfo](sparsemem.html#VkBindSparseInfo)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
+
 To specify the values to use when waiting for and signaling semaphores whose
 [current payload](synchronization.html#synchronization-semaphores-importing) refers to a
 Direct3D 12 fence, add a [VkD3D12FenceSubmitInfoKHR](#VkD3D12FenceSubmitInfoKHR) structure to the
@@ -3921,6 +3983,13 @@ Valid Usage (Implicit)
 [](#VUID-VkD3D12FenceSubmitInfoKHR-pSignalSemaphoreValues-parameter) VUID-VkD3D12FenceSubmitInfoKHR-pSignalSemaphoreValues-parameter
 
  If `signalSemaphoreValuesCount` is not `0`, and `pSignalSemaphoreValues` is not `NULL`, `pSignalSemaphoreValues` **must** be a valid pointer to an array of `signalSemaphoreValuesCount` `uint64_t` values
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
 
 When submitting work that operates on memory imported from a Direct3D 11
 resource to a queue, the keyed mutex mechanism **may** be used in addition to
@@ -4036,6 +4105,16 @@ Valid Usage (Implicit)
 
  Both of the elements of `pAcquireSyncs`, and the elements of `pReleaseSyncs` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](#VkSubmitInfo2)
+
 When submitting work that operates on memory imported from a Direct3D 11
 resource to a queue, the keyed mutex mechanism **may** be used in addition to
 Vulkan semaphores to synchronize the work.
@@ -4140,6 +4219,16 @@ Valid Usage (Implicit)
 
  Both of the elements of `pAcquireSyncs`, and the elements of `pReleaseSyncs` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](#VkSubmitInfo2)
+
 If the `pNext` chain of [VkSubmitInfo](#VkSubmitInfo) includes a
 `VkProtectedSubmitInfo` structure, then the structure indicates whether
 the batch is protected.
@@ -4165,6 +4254,13 @@ Valid Usage (Implicit)
 [](#VUID-VkProtectedSubmitInfo-sType-sType) VUID-VkProtectedSubmitInfo-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
 
 If the `pNext` chain of [VkSubmitInfo](#VkSubmitInfo) includes a
 `VkDeviceGroupSubmitInfo` structure, then that structure includes device
@@ -4285,6 +4381,13 @@ Valid Usage (Implicit)
 
  If `signalSemaphoreCount` is not `0`, `pSignalSemaphoreDeviceIndices` **must** be a valid pointer to an array of `signalSemaphoreCount` `uint32_t` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
+
 If the `pNext` chain of [VkSubmitInfo](#VkSubmitInfo) includes a
 [VkPerformanceQuerySubmitInfoKHR](#VkPerformanceQuerySubmitInfoKHR) structure, then the structure
 indicates which counter pass is active for the batch in that submit.
@@ -4328,6 +4431,16 @@ Valid Usage (Implicit)
 [](#VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType) VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSubmitInfo](#VkSubmitInfo)
+
+* 
+[VkSubmitInfo2](#VkSubmitInfo2)
 
 When using binary semaphores, the application **must** ensure that command
 buffer submissions will be able to complete without any subsequent
@@ -5418,6 +5531,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceGroupCommandBufferBeginInfo-sType-sType) VUID-VkDeviceGroupCommandBufferBeginInfo-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)
 
 To update the current device mask of a command buffer, call:
 

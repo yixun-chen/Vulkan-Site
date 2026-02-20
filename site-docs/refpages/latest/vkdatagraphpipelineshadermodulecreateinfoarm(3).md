@@ -121,6 +121,13 @@ Valid Usage (Implicit)
 
  If `constantCount` is not `0`, and `pConstants` is not `NULL`, `pConstants` **must** be a valid pointer to an array of `constantCount` valid [VkDataGraphPipelineConstantARM](VkDataGraphPipelineConstantARM.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html)
+
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkDataGraphPipelineConstantARM](VkDataGraphPipelineConstantARM.html), [VkShaderModule](VkShaderModule.html), [VkSpecializationInfo](VkSpecializationInfo.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#VkDataGraphPipelineShaderModuleCreateInfoARM).

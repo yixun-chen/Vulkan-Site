@@ -87,6 +87,8 @@ Valid Usage
 
 The `timeDomain` value of each [VkCalibratedTimestampInfoKHR](VkCalibratedTimestampInfoKHR.html) in
 `pTimestampInfos` **must** be unique
+except for those with a value of
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html)
 
 Valid Usage (Implicit)
 

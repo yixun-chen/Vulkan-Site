@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  If `presentModeCount` is not `0`, and `pPresentModes` is not `NULL`, `pPresentModes` **must** be a valid pointer to an array of `presentModeCount` [VkPresentModeKHR](VkPresentModeKHR.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html)
+
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkPresentModeKHR](VkPresentModeKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkLatencySurfaceCapabilitiesNV).

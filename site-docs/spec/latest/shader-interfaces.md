@@ -579,6 +579,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
+
 When an active fragment shader invocation finishes, the values of all
 fragment shader outputs are copied out and used as blend inputs or color
 attachments writes.
@@ -1100,6 +1110,16 @@ Valid Usage (Implicit)
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pStencilInputAttachmentIndex-parameter) VUID-VkRenderingInputAttachmentIndexInfo-pStencilInputAttachmentIndex-parameter
 
  If `pStencilInputAttachmentIndex` is not `NULL`, `pStencilInputAttachmentIndex` **must** be a valid pointer to a valid `uint32_t` value
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)
 
 Variables identified with the `InputAttachmentIndex` **must** only be used
 by a fragment stage.

@@ -96,6 +96,13 @@ Valid Usage (Implicit)
 
  If `pAttributes` is not `NULL`, `pAttributes` **must** be a valid pointer to a valid `SECURITY_ATTRIBUTES` value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkFenceCreateInfo](VkFenceCreateInfo.html)
+
 [VK_KHR_external_fence_win32](VK_KHR_external_fence_win32.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkExportFenceWin32HandleInfoKHR).

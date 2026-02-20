@@ -103,6 +103,13 @@ Valid Usage (Implicit)
 
  If `customSampleOrderCount` is not `0`, `pCustomSampleOrders` **must** be a valid pointer to an array of `customSampleOrderCount` valid [VkCoarseSampleOrderCustomNV](VkCoarseSampleOrderCustomNV.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
+
 [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html), [VkCoarseSampleOrderCustomNV](VkCoarseSampleOrderCustomNV.html), [VkCoarseSampleOrderTypeNV](VkCoarseSampleOrderTypeNV.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineViewportCoarseSampleOrderStateCreateInfoNV).

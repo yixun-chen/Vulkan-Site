@@ -538,6 +538,13 @@ Valid Usage (Implicit)
 
  If `constantCount` is not `0`, and `pConstants` is not `NULL`, `pConstants` **must** be a valid pointer to an array of `constantCount` valid [VkDataGraphPipelineConstantARM](#VkDataGraphPipelineConstantARM) structures
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](#VkDataGraphPipelineCreateInfoARM)
+
 The `VkDataGraphPipelineIdentifierCreateInfoARM` structure is defined
 as:
 
@@ -585,6 +592,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDataGraphPipelineIdentifierCreateInfoARM-identifierSize-arraylength) VUID-VkDataGraphPipelineIdentifierCreateInfoARM-identifierSize-arraylength
 
  `identifierSize` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](#VkDataGraphPipelineCreateInfoARM)
 
 The `VkDataGraphPipelineBuiltinModelCreateInfoQCOM` structure is defined
 as:
@@ -651,6 +665,13 @@ Valid Usage (Implicit)
 
  `pOperation` **must** be a valid pointer to a valid [VkPhysicalDeviceDataGraphOperationSupportARM](#VkPhysicalDeviceDataGraphOperationSupportARM) structure
 
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](#VkDataGraphPipelineCreateInfoARM)
+
 The `VkDataGraphPipelineCompilerControlCreateInfoARM` structure is
 defined as:
 
@@ -684,6 +705,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDataGraphPipelineCompilerControlCreateInfoARM-pVendorOptions-parameter) VUID-VkDataGraphPipelineCompilerControlCreateInfoARM-pVendorOptions-parameter
 
  `pVendorOptions` **must** be a null-terminated UTF-8 string
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](#VkDataGraphPipelineCreateInfoARM)
 
 The `VkDataGraphPipelineConstantARM` structure is defined as:
 
@@ -857,6 +885,13 @@ Valid Usage (Implicit)
 [](#VUID-VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM-sType-sType) VUID-VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM](../fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineConstantARM](#VkDataGraphPipelineConstantARM)
 
 The `VkDataGraphPipelineResourceInfoARM` structure is defined as:
 
@@ -2544,6 +2579,19 @@ Valid Usage (Implicit)
 [](#VUID-VkDataGraphProcessingEngineCreateInfoARM-processingEngineCount-arraylength) VUID-VkDataGraphProcessingEngineCreateInfoARM-processingEngineCount-arraylength
 
  `processingEngineCount` **must** be greater than `0`
+
+Structure Chaining
+
+[Extends the structures](../fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandPoolCreateInfo](../cmdbuffers.html#VkCommandPoolCreateInfo)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](#VkDataGraphPipelineCreateInfoARM)
+
+* 
+[VkDescriptorPoolCreateInfo](../descriptorsets.html#VkDescriptorPoolCreateInfo)
 
 Data graph processing engines execute *data graph operations*.
 Operations **may** be of a fixed-function nature, configurable or not, or **may**

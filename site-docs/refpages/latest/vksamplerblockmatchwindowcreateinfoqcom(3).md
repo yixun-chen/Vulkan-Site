@@ -64,6 +64,13 @@ Valid Usage (Implicit)
 
  `windowCompareMode` **must** be a valid [VkBlockMatchWindowCompareModeQCOM](VkBlockMatchWindowCompareModeQCOM.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)
+
 [VK_QCOM_image_processing2](VK_QCOM_image_processing2.html), [VkBlockMatchWindowCompareModeQCOM](VkBlockMatchWindowCompareModeQCOM.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/samplers.html#VkSamplerBlockMatchWindowCreateInfoQCOM).

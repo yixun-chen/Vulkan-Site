@@ -138,6 +138,16 @@ Valid Usage (Implicit)
 
  If `perViewRenderAreaCount` is not `0`, `pPerViewRenderAreas` **must** be a valid pointer to an array of `perViewRenderAreaCount` [VkRect2D](VkRect2D.html) structures
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)
+
+* 
+[VkRenderingInfo](VkRenderingInfo.html)
+
 [VK_QCOM_multiview_per_view_render_areas](VK_QCOM_multiview_per_view_render_areas.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM).

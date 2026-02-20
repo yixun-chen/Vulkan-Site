@@ -2445,6 +2445,16 @@ Valid Usage (Implicit)
 
  `pCode` **must** be a valid pointer to an array of    `uint32_t` values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineCreateInfoARM)
+
+* 
+[VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo)
+
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkShaderModuleCreateFlags;
 
@@ -2492,6 +2502,16 @@ Valid Usage (Implicit)
 [](#VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter) VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter
 
  `validationCache` **must** be a valid [VkValidationCacheEXT](#VkValidationCacheEXT) handle
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo)
+
+* 
+[VkShaderModuleCreateInfo](#VkShaderModuleCreateInfo)
 
 To destroy a shader module, call:
 

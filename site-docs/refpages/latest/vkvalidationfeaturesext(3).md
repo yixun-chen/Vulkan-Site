@@ -86,6 +86,19 @@ Valid Usage (Implicit)
 
  If `disabledValidationFeatureCount` is not `0`, `pDisabledValidationFeatures` **must** be a valid pointer to an array of `disabledValidationFeatureCount` valid [VkValidationFeatureDisableEXT](VkValidationFeatureDisableEXT.html) values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkInstanceCreateInfo](VkInstanceCreateInfo.html)
+
+* 
+[VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html)
+
+* 
+[VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html)
+
 [VK_EXT_validation_features](VK_EXT_validation_features.html), [VkStructureType](VkStructureType.html), [VkValidationFeatureDisableEXT](VkValidationFeatureDisableEXT.html), [VkValidationFeatureEnableEXT](VkValidationFeatureEnableEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/initialization.html#VkValidationFeaturesEXT).

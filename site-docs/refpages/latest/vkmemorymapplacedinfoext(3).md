@@ -80,6 +80,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT](VkStructureType.html)
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkMemoryMapInfo](VkMemoryMapInfo.html)
+
 [VK_EXT_map_memory_placed](VK_EXT_map_memory_placed.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkMemoryMapPlacedInfoEXT).

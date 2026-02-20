@@ -262,11 +262,6 @@ Valid Usage (Implicit)
  If `referenceSlotCount` is not `0`, `pReferenceSlots` **must** be a valid pointer to an array of `referenceSlotCount` valid [VkVideoReferenceSlotInfoKHR](VkVideoReferenceSlotInfoKHR.html) structures
 
 * 
-[](#VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent) VUID-VkVideoBeginCodingInfoKHR-videoSessionParameters-parent
-
- If `videoSessionParameters` is a valid handle, it **must** have been created, allocated, or retrieved from `videoSession`
-
-* 
 [](#VUID-VkVideoBeginCodingInfoKHR-commonparent) VUID-VkVideoBeginCodingInfoKHR-commonparent
 
  Both of `videoSession`, and `videoSessionParameters` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](VkDevice.html)

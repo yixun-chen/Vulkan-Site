@@ -5832,6 +5832,9 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE.html">VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT.html">VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12436,6 +12439,9 @@
     <a class="nav-link" href="VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_VALVE_shader_mixed_float_dot_product.html">VK_VALVE_shader_mixed_float_dot_product</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_VALVE_video_encode_rgb_conversion.html">VK_VALVE_video_encode_rgb_conversion</a>
   </li>
 </ul>
@@ -12667,8 +12673,8 @@ typedef struct VkUbmSurfaceCreateInfoSEC {
     VkStructureType               sType;
     const void*                   pNext;
     VkUbmSurfaceCreateFlagsSEC    flags;
-    struct ubm_device*            ubm_device;
-    struct ubm_surface*           ubm_surface;
+    struct ubm_device*            device;
+    struct ubm_surface*           surface;
 } VkUbmSurfaceCreateInfoSEC;</code></pre>
 </div>
 </div>
@@ -12690,11 +12696,11 @@ structure.</p>
 <p><code>flags</code> is reserved for future use.</p>
 </li>
 <li>
-<p><code>ubm_device</code> is a pointer to a <code>ubm_device</code> to associate the
-surface with.</p>
+<p><code>device</code> is a pointer to a <code>ubm_device</code> to associate the surface
+with.</p>
 </li>
 <li>
-<p><code>ubm_surface</code> is a pointer to a <code>ubm_surface</code> to associate the
+<p><code>surface</code> is a pointer to a <code>ubm_surface</code> to associate the
 surface with.</p>
 </li>
 </ul>
@@ -12710,14 +12716,14 @@ surface with.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_device-12366</span><br>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-device-12366" href="#VUID-VkUbmSurfaceCreateInfoSEC-device-12366"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-device-12366</span><br>
 
-<code>ubm_device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
+<code>device</code> <strong>must</strong> point to a valid UBM <code>ubm_device</code></p>
 </li>
 <li>
-<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367" href="#VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-ubm_surface-12367</span><br>
+<p><a id="VUID-VkUbmSurfaceCreateInfoSEC-surface-12367" href="#VUID-VkUbmSurfaceCreateInfoSEC-surface-12367"></a> <span class="vuid">VUID-VkUbmSurfaceCreateInfoSEC-surface-12367</span><br>
 
-<code>ubm_surface</code> <strong>must</strong> point to a valid UBM <code>ubm_surface</code></p>
+<code>surface</code> <strong>must</strong> point to a valid UBM <code>ubm_surface</code></p>
 </li>
 </ul>
 </div>

@@ -179,6 +179,13 @@ Valid Usage (Implicit)
 
  If `splitInstanceBindRegionCount` is not `0`, `pSplitInstanceBindRegions` **must** be a valid pointer to an array of `splitInstanceBindRegionCount` [VkRect2D](VkRect2D.html) structures
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBindImageMemoryInfo](VkBindImageMemoryInfo.html)
+
 [VK_KHR_bind_memory2](VK_KHR_bind_memory2.html), [VK_KHR_device_group](VK_KHR_device_group.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkBindImageMemoryDeviceGroupInfo).

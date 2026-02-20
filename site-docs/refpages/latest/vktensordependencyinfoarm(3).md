@@ -57,6 +57,13 @@ Valid Usage (Implicit)
 
  `pTensorMemoryBarriers` **must** be a valid pointer to a valid [VkTensorMemoryBarrierARM](VkTensorMemoryBarrierARM.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDependencyInfo](VkDependencyInfo.html)
+
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkStructureType](VkStructureType.html), [VkTensorMemoryBarrierARM](VkTensorMemoryBarrierARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkTensorDependencyInfoARM).

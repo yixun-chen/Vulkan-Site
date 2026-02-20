@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  `memory` **must** be a valid [VkDeviceMemory](VkDeviceMemory.html) handle
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)
+
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), [VkDeviceMemory](VkDeviceMemory.html), [VkStructureType](VkStructureType.html), [vkCmdBindTileMemoryQCOM](vkCmdBindTileMemoryQCOM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/memory.html#VkTileMemoryBindInfoQCOM).

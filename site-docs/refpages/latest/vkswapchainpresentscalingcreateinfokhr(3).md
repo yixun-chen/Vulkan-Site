@@ -200,6 +200,13 @@ Valid Usage (Implicit)
 
  `presentGravityY` **must** be a valid combination of [VkPresentGravityFlagBitsKHR](VkPresentGravityFlagBitsKHR.html) values
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html)
+
 [VK_EXT_swapchain_maintenance1](VK_EXT_swapchain_maintenance1.html), [VK_KHR_swapchain_maintenance1](VK_KHR_swapchain_maintenance1.html), [VkPresentGravityFlagsKHR](VkPresentGravityFlagsKHR.html), [VkPresentScalingFlagsKHR](VkPresentScalingFlagsKHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkSwapchainPresentScalingCreateInfoKHR).

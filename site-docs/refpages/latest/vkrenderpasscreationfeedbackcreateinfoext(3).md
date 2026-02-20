@@ -58,6 +58,13 @@ Valid Usage (Implicit)
 
  `pRenderPassFeedback` **must** be a valid pointer to a [VkRenderPassCreationFeedbackInfoEXT](VkRenderPassCreationFeedbackInfoEXT.html) structure
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html)
+
 [VK_EXT_subpass_merge_feedback](VK_EXT_subpass_merge_feedback.html), [VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html), [VkRenderPassCreationControlEXT](VkRenderPassCreationControlEXT.html), [VkRenderPassCreationFeedbackInfoEXT](VkRenderPassCreationFeedbackInfoEXT.html), [VkStructureType](VkStructureType.html), [vkCreateRenderPass2](vkCreateRenderPass2.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/renderpass.html#VkRenderPassCreationFeedbackCreateInfoEXT).

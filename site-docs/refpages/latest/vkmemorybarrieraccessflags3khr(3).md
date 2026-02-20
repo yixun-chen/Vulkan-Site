@@ -61,6 +61,19 @@ Valid Usage (Implicit)
 
  `dstAccessMask3` **must** be a valid combination of [VkAccessFlagBits3KHR](VkAccessFlagBits3KHR.html) values
 
+Structure Chaining
+
+[Extends the structures](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkBufferMemoryBarrier2](VkBufferMemoryBarrier2.html)
+
+* 
+[VkImageMemoryBarrier2](VkImageMemoryBarrier2.html)
+
+* 
+[VkSubpassDependency2](VkSubpassDependency2.html)
+
 [VK_KHR_maintenance8](VK_KHR_maintenance8.html), [VkAccessFlags3KHR](VkAccessFlags3KHR.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/synchronization.html#VkMemoryBarrierAccessFlags3KHR).

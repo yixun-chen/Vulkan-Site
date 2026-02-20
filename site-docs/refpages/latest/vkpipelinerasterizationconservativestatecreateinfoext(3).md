@@ -101,6 +101,13 @@ Valid Usage (Implicit)
 
  `conservativeRasterizationMode` **must** be a valid [VkConservativeRasterizationModeEXT](VkConservativeRasterizationModeEXT.html) value
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)
+
 [VK_EXT_conservative_rasterization](VK_EXT_conservative_rasterization.html), [VkConservativeRasterizationModeEXT](VkConservativeRasterizationModeEXT.html), [VkPipelineRasterizationConservativeStateCreateFlagsEXT](VkPipelineRasterizationConservativeStateCreateFlagsEXT.html), [VkStructureType](VkStructureType.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/primsrast.html#VkPipelineRasterizationConservativeStateCreateInfoEXT).

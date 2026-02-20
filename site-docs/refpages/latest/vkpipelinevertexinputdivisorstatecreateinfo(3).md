@@ -77,6 +77,13 @@ Valid Usage (Implicit)
 
  `vertexBindingDivisorCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineVertexInputStateCreateInfo](VkPipelineVertexInputStateCreateInfo.html)
+
 [VK_EXT_vertex_attribute_divisor](VK_EXT_vertex_attribute_divisor.html), [VK_KHR_vertex_attribute_divisor](VK_KHR_vertex_attribute_divisor.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkStructureType](VkStructureType.html), [VkVertexInputBindingDivisorDescription](VkVertexInputBindingDivisorDescription.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/fxvertex.html#VkPipelineVertexInputDivisorStateCreateInfo).

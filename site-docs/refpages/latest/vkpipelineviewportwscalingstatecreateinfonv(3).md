@@ -65,6 +65,13 @@ Valid Usage (Implicit)
 
  `viewportCount` **must** be greater than `0`
 
+Structure Chaining
+
+[Extends the structure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
+
 [VK_NV_clip_space_w_scaling](VK_NV_clip_space_w_scaling.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkViewportWScalingNV](VkViewportWScalingNV.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV).

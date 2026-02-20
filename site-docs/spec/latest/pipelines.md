@@ -294,6 +294,22 @@ Valid Usage (Implicit)
 
  `flags` **must** be a valid combination of [VkPipelineCreateFlagBits2](#VkPipelineCreateFlagBits2) values
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)
+
+* 
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)
+
 Bits which **can** be set in
 [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)::`flags`, specifying how a
 pipeline is created, are:
@@ -310,8 +326,8 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COM
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT = 0x00000200ULL;
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT = 0x08000000ULL;
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT = 0x40000000ULL;
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000ULL;
 #endif
 // Provided by VK_EXT_descriptor_heap
@@ -2305,6 +2321,16 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo)
+
+* 
+[VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT)
+
 A subpass shading pipeline is a compute pipeline which **must** be called only
 in a subpass of a render pass with work dimensions specified by render area
 size.
@@ -2364,6 +2390,13 @@ Valid Usage (Implicit)
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter
 
  `renderPass` **must** be a valid [VkRenderPass](renderpass.html#VkRenderPass) handle
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
 
 A subpass shading pipeline’s workgroup size is a 2D vector with number of
 power-of-two in width and height.
@@ -2660,6 +2693,22 @@ Valid Usage (Implicit)
 
  `images` **must** be a valid [VkPipelineRobustnessImageBehavior](#VkPipelineRobustnessImageBehavior) value
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)
+
 Possible values of the `storageBuffers`, `uniformBuffers`, and
 `vertexInputs` members of [VkPipelineRobustnessCreateInfo](#VkPipelineRobustnessCreateInfo) are:
 
@@ -2819,6 +2868,13 @@ Valid Usage (Implicit)
 
  If `identifierSize` is not `0`, `pIdentifier` **must** be a valid pointer to an array of `identifierSize` `uint8_t` values
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo)
+
 If a compute pipeline is going to be used in [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands) by specifying its pipeline token with
 [VkBindPipelineIndirectCommandNV](device_generated_commands/generatedcommands.html#VkBindPipelineIndirectCommandNV), then that pipeline’s associated
 metadata **must** be saved at a specified buffer device address for later use
@@ -2946,6 +3002,13 @@ Valid Usage (Implicit)
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-parameter) VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-parameter
 
  If `pipelineDeviceAddressCaptureReplay` is not `0`, `pipelineDeviceAddressCaptureReplay` **must** be a valid `VkDeviceAddress` value
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
 
 To save a compute pipeline’s metadata at a device address call:
 
@@ -7239,6 +7302,13 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
 The `VkPipelineRenderingCreateInfo` structure is defined as:
 
 // Provided by VK_VERSION_1_3
@@ -7320,6 +7390,13 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineRenderingCreateInfo-sType-sType) VUID-VkPipelineRenderingCreateInfo-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
 
 The `VkCustomResolveCreateInfoEXT` structure is defined as:
 
@@ -7479,6 +7556,19 @@ Valid Usage (Implicit)
 
  `sType` **must** be [VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT)
+
 The `VkPipelineBinaryInfoKHR` structure is defined as:
 
 // Provided by VK_KHR_pipeline_binary
@@ -7550,6 +7640,19 @@ Valid Usage (Implicit)
 
  If `binaryCount` is not `0`, `pPipelineBinaries` **must** be a valid pointer to an array of `binaryCount` valid [VkPipelineBinaryKHR](#VkPipelineBinaryKHR) handles
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)
+
 The `VkGraphicsPipelineLibraryCreateInfoEXT` structure is defined as:
 
 // Provided by VK_EXT_graphics_pipeline_library
@@ -7603,6 +7706,13 @@ Valid Usage (Implicit)
 [](#VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-requiredbitmask) VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-requiredbitmask
 
  `flags` **must** not be `0`
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
 
 // Provided by VK_EXT_graphics_pipeline_library
 typedef VkFlags VkGraphicsPipelineLibraryFlagsEXT;
@@ -8716,6 +8826,13 @@ Valid Usage (Implicit)
 
  If `pipelineCount` is not `0`, `pPipelines` **must** be a valid pointer to an array of `pipelineCount` valid [VkPipeline](#VkPipeline) handles
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
 The `VkGraphicsShaderGroupCreateInfoNV` structure provides the state
 overrides for each shader group.
 Each shader group behaves like a pipeline that was created from its state as
@@ -9752,6 +9869,13 @@ Valid Usage (Implicit)
 [](#VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType) VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType
 
  `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)
 
 The `VkRayTracingShaderGroupCreateInfoKHR` structure is defined as:
 
@@ -13240,6 +13364,13 @@ Valid Usage (Implicit)
 
  If `libraryCount` is not `0`, `pLibraries` **must** be a valid pointer to an array of `libraryCount` valid [VkPipeline](#VkPipeline) handles
 
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
 Pipelines created with [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) libraries
 **can** depend on other pipeline libraries in
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR).
@@ -14805,6 +14936,19 @@ Valid Usage (Implicit)
 
  `compilerControlFlags` **must** be `0`
 
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
+
+* 
+[VkExecutionGraphPipelineCreateInfoAMDX](executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
 There are currently no available flags for this extension; flags will be
 added by future versions of this extension.
 
@@ -14904,6 +15048,28 @@ Valid Usage (Implicit)
 [](#VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineStageCreationFeedbacks-parameter) VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineStageCreationFeedbacks-parameter
 
  If `pipelineStageCreationFeedbackCount` is not `0`, `pPipelineStageCreationFeedbacks` **must** be a valid pointer to an array of `pipelineStageCreationFeedbackCount` [VkPipelineCreationFeedback](#VkPipelineCreationFeedback) structures
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)
+
+* 
+[VkDataGraphPipelineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineCreateInfoARM)
+
+* 
+[VkExecutionGraphPipelineCreateInfoAMDX](executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX)
+
+* 
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)
+
+* 
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)
+
+* 
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)
 
 The `VkPipelineCreationFeedback` structure is defined as:
 
