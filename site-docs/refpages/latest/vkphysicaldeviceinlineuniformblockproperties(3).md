@@ -47,7 +47,7 @@ structure.
 * 
 
 `maxInlineUniformBlockSize` is the maximum size in bytes of an
-[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inlineuniformblock) binding.
+[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inlineuniformblock) binding.
 
 * 
 

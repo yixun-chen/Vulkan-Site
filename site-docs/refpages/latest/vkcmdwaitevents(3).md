@@ -22,6 +22,9 @@ vkCmdWaitEvents - Wait for one or more events and insert a set of memory
 To wait for one or more events to enter the signaled state on a device,
 call:
 
+|  | This functionality is superseded by [vkCmdWaitEvents2](../../../../spec/latest/chapters/synchronization.html#vkCmdWaitEvents2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdWaitEvents(
     VkCommandBuffer                             commandBuffer,

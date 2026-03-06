@@ -143,6 +143,8 @@ typedef enum VkObjectType {
     VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT = 1000572000,
   // Provided by VK_EXT_device_generated_commands
     VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT = 1000572001,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM = 1000607000,
   // Provided by VK_KHR_descriptor_update_template
     VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE,
   // Provided by VK_KHR_sampler_ycbcr_conversion
@@ -1450,7 +1452,7 @@ array.
 `pObjects` is a pointer to an array of
 [VkDebugUtilsObjectNameInfoEXT](#VkDebugUtilsObjectNameInfoEXT) objects related to the detected
 issue.
-The array is roughly in order or importance, but the 0th element is
+The array is roughly in order of importance, but the 0th element is
 always guaranteed to be the most important object for this message.
 
 |  | This structure should only be considered valid during the lifetime of the

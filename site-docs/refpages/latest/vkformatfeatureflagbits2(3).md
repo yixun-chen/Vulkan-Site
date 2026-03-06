@@ -177,11 +177,11 @@ created with the queried
 
 * 
 [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT](#) specifies that an image view
-**can** be [sampled from](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage).
+**can** be [sampled from](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage).
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT](#) specifies that an image view
-**can** be used as a [storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage).
+**can** be used as a [storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage).
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT](#) specifies that an
@@ -395,16 +395,16 @@ views used by video coding operations that **can** be enumerated using the
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](#) specifies that
 image views or buffer views created with this format **can** be used as
-[storage images](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) or
-[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer)
-respectively for read operations without specifying a format.
+[storage images](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) or
+[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer) respectively
+for read operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](#) specifies
 that image views or buffer views created with this format **can** be used
-as [storage images](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) or
-[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer)
-respectively for write operations without specifying a format.
+as [storage images](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) or
+[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer) respectively
+for write operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](#) specifies
@@ -423,7 +423,7 @@ This **must** not be set in the `optimalTilingFeatures` or
 * 
 [VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](#) specifies that image
 views created with this format **can** be used as the
-[weight image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-weightimage) input to
+[weight image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-weightimage) input to
 [weight image sampling](../../../../spec/latest/chapters/textures.html#textures-weightimage) operations.
 
 * 
@@ -514,13 +514,13 @@ builds.
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](#) specifies that
 buffer views created with this format **can** be used as
-[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer) for read
+[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer) for read
 operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](#) specifies
 that buffer views created with this format **can** be used as
-[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer) for write
+[storage texel buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer) for write
 operations without specifying a format.
 
 * 

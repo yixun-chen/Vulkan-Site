@@ -3574,6 +3574,9 @@ vkCmdWriteTimestamp2 is not affected by [conditional rendering](drawing.html#dra
 
 To request a timestamp and write the value to memory, call:
 
+|  | This functionality is superseded by [vkCmdWriteTimestamp2](#vkCmdWriteTimestamp2). See [Legacy Functionality](../appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdWriteTimestamp(
     VkCommandBuffer                             commandBuffer,

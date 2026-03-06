@@ -66,7 +66,7 @@ constants not modified by this command.
 When a [bound pipeline command](../../../../spec/latest/chapters/pipelines.html#pipelines-bindpoint-commands) is issued,
 the bound pipeline’s layout **must** be compatible with the layouts used to set
 the values of all push constants in the pipeline layout’s push constant
-ranges, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility).
+ranges, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility).
 Binding a pipeline with a layout that is not compatible with the push
 constant layout does not disturb the push constant values.
 

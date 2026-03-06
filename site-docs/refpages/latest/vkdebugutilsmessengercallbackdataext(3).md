@@ -96,7 +96,7 @@ array.
 `pObjects` is a pointer to an array of
 [VkDebugUtilsObjectNameInfoEXT](VkDebugUtilsObjectNameInfoEXT.html) objects related to the detected
 issue.
-The array is roughly in order or importance, but the 0th element is
+The array is roughly in order of importance, but the 0th element is
 always guaranteed to be the most important object for this message.
 
 |  | This structure should only be considered valid during the lifetime of the

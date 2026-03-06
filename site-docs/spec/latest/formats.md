@@ -4343,7 +4343,7 @@ size-compatible as defined by [the list of compatible depth-stencil and color fo
 To query supported format features which are properties of the physical
 device, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../appendices/versions.html#versions-1.1). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceFormatProperties2](#vkGetPhysicalDeviceFormatProperties2). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -4439,6 +4439,9 @@ Bits which **can** be set in the [VkFormatProperties](#VkFormatProperties) featu
 [VkDrmFormatModifierPropertiesEXT](#VkDrmFormatModifierPropertiesEXT)::`drmFormatModifierTilingFeatures`,
 and `bufferFeatures` are:
 
+|  | This functionality is superseded by [VkFormatFeatureFlagBits2](#VkFormatFeatureFlagBits2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkFormatFeatureFlagBits {
     VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = 0x00000001,
@@ -4528,11 +4531,11 @@ created with the queried
 
 * 
 [VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#VkFormatFeatureFlagBits) specifies that an image view
-**can** be [sampled from](descriptorsets.html#descriptorsets-sampledimage).
+**can** be [sampled from](descriptorsets.html#descriptors-sampledimage).
 
 * 
 [VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](#VkFormatFeatureFlagBits) specifies that an image view
-**can** be used as a [storage image](descriptorsets.html#descriptorsets-storageimage).
+**can** be used as a [storage image](descriptorsets.html#descriptors-storageimage).
 
 * 
 [VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](#VkFormatFeatureFlagBits) specifies that an image
@@ -4756,6 +4759,9 @@ builds.
 [VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](#VkFormatFeatureFlagBits) are only intended to
 be advertised for single-component formats, since SPIR-V atomic operations
 require a scalar type. |
+
+|  | This functionality is superseded by [VkFormatFeatureFlags2](#VkFormatFeatureFlags2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkFormatFeatureFlags;
@@ -5321,11 +5327,11 @@ created with the queried
 
 * 
 [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT](#VkFormatFeatureFlagBits2KHR) specifies that an image view
-**can** be [sampled from](descriptorsets.html#descriptorsets-sampledimage).
+**can** be [sampled from](descriptorsets.html#descriptors-sampledimage).
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT](#VkFormatFeatureFlagBits2KHR) specifies that an image view
-**can** be used as a [storage image](descriptorsets.html#descriptorsets-storageimage).
+**can** be used as a [storage image](descriptorsets.html#descriptors-storageimage).
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT](#VkFormatFeatureFlagBits2KHR) specifies that an
@@ -5539,16 +5545,16 @@ views used by video coding operations that **can** be enumerated using the
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](#VkFormatFeatureFlagBits2KHR) specifies that
 image views or buffer views created with this format **can** be used as
-[storage images](descriptorsets.html#descriptorsets-storageimage) or
-[storage texel buffers](descriptorsets.html#descriptorsets-storagetexelbuffer)
-respectively for read operations without specifying a format.
+[storage images](descriptorsets.html#descriptors-storageimage) or
+[storage texel buffers](descriptorsets.html#descriptors-storagetexelbuffer) respectively
+for read operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](#VkFormatFeatureFlagBits2KHR) specifies
 that image views or buffer views created with this format **can** be used
-as [storage images](descriptorsets.html#descriptorsets-storageimage) or
-[storage texel buffers](descriptorsets.html#descriptorsets-storagetexelbuffer)
-respectively for write operations without specifying a format.
+as [storage images](descriptorsets.html#descriptors-storageimage) or
+[storage texel buffers](descriptorsets.html#descriptors-storagetexelbuffer) respectively
+for write operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](#VkFormatFeatureFlagBits2KHR) specifies
@@ -5567,7 +5573,7 @@ This **must** not be set in the `optimalTilingFeatures` or
 * 
 [VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](#VkFormatFeatureFlagBits2KHR) specifies that image
 views created with this format **can** be used as the
-[weight image](descriptorsets.html#descriptorsets-weightimage) input to
+[weight image](descriptorsets.html#descriptors-weightimage) input to
 [weight image sampling](textures.html#textures-weightimage) operations.
 
 * 
@@ -5658,13 +5664,13 @@ builds.
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](#VkFormatFeatureFlagBits2KHR) specifies that
 buffer views created with this format **can** be used as
-[storage texel buffers](descriptorsets.html#descriptorsets-storagetexelbuffer) for read
+[storage texel buffers](descriptorsets.html#descriptors-storagetexelbuffer) for read
 operations without specifying a format.
 
 * 
 [VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](#VkFormatFeatureFlagBits2KHR) specifies
 that buffer views created with this format **can** be used as
-[storage texel buffers](descriptorsets.html#descriptorsets-storagetexelbuffer) for write
+[storage texel buffers](descriptorsets.html#descriptors-storagetexelbuffer) for write
 operations without specifying a format.
 
 * 
@@ -5745,8 +5751,8 @@ be used as a destination tensor for [copy commands](copies.html#copies-tensors).
 
 * 
 [VK_FORMAT_FEATURE_2_TENSOR_SHADER_BIT_ARM](#VkFormatFeatureFlagBits2KHR) specifies that a tensor
-view **can** be used as a [storage tensor](descriptorsets.html#descriptorsets-storagetensor)
-in shaders.
+view **can** be used as a [storage tensor](descriptorsets.html#descriptors-storagetensor) in
+shaders.
 
 * 
 [VK_FORMAT_FEATURE_2_TENSOR_IMAGE_ALIASING_BIT_ARM](#VkFormatFeatureFlagBits2KHR) specifies that a
@@ -5755,7 +5761,7 @@ tensor.
 
 * 
 [VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM](#VkFormatFeatureFlagBits2KHR) specifies that a
-tensor view **can** be used as a [storage    tensor](descriptorsets.html#descriptorsets-storagetensor) with [data graph pipelines](VK_ARM_data_graph/graphs.html#graphs-pipelines).
+tensor view **can** be used as a [storage    tensor](descriptorsets.html#descriptors-storagetensor) with [data graph pipelines](VK_ARM_data_graph/graphs.html#graphs-pipelines).
 
 // Provided by VK_VERSION_1_3
 typedef VkFlags64 VkFormatFeatureFlags2;

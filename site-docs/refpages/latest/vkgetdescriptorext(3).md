@@ -21,6 +21,9 @@ vkGetDescriptorEXT - To get a descriptor to place in a buffer
 
 To get descriptor data to place in a buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorEXT(
     VkDevice                                    device,

@@ -22,6 +22,9 @@ vkGetDescriptorSetLayoutBindingOffsetEXT - Get the offset of a binding within a 
 To get the offset of a binding within a descriptor set layout in memory,
 call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorSetLayoutBindingOffsetEXT(
     VkDevice                                    device,
@@ -80,7 +83,7 @@ A descriptor `binding` with type [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorTy
 Any potential types in
 [VkMutableDescriptorTypeCreateInfoEXT](VkMutableDescriptorTypeCreateInfoEXT.html)::`pDescriptorTypes` for
 `binding` share the same offset.
-If the size of the [mutable descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-mutable) is larger
+If the size of the [mutable descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-mutable) is larger
 than the size of a concrete descriptor type being accessed, the padding area
 is ignored by the implementation.
 

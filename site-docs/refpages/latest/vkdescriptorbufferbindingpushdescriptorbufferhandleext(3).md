@@ -24,6 +24,9 @@ property is [VK_FALSE](VK_FALSE.html), the `VkBuffer` handle of the buffer for p
 descriptors is passed in a
 `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
     VkStructureType    sType;

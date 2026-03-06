@@ -21,6 +21,9 @@ VkRenderPassCreateFlagBits - Bitmask specifying additional properties of a rende
 Bits which **can** be set in [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html)::`flags`,
 describing additional properties of the render pass, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.2](../../../../spec/latest/appendices/versions.html#versions-1.2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkRenderPassCreateFlagBits {
   // Provided by VK_QCOM_render_pass_transform

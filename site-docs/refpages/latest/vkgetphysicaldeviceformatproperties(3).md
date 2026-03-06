@@ -22,7 +22,7 @@ vkGetPhysicalDeviceFormatProperties - Lists physical device’s format capabilit
 To query supported format features which are properties of the physical
 device, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceFormatProperties2](../../../../spec/latest/chapters/formats.html#vkGetPhysicalDeviceFormatProperties2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

@@ -3722,8 +3722,8 @@ If `initialPipeline` was created with
 If `initialPipeline` was created without
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), the
 layout of each pipeline in `pExecutionSetWrites` **must** be
-[compatible](../descriptorsets.html#descriptorsets-compatibility) with the
-`initialPipeline` used to create the Indirect Execution Set
+[compatible](../descriptorsets.html#descriptors-compatibility) with the `initialPipeline`
+used to create the Indirect Execution Set
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11040) VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11040
@@ -3866,7 +3866,7 @@ If the shaders in `pInitialShaders` were created with
 If the shaders in `pInitialShaders` were created without
 [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), the
 descriptor layout of each shader in `pExecutionSetWrites` **must** be
-[compatible](../descriptorsets.html#descriptorsets-compatibility) with the initial layout info
+[compatible](../descriptorsets.html#descriptors-compatibility) with the initial layout info
 used to create the Indirect Execution Set
 
 * 
@@ -4204,7 +4204,7 @@ compatible for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPip
 the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08601) VUID-vkCmdExecuteGeneratedCommandsNV-None-08601
@@ -4217,7 +4217,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
@@ -4240,7 +4240,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](../descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](../shaders.html#VkShaderEXT)
@@ -8796,7 +8796,7 @@ compatible for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPip
 the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08601) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08601
@@ -8809,7 +8809,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
@@ -8832,7 +8832,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](../descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](../shaders.html#VkShaderEXT)
@@ -12652,7 +12652,7 @@ is a descriptor and push constant layout info provided either by
 `pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
 `pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
 create `indirectCommandsLayout`, the pipeline layout **must** be
-[compatible](../descriptorsets.html#descriptorsets-compatibility) with the descriptor and push
+[compatible](../descriptorsets.html#descriptors-compatibility) with the descriptor and push
 constant layout info used by `indirectExecutionSet`
 
 * 

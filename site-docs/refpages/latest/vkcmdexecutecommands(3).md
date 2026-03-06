@@ -894,6 +894,12 @@ value of
 [VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
 set to `NULL`
 
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-12373) VUID-vkCmdExecuteCommands-commandBuffer-12373
+
+`commandBuffer` **must** not have any shader instrumentation
+[active](../../../../spec/latest/chapters/shaders.html#shaders-instrumentation-active)
+
 Valid Usage (Implicit)
 
 * 

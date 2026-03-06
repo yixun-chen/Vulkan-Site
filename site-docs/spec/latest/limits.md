@@ -266,7 +266,7 @@ in [    `extendedSparseBufferUsageFlags`](#limits-extendedSparseBufferUsageFlags
  `maxBoundDescriptorSets` is the
 maximum number of descriptor sets that **can** be simultaneously used by a
 pipeline.
-See [Descriptor Sets](descriptorsets.html#descriptorsets-sets).
+See [Descriptor Sets](descriptorsets.html#descriptors-sets).
 
 * 
 
@@ -281,8 +281,7 @@ count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
 for that shader stage set.
-See [Sampler](descriptorsets.html#descriptorsets-sampler) and
-[Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler).
+See [Sampler](descriptorsets.html#descriptors-sampler) and [Combined Image Sampler](descriptorsets.html#descriptors-combinedimagesampler).
 
 * 
 
@@ -298,8 +297,8 @@ count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
 for that shader stage set.
-See [Uniform Buffer](descriptorsets.html#descriptorsets-uniformbuffer) and
-[Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Uniform Buffer](descriptorsets.html#descriptors-uniformbuffer) and
+[Dynamic Uniform Buffer](descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -315,8 +314,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Storage Buffer](descriptorsets.html#descriptorsets-storagebuffer) and
-[Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Storage Buffer](descriptorsets.html#descriptors-storagebuffer) and
+[Dynamic Storage Buffer](descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -333,9 +332,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler),
-[Sampled Image](descriptorsets.html#descriptorsets-sampledimage), and
-[Uniform Texel Buffer](descriptorsets.html#descriptorsets-uniformtexelbuffer).
+See [Combined Image Sampler](descriptorsets.html#descriptors-combinedimagesampler), [Sampled Image](descriptorsets.html#descriptors-sampledimage),
+and [Uniform Texel Buffer](descriptorsets.html#descriptors-uniformtexelbuffer).
 
 * 
 
@@ -350,8 +348,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Storage Image](descriptorsets.html#descriptorsets-storageimage), and
-[Storage Texel Buffer](descriptorsets.html#descriptorsets-storagetexelbuffer).
+See [Storage Image](descriptorsets.html#descriptors-storageimage), and
+[Storage Texel Buffer](descriptorsets.html#descriptors-storagetexelbuffer).
 
 * 
 
@@ -367,7 +365,7 @@ A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
 These are only supported for the fragment stage.
-See [Input Attachment](descriptorsets.html#descriptorsets-inputattachment).
+See [Input Attachment](descriptorsets.html#descriptors-inputattachment).
 
 |  | `maxPerStageDescriptorInputAttachments` was originally only intended to
 | --- | --- |
@@ -414,8 +412,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Sampler](descriptorsets.html#descriptorsets-sampler) and
-[Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler).
+See [Sampler](descriptorsets.html#descriptors-sampler) and [Combined Image Sampler](descriptorsets.html#descriptors-combinedimagesampler).
 
 * 
 
@@ -427,8 +424,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Uniform Buffer](descriptorsets.html#descriptorsets-uniformbuffer) and
-[Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Uniform Buffer](descriptorsets.html#descriptors-uniformbuffer) and
+[Dynamic Uniform Buffer](descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -440,7 +437,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Dynamic Uniform Buffer](descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -452,8 +449,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Storage Buffer](descriptorsets.html#descriptorsets-storagebuffer) and
-[Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Storage Buffer](descriptorsets.html#descriptors-storagebuffer) and
+[Dynamic Storage Buffer](descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -465,7 +462,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Dynamic Storage Buffer](descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -478,9 +475,8 @@ Descriptors with a type of
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler),
-[Sampled Image](descriptorsets.html#descriptorsets-sampledimage), and
-[Uniform Texel Buffer](descriptorsets.html#descriptorsets-uniformtexelbuffer).
+See [Combined Image Sampler](descriptorsets.html#descriptors-combinedimagesampler), [Sampled Image](descriptorsets.html#descriptors-sampledimage),
+and [Uniform Texel Buffer](descriptorsets.html#descriptors-uniformtexelbuffer).
 
 * 
 
@@ -491,8 +487,8 @@ Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.htm
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Storage Image](descriptorsets.html#descriptorsets-storageimage), and
-[Storage Texel Buffer](descriptorsets.html#descriptorsets-storagetexelbuffer).
+See [Storage Image](descriptorsets.html#descriptors-storageimage), and
+[Storage Texel Buffer](descriptorsets.html#descriptors-storagetexelbuffer).
 
 * 
 
@@ -503,7 +499,7 @@ count against this limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Input Attachment](descriptorsets.html#descriptorsets-inputattachment).
+See [Input Attachment](descriptorsets.html#descriptors-inputattachment).
 
 * 
  `maxVertexInputAttributes` is
@@ -2672,7 +2668,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Dynamic Uniform Buffer](descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -2685,7 +2681,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
-See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Dynamic Storage Buffer](descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -3810,7 +3806,7 @@ structure.
 * 
 
 `maxInlineUniformBlockSize` is the maximum size in bytes of an
-[inline uniform block](descriptorsets.html#descriptorsets-inlineuniformblock) binding.
+[inline uniform block](descriptorsets.html#descriptors-inlineuniformblock) binding.
 
 * 
 
@@ -6373,6 +6369,9 @@ Structure Chaining
 The `VkPhysicalDeviceDescriptorBufferPropertiesEXT` structure is defined
 as:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
     VkStructureType    sType;
@@ -6658,6 +6657,9 @@ Structure Chaining
 
 The `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` structure
 is defined as:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {
@@ -8881,6 +8883,56 @@ Structure Chaining
 * 
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
 
+The `VkPhysicalDeviceShaderInstrumentationPropertiesARM` structure is
+defined as:
+
+// Provided by VK_ARM_shader_instrumentation
+typedef struct VkPhysicalDeviceShaderInstrumentationPropertiesARM {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           numMetrics;
+    VkBool32           perBasicBlockGranularity;
+} VkPhysicalDeviceShaderInstrumentationPropertiesARM;
+
+The members of the `VkPhysicalDeviceShaderInstrumentationPropertiesARM`
+structure describe the following:
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`numMetrics` is the number of shader instrumentation metrics
+supported.
+
+* 
+`perBasicBlockGranularity` is a boolean value indicating whether
+shader instrumentation metrics are returned per basic block.
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then all metrics for the shader are reported
+as basic block index `0`.
+
+If the `VkPhysicalDeviceShaderInstrumentationPropertiesARM` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
+[vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
+corresponding implementation-dependent property.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceShaderInstrumentationPropertiesARM-sType-sType) VUID-VkPhysicalDeviceShaderInstrumentationPropertiesARM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structure](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2)
+
 The following table specifies the **required** minimum/maximum for all Vulkan
 graphics implementations.
 Where a limit corresponds to a fine-grained device feature which is
@@ -9248,6 +9300,8 @@ whether or not the feature is enabled.
 | `uint32_t` | `samplerYcbcrConversionCount` | [`descriptorHeap`](features.html#features-descriptorHeap) |
 | `uint32_t` | `sparseDescriptorHeaps` | [`descriptorHeap`](features.html#features-descriptorHeap) |
 | `uint32_t` | `protectedDescriptorHeaps` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `uint32_t` | `numMetrics` | [`shaderInstrumentation`](features.html#features-shaderInstrumentation) |
+| `VkBool32` | `perBasicBlockGranularity` | [`shaderInstrumentation`](features.html#features-shaderInstrumentation) |
 
 | Limit | Unsupported Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- | --- |
@@ -9823,6 +9877,8 @@ whether or not the feature is enabled.
 | `maxDescriptorHeapEmbeddedSamplers` | - | 2032 | min |
 | `samplerYcbcrConversionCount` | - | 3 | max |
 | `imageCaptureReplayOpaqueDataSize` | - | - | implementation-dependent |
+| `numMetrics` | - | 1 | min |
+| `perBasicBlockGranularity` | - | VK_FALSE | max |
 
 1
 

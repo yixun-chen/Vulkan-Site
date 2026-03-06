@@ -10,6 +10,7 @@
 
 - [Extensions](#_extensions)
 - [Data types](#_data_types)
+- [Matrix Layout](#_matrix_layout)
 - [Implicit vk Namespace](#_implicit_vk_namespace)
 - [Implicit_vk_Namespace](#_implicit_vk_namespace)
 - [SPIR-V macro](#_spir_v_macro)
@@ -89,6 +90,9 @@ Table of Contents
 
 [Extensions](#_extensions)
 [Data types](#_data_types)
+
+[Matrix Layout](#_matrix_layout)
+
 [Implicit vk Namespace](#_implicit_vk_namespace)
 [SPIR-V macro](#_spir_v_macro)
 [SPIR-V intrinsics](#_spir_v_intrinsics)
@@ -155,8 +159,9 @@ HLSL:
 
 float4x3 mat = (float4x3)(ubo.view);
 
-|  | An important difference: Matrices in GLSL are column-major, while matrices in HLSL are row-major. This affects things like matrix construction. |
-| --- | --- |
+It is important to be mindful that matrices in GLSL are column-major, while matrices in HLSL are row-major. This affects things like matrix construction.
+
+![high_level_shader_language_comparison_matrix.png](_images/high_level_shader_language_comparison_matrix.png)
 
 For Vulkan concepts that are not available in DirectX, an [implicit namespace](https://github.com/microsoft/DirectXShaderCompiler/blob/main/docs/SPIR-V.rst#the-implicit-vk-namespace) has been added that marks Vulkan specific features.
 
@@ -649,14 +654,10 @@ groupshared float4 sharedData[1024];
 | gl_NumWorkGroups | n.a. |
 | gl_WorkGroupSize | n.a. |
 
-|  | Barriers heavily differ between GLSL and HLSL. With one exception there is no direct mapping. To match HLSL in GLSL you often need to call multiple different barrier types in glsl. |
-| --- | --- |
-
 Example:
 
 GLSL:
 
-groupMemoryBarrier();
 barrier();
 for (int j = 0; j 
 
@@ -665,15 +666,20 @@ HLSL:
 GroupMemoryBarrierWithGroupSync();
 for (int j = 0; j 
 
+|  | Barriers heavily differ between GLSL and HLSL. Some HLSL barriers don’t have direct mapping to GLSL (such functions are in *italics*, and GLSL barriers have been used for them as accurately as possible). |
+| --- | --- |
+
 | **GLSL** | **HLSL** |
 | --- | --- |
-| groupMemoryBarrier | GroupMemoryBarrier |
-| groupMemoryBarrier + barrier | GroupMemoryBarrierWithGroupSync |
-| memoryBarrier + memoryBarrierImage + memoryBarrierImage | DeviceMemoryBarrier |
-| memoryBarrier + memoryBarrierImage + memoryBarrierImage + barrier | DeviceMemoryBarrierWithGroupSync |
-| All above barriers + barrier | AllMemoryBarrierWithGroupSync |
-| All above barriers | AllMemoryBarrier |
-| memoryBarrierShared (only) | n.a. |
+| memoryBarrierShared | *GroupMemoryBarrier* |
+| barrier | GroupMemoryBarrierWithGroupSync |
+| memoryBarrierImage + memoryBarrierBuffer | DeviceMemoryBarrier |
+| memoryBarrierImage + memoryBarrierBuffer + barrier | *DeviceMemoryBarrierWithGroupSync* |
+| memoryBarrier + barrier | AllMemoryBarrierWithGroupSync |
+| memoryBarrier | AllMemoryBarrier |
+
+|  | `barrier` implicitly sets a memory barrier for `shared`/`groupshared` memory. Roughly speaking, the `barrier` contains the `memoryBarrierShared`/`GroupMemoryBarrier`. |
+| --- | --- |
 
 These shader stages share several functions and built-ins
 

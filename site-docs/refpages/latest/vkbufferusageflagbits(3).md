@@ -21,6 +21,9 @@ VkBufferUsageFlagBits - Bitmask specifying allowed usage of a buffer
 Bits which **can** be set in [VkBufferCreateInfo](VkBufferCreateInfo.html)::`usage`, specifying
 usage behavior of a buffer, are:
 
+|  | This functionality is superseded by [VkBufferUsageFlagBits2](../../../../spec/latest/chapters/resources.html#VkBufferUsageFlagBits2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkBufferUsageFlagBits {
     VK_BUFFER_USAGE_TRANSFER_SRC_BIT = 0x00000001,

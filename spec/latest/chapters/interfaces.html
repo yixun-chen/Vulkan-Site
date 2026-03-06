@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -1950,7 +1950,7 @@ numeric format of the subpass input determines if depth or stencil aspect is
 accessed by the shader.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="descriptorsets.html#descriptorsets-inputattachment" class="xref page">Input Attachment</a> for more details.</p>
+<p>See <a href="descriptorsets.html#descriptors-inputattachment" class="xref page">Input Attachment</a> for more details.</p>
 </div>
 <div class="sect2">
 <h3 id="compatibility-inputattachment"><a class="anchor" href="#compatibility-inputattachment"></a>Fragment Input Attachment Compatibility</h3>
@@ -2109,9 +2109,10 @@ attribute <strong>must</strong> only declare one variable of that type.</p>
 <div class="paragraph">
 <p>When a shader stage accesses buffer,
 tensor,
-or image resources through a descriptor set, as described in the
-<a href="descriptorsets.html#descriptorsets" class="xref page">Resource Descriptors</a> section, the shader resource
-variables <strong>must</strong> be matched with the <a href="descriptorsets.html#descriptorsets-pipelinelayout" class="xref page">pipeline layout</a> that is provided at
+or image resources through a descriptor, as described in the
+<a href="descriptorsets.html#descriptors" class="xref page">Resource Descriptors</a> section, the shader resource variables
+<strong>must</strong> be matched with the <a href="descriptorsets.html#descriptors-pipelinelayout" class="xref page">pipeline layout</a>
+that is provided at
 shader or
 pipeline creation time.
 If a pipeline is created with
@@ -2340,9 +2341,9 @@ decoration of <code>InputAttachmentIndex</code> <strong>must</strong> be declare
 </div>
 <div class="paragraph">
 <p>SPIR-V variables decorated with a descriptor set and binding that identify a
-<a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">combined image sampler descriptor</a>
-<strong>can</strong> have a type of <code>OpTypeImage</code>, <code>OpTypeSampler</code> (<code>Sampled</code>=1),
-or <code>OpTypeSampledImage</code>.</p>
+<a href="descriptorsets.html#descriptors-combinedimagesampler" class="xref page">combined image sampler descriptor</a> <strong>can</strong>
+have a type of <code>OpTypeImage</code>, <code>OpTypeSampler</code> (<code>Sampled</code>=1), or
+<code>OpTypeSampledImage</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2487,7 +2488,7 @@ and <code>UniformTexelBufferArrayDynamicIndexing</code></p>
 </div>
 </li>
 <li>
-<p><a href="descriptorsets.html#descriptorsets-weightimage" class="xref page">weight image</a>:</p>
+<p><a href="descriptorsets.html#descriptors-weightimage" class="xref page">weight image</a>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2500,7 +2501,7 @@ and <code>UniformTexelBufferArrayDynamicIndexing</code></p>
 </div>
 </li>
 <li>
-<p><a href="descriptorsets.html#descriptorsets-blockmatch" class="xref page">Block matching image</a>:</p>
+<p><a href="descriptorsets.html#descriptors-blockmatch" class="xref page">Block matching image</a>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3082,7 +3083,7 @@ If the array is runtime-sized, the <a href="features.html#features-runtimeDescri
 <code>RuntimeDescriptorArray</code> capability <strong>must</strong> be declared.
 The index of each element of the array is referred to as the <em>arrayElement</em>.
 For the purposes of interface matching and descriptor set
-<a href="descriptorsets.html#descriptorsets-updates" class="xref page">operations</a>, if a resource variable is not an
+<a href="descriptorsets.html#descriptors-sets-updates" class="xref page">operations</a>, if a resource variable is not an
 array, it is treated as if it has an arrayElement of zero.</p>
 </div>
 <div class="admonitionblock note">

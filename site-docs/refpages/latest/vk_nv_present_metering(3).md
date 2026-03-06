@@ -53,10 +53,6 @@ or
 
 [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1)
 
-* 
-**This is a *provisional* extension and must** be used with caution.
-See the [description](../../../../spec/latest/appendices/boilerplate.html#boilerplate-provisional-header) of provisional header files for enablement and stability details.
-
 **Contact**
 
 * 

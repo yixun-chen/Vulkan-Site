@@ -47,7 +47,8 @@ capability.
 * 
 
 `cooperativeMatrixRobustBufferAccess` indicates that the
-implementation supports robust buffer access for SPIR-V
+implementation supports implementation supports
+[robust buffer access](../../../../spec/latest/chapters/shaders.html#shaders-robust-buffer-access) for SPIR-V
 `OpCooperativeMatrixLoadNV` and `OpCooperativeMatrixStoreNV`
 instructions.
 

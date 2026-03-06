@@ -28,7 +28,7 @@ At the core, Vulkan is an [API Specification](https://registry.khronos.org/vulka
 
 The Khronos Group, along with the Vulkan Specification, releases [C99](https://www.open-std.org/jtc1/sc22/wg14/www/standards) [header files](https://github.com/KhronosGroup/Vulkan-Headers/tree/main/include/vulkan) generated from the [API Registry](https://registry.khronos.org/vulkan/#apiregistry) that developers can use to interface with the Vulkan API.
 
-For those who might not work with C code, there are various [language](https://github.com/KhronosGroup/Khronosdotorg/blob/main/api/vulkan/resources.md#language-bindings) [bindings](https://github.com/vinjn/awesome-vulkan#bindings) out there.
+For those who might not work with C code, there are various language bindings out there.
 
 Some developers might be aware of the other Khronos Group standard [OpenGL](https://www.khronos.org/opengl/) which is also a 3D Graphics API. Vulkan is not a direct replacement for OpenGL, but rather an explicit API that allows for more explicit control of the GPU.
 

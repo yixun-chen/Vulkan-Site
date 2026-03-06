@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -423,40 +423,43 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <em>descriptor</em> is an opaque data structure representing a shader resource
-such as a buffer, buffer view, image view, sampler, or combined image
-sampler.
-Descriptors are organized into <em>descriptor sets</em>, which are bound during
-command recording for use in subsequent drawing commands.
-The arrangement of content in each descriptor set is determined by a
-<em>descriptor set layout</em>, which determines what descriptors can be stored
-within it.
-The sequence of descriptor set layouts that <strong>can</strong> be used by a pipeline is
-specified in a <em>pipeline layout</em>.
-Each pipeline object <strong>can</strong> use up to <code>maxBoundDescriptorSets</code> (see
-<a href="limits.html#limits" class="xref page">Limits</a>) descriptor sets.</p>
+<p>A <em>descriptor</em> is an opaque data structure used to access shader resources
+such as buffers, images, or samplers.
+Rather than existing as distinct objects, descriptors are handled as opaque
+data, which can be accessed by a shader through
+<a href="descriptorheaps.html#descriptorheaps" class="xref page">descriptor heaps</a>,
+<a href="#descriptorbuffers">descriptor buffers</a>,
+or
+<a href="#descriptors">descriptor sets</a>.</p>
 </div>
 <div class="paragraph">
-<p>If the <a href="features.html#features-descriptorBuffer" class="xref page"><code>descriptorBuffer</code></a> feature is
-enabled, the implementation supports placing descriptors into
-<a href="#descriptorbuffers">descriptor buffers</a> which are bound during command
-recording in a similar way to descriptor sets.</p>
-</div>
-<div class="paragraph">
-<p>Shaders access resources via variables decorated with a descriptor set and
-binding number that link them to a descriptor in a descriptor set.
-The shader interface mapping to bound descriptor sets is described in the
+<p>Shaders access descriptors via
+the <code>ResourceHeapEXT</code> and <code>SamplerHeapEXT</code> built-ins, or through
+variables decorated with <code>DescriptorSet</code> and <code>Binding</code> values linking
+them to the API.
+Details of the shader interface mapping are described in the
 <a href="interfaces.html#interfaces-resources" class="xref page">Shader Resource Interface</a> section.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Shaders <strong>can</strong> also access buffers without going through descriptors by using
-<a href="#descriptorsets-physical-storage-buffer">Physical Storage Buffer Access</a> to
+<p>Shaders can also access buffers without going through descriptors by using
+<a href="#descriptors-physical-storage-buffer">Physical Storage Buffer Access</a> to
 access them through 64-bit addresses.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="descriptorsets-types"><a class="anchor" href="#descriptorsets-types"></a>Descriptor Types</h2>
+<h2 id="descriptors-types"><a class="anchor" href="#descriptors-types"></a>Descriptor Types</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are a number of different types of descriptor supported by Vulkan,
@@ -466,8 +469,119 @@ The mapping of each type to SPIR-V is listed in the
 <a href="interfaces.html#interfaces-resources-correspondence" class="xref page">Shader Resource and Descriptor Type Correspondence</a> and <a href="interfaces.html#interfaces-resources-storage-class-correspondence" class="xref page">Shader Resource and Storage Class Correspondence</a> tables in the
 <a href="interfaces.html#interfaces" class="xref page">Shader Interfaces</a> chapter.</p>
 </div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Possible descriptor types are:</p>
+</div>
+<div id="VkDescriptorType" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
+typedef enum VkDescriptorType {
+    VK_DESCRIPTOR_TYPE_SAMPLER = 0,
+    VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER = 1,
+    VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE = 2,
+    VK_DESCRIPTOR_TYPE_STORAGE_IMAGE = 3,
+    VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER = 4,
+    VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER = 5,
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER = 6,
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER = 7,
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = 8,
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = 9,
+    VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = 10,
+  // Provided by VK_VERSION_1_3
+    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK = 1000138000,
+  // Provided by VK_KHR_acceleration_structure
+    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000,
+  // Provided by VK_NV_ray_tracing
+    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV = 1000165000,
+  // Provided by VK_QCOM_image_processing
+    VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM = 1000440000,
+  // Provided by VK_QCOM_image_processing
+    VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM = 1000440001,
+  // Provided by VK_ARM_tensors
+    VK_DESCRIPTOR_TYPE_TENSOR_ARM = 1000460000,
+  // Provided by VK_EXT_mutable_descriptor_type
+    VK_DESCRIPTOR_TYPE_MUTABLE_EXT = 1000351000,
+  // Provided by VK_NV_partitioned_acceleration_structure
+    VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000,
+  // Provided by VK_EXT_inline_uniform_block
+    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK,
+  // Provided by VK_VALVE_mutable_descriptor_type
+    VK_DESCRIPTOR_TYPE_MUTABLE_VALVE = VK_DESCRIPTOR_TYPE_MUTABLE_EXT,
+} VkDescriptorType;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLER</a> specifies a <a href="#descriptors-sampler">    sampler descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a> specifies a
+<a href="#descriptors-combinedimagesampler">combined image sampler descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a> specifies a
+<a href="#descriptors-sampledimage">sampled image descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a> specifies a
+<a href="#descriptors-storageimage">storage image descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a> specifies a
+<a href="#descriptors-uniformtexelbuffer">uniform texel buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a> specifies a
+<a href="#descriptors-storagetexelbuffer">storage texel buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a> specifies a
+<a href="#descriptors-uniformbuffer">uniform buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a> specifies a
+<a href="#descriptors-storagebuffer">storage buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a> specifies a
+<a href="#descriptors-uniformbufferdynamic">dynamic uniform buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a> specifies a
+<a href="#descriptors-storagebufferdynamic">dynamic storage buffer descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a> specifies an
+<a href="#descriptors-inputattachment">input attachment descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a> specifies an
+<a href="#descriptors-inlineuniformblock">inline uniform block</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a> specifies a <a href="#descriptors-mutable">    descriptor of mutable type</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a> specifies a
+<a href="#descriptors-weightimage">sampled weight image descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a> specifies a
+<a href="#descriptors-blockmatch">block matching image descriptor</a>.</p>
+</li>
+<li>
+<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a> specifies a
+<a href="#descriptors-storagetensor">storage tensor descriptor</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="descriptorsets-storageimage"><a class="anchor" href="#descriptorsets-storageimage"></a>Storage Image</h3>
+<h3 id="descriptors-storageimage"><a class="anchor" href="#descriptors-storageimage"></a>Storage Image</h3>
 <div class="paragraph">
 <p>A <em>storage image</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a>) is a descriptor
 type associated with an <a href="resources.html#resources-images" class="xref page">image resource</a> via an
@@ -537,16 +651,16 @@ Stores to depth/stencil attachments are not supported.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-sampler"><a class="anchor" href="#descriptorsets-sampler"></a>Sampler</h3>
+<h3 id="descriptors-sampler"><a class="anchor" href="#descriptors-sampler"></a>Sampler</h3>
 <div class="paragraph">
 <p>A <em>sampler descriptor</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLER</a>) is a descriptor
 type associated with a <a href="samplers.html#samplers" class="xref page">sampler</a> object, used to control the
 behavior of <a href="textures.html#textures" class="xref page">sampling operations</a> performed on a
-<a href="#descriptorsets-sampledimage">sampled image</a>.</p>
+<a href="#descriptors-sampledimage">sampled image</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-sampledimage"><a class="anchor" href="#descriptorsets-sampledimage"></a>Sampled Image</h3>
+<h3 id="descriptors-sampledimage"><a class="anchor" href="#descriptors-sampledimage"></a>Sampled Image</h3>
 <div class="paragraph">
 <p>A <em>sampled image</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a>) is a descriptor
 type associated with an <a href="resources.html#resources-images" class="xref page">image resource</a> via an
@@ -605,12 +719,12 @@ layouts:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-combinedimagesampler"><a class="anchor" href="#descriptorsets-combinedimagesampler"></a>Combined Image Sampler</h3>
+<h3 id="descriptors-combinedimagesampler"><a class="anchor" href="#descriptors-combinedimagesampler"></a>Combined Image Sampler</h3>
 <div class="paragraph">
 <p>A <em>combined image sampler</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a>)
 is a single descriptor type associated with both a <a href="samplers.html#samplers" class="xref page">sampler</a> and
 an <a href="resources.html#resources-images" class="xref page">image resource</a>, combining both a
-<a href="#descriptorsets-sampler">sampler</a> and <a href="#descriptorsets-sampledimage">sampled image</a> descriptor into a single descriptor.</p>
+<a href="#descriptors-sampler">sampler</a> and <a href="#descriptors-sampledimage">sampled image</a> descriptor into a single descriptor.</p>
 </div>
 <div class="paragraph">
 <p>If the descriptor refers to a sampler that performs
@@ -680,7 +794,7 @@ the descriptor set in a combined descriptor.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-uniformtexelbuffer"><a class="anchor" href="#descriptorsets-uniformtexelbuffer"></a>Uniform Texel Buffer</h3>
+<h3 id="descriptors-uniformtexelbuffer"><a class="anchor" href="#descriptors-uniformtexelbuffer"></a>Uniform Texel Buffer</h3>
 <div class="paragraph">
 <p>A <em>uniform texel buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a>) is
 a descriptor type associated with a <a href="resources.html#resources-buffers" class="xref page">buffer resource</a>
@@ -699,7 +813,7 @@ stages for buffer view formats which report
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-storagetexelbuffer"><a class="anchor" href="#descriptorsets-storagetexelbuffer"></a>Storage Texel Buffer</h3>
+<h3 id="descriptors-storagetexelbuffer"><a class="anchor" href="#descriptors-storagetexelbuffer"></a>Storage Texel Buffer</h3>
 <div class="paragraph">
 <p>A <em>storage texel buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>) is
 a descriptor type associated with a <a href="resources.html#resources-buffers" class="xref page">buffer resource</a>
@@ -709,9 +823,9 @@ via a <a href="resources.html#resources-buffer-views" class="xref page">buffer v
 <p>Storage texel buffers define a tightly-packed 1-dimensional linear array of
 texels, with texels going through format conversion when read in a shader in
 the same way as they are for an image.
-Unlike <a href="#descriptorsets-uniformtexelbuffer">uniform texel buffers</a>, these
+Unlike <a href="#descriptors-uniformtexelbuffer">uniform texel buffers</a>, these
 buffers can also be written to in the same way as for
-<a href="#descriptorsets-storageimage">storage images</a>.</p>
+<a href="#descriptors-storageimage">storage images</a>.</p>
 </div>
 <div class="paragraph">
 <p>Storage texel buffer loads are supported in all shader stages for texel
@@ -743,7 +857,7 @@ with the same set of texel buffer formats as supported in compute shaders.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-storagebuffer"><a class="anchor" href="#descriptorsets-storagebuffer"></a>Storage Buffer</h3>
+<h3 id="descriptors-storagebuffer"><a class="anchor" href="#descriptors-storagebuffer"></a>Storage Buffer</h3>
 <div class="paragraph">
 <p>A <em>storage buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a>) is a descriptor
 type associated with a <a href="resources.html#resources-buffers" class="xref page">buffer resource</a> directly,
@@ -767,7 +881,7 @@ defined in the <a href="../appendices/spirvenv.html#spirvenv" class="xref page">
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-uniformbuffer"><a class="anchor" href="#descriptorsets-uniformbuffer"></a>Uniform Buffer</h3>
+<h3 id="descriptors-uniformbuffer"><a class="anchor" href="#descriptors-uniformbuffer"></a>Uniform Buffer</h3>
 <div class="paragraph">
 <p>A <em>uniform buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a>) is a descriptor
 type associated with a <a href="resources.html#resources-buffers" class="xref page">buffer resource</a> directly,
@@ -776,40 +890,50 @@ operations <strong>can</strong> be performed on.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-uniformbufferdynamic"><a class="anchor" href="#descriptorsets-uniformbufferdynamic"></a>Dynamic Uniform Buffer</h3>
+<h3 id="descriptors-uniformbufferdynamic"><a class="anchor" href="#descriptors-uniformbufferdynamic"></a>Dynamic Uniform Buffer</h3>
 <div class="paragraph">
 <p>A <em>dynamic uniform buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a>)
-is almost identical to a <a href="#descriptorsets-uniformbuffer">uniform buffer</a>,
-and differs only in how the offset into the buffer is specified.
-The base offset calculated by the <a href="#VkDescriptorBufferInfo">VkDescriptorBufferInfo</a> when
-initially <a href="#descriptorsets-updates">updating the descriptor set</a> is added
-to a <a href="#descriptorsets-binding-dynamicoffsets">dynamic offset</a> when binding
-the descriptor set.</p>
+is almost identical to a <a href="#descriptors-uniformbuffer">uniform buffer</a>, and
+differs only in how the offset into the buffer is specified.
+This descriptor type is only valid when using descriptor sets.
+The base offset calculated by <a href="#VkDescriptorBufferInfo">VkDescriptorBufferInfo</a> when initially
+<a href="#descriptors-sets-updates">updating a descriptor set</a> is added to a
+<a href="#descriptors-binding-dynamicoffsets">dynamic offset</a> when binding a
+descriptor set.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-storagebufferdynamic"><a class="anchor" href="#descriptorsets-storagebufferdynamic"></a>Dynamic Storage Buffer</h3>
+<h3 id="descriptors-storagebufferdynamic"><a class="anchor" href="#descriptors-storagebufferdynamic"></a>Dynamic Storage Buffer</h3>
 <div class="paragraph">
 <p>A <em>dynamic storage buffer</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a>)
-is almost identical to a <a href="#descriptorsets-storagebuffer">storage buffer</a>,
-and differs only in how the offset into the buffer is specified.
-The base offset calculated by the <a href="#VkDescriptorBufferInfo">VkDescriptorBufferInfo</a> when
-initially <a href="#descriptorsets-updates">updating the descriptor set</a> is added
-to a <a href="#descriptorsets-binding-dynamicoffsets">dynamic offset</a> when binding
-the descriptor set.</p>
+is almost identical to a <a href="#descriptors-storagebuffer">storage buffer</a>, and
+differs only in how the offset into the buffer is specified.
+This descriptor type is only valid when using descriptor sets.
+The base offset calculated by <a href="#VkDescriptorBufferInfo">VkDescriptorBufferInfo</a> when initially
+<a href="#descriptors-sets-updates">updating a descriptor set</a> is added to a
+<a href="#descriptors-binding-dynamicoffsets">dynamic offset</a> when binding a
+descriptor set.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-inlineuniformblock"><a class="anchor" href="#descriptorsets-inlineuniformblock"></a>Inline Uniform Block</h3>
+<h3 id="descriptors-inlineuniformblock"><a class="anchor" href="#descriptors-inlineuniformblock"></a>Inline Uniform Block</h3>
 <div class="paragraph">
 <p>An <em>inline uniform block</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a>) is
-almost identical to a <a href="#descriptorsets-uniformbuffer">uniform buffer</a>, and
-differs only in taking its storage directly from the encompassing descriptor
-set instead of being backed by buffer memory.
-It is typically used to access a small set of constant data that does not
-require the additional flexibility provided by the indirection enabled when
-using a uniform buffer where the descriptor and the referenced buffer memory
-are decoupled.
+almost identical to a <a href="#descriptors-uniformbuffer">uniform buffer</a> in how
+it is accessed in the shader.
+Where it differs is that its storage is taken directly from a containing
+descriptor set
+or descriptor buffer,
+instead of being backed by a separate buffer object.
+This descriptor type is not valid when using descriptor heaps; applications
+<strong>can</strong> directly access the heap pointer in a shader or use the
+<a href="descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT</a> mapping.</p>
+</div>
+<div class="paragraph">
+<p>Inline uniform blocks are typically used to access a small set of constant
+data that does not require the additional flexibility provided by the
+indirection enabled when using a uniform buffer where the descriptor and the
+referenced buffer memory are decoupled.
 Compared to push constants, they allow reusing the same set of constant data
 across multiple disjoint sets of drawing and dispatching commands.</p>
 </div>
@@ -820,7 +944,7 @@ binding specifies the binding&#8217;s capacity in bytes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-weightimage"><a class="anchor" href="#descriptorsets-weightimage"></a>Sample Weight Image</h3>
+<h3 id="descriptors-weightimage"><a class="anchor" href="#descriptors-weightimage"></a>Sample Weight Image</h3>
 <div class="paragraph">
 <p>A <em>sample weight image</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a>)
 is a descriptor type associated with an <a href="resources.html#resources-images" class="xref page">image resource</a>
@@ -850,7 +974,7 @@ shader.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-blockmatch"><a class="anchor" href="#descriptorsets-blockmatch"></a>Block Matching Image</h3>
+<h3 id="descriptors-blockmatch"><a class="anchor" href="#descriptors-blockmatch"></a>Block Matching Image</h3>
 <div class="paragraph">
 <p>A <em>block matching image</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a>)
 is a descriptor type associated with an <a href="resources.html#resources-images" class="xref page">image resource</a>
@@ -875,7 +999,7 @@ shader.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-inputattachment"><a class="anchor" href="#descriptorsets-inputattachment"></a>Input Attachment</h3>
+<h3 id="descriptors-inputattachment"><a class="anchor" href="#descriptors-inputattachment"></a>Input Attachment</h3>
 <div class="paragraph">
 <p>An <em>input attachment</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a>) is a
 descriptor type associated with an <a href="resources.html#resources-images" class="xref page">image resource</a> via
@@ -934,7 +1058,7 @@ layouts:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-accelerationstructure"><a class="anchor" href="#descriptorsets-accelerationstructure"></a>Acceleration Structure</h3>
+<h3 id="descriptors-accelerationstructure"><a class="anchor" href="#descriptors-accelerationstructure"></a>Acceleration Structure</h3>
 <div class="paragraph">
 <p>An <em>acceleration structure</em> (
 <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a>
@@ -946,12 +1070,16 @@ Shaders have read-only access to the memory.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-mutable"><a class="anchor" href="#descriptorsets-mutable"></a>Mutable</h3>
+<h3 id="descriptors-mutable"><a class="anchor" href="#descriptors-mutable"></a>Mutable</h3>
 <div class="paragraph">
 <p>A descriptor of <em>mutable</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a>) type
-indicates that this descriptor <strong>can</strong> mutate to any of the descriptor types
-given in the <a href="#VkMutableDescriptorTypeListEXT">VkMutableDescriptorTypeListEXT</a>::<code>pDescriptorTypes</code>
-list of descriptor types in the <code>pNext</code> chain of
+indicates that this descriptor <strong>can</strong> mutate to a number of different types.
+This descriptor type is not valid when using descriptor heaps, as the
+elements of a descriptor heap <strong>can</strong> be manually adjusted to hold different
+descriptor types already.
+When specified in a descriptor set layout, any of the descriptor types given
+in the <a href="#VkMutableDescriptorTypeListEXT">VkMutableDescriptorTypeListEXT</a>::<code>pDescriptorTypes</code> list of
+descriptor types in the <code>pNext</code> chain of
 <a href="#VkDescriptorSetLayoutCreateInfo">VkDescriptorSetLayoutCreateInfo</a> for this binding.
 At any point, each individual descriptor of mutable type has an active
 descriptor type.
@@ -961,8 +1089,10 @@ Additionally, a mutable descriptor&#8217;s active descriptor type <strong>can</s
 <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a> type, which is the initial active
 descriptor type.
 The active descriptor type <strong>can</strong> change when the descriptor is updated.
-When a descriptor is consumed by binding a descriptor set, the active
-descriptor type is considered, not <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a>.</p>
+When a descriptor is consumed by binding a descriptor
+buffer or
+set, the active descriptor type is considered, not
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a>.</p>
 </div>
 <div class="paragraph">
 <p>An active descriptor type of <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a> is
@@ -1018,7 +1148,7 @@ many different descriptors to emulate mutable descriptor types.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-storagetensor"><a class="anchor" href="#descriptorsets-storagetensor"></a>Storage Tensor</h3>
+<h3 id="descriptors-storagetensor"><a class="anchor" href="#descriptors-storagetensor"></a>Storage Tensor</h3>
 <div class="paragraph">
 <p>A <em>storage tensor</em> (<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a>) is a descriptor
 type associated with a <a href="resources.html#resources-tensors" class="xref page">tensor resource</a> via a
@@ -1040,7 +1170,7 @@ contain
 </div>
 </div>
 <div class="sect1">
-<h2 id="descriptorsets-sets"><a class="anchor" href="#descriptorsets-sets"></a>Descriptor Sets</h2>
+<h2 id="descriptors-sets"><a class="anchor" href="#descriptors-sets"></a>Descriptor Sets</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Descriptors are grouped together into descriptor set objects.
@@ -1069,7 +1199,7 @@ as a powerful and flexible alternative to descriptor sets.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-setlayout"><a class="anchor" href="#descriptorsets-setlayout"></a>Descriptor Set Layout</h3>
+<h3 id="descriptors-setlayout"><a class="anchor" href="#descriptors-setlayout"></a>Descriptor Set Layout</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -1467,7 +1597,19 @@ descriptor types.</p>
 <div class="paragraph">
 <p>The <code>VkMutableDescriptorTypeCreateInfoEXT</code> structure is defined as:</p>
 </div>
-<div id="VkMutableDescriptorTypeCreateInfoEXT" class="listingblock">
+<div id="VkMutableDescriptorTypeCreateInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_mutable_descriptor_type
 typedef struct VkMutableDescriptorTypeCreateInfoEXT {
@@ -1563,7 +1705,19 @@ mutate to is passed in a <code>VkMutableDescriptorTypeListEXT</code> structure.<
 <div class="paragraph">
 <p>The <code>VkMutableDescriptorTypeListEXT</code> structure is defined as:</p>
 </div>
-<div id="VkMutableDescriptorTypeListEXT" class="listingblock">
+<div id="VkMutableDescriptorTypeListEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_mutable_descriptor_type
 typedef struct VkMutableDescriptorTypeListEXT {
@@ -2918,7 +3072,7 @@ If no <code>VkAllocationCallbacks</code> were provided when
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-pipelinelayout"><a class="anchor" href="#descriptorsets-pipelinelayout"></a>Pipeline Layouts</h3>
+<h3 id="descriptors-pipelinelayout"><a class="anchor" href="#descriptors-pipelinelayout"></a>Pipeline Layouts</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -3927,8 +4081,8 @@ The layout of the push constant variables is specified in the shader.</p>
 <div class="paragraph">
 <p>Once created, pipeline layouts are used as part of pipeline creation (see
 <a href="pipelines.html#pipelines" class="xref page">Pipelines</a>), as part of binding descriptor sets (see
-<a href="#descriptorsets-binding">Descriptor Set Binding</a>), and as part of setting
-push constants (see <a href="#descriptorsets-push-constants">Push Constant Updates</a>).
+<a href="#descriptors-binding">Descriptor Set Binding</a>), and as part of setting
+push constants (see <a href="#descriptors-push-constants">Push Constant Updates</a>).
 Pipeline creation accepts a pipeline layout as input, and the layout <strong>may</strong> be
 used to map (set, binding, arrayElement) tuples to implementation resources
 or memory locations within a descriptor set.
@@ -3936,7 +4090,7 @@ The assignment of implementation resources depends only on the bindings
 defined in the descriptor sets that comprise the pipeline layout, and not on
 any shader source.</p>
 </div>
-<div id="descriptorsets-pipelinelayout-consistency" class="paragraph">
+<div id="descriptors-pipelinelayout-consistency" class="paragraph">
 <p>All resource variables <a href="shaders.html#shaders-staticuse" class="xref page">statically used</a> in all shaders
 in a pipeline <strong>must</strong> be declared with a (set, binding, arrayElement) that
 exists in the corresponding descriptor set layout and is of an appropriate
@@ -3960,7 +4114,7 @@ used by a particular pipeline.</p>
 <div class="paragraph">
 <p>There is a limit on the total number of resources of each type that <strong>can</strong> be
 included in bindings in all descriptor set layouts in a pipeline layout as
-shown in <a href="#descriptorsets-pipelinelayout-limits">Pipeline Layout Resource Limits</a>.
+shown in <a href="#descriptors-pipelinelayout-limits">Pipeline Layout Resource Limits</a>.
 The &#8220;Total Resources Available&#8221; column gives the limit on the number of
 each type of resource that <strong>can</strong> be included in bindings in all descriptor
 sets in the pipeline layout.
@@ -3969,7 +4123,7 @@ Additionally, there are limits on the total number of each type of resource
 that <strong>can</strong> be used in any pipeline stage as described in
 <a href="interfaces.html#interfaces-resources-limits" class="xref page">Shader Resource Limits</a>.</p>
 </div>
-<table id="descriptorsets-pipelinelayout-limits" class="tableblock frame-all grid-all" style="width: 80%;">
+<table id="descriptors-pipelinelayout-limits" class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 1. Pipeline Layout Resource Limits</caption>
 <colgroup>
 <col style="width: 62.7118%;">
@@ -4148,11 +4302,11 @@ If no <code>VkAllocationCallbacks</code> were provided when
 </div>
 </div>
 <div class="sect3">
-<h4 id="descriptorsets-compatibility"><a class="anchor" href="#descriptorsets-compatibility"></a>Pipeline Layout Compatibility</h4>
+<h4 id="descriptors-compatibility"><a class="anchor" href="#descriptors-compatibility"></a>Pipeline Layout Compatibility</h4>
 <div class="paragraph">
 <p>Two pipeline layouts are defined to be &#8220;compatible for
-<a href="#descriptorsets-push-constants">push constants</a>&#8221; if they were created
-with identical push constant ranges.
+<a href="#descriptors-push-constants">push constants</a>&#8221; if they were created with
+identical push constant ranges.
 Two pipeline layouts are defined to be &#8220;compatible for set N&#8221; if they were
 created with <a href="../appendices/glossary.html#glossary-identically-defined" class="xref page">identically defined</a> descriptor
 set layouts for sets zero through N,
@@ -4161,7 +4315,7 @@ if both of them either were or were not created with
 and if they were created with identical push constant ranges.</p>
 </div>
 <div class="paragraph">
-<p>When binding a descriptor set (see <a href="#descriptorsets-binding">Descriptor Set Binding</a>) to set number N, a previously bound descriptor set bound with
+<p>When binding a descriptor set (see <a href="#descriptors-binding">Descriptor Set Binding</a>) to set number N, a previously bound descriptor set bound with
 lower index M than N is disturbed if the pipeline layouts for set M and N
 are not compatible for set M. Otherwise, the bound descriptor set in M is
 not disturbed.</p>
@@ -4254,7 +4408,7 @@ myResult = vkCreatePipelineLayout(
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-allocation"><a class="anchor" href="#descriptorsets-allocation"></a>Allocation of Descriptor Sets</h3>
+<h3 id="descriptors-allocation"><a class="anchor" href="#descriptors-allocation"></a>Allocation of Descriptor Sets</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -4629,7 +4783,7 @@ included in the <code>pNext</code> chain, each member of
 <div class="content">
 <div class="paragraph">
 <p>In order to be able to allocate descriptor sets having
-<a href="#descriptorsets-inlineuniformblock">inline uniform block</a> bindings the
+<a href="#descriptors-inlineuniformblock">inline uniform block</a> bindings the
 descriptor pool <strong>must</strong> be created with specifying the inline uniform block
 binding capacity of the descriptor pool, in addition to the total inline
 uniform data capacity in bytes which is specified through a
@@ -5060,19 +5214,19 @@ used, subject to the following conditions:</p>
 <p>For descriptor set bindings created with the
 <a href="#VkDescriptorBindingFlagBitsEXT">VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT</a> bit set, all descriptors
 in that binding that are dynamically used <strong>must</strong> have been populated
-before the descriptor set is <a href="#descriptorsets-binding">consumed</a>.</p>
+before the descriptor set is <a href="#descriptors-binding">consumed</a>.</p>
 </li>
 <li>
 <p>For descriptor set bindings created without the
 <a href="#VkDescriptorBindingFlagBitsEXT">VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT</a> bit set, all descriptors
 in that binding that are statically used <strong>must</strong> have been populated
-before the descriptor set is <a href="#descriptorsets-binding">consumed</a>.</p>
+before the descriptor set is <a href="#descriptors-binding">consumed</a>.</p>
 </li>
 <li>
 <p>Descriptor bindings with descriptor type of
 <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a> <strong>can</strong> be <strong>undefined</strong> when
-the descriptor set is <a href="#descriptorsets-binding">consumed</a>; though values
-in that block will be <strong>undefined</strong>.</p>
+the descriptor set is <a href="#descriptors-binding">consumed</a>; though values in
+that block will be <strong>undefined</strong>.</p>
 </li>
 <li>
 <p>Entries that are not used by a pipeline <strong>can</strong> have <strong>undefined</strong>
@@ -5749,7 +5903,7 @@ is currently reserved for future use.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-updates"><a class="anchor" href="#descriptorsets-updates"></a>Descriptor Set Updates</h3>
+<h3 id="descriptors-sets-updates"><a class="anchor" href="#descriptors-sets-updates"></a>Descriptor Set Updates</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -6084,30 +6238,68 @@ section or is ignored, as described below.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Only one of <code>pImageInfo</code>, <code>pBufferInfo</code>, or <code>pTexelBufferView</code>
-members is used according to the descriptor type specified in the
-<code>descriptorType</code> member of the containing <code>VkWriteDescriptorSet</code>
-structure,
-or none of them in case <code>descriptorType</code> is
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a>, in which case the source data
-for the descriptor writes is taken from the
-<a href="#VkWriteDescriptorSetInlineUniformBlock">VkWriteDescriptorSetInlineUniformBlock</a> structure included in the
-<code>pNext</code> chain of <code>VkWriteDescriptorSet</code>,
-or if <code>descriptorType</code> is
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a>, in which case the
-source data for the descriptor writes is taken from the
-<a href="#VkWriteDescriptorSetAccelerationStructureKHR">VkWriteDescriptorSetAccelerationStructureKHR</a> structure in the
-<code>pNext</code> chain of <code>VkWriteDescriptorSet</code>,
-or if <code>descriptorType</code> is
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</a>, in which case the source
-data for the descriptor writes is taken from the
-<a href="#VkWriteDescriptorSetAccelerationStructureNV">VkWriteDescriptorSetAccelerationStructureNV</a> structure in the
-<code>pNext</code> chain of <code>VkWriteDescriptorSet</code>,
-or if <code>descriptorType</code> is <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a>, in which
-case the source data for the descriptor writes is taken from the instance of
-<a href="#VkWriteDescriptorSetTensorARM">VkWriteDescriptorSetTensorARM</a> in the <code>pNext</code> chain of
-<code>VkWriteDescriptorSet</code>,
-as specified below.</p>
+<p>Members of <code>pImageInfo</code>, <code>pBufferInfo</code> and <code>pTexelBufferView</code>
+are only accessed by the implementation when they correspond to a descriptor
+type being defined - otherwise they are ignored.
+The members accessed are as follows for each descriptor type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLER</a>, only the <code>sampler</code> member of
+each element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> is
+accessed.</p>
+</li>
+<li>
+<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a>,
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a>, or
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a>, only the <code>imageView</code> and
+<code>imageLayout</code> members of each element of
+<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> are accessed.</p>
+</li>
+<li>
+<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a>, all members of each
+element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> are accessed.</p>
+</li>
+<li>
+<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a>,
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a>,
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a>, or
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a>, all members of each
+element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pBufferInfo</code> are accessed.</p>
+</li>
+<li>
+<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a> or
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>, each element of
+<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pTexelBufferView</code> is accessed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When updating descriptor sets with a <code>descriptorType</code> of
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a>, none of the <code>pImageInfo</code>,
+<code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are accessed, instead
+the source data of the descriptor update operation is taken from the
+<a href="#VkWriteDescriptorSetInlineUniformBlock">VkWriteDescriptorSetInlineUniformBlock</a> structure in the <code>pNext</code>
+chain of <code>VkWriteDescriptorSet</code>.
+When updating descriptor sets with a <code>descriptorType</code> of
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a>, none of the
+<code>pImageInfo</code>, <code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are
+accessed, instead the source data of the descriptor update operation is
+taken from the <a href="#VkWriteDescriptorSetAccelerationStructureKHR">VkWriteDescriptorSetAccelerationStructureKHR</a> structure
+in the <code>pNext</code> chain of <code>VkWriteDescriptorSet</code>.
+When updating descriptor sets with a <code>descriptorType</code> of
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</a>, none of the
+<code>pImageInfo</code>, <code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are
+accessed, instead the source data of the descriptor update operation is
+taken from the <a href="#VkWriteDescriptorSetAccelerationStructureNV">VkWriteDescriptorSetAccelerationStructureNV</a> structure
+in the <code>pNext</code> chain of <code>VkWriteDescriptorSet</code>.
+When updating descriptor sets with a <code>descriptorType</code> of
+<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a>, none of the <code>pImageInfo</code>,
+<code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are accessed, instead
+the source data of the descriptor update operation is taken from the
+instance of <a href="#VkWriteDescriptorSetTensorARM">VkWriteDescriptorSetTensorARM</a> in the <code>pNext</code> chain of
+<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the <a href="features.html#features-nullDescriptor" class="xref page"><code>nullDescriptor</code></a> feature is enabled,
@@ -6124,7 +6316,7 @@ invoked.</p>
 <p>If the destination descriptor is a mutable descriptor, the active descriptor
 type for the destination descriptor becomes <code>descriptorType</code>.</p>
 </div>
-<div id="descriptorsets-updates-consecutive" class="paragraph">
+<div id="descriptors-sets-updates-consecutive" class="paragraph">
 <div class="title">Consecutive Binding Updates</div>
 <p>If the <code>dstBinding</code> has fewer than <code>descriptorCount</code> array elements
 remaining starting from <code>dstArrayElement</code>, then the remainder will be
@@ -6232,7 +6424,7 @@ identical <a href="#VkDescriptorBindingFlagBits">VkDescriptorBindingFlagBits</a>
 The sum of <code>dstArrayElement</code> and <code>descriptorCount</code> <strong>must</strong> be less
 than or equal to the number of array elements in the descriptor set
 binding specified by <code>dstBinding</code>, and all applicable
-<a href="#descriptorsets-updates-consecutive">consecutive bindings</a></p>
+<a href="#descriptors-sets-updates-consecutive">consecutive bindings</a></p>
 </li>
 <li>
 <p><a id="VUID-VkWriteDescriptorSet-descriptorType-02219" href="#VUID-VkWriteDescriptorSet-descriptorType-02219"></a> <span class="vuid">VUID-VkWriteDescriptorSet-descriptorType-02219</span><br>
@@ -6493,7 +6685,7 @@ the <a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USA
 
 If <code>descriptorType</code> is <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a> the
 <code>imageLayout</code> member of each element of <code>pImageInfo</code> <strong>must</strong> be a
-member of the list given in <a href="#descriptorsets-sampledimage">Sampled    Image</a></p>
+member of the list given in <a href="#descriptors-sampledimage">Sampled Image</a></p>
 </li>
 <li>
 <p><a id="VUID-VkWriteDescriptorSet-descriptorType-04150" href="#VUID-VkWriteDescriptorSet-descriptorType-04150"></a> <span class="vuid">VUID-VkWriteDescriptorSet-descriptorType-04150</span><br>
@@ -6501,21 +6693,21 @@ member of the list given in <a href="#descriptorsets-sampledimage">Sampled    Im
 If <code>descriptorType</code> is
 <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a> the <code>imageLayout</code>
 member of each element of <code>pImageInfo</code> <strong>must</strong> be a member of the list
-given in <a href="#descriptorsets-combinedimagesampler">Combined Image Sampler</a></p>
+given in <a href="#descriptors-combinedimagesampler">Combined Image Sampler</a></p>
 </li>
 <li>
 <p><a id="VUID-VkWriteDescriptorSet-descriptorType-04151" href="#VUID-VkWriteDescriptorSet-descriptorType-04151"></a> <span class="vuid">VUID-VkWriteDescriptorSet-descriptorType-04151</span><br>
 
 If <code>descriptorType</code> is <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a> the
 <code>imageLayout</code> member of each element of <code>pImageInfo</code> <strong>must</strong> be a
-member of the list given in <a href="#descriptorsets-inputattachment">Input    Attachment</a></p>
+member of the list given in <a href="#descriptors-inputattachment">Input    Attachment</a></p>
 </li>
 <li>
 <p><a id="VUID-VkWriteDescriptorSet-descriptorType-04152" href="#VUID-VkWriteDescriptorSet-descriptorType-04152"></a> <span class="vuid">VUID-VkWriteDescriptorSet-descriptorType-04152</span><br>
 
 If <code>descriptorType</code> is <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a> the
 <code>imageLayout</code> member of each element of <code>pImageInfo</code> <strong>must</strong> be a
-member of the list given in <a href="#descriptorsets-storageimage">Storage    Image</a></p>
+member of the list given in <a href="#descriptors-storageimage">Storage Image</a></p>
 </li>
 <li>
 <p><a id="VUID-VkWriteDescriptorSet-descriptorType-00338" href="#VUID-VkWriteDescriptorSet-descriptorType-00338"></a> <span class="vuid">VUID-VkWriteDescriptorSet-descriptorType-00338</span><br>
@@ -6610,185 +6802,6 @@ a view created with an <code>image</code> created with the
 </ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p>The type of descriptors in a descriptor set is specified by
-<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>descriptorType</code>, which <strong>must</strong> be one of the
-values:</p>
-</div>
-<div id="VkDescriptorType" class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
-typedef enum VkDescriptorType {
-    VK_DESCRIPTOR_TYPE_SAMPLER = 0,
-    VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER = 1,
-    VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE = 2,
-    VK_DESCRIPTOR_TYPE_STORAGE_IMAGE = 3,
-    VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER = 4,
-    VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER = 5,
-    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER = 6,
-    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER = 7,
-    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = 8,
-    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = 9,
-    VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = 10,
-  // Provided by VK_VERSION_1_3
-    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK = 1000138000,
-  // Provided by VK_KHR_acceleration_structure
-    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000,
-  // Provided by VK_NV_ray_tracing
-    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV = 1000165000,
-  // Provided by VK_QCOM_image_processing
-    VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM = 1000440000,
-  // Provided by VK_QCOM_image_processing
-    VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM = 1000440001,
-  // Provided by VK_ARM_tensors
-    VK_DESCRIPTOR_TYPE_TENSOR_ARM = 1000460000,
-  // Provided by VK_EXT_mutable_descriptor_type
-    VK_DESCRIPTOR_TYPE_MUTABLE_EXT = 1000351000,
-  // Provided by VK_NV_partitioned_acceleration_structure
-    VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000,
-  // Provided by VK_EXT_inline_uniform_block
-    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK,
-  // Provided by VK_VALVE_mutable_descriptor_type
-    VK_DESCRIPTOR_TYPE_MUTABLE_VALVE = VK_DESCRIPTOR_TYPE_MUTABLE_EXT,
-} VkDescriptorType;</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLER</a> specifies a <a href="#descriptorsets-sampler">    sampler descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a> specifies a
-<a href="#descriptorsets-combinedimagesampler">combined image sampler    descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a> specifies a
-<a href="#descriptorsets-sampledimage">sampled image descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a> specifies a
-<a href="#descriptorsets-storageimage">storage image descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a> specifies a
-<a href="#descriptorsets-uniformtexelbuffer">uniform texel buffer descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a> specifies a
-<a href="#descriptorsets-storagetexelbuffer">storage texel buffer descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a> specifies a
-<a href="#descriptorsets-uniformbuffer">uniform buffer descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a> specifies a
-<a href="#descriptorsets-storagebuffer">storage buffer descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a> specifies a
-<a href="#descriptorsets-uniformbufferdynamic">dynamic uniform buffer    descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a> specifies a
-<a href="#descriptorsets-storagebufferdynamic">dynamic storage buffer    descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a> specifies an
-<a href="#descriptorsets-inputattachment">input attachment descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a> specifies an
-<a href="#descriptorsets-inlineuniformblock">inline uniform block</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a> specifies a
-<a href="#descriptorsets-mutable">descriptor of mutable type</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a> specifies a
-<a href="#descriptorsets-weightimage">sampled weight image descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a> specifies a
-<a href="#descriptorsets-blockmatch">block matching image descriptor</a>.</p>
-</li>
-<li>
-<p><a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a> specifies a
-<a href="#descriptorsets-storagetensor">storage tensor descriptor</a>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When a descriptor set is updated via elements of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>,
-members of <code>pImageInfo</code>, <code>pBufferInfo</code> and <code>pTexelBufferView</code>
-are only accessed by the implementation when they correspond to descriptor
-type being defined - otherwise they are ignored.
-The members accessed are as follows for each descriptor type:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLER</a>, only the <code>sampler</code> member of
-each element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> is
-accessed.</p>
-</li>
-<li>
-<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a>,
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a>, or
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a>, only the <code>imageView</code> and
-<code>imageLayout</code> members of each element of
-<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> are accessed.</p>
-</li>
-<li>
-<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a>, all members of each
-element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pImageInfo</code> are accessed.</p>
-</li>
-<li>
-<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a>,
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a>,
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a>, or
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a>, all members of each
-element of <a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pBufferInfo</code> are accessed.</p>
-</li>
-<li>
-<p>For <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a> or
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a>, each element of
-<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>::<code>pTexelBufferView</code> is accessed.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When updating descriptors with a <code>descriptorType</code> of
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a>, none of the <code>pImageInfo</code>,
-<code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are accessed, instead
-the source data of the descriptor update operation is taken from the
-<a href="#VkWriteDescriptorSetInlineUniformBlock">VkWriteDescriptorSetInlineUniformBlock</a> structure in the <code>pNext</code>
-chain of <code>VkWriteDescriptorSet</code>.
-When updating descriptors with a <code>descriptorType</code> of
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a>, none of the
-<code>pImageInfo</code>, <code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are
-accessed, instead the source data of the descriptor update operation is
-taken from the <a href="#VkWriteDescriptorSetAccelerationStructureKHR">VkWriteDescriptorSetAccelerationStructureKHR</a> structure
-in the <code>pNext</code> chain of <code>VkWriteDescriptorSet</code>.
-When updating descriptors with a <code>descriptorType</code> of
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</a>, none of the
-<code>pImageInfo</code>, <code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are
-accessed, instead the source data of the descriptor update operation is
-taken from the <a href="#VkWriteDescriptorSetAccelerationStructureNV">VkWriteDescriptorSetAccelerationStructureNV</a> structure
-in the <code>pNext</code> chain of <code>VkWriteDescriptorSet</code>.
-When updating descriptors with a <code>descriptorType</code> of
-<a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a>, none of the <code>pImageInfo</code>,
-<code>pBufferInfo</code>, or <code>pTexelBufferView</code> members are accessed, instead
-the source data of the descriptor update operation is taken from the
-instance of <a href="#VkWriteDescriptorSetTensorARM">VkWriteDescriptorSetTensorARM</a> in the <code>pNext</code> chain of
-<a href="#VkWriteDescriptorSet">VkWriteDescriptorSet</a>.</p>
 </div>
 </div>
 </div>
@@ -7680,7 +7693,7 @@ case with more than one <code>descriptorCount</code> is considered rare.</p>
 The sum of <code>srcArrayElement</code> and <code>descriptorCount</code> <strong>must</strong> be less
 than or equal to the number of array elements in the descriptor set
 binding specified by <code>srcBinding</code>, and all applicable
-<a href="#descriptorsets-updates-consecutive">consecutive bindings</a></p>
+<a href="#descriptors-sets-updates-consecutive">consecutive bindings</a></p>
 </li>
 <li>
 <p><a id="VUID-VkCopyDescriptorSet-dstBinding-00347" href="#VUID-VkCopyDescriptorSet-dstBinding-00347"></a> <span class="vuid">VUID-VkCopyDescriptorSet-dstBinding-00347</span><br>
@@ -7693,7 +7706,7 @@ binding specified by <code>srcBinding</code>, and all applicable
 The sum of <code>dstArrayElement</code> and <code>descriptorCount</code> <strong>must</strong> be less
 than or equal to the number of array elements in the descriptor set
 binding specified by <code>dstBinding</code>, and all applicable
-<a href="#descriptorsets-updates-consecutive">consecutive bindings</a></p>
+<a href="#descriptors-sets-updates-consecutive">consecutive bindings</a></p>
 </li>
 <li>
 <p><a id="VUID-VkCopyDescriptorSet-dstBinding-02632" href="#VUID-VkCopyDescriptorSet-dstBinding-02632"></a> <span class="vuid">VUID-VkCopyDescriptorSet-dstBinding-02632</span><br>
@@ -7706,7 +7719,7 @@ type of <code>srcBinding</code> within <code>srcSet</code></p>
 
 If <code>srcSet</code> is equal to <code>dstSet</code>, then the source and
 destination ranges of descriptors <strong>must</strong> not overlap, where the ranges
-<strong>may</strong> include array elements from <a href="#descriptorsets-updates-consecutive">    consecutive bindings</a></p>
+<strong>may</strong> include array elements from <a href="#descriptors-sets-updates-consecutive">    consecutive bindings</a></p>
 </li>
 <li>
 <p><a id="VUID-VkCopyDescriptorSet-srcBinding-02223" href="#VUID-VkCopyDescriptorSet-srcBinding-02223"></a> <span class="vuid">VUID-VkCopyDescriptorSet-srcBinding-02223</span><br>
@@ -7843,7 +7856,7 @@ active descriptor type is <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_MUTABLE
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-updates-with-template"><a class="anchor" href="#descriptorsets-updates-with-template"></a>Descriptor Update Templates</h3>
+<h3 id="descriptors-sets-updates-with-template"><a class="anchor" href="#descriptors-sets-updates-with-template"></a>Descriptor Update Templates</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -8370,7 +8383,7 @@ descriptors</p>
 <code>dstArrayElement</code> and <code>descriptorCount</code> <strong>must</strong> be less than or
 equal to the number of array elements in the descriptor set binding
 implicitly specified when using a descriptor update template to update
-descriptors, and all applicable <a href="#descriptorsets-updates-consecutive">    consecutive bindings</a></p>
+descriptors, and all applicable <a href="#descriptors-sets-updates-consecutive">    consecutive bindings</a></p>
 </li>
 <li>
 <p><a id="VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226" href="#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226"></a> <span class="vuid">VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226</span><br>
@@ -8696,7 +8709,7 @@ vkUpdateDescriptorSetWithTemplate(myDevice, myDescriptorSet, myDescriptorUpdateT
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-binding"><a class="anchor" href="#descriptorsets-binding"></a>Descriptor Set Binding</h3>
+<h3 id="descriptors-binding"><a class="anchor" href="#descriptors-binding"></a>Descriptor Set Binding</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -8769,7 +8782,7 @@ are no longer valid.</p>
 <p>Once bound, a descriptor set affects rendering of subsequent commands that
 interact with the given pipeline type in the command buffer until either a
 different set is bound to the same set number, or the set is disturbed as
-described in <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>.</p>
+described in <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>.</p>
 </div>
 <div class="paragraph">
 <p>A compatible descriptor set <strong>must</strong> be bound for all set numbers that any
@@ -8786,7 +8799,7 @@ descriptor is not <strong>undefined</strong> as described by
 <a href="#descriptor-set-initial-state">descriptor set allocation</a>.
 If the <a href="features.html#features-nullDescriptor" class="xref page"><code>nullDescriptor</code></a> feature is enabled,
 a null descriptor is also considered valid.
-A descriptor that was disturbed by <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>, or was never bound by <code>vkCmdBindDescriptorSets</code>
+A descriptor that was disturbed by <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>, or was never bound by <code>vkCmdBindDescriptorSets</code>
 is not considered valid.
 For any given descriptor, <a href="#VkDescriptorBindingFlagBits">VkDescriptorBindingFlagBits</a> and
 <a href="#VkDescriptorSetLayoutCreateFlagBits">VkDescriptorSetLayoutCreateFlagBits</a> determine if validity is defined
@@ -8815,7 +8828,7 @@ types, e.g. <a href="textures.html#textures-input-validation" class="xref page">
 </tr>
 </table>
 </div>
-<div id="descriptorsets-binding-dynamicoffsets" class="paragraph">
+<div id="descriptors-binding-dynamicoffsets" class="paragraph">
 <p>If any of the sets being bound include dynamic uniform or storage buffers,
 then <code>pDynamicOffsets</code> includes one element for each array element in
 each dynamic descriptor type binding in each set.
@@ -8838,7 +8851,7 @@ range as specified in the descriptor set.</p>
 layout specified by <code>layout</code>.
 The layout used to program the bindings <strong>must</strong> also be compatible with the
 pipeline used in subsequent <a href="pipelines.html#pipelines-bindpoint-commands" class="xref page">bound pipeline commands</a> with that pipeline type, as defined in the
-<a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a> section.</p>
+<a href="#descriptors-compatibility">Pipeline Layout Compatibility</a> section.</p>
 </div>
 <div class="paragraph">
 <p>The descriptor set contents bound by a call to <code>vkCmdBindDescriptorSets</code>
@@ -9540,7 +9553,7 @@ include a valid <a href="#VkPipelineLayoutCreateInfo">VkPipelineLayoutCreateInfo
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-push-descriptors"><a class="anchor" href="#descriptorsets-push-descriptors"></a>Push Descriptor Updates</h3>
+<h3 id="descriptors-push-descriptors"><a class="anchor" href="#descriptors-push-descriptors"></a>Push Descriptor Updates</h3>
 <div class="paragraph">
 <p>In addition to allocating descriptor sets and binding them to a command
 buffer, an application <strong>can</strong> record descriptor updates into the command
@@ -9619,7 +9632,7 @@ managing the lifetime of descriptor sets.</p>
 Push descriptors <strong>can</strong> be updated incrementally and cause shaders to use the
 updated descriptors for subsequent <a href="pipelines.html#pipelines-bindpoint-commands" class="xref page">bound pipeline commands</a> with the pipeline type set by <code>pipelineBindPoint</code>
 until the descriptor is overwritten, or else until the set is disturbed as
-described in <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>.
+described in <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>.
 When the set is disturbed or push descriptors with a different descriptor
 set layout are set, all push descriptors are <strong>undefined</strong>.</p>
 </div>
@@ -10798,9 +10811,9 @@ If the <a href="../appendices/extensions.html#VK_KHR_push_descriptor" class="xre
 </div>
 </div>
 <div class="sect2">
-<h3 id="descriptorsets-push-constants"><a class="anchor" href="#descriptorsets-push-constants"></a>Push Constant Updates</h3>
+<h3 id="descriptors-push-constants"><a class="anchor" href="#descriptors-push-constants"></a>Push Constant Updates</h3>
 <div class="paragraph">
-<p>As described above in section <a href="#descriptorsets-pipelinelayout">Pipeline Layouts</a>, the pipeline layout defines shader push constants which are
+<p>As described above in section <a href="#descriptors-pipelinelayout">Pipeline Layouts</a>, the pipeline layout defines shader push constants which are
 updated via Vulkan commands rather than via writes to memory or copy
 commands.</p>
 </div>
@@ -10878,7 +10891,7 @@ constants not modified by this command.
 When a <a href="pipelines.html#pipelines-bindpoint-commands" class="xref page">bound pipeline command</a> is issued,
 the bound pipeline&#8217;s layout <strong>must</strong> be compatible with the layouts used to set
 the values of all push constants in the pipeline layout&#8217;s push constant
-ranges, as described in <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>.
+ranges, as described in <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>.
 Binding a pipeline with a layout that is not compatible with the push
 constant layout does not disturb the push constant values.</p>
 </div>
@@ -11394,7 +11407,7 @@ include a valid <a href="#VkPipelineLayoutCreateInfo">VkPipelineLayoutCreateInfo
 </div>
 </div>
 <div class="sect1">
-<h2 id="descriptorsets-physical-storage-buffer"><a class="anchor" href="#descriptorsets-physical-storage-buffer"></a>Physical Storage Buffer Access</h2>
+<h2 id="descriptors-physical-storage-buffer"><a class="anchor" href="#descriptors-physical-storage-buffer"></a>Physical Storage Buffer Access</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="resources.html#resources-buffer-device-addresses" class="xref page">Buffer device addresses</a> <strong>can</strong> also be
@@ -11433,7 +11446,19 @@ layout.</p>
 <p>To determine the amount of memory needed to store all descriptors with a
 given layout, call:</p>
 </div>
-<div id="vkGetDescriptorSetLayoutSizeEXT" class="listingblock">
+<div id="vkGetDescriptorSetLayoutSizeEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorSetLayoutSizeEXT(
@@ -11566,7 +11591,19 @@ flag set</p>
 <p>To get the offset of a binding within a descriptor set layout in memory,
 call:</p>
 </div>
-<div id="vkGetDescriptorSetLayoutBindingOffsetEXT" class="listingblock">
+<div id="vkGetDescriptorSetLayoutBindingOffsetEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorSetLayoutBindingOffsetEXT(
@@ -11641,7 +11678,7 @@ for resources.</p>
 Any potential types in
 <a href="#VkMutableDescriptorTypeCreateInfoEXT">VkMutableDescriptorTypeCreateInfoEXT</a>::<code>pDescriptorTypes</code> for
 <code>binding</code> share the same offset.
-If the size of the <a href="#descriptorsets-mutable">mutable descriptor</a> is larger
+If the size of the <a href="#descriptors-mutable">mutable descriptor</a> is larger
 than the size of a concrete descriptor type being accessed, the padding area
 is ignored by the implementation.</p>
 </div>
@@ -11711,7 +11748,19 @@ flag set</p>
 <div class="paragraph">
 <p>To get descriptor data to place in a buffer, call:</p>
 </div>
-<div id="vkGetDescriptorEXT" class="listingblock">
+<div id="vkGetDescriptorEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorEXT(
@@ -11857,7 +11906,19 @@ be equal to the size of
 <p>Information about the descriptor to get is passed in a
 <code>VkDescriptorGetInfoEXT</code> structure:</p>
 </div>
-<div id="VkDescriptorGetInfoEXT" class="listingblock">
+<div id="VkDescriptorGetInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorGetInfoEXT {
@@ -12162,7 +12223,19 @@ alignment requirement as determined by
 <p>Data describing the descriptor is passed in a <code>VkDescriptorDataEXT</code>
 structure:</p>
 </div>
-<div id="VkDescriptorDataEXT" class="listingblock">
+<div id="VkDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef union VkDescriptorDataEXT {
@@ -12345,7 +12418,19 @@ enabled, <code>accelerationStructure</code> <strong>must</strong> not be <code>0
 <a href="#VkDescriptorType">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a> descriptor is passed in a
 <code>VkDescriptorAddressInfoEXT</code> structure:</p>
 </div>
-<div id="VkDescriptorAddressInfoEXT" class="listingblock">
+<div id="VkDescriptorAddressInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorAddressInfoEXT {
@@ -12624,7 +12709,19 @@ by previous calls to <a href="#vkCmdBindDescriptorSets">vkCmdBindDescriptorSets<
 <div class="paragraph">
 <p>To bind descriptor buffers to a command buffer, call:</p>
 </div>
-<div id="vkCmdBindDescriptorBuffersEXT" class="listingblock">
+<div id="vkCmdBindDescriptorBuffersEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBuffersEXT(
@@ -12856,7 +12953,19 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <p>Data describing a descriptor buffer binding is passed in a
 <code>VkDescriptorBufferBindingInfoEXT</code> structure:</p>
 </div>
-<div id="VkDescriptorBufferBindingInfoEXT" class="listingblock">
+<div id="VkDescriptorBufferBindingInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingInfoEXT {
@@ -13009,7 +13118,19 @@ property is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
 descriptors is passed in a
 <code>VkDescriptorBufferBindingPushDescriptorBufferHandleEXT</code> structure:</p>
 </div>
-<div id="VkDescriptorBufferBindingPushDescriptorBufferHandleEXT" class="listingblock">
+<div id="VkDescriptorBufferBindingPushDescriptorBufferHandleEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
@@ -13092,7 +13213,19 @@ descriptors.</p>
 <div class="paragraph">
 <p>To set descriptor buffer offsets in a command buffer, call:</p>
 </div>
-<div id="vkCmdSetDescriptorBufferOffsetsEXT" class="listingblock">
+<div id="vkCmdSetDescriptorBufferOffsetsEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsetsEXT(
@@ -13150,7 +13283,7 @@ Any bindings that were previously applied via these sets, or calls to
 <a href="#vkCmdBindDescriptorSets">vkCmdBindDescriptorSets</a>, are no longer valid.
 Other sets will also be invalidated upon calling this command if
 <code>layout</code> differs from the pipeline layout used to bind those other sets,
-as described in <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>.</p>
+as described in <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>.</p>
 </div>
 <div class="paragraph">
 <p>After binding descriptors, applications <strong>can</strong> modify descriptor memory either
@@ -13465,7 +13598,19 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="paragraph">
 <p>To set descriptor buffer offsets in a command buffer, call:</p>
 </div>
-<div id="vkCmdSetDescriptorBufferOffsets2EXT" class="listingblock">
+<div id="vkCmdSetDescriptorBufferOffsets2EXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsets2EXT(
@@ -13841,7 +13986,19 @@ include a valid <a href="#VkPipelineLayoutCreateInfo">VkPipelineLayoutCreateInfo
 <div class="paragraph">
 <p>To bind an embedded immutable sampler set to a command buffer, call:</p>
 </div>
-<div id="vkCmdBindDescriptorBufferEmbeddedSamplersEXT" class="listingblock">
+<div id="vkCmdBindDescriptorBufferEmbeddedSamplersEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(
@@ -13881,7 +14038,7 @@ Any sets that were last bound by a call to <a href="#vkCmdBindDescriptorSets">vk
 invalidated upon calling this command.
 Other sets will also be invalidated upon calling this command if
 <code>layout</code> differs from the pipeline layout used to bind those other sets,
-as described in <a href="#descriptorsets-compatibility">Pipeline Layout Compatibility</a>.</p>
+as described in <a href="#descriptors-compatibility">Pipeline Layout Compatibility</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -14040,7 +14197,19 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="paragraph">
 <p>To bind an embedded immutable sampler set to a command buffer, call:</p>
 </div>
-<div id="vkCmdBindDescriptorBufferEmbeddedSamplers2EXT" class="listingblock">
+<div id="vkCmdBindDescriptorBufferEmbeddedSamplers2EXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
@@ -14372,7 +14541,19 @@ replayed using <a href="memory.html#VkMemoryOpaqueCaptureAddressAllocateInfo" cl
 <div class="paragraph">
 <p>To get the opaque descriptor data for a buffer, call:</p>
 </div>
-<div id="vkGetBufferOpaqueCaptureDescriptorDataEXT" class="listingblock">
+<div id="vkGetBufferOpaqueCaptureDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(
@@ -14490,7 +14671,19 @@ If <code>device</code> was created with multiple physical devices, then the
 <p>Information about the buffer to get descriptor buffer capture data for is
 passed in a <code>VkBufferCaptureDescriptorDataInfoEXT</code> structure:</p>
 </div>
-<div id="VkBufferCaptureDescriptorDataInfoEXT" class="listingblock">
+<div id="VkBufferCaptureDescriptorDataInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkBufferCaptureDescriptorDataInfoEXT {
@@ -14559,7 +14752,19 @@ capture data for.</p>
 <div class="paragraph">
 <p>To get the opaque capture descriptor data for an image, call:</p>
 </div>
-<div id="vkGetImageOpaqueCaptureDescriptorDataEXT" class="listingblock">
+<div id="vkGetImageOpaqueCaptureDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(
@@ -14677,7 +14882,19 @@ If <code>device</code> was created with multiple physical devices, then the
 <p>Information about the image to get descriptor buffer capture data for is
 passed in a <code>VkImageCaptureDescriptorDataInfoEXT</code> structure:</p>
 </div>
-<div id="VkImageCaptureDescriptorDataInfoEXT" class="listingblock">
+<div id="VkImageCaptureDescriptorDataInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkImageCaptureDescriptorDataInfoEXT {
@@ -14746,7 +14963,19 @@ capture data for.</p>
 <div class="paragraph">
 <p>To get the opaque capture descriptor data for an image view, call:</p>
 </div>
-<div id="vkGetImageViewOpaqueCaptureDescriptorDataEXT" class="listingblock">
+<div id="vkGetImageViewOpaqueCaptureDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(
@@ -14865,7 +15094,19 @@ If <code>device</code> was created with multiple physical devices, then the
 <p>Information about the image view to get descriptor buffer capture data for
 is passed in a <code>VkImageViewCaptureDescriptorDataInfoEXT</code> structure:</p>
 </div>
-<div id="VkImageViewCaptureDescriptorDataInfoEXT" class="listingblock">
+<div id="VkImageViewCaptureDescriptorDataInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkImageViewCaptureDescriptorDataInfoEXT {
@@ -14934,7 +15175,19 @@ in <a href="resources.html#VkImageViewCreateInfo" class="xref page">VkImageViewC
 <div class="paragraph">
 <p>To get the opaque capture descriptor data for a sampler, call:</p>
 </div>
-<div id="vkGetSamplerOpaqueCaptureDescriptorDataEXT" class="listingblock">
+<div id="vkGetSamplerOpaqueCaptureDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(
@@ -15053,7 +15306,19 @@ If <code>device</code> was created with multiple physical devices, then the
 <p>Information about the sampler to get descriptor buffer capture data for is
 passed in a <code>VkSamplerCaptureDescriptorDataInfoEXT</code> structure:</p>
 </div>
-<div id="VkSamplerCaptureDescriptorDataInfoEXT" class="listingblock">
+<div id="VkSamplerCaptureDescriptorDataInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkSamplerCaptureDescriptorDataInfoEXT {
@@ -15123,7 +15388,19 @@ capture data for.</p>
 <p>To get the opaque capture descriptor data for an acceleration structure,
 call:</p>
 </div>
-<div id="vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT" class="listingblock">
+<div id="vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing
 VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(
@@ -15243,7 +15520,19 @@ If <code>device</code> was created with multiple physical devices, then the
 capture data for is passed in a
 <code>VkAccelerationStructureCaptureDescriptorDataInfoEXT</code> structure:</p>
 </div>
-<div id="VkAccelerationStructureCaptureDescriptorDataInfoEXT" class="listingblock">
+<div id="VkAccelerationStructureCaptureDescriptorDataInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing
 typedef struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {
@@ -15347,7 +15636,19 @@ If <code>accelerationStructureNV</code> is not <a href="../appendices/boilerplat
 <p>The <code>VkOpaqueCaptureDescriptorDataCreateInfoEXT</code> structure is defined
 as:</p>
 </div>
-<div id="VkOpaqueCaptureDescriptorDataCreateInfoEXT" class="listingblock">
+<div id="VkOpaqueCaptureDescriptorDataCreateInfoEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {

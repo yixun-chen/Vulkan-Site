@@ -21,6 +21,9 @@ VkPipelineStageFlagBits - Bitmask specifying pipeline stages
 Bits which **can** be set in a [VkPipelineStageFlags](VkPipelineStageFlags.html) mask, specifying
 stages of execution, are:
 
+|  | This functionality is superseded by [VkPipelineStageFlagBits2](../../../../spec/latest/chapters/synchronization.html#VkPipelineStageFlagBits2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkPipelineStageFlagBits {
     VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT = 0x00000001,

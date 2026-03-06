@@ -21,6 +21,9 @@ VkMemoryBarrier - Structure specifying a global memory barrier
 
 The `VkMemoryBarrier` structure is defined as:
 
+|  | This functionality is superseded by [VkMemoryBarrier2](../../../../spec/latest/chapters/synchronization.html#VkMemoryBarrier2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef struct VkMemoryBarrier {
     VkStructureType    sType;

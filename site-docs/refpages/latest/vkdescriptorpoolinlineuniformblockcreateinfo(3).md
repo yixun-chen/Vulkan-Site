@@ -20,7 +20,7 @@
 VkDescriptorPoolInlineUniformBlockCreateInfo - Structure specifying the maximum number of inline uniform block bindings of a newly created descriptor pool
 
 In order to be able to allocate descriptor sets having
-[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inlineuniformblock) bindings the
+[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inlineuniformblock) bindings the
 descriptor pool **must** be created with specifying the inline uniform block
 binding capacity of the descriptor pool, in addition to the total inline
 uniform data capacity in bytes which is specified through a

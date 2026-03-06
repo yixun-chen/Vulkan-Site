@@ -305,8 +305,8 @@ The shader code for the entry point identified by each element of
 [](#VUID-VkExecutionGraphPipelineCreateInfoAMDX-layout-09130) VUID-VkExecutionGraphPipelineCreateInfoAMDX-layout-09130
 
 If `layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** be
-[consistent](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-pipelinelayout-consistency) with the layout
-of the shaders specified in `pStages`
+[consistent](../../../../spec/latest/chapters/descriptorsets.html#descriptors-pipelinelayout-consistency) with the layout of
+the shaders specified in `pStages`
 
 * 
 [](#VUID-VkExecutionGraphPipelineCreateInfoAMDX-pLibraryInfo-09131) VUID-VkExecutionGraphPipelineCreateInfoAMDX-pLibraryInfo-09131

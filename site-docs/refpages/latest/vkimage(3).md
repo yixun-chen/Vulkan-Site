@@ -20,7 +20,7 @@ VkImage - Opaque handle to an image object
 Images are specialized resources that have multi-dimensional access, as
 outlined in the [Images](../../../../spec/latest/chapters/images.html#images) chapter.
 Images **can** be used for various purposes, such as [rendering attachments](../../../../spec/latest/chapters/renderpass.html#renderpass), [for copy operations](../../../../spec/latest/chapters/copies.html#copies), or accessed through shaders
-via [resource descriptors](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets).
+via [resource descriptors](../../../../spec/latest/chapters/descriptorsets.html#descriptors).
 
 Images are represented by `VkImage` handles:
 

@@ -384,6 +384,8 @@ whether or not the feature is enabled.
 | `uint32_t` | `samplerYcbcrConversionCount` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
 | `uint32_t` | `sparseDescriptorHeaps` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
 | `uint32_t` | `protectedDescriptorHeaps` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `uint32_t` | `numMetrics` | [`shaderInstrumentation`](../../../../spec/latest/chapters/features.html#features-shaderInstrumentation) |
+| `VkBool32` | `perBasicBlockGranularity` | [`shaderInstrumentation`](../../../../spec/latest/chapters/features.html#features-shaderInstrumentation) |
 
 | Limit | Unsupported Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- | --- |
@@ -959,6 +961,8 @@ whether or not the feature is enabled.
 | `maxDescriptorHeapEmbeddedSamplers` | - | 2032 | min |
 | `samplerYcbcrConversionCount` | - | 3 | max |
 | `imageCaptureReplayOpaqueDataSize` | - | - | implementation-dependent |
+| `numMetrics` | - | 1 | min |
+| `perBasicBlockGranularity` | - | VK_FALSE | max |
 
 1
 

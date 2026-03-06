@@ -21,7 +21,7 @@ VkAttachmentDescription - Structure specifying an attachment description
 
 The `VkAttachmentDescription` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../../../../spec/latest/appendices/versions.html#versions-1.2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkAttachmentDescription2](../../../../spec/latest/chapters/renderpass.html#VkAttachmentDescription2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

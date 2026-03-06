@@ -48,7 +48,7 @@ To view the PDF format, visit the `pdf/vkspec.pdf` file.
 
 [https://registry.khronos.org/vulkan/specs/latest/pdf/vkspec.pdf](https://registry.khronos.org/vulkan/specs/latest/pdf/vkspec.pdf)
 
-The Vulkan SDK also comes with a PDF version ([https://vulkan.lunarg.com/doc/sdk/1.4.304.0/windows/1.4-extensions/vkspec.pdf](https://vulkan.lunarg.com/doc/sdk/1.4.304.0/windows/1.4-extensions/vkspec.pdf))
+The Vulkan SDK also comes with a PDF version ([https://vulkan.lunarg.com/doc/sdk/1.4.341.1/windows/1.4-extensions/vkspec.pdf](https://vulkan.lunarg.com/doc/sdk/1.4.341.1/windows/1.4-extensions/vkspec.pdf))
 
 The Khronos Group currently only host the Vulkan Man Pages for the latest version of the spec, with all extensions, on the [online registry](https://registry.khronos.org/vulkan/specs/latest/man/html/).
 

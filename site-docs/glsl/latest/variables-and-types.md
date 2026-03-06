@@ -4825,7 +4825,7 @@ tessellating, where intermediate points for subdivision are synthesized in
 different directions, yet need to yield the same result, as shown in the
 diagram below.
 
-![precise](images/precise.svg)
+![precise](../_images/precise.svg)
 
 Without any qualifiers, implementations are permitted to perform
 optimizations that effectively modify the order or number of operations used

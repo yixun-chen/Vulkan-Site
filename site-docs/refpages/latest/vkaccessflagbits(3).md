@@ -24,6 +24,9 @@ members of [VkSubpassDependency](VkSubpassDependency.html),
 [VkMemoryBarrier](VkMemoryBarrier.html), [VkBufferMemoryBarrier](VkBufferMemoryBarrier.html), and
 [VkImageMemoryBarrier](VkImageMemoryBarrier.html), specifying access behavior, are:
 
+|  | This functionality is superseded by [VkAccessFlagBits2](../../../../spec/latest/chapters/synchronization.html#VkAccessFlagBits2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkAccessFlagBits {
     VK_ACCESS_INDIRECT_COMMAND_READ_BIT = 0x00000001,
@@ -123,7 +126,7 @@ pipeline stage.
 
 * 
 [VK_ACCESS_UNIFORM_READ_BIT](#) specifies read access to a
-[uniform buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer) in any shader pipeline
+[uniform buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbuffer) in any shader pipeline
 stage.
 
 * 
@@ -137,23 +140,23 @@ Such access occurs in the
 
 * 
 [VK_ACCESS_SHADER_READ_BIT](#) specifies read access to a
-[uniform texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformtexelbuffer),
-[sampled image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage),
-[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer),
-[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-physical-storage-buffer),
+[uniform texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformtexelbuffer),
+[sampled image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage),
+[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer),
+[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-physical-storage-buffer),
 [shader binding table](../../../../spec/latest/chapters/raytracing.html#shader-binding-table),
-[storage tensor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetensor),
-[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer), or
-[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) in any shader pipeline
+[storage tensor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetensor),
+[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer), or
+[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) in any shader pipeline
 stage.
 
 * 
 [VK_ACCESS_SHADER_WRITE_BIT](#) specifies write access to a
-[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer),
-[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-physical-storage-buffer),
-[storage tensor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetensor),
-[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer), or
-[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) in any shader pipeline
+[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer),
+[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-physical-storage-buffer),
+[storage tensor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetensor),
+[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer), or
+[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) in any shader pipeline
 stage.
 
 * 
@@ -338,15 +341,25 @@ perform that type of access.
 
 | Access flag | Supported pipeline stages |
 | --- | --- |
-| [VK_ACCESS_2_NONE](VkAccessFlagBits2.html) | Any |
-| [VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_NONE](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_NONE](#) | Any |
+| [VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_INDIRECT_COMMAND_READ_BIT](#) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_INDEX_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_INDEX_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_INDEX_READ_BIT](#) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT](#) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_UNIFORM_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_UNIFORM_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_UNIFORM_READ_BIT](#) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits2.html),
@@ -357,9 +370,13 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_INPUT_ATTACHMENT_READ_BIT](#) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_SHADER_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_SHADER_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_SHADER_READ_BIT](#) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
@@ -372,7 +389,9 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_SHADER_WRITE_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_SHADER_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_SHADER_WRITE_BIT](#) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits2.html),
@@ -383,15 +402,25 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](#) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](#) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#) | [VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_TRANSFER_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_TRANSFER_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_TRANSFER_READ_BIT](#) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_COPY_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_RESOLVE_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_BLIT_BIT](VkPipelineStageFlagBits2.html),
@@ -399,7 +428,9 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_TRANSFER_WRITE_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_TRANSFER_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_TRANSFER_WRITE_BIT](#) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_COPY_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_RESOLVE_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_BLIT_BIT](VkPipelineStageFlagBits2.html),
@@ -408,10 +439,18 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_HOST_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_HOST_WRITE_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_MEMORY_READ_BIT](VkAccessFlagBits2.html) | Any |
-| [VK_ACCESS_2_MEMORY_WRITE_BIT](VkAccessFlagBits2.html) | Any |
+| [VK_ACCESS_2_HOST_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_HOST_READ_BIT](#) | [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_HOST_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_HOST_WRITE_BIT](#) | [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_MEMORY_READ_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_MEMORY_READ_BIT](#) | Any |
+| [VK_ACCESS_2_MEMORY_WRITE_BIT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_MEMORY_WRITE_BIT](#) | Any |
 | [VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html),
@@ -449,17 +488,33 @@ perform that type of access.
 | [VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](VkPipelineStageFlagBits2.html) |
 | [VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](VkPipelineStageFlagBits2.html) |
 | [VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
 | [VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkPipelineStageFlagBits2.html) |
 | [VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](#) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits2.html),
@@ -472,10 +527,16 @@ perform that type of access.
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
+| [VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
-| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits2.html) |
+| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits2.html),
+
+ [VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) |
 | [VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](VkAccessFlagBits2.html) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html),
 	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html),

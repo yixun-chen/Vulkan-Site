@@ -21,6 +21,9 @@ vkQueueSubmit - Submits a sequence of semaphores or command buffers to a queue
 
 To submit command buffers to a queue, call:
 
+|  | This functionality is superseded by [vkQueueSubmit2](../../../../spec/latest/chapters/cmdbuffers.html#vkQueueSubmit2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 VkResult vkQueueSubmit(
     VkQueue                                     queue,

@@ -21,6 +21,9 @@ VkSubmitInfo - Structure specifying a queue submit operation
 
 The `VkSubmitInfo` structure is defined as:
 
+|  | This functionality is superseded by [VkSubmitInfo2](../../../../spec/latest/chapters/cmdbuffers.html#VkSubmitInfo2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef struct VkSubmitInfo {
     VkStructureType                sType;

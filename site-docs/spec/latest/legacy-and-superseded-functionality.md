@@ -24,6 +24,10 @@
 - [Sampler_and_Buffer_View_Objects:_Unnecessary_with_Descriptor_Heaps](#legacy-resource-objects)
 - [Descriptor Management: Replaced by descriptor Heaps](#legacy-descriptor-sets)
 - [Descriptor_Management:_Replaced_by_descriptor_Heaps](#legacy-descriptor-sets)
+- [Synchronization Commands: Deprecation via version 2](#deprecation-sync2)
+- [Synchronization_Commands:_Deprecation_via_version_2](#deprecation-sync2)
+- [32-bit Flags: Extended by 64-bit Flags](#legacy-flagbits)
+- [32-bit_Flags:_Extended_by_64-bit_Flags](#legacy-flagbits)
 
 ## Content
 
@@ -172,3 +176,51 @@ resource management provided by Vulkan 1.0.
 While it is possible to use a mix of these in the same application, they
 cannot be used at the same time, and there are potential performance
 penalties for switching on some implementations.
+
+[VK_KHR_synchronization2](extensions.html#VK_KHR_synchronization2) was incorporated into Vulkan 1.3, which
+introduced new versions of synchronization functions.
+These provide the same functionality as the Vulkan 1.0 functionality but
+with greater extensibility.
+
+Synchronization 2 commands **should** be used instead of synchronization 1
+commands.
+
+There is one piece of functionality in the original synchronization commands
+that cannot be mapped easily however.
+[vkCmdSetEvent](../chapters/synchronization.html#vkCmdSetEvent) did not include an access scope; instead the access
+scope for an event dependency was fully specified by [vkCmdWaitEvents](../chapters/synchronization.html#vkCmdWaitEvents).
+This allowed execution only dependencies to be expressed with cache access
+management handled at the end of the command.
+While the same dependencies can be expressed in
+[VK_KHR_synchronization2](extensions.html#VK_KHR_synchronization2), it is not a 1:1 mapping, requiring
+additional commands to be recorded, and so may not be as efficient.
+
+[VK_KHR_maintenance9](extensions.html#VK_KHR_maintenance9) added the
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](../chapters/synchronization.html#VkDependencyFlagBits) dependency flag, which enables
+this use case with [vkCmdSetEvent2](../chapters/synchronization.html#vkCmdSetEvent2) and [vkCmdWaitEvents2](../chapters/synchronization.html#vkCmdWaitEvents2), making
+it efficient to express the same dependencies.
+
+New flag values added by this extension are additionally [extended to 64-bits](#legacy-flagbits).
+
+Initially Vulkan used 32-bit types to representing sets of flags
+(`Vk*Flags`) and individual flag bits (`Vk*FlagBits`).
+New functionality added many new flag bits.
+When the 32-bit types run out of available bits, new 64-bit flags
+(`Vk*Flags2`) and flag bits (`Vk*FlagBits2`) types are introduced.
+
+These new types include all of the flag bits defined by the 32-bit types
+they correspond to, while allowing up to 32 additional bits.
+The new types are contained by corresponding extending structures.
+Such structures are used to specify or query flags by adding them to a
+`pNext` chain.
+When specifying 64-bit flags, those flags are used instead of the 32-bit
+flags in the base structure being extended.
+When querying 64-bit flags, both the 64-bit flags in the `pNext` chain
+and the 32-bit flags in the in the base structure being extended are
+returned.
+
+64-bit flag and flag bit types are named the same as the 32-bit types they
+supersede, but with the addition of a “2” ahead of any vendor suffix.
+For example, [VkPipelineCreateFlagBits](../chapters/pipelines.html#VkPipelineCreateFlagBits) and [VkPipelineCreateFlags](../chapters/pipelines.html#VkPipelineCreateFlags)
+are superseded by [VkPipelineCreateFlagBits2](../chapters/pipelines.html#VkPipelineCreateFlagBits2) and
+[VkPipelineCreateFlags2](../chapters/pipelines.html#VkPipelineCreateFlags2), respectively.

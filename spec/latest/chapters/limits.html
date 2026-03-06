@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -691,7 +691,7 @@ in <a href="#limits-extendedSparseBufferUsageFlags">    <code>extendedSparseBuff
 <p><a id="limits-maxBoundDescriptorSets"></a> <code>maxBoundDescriptorSets</code> is the
 maximum number of descriptor sets that <strong>can</strong> be simultaneously used by a
 pipeline.
-See <a href="descriptorsets.html#descriptorsets-sets" class="xref page">Descriptor Sets</a>.</p>
+See <a href="descriptorsets.html#descriptors-sets" class="xref page">Descriptor Sets</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorSamplers"></a>
@@ -706,8 +706,7 @@ count against this limit.
 A descriptor is accessible to a shader stage when the <code>stageFlags</code>
 member of the <code>VkDescriptorSetLayoutBinding</code> structure has the bit
 for that shader stage set.
-See <a href="descriptorsets.html#descriptorsets-sampler" class="xref page">Sampler</a> and
-<a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">Combined Image Sampler</a>.</p>
+See <a href="descriptorsets.html#descriptors-sampler" class="xref page">Sampler</a> and <a href="descriptorsets.html#descriptors-combinedimagesampler" class="xref page">Combined Image Sampler</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorUniformBuffers"></a>
@@ -723,8 +722,8 @@ count against this limit.
 A descriptor is accessible to a shader stage when the <code>stageFlags</code>
 member of the <code>VkDescriptorSetLayoutBinding</code> structure has the bit
 for that shader stage set.
-See <a href="descriptorsets.html#descriptorsets-uniformbuffer" class="xref page">Uniform Buffer</a> and
-<a href="descriptorsets.html#descriptorsets-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-uniformbuffer" class="xref page">Uniform Buffer</a> and
+<a href="descriptorsets.html#descriptors-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorStorageBuffers"></a>
@@ -740,8 +739,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 <code>stageFlags</code> member of the <code>VkDescriptorSetLayoutBinding</code>
 structure has the bit for that shader stage set.
-See <a href="descriptorsets.html#descriptorsets-storagebuffer" class="xref page">Storage Buffer</a> and
-<a href="descriptorsets.html#descriptorsets-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storagebuffer" class="xref page">Storage Buffer</a> and
+<a href="descriptorsets.html#descriptors-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorSampledImages"></a>
@@ -758,9 +757,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 <code>stageFlags</code> member of the <code>VkDescriptorSetLayoutBinding</code>
 structure has the bit for that shader stage set.
-See <a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">Combined Image Sampler</a>,
-<a href="descriptorsets.html#descriptorsets-sampledimage" class="xref page">Sampled Image</a>, and
-<a href="descriptorsets.html#descriptorsets-uniformtexelbuffer" class="xref page">Uniform Texel Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-combinedimagesampler" class="xref page">Combined Image Sampler</a>, <a href="descriptorsets.html#descriptors-sampledimage" class="xref page">Sampled Image</a>,
+and <a href="descriptorsets.html#descriptors-uniformtexelbuffer" class="xref page">Uniform Texel Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorStorageImages"></a>
@@ -775,8 +773,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 <code>stageFlags</code> member of the <code>VkDescriptorSetLayoutBinding</code>
 structure has the bit for that shader stage set.
-See <a href="descriptorsets.html#descriptorsets-storageimage" class="xref page">Storage Image</a>, and
-<a href="descriptorsets.html#descriptorsets-storagetexelbuffer" class="xref page">Storage Texel Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storageimage" class="xref page">Storage Image</a>, and
+<a href="descriptorsets.html#descriptors-storagetexelbuffer" class="xref page">Storage Texel Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxPerStageDescriptorInputAttachments"></a>
@@ -792,7 +790,7 @@ A descriptor is accessible to a pipeline shader stage when the
 <code>stageFlags</code> member of the <code>VkDescriptorSetLayoutBinding</code>
 structure has the bit for that shader stage set.
 These are only supported for the fragment stage.
-See <a href="descriptorsets.html#descriptorsets-inputattachment" class="xref page">Input Attachment</a>.</p>
+See <a href="descriptorsets.html#descriptors-inputattachment" class="xref page">Input Attachment</a>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -850,8 +848,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-sampler" class="xref page">Sampler</a> and
-<a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">Combined Image Sampler</a>.</p>
+See <a href="descriptorsets.html#descriptors-sampler" class="xref page">Sampler</a> and <a href="descriptorsets.html#descriptors-combinedimagesampler" class="xref page">Combined Image Sampler</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetUniformBuffers"></a>
@@ -863,8 +860,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-uniformbuffer" class="xref page">Uniform Buffer</a> and
-<a href="descriptorsets.html#descriptorsets-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-uniformbuffer" class="xref page">Uniform Buffer</a> and
+<a href="descriptorsets.html#descriptors-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetUniformBuffersDynamic"></a>
@@ -876,7 +873,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetStorageBuffers"></a>
@@ -888,8 +885,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-storagebuffer" class="xref page">Storage Buffer</a> and
-<a href="descriptorsets.html#descriptorsets-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storagebuffer" class="xref page">Storage Buffer</a> and
+<a href="descriptorsets.html#descriptors-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetStorageBuffersDynamic"></a>
@@ -901,7 +898,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetSampledImages"></a>
@@ -914,9 +911,8 @@ Descriptors with a type of
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">Combined Image Sampler</a>,
-<a href="descriptorsets.html#descriptorsets-sampledimage" class="xref page">Sampled Image</a>, and
-<a href="descriptorsets.html#descriptorsets-uniformtexelbuffer" class="xref page">Uniform Texel Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-combinedimagesampler" class="xref page">Combined Image Sampler</a>, <a href="descriptorsets.html#descriptors-sampledimage" class="xref page">Sampled Image</a>,
+and <a href="descriptorsets.html#descriptors-uniformtexelbuffer" class="xref page">Uniform Texel Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetStorageImages"></a>
@@ -927,8 +923,8 @@ Descriptors with a type of <a href="descriptorsets.html#VkDescriptorType" class=
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-storageimage" class="xref page">Storage Image</a>, and
-<a href="descriptorsets.html#descriptorsets-storagetexelbuffer" class="xref page">Storage Texel Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storageimage" class="xref page">Storage Image</a>, and
+<a href="descriptorsets.html#descriptors-storagetexelbuffer" class="xref page">Storage Texel Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetInputAttachments"></a>
@@ -939,7 +935,7 @@ count against this limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-inputattachment" class="xref page">Input Attachment</a>.</p>
+See <a href="descriptorsets.html#descriptors-inputattachment" class="xref page">Input Attachment</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxVertexInputAttributes"></a> <code>maxVertexInputAttributes</code> is
@@ -3920,7 +3916,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-uniformbufferdynamic" class="xref page">Dynamic Uniform Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetTotalStorageBuffersDynamic"></a>
@@ -3933,7 +3929,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 <a href="descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits" class="xref page">VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</a> bit set
 count against this limit.
-See <a href="descriptorsets.html#descriptorsets-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
+See <a href="descriptorsets.html#descriptors-storagebufferdynamic" class="xref page">Dynamic Storage Buffer</a>.</p>
 </li>
 <li>
 <p><a id="limits-maxDescriptorSetTotalBuffersDynamic"></a>
@@ -5371,7 +5367,7 @@ structure.</p>
 <li>
 <p><a id="extension-limits-maxInlineUniformBlockSize"></a>
 <code>maxInlineUniformBlockSize</code> is the maximum size in bytes of an
-<a href="descriptorsets.html#descriptorsets-inlineuniformblock" class="xref page">inline uniform block</a> binding.</p>
+<a href="descriptorsets.html#descriptors-inlineuniformblock" class="xref page">inline uniform block</a> binding.</p>
 </li>
 <li>
 <p><a id="extension-limits-maxPerStageDescriptorInlineUniformBlocks"></a>
@@ -9159,7 +9155,19 @@ corresponding implementation-dependent property.</p>
 <p>The <code>VkPhysicalDeviceDescriptorBufferPropertiesEXT</code> structure is defined
 as:</p>
 </div>
-<div id="VkPhysicalDeviceDescriptorBufferPropertiesEXT" class="listingblock">
+<div id="VkPhysicalDeviceDescriptorBufferPropertiesEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
@@ -9478,7 +9486,19 @@ corresponding implementation-dependent property.</p>
 <p>The <code>VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT</code> structure
 is defined as:</p>
 </div>
-<div id="VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT" class="listingblock">
+<div id="VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a>. See <a href="../appendices/legacy.html#legacy-descriptor-sets" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_buffer
 typedef struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {
@@ -12890,6 +12910,88 @@ corresponding implementation-dependent property.</p>
 </div>
 </div>
 </div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>VkPhysicalDeviceShaderInstrumentationPropertiesARM</code> structure is
+defined as:</p>
+</div>
+<div id="VkPhysicalDeviceShaderInstrumentationPropertiesARM" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_ARM_shader_instrumentation
+typedef struct VkPhysicalDeviceShaderInstrumentationPropertiesARM {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           numMetrics;
+    VkBool32           perBasicBlockGranularity;
+} VkPhysicalDeviceShaderInstrumentationPropertiesARM;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The members of the <code>VkPhysicalDeviceShaderInstrumentationPropertiesARM</code>
+structure describe the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> is a <a href="fundamentals.html#VkStructureType" class="xref page">VkStructureType</a> value identifying this structure.</p>
+</li>
+<li>
+<p><code>pNext</code> is <code>NULL</code> or a pointer to a structure extending this
+structure.</p>
+</li>
+<li>
+<p><code>numMetrics</code> is the number of shader instrumentation metrics
+supported.</p>
+</li>
+<li>
+<p><code>perBasicBlockGranularity</code> is a boolean value indicating whether
+shader instrumentation metrics are returned per basic block.
+If this is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then all metrics for the shader are reported
+as basic block index <code>0</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the <code>VkPhysicalDeviceShaderInstrumentationPropertiesARM</code> structure is included in the <code>pNext</code> chain of the
+<a href="devsandqueues.html#VkPhysicalDeviceProperties2" class="xref page">VkPhysicalDeviceProperties2</a> structure passed to
+<a href="devsandqueues.html#vkGetPhysicalDeviceProperties2" class="xref page">vkGetPhysicalDeviceProperties2</a>, it is filled in with each
+corresponding implementation-dependent property.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkPhysicalDeviceShaderInstrumentationPropertiesARM-sType-sType" href="#VUID-VkPhysicalDeviceShaderInstrumentationPropertiesARM-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceShaderInstrumentationPropertiesARM-sType-sType</span><br>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Structure Chaining</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="fundamentals.html#fundamentals-validusage-pNext" class="xref page">Extends the structure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="devsandqueues.html#VkPhysicalDeviceProperties2" class="xref page">VkPhysicalDeviceProperties2</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -14697,6 +14799,16 @@ whether or not the feature is enabled.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>uint32_t</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>protectedDescriptorHeaps</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="features.html#features-descriptorHeap" class="xref page"><code>descriptorHeap</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uint32_t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>numMetrics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="features.html#features-shaderInstrumentation" class="xref page"><code>shaderInstrumentation</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VkBool32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>perBasicBlockGranularity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="features.html#features-shaderInstrumentation" class="xref page"><code>shaderInstrumentation</code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -17298,6 +17410,18 @@ whether or not the feature is enabled.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">implementation-dependent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>numMetrics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>perBasicBlockGranularity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_FALSE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
 </tr>
 </tbody>
 </table>

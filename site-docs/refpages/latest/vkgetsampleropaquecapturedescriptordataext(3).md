@@ -21,6 +21,9 @@ vkGetSamplerOpaqueCaptureDescriptorDataEXT - Get sampler opaque capture descript
 
 To get the opaque capture descriptor data for a sampler, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(
     VkDevice                                    device,

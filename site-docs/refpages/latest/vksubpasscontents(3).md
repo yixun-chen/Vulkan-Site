@@ -21,6 +21,9 @@ VkSubpassContents - Specify how commands in the first subpass of a render pass a
 Possible values of [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html)::`contents`, specifying
 how the commands in the first subpass will be provided, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-dynamicrendering) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkSubpassContents {
     VK_SUBPASS_CONTENTS_INLINE = 0,

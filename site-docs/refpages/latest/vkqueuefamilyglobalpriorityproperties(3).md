@@ -63,7 +63,7 @@ The valid elements of `priorities` **must** not contain any duplicate
 values.
 
 The valid elements of `priorities` **must** be a continuous sequence of
-[VkQueueGlobalPriority](VkQueueGlobalPriority.html) enums in the ascending order.
+[VkQueueGlobalPriority](VkQueueGlobalPriority.html) enums in ascending order.
 
 |  | For example, returning `priorityCount` as 3 with supported
 | --- | --- |

@@ -89,7 +89,7 @@ whether this implementation supports a `VkImage` being created as a
 * 
  `mutableComparisonSamplers`
 indicates whether this implementation allows descriptors with comparison
-samplers to be [updated](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates).
+samplers to be [updated](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates).
 
 * 
  `pointPolygons` indicates whether this

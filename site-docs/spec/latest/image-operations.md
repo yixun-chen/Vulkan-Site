@@ -2149,7 +2149,7 @@ parameters of the view: `filterCenter`, `filterSize`, and
 described in more detail below.
 
 The `weight` input **must** be bound using a
-[sample weight image](descriptorsets.html#descriptorsets-weightimage) descriptor type.
+[sample weight image](descriptorsets.html#descriptors-weightimage) descriptor type.
 The `weight` view defines a filtering kernel that is a region of view’s
 subresource range.
 The kernel spans a region from integer texel coordinate (0,0) to

@@ -18,9 +18,7 @@
 
 VkDescriptorType - Specifies the type of a descriptor in a descriptor set
 
-The type of descriptors in a descriptor set is specified by
-[VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`descriptorType`, which **must** be one of the
-values:
+Possible descriptor types are:
 
 // Provided by VK_VERSION_1_0
 typedef enum VkDescriptorType {
@@ -58,126 +56,66 @@ typedef enum VkDescriptorType {
 } VkDescriptorType;
 
 * 
-[VK_DESCRIPTOR_TYPE_SAMPLER](#) specifies a [    sampler descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampler).
+[VK_DESCRIPTOR_TYPE_SAMPLER](#) specifies a [    sampler descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampler).
 
 * 
 [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#) specifies a
-[combined image sampler    descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler).
+[combined image sampler descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler).
 
 * 
 [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#) specifies a
-[sampled image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage).
+[sampled image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage).
 
 * 
 [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#) specifies a
-[storage image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage).
+[storage image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage).
 
 * 
 [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#) specifies a
-[uniform texel buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformtexelbuffer).
+[uniform texel buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformtexelbuffer).
 
 * 
 [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#) specifies a
-[storage texel buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer).
+[storage texel buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer).
 
 * 
 [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#) specifies a
-[uniform buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer).
+[uniform buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbuffer).
 
 * 
 [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#) specifies a
-[storage buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer).
+[storage buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer).
 
 * 
 [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#) specifies a
-[dynamic uniform buffer    descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
+[dynamic uniform buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#) specifies a
-[dynamic storage buffer    descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
+[dynamic storage buffer descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#) specifies an
-[input attachment descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment).
+[input attachment descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inputattachment).
 
 * 
 [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#) specifies an
-[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inlineuniformblock).
+[inline uniform block](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inlineuniformblock).
 
 * 
-[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#) specifies a
-[descriptor of mutable type](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-mutable).
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#) specifies a [    descriptor of mutable type](../../../../spec/latest/chapters/descriptorsets.html#descriptors-mutable).
 
 * 
 [VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#) specifies a
-[sampled weight image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-weightimage).
+[sampled weight image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-weightimage).
 
 * 
 [VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#) specifies a
-[block matching image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-blockmatch).
+[block matching image descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-blockmatch).
 
 * 
 [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#) specifies a
-[storage tensor descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetensor).
-
-When a descriptor set is updated via elements of [VkWriteDescriptorSet](VkWriteDescriptorSet.html),
-members of `pImageInfo`, `pBufferInfo` and `pTexelBufferView`
-are only accessed by the implementation when they correspond to descriptor
-type being defined - otherwise they are ignored.
-The members accessed are as follows for each descriptor type:
-
-* 
-For [VK_DESCRIPTOR_TYPE_SAMPLER](#), only the `sampler` member of
-each element of [VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`pImageInfo` is
-accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#),
-[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#), or
-[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#), only the `imageView` and
-`imageLayout` members of each element of
-[VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`pImageInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#), all members of each
-element of [VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`pImageInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#),
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#),
-[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#), or
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#), all members of each
-element of [VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`pBufferInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#) or
-[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#), each element of
-[VkWriteDescriptorSet](VkWriteDescriptorSet.html)::`pTexelBufferView` is accessed.
-
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#), none of the `pImageInfo`,
-`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
-the source data of the descriptor update operation is taken from the
-[VkWriteDescriptorSetInlineUniformBlock](VkWriteDescriptorSetInlineUniformBlock.html) structure in the `pNext`
-chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#), none of the
-`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
-accessed, instead the source data of the descriptor update operation is
-taken from the [VkWriteDescriptorSetAccelerationStructureKHR](VkWriteDescriptorSetAccelerationStructureKHR.html) structure
-in the `pNext` chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#), none of the
-`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
-accessed, instead the source data of the descriptor update operation is
-taken from the [VkWriteDescriptorSetAccelerationStructureNV](VkWriteDescriptorSetAccelerationStructureNV.html) structure
-in the `pNext` chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#), none of the `pImageInfo`,
-`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
-the source data of the descriptor update operation is taken from the
-instance of [VkWriteDescriptorSetTensorARM](VkWriteDescriptorSetTensorARM.html) in the `pNext` chain of
-[VkWriteDescriptorSet](VkWriteDescriptorSet.html).
+[storage tensor descriptor](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetensor).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html), [VkDescriptorPoolSize](VkDescriptorPoolSize.html), [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html), [VkDescriptorUpdateTemplateEntry](VkDescriptorUpdateTemplateEntry.html), [VkImageViewHandleInfoNVX](VkImageViewHandleInfoNVX.html), [VkMutableDescriptorTypeListEXT](VkMutableDescriptorTypeListEXT.html), [VkResourceDescriptorInfoEXT](VkResourceDescriptorInfoEXT.html), [VkWriteDescriptorSet](VkWriteDescriptorSet.html), [vkGetPhysicalDeviceDescriptorSizeEXT](vkGetPhysicalDeviceDescriptorSizeEXT.html)
 

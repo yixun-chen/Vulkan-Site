@@ -1829,6 +1829,18 @@ The `indirectExecutionSet` parameter in [vkUpdateIndirectExecutionSetPipelineEXT
 The `indirectExecutionSet` parameter in [vkUpdateIndirectExecutionSetShaderEXT](device_generated_commands/generatedcommands.html#vkUpdateIndirectExecutionSetShaderEXT)
 
 * 
+The `instrumentation` parameter in [vkDestroyShaderInstrumentationARM](shaders.html#vkDestroyShaderInstrumentationARM)
+
+* 
+The `commandBuffer` parameter in [vkCmdBeginShaderInstrumentationARM](shaders.html#vkCmdBeginShaderInstrumentationARM)
+
+* 
+The `instrumentation` parameter in [vkCmdBeginShaderInstrumentationARM](shaders.html#vkCmdBeginShaderInstrumentationARM)
+
+* 
+The `commandBuffer` parameter in [vkCmdEndShaderInstrumentationARM](shaders.html#vkCmdEndShaderInstrumentationARM)
+
+* 
 The `commandBuffer` parameter in [vkCmdEndRendering2EXT](renderpass.html#vkCmdEndRendering2EXT)
 
 * 
@@ -2830,6 +2842,12 @@ The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdPreprocess
 
 * 
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdExecuteGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdExecuteGeneratedCommandsEXT)
+
+* 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdBeginShaderInstrumentationARM](shaders.html#vkCmdBeginShaderInstrumentationARM)
+
+* 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdEndShaderInstrumentationARM](shaders.html#vkCmdEndShaderInstrumentationARM)
 
 * 
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdEndRendering2EXT](renderpass.html#vkCmdEndRendering2EXT)
@@ -6399,6 +6417,14 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM = 1000605003,
   // Provided by VK_ARM_performance_counters_by_region
     VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM = 1000605004,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM = 1000607000,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM = 1000607001,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM = 1000607002,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM = 1000607003,
   // Provided by VK_EXT_vertex_attribute_robustness
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT = 1000608000,
   // Provided by VK_ARM_format_pack
@@ -6413,14 +6439,10 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR = 1000286000,
   // Provided by VK_KHR_robustness2
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR = 1000286001,
-#ifdef VK_ENABLE_BETA_EXTENSIONS
   // Provided by VK_NV_present_metering
     VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV = 1000613000,
-#endif
-#ifdef VK_ENABLE_BETA_EXTENSIONS
   // Provided by VK_NV_present_metering
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV = 1000613001,
-#endif
   // Provided by VK_EXT_fragment_density_map_offset
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_EXT = 1000425000,
   // Provided by VK_EXT_fragment_density_map_offset

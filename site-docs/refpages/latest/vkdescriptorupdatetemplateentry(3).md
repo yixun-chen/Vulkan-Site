@@ -95,7 +95,7 @@ descriptors
 `dstArrayElement` and `descriptorCount` **must** be less than or
 equal to the number of array elements in the descriptor set binding
 implicitly specified when using a descriptor update template to update
-descriptors, and all applicable [    consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates-consecutive)
+descriptors, and all applicable [    consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226

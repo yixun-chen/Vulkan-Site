@@ -131,7 +131,7 @@ For backward compatibility with older Vulkan implementations, fallback code may 
 
 * 
 [Vulkan
-Specification Deprecation](https://docs.vulkan.org/spec/latest/appendices/deprecation.html): Current official list of deprecated Vulkan features
+Specification Legacy](https://docs.vulkan.org/spec/latest/appendices/legacy.html): Current official list of legacy Vulkan features
 
 * 
 [Vulkan Samples](https://github.com/KhronosGroup/Vulkan-Samples): Sample code demonstrating various Vulkan features

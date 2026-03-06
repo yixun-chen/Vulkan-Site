@@ -254,7 +254,7 @@ in [    `extendedSparseBufferUsageFlags`](../../../../spec/latest/chapters/limit
  `maxBoundDescriptorSets` is the
 maximum number of descriptor sets that **can** be simultaneously used by a
 pipeline.
-See [Descriptor Sets](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sets).
+See [Descriptor Sets](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets).
 
 * 
 
@@ -269,8 +269,7 @@ count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
 for that shader stage set.
-See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampler) and
-[Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler).
+See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampler) and [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler).
 
 * 
 
@@ -286,8 +285,8 @@ count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
 for that shader stage set.
-See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer) and
-[Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbuffer) and
+[Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -303,8 +302,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer) and
-[Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer) and
+[Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -321,9 +320,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler),
-[Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage), and
-[Uniform Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformtexelbuffer).
+See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler), [Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage),
+and [Uniform Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformtexelbuffer).
 
 * 
 
@@ -338,8 +336,8 @@ count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
-See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage), and
-[Storage Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer).
+See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage), and
+[Storage Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer).
 
 * 
 
@@ -355,7 +353,7 @@ A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
 structure has the bit for that shader stage set.
 These are only supported for the fragment stage.
-See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment).
+See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inputattachment).
 
 |  | `maxPerStageDescriptorInputAttachments` was originally only intended to
 | --- | --- |
@@ -402,8 +400,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampler) and
-[Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler).
+See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampler) and [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler).
 
 * 
 
@@ -415,8 +412,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer) and
-[Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbuffer) and
+[Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -428,7 +425,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
+See [Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbufferdynamic).
 
 * 
 
@@ -440,8 +437,8 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer) and
-[Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer) and
+[Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -453,7 +450,7 @@ limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
+See [Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebufferdynamic).
 
 * 
 
@@ -466,9 +463,8 @@ Descriptors with a type of
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler),
-[Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage), and
-[Uniform Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformtexelbuffer).
+See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler), [Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage),
+and [Uniform Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformtexelbuffer).
 
 * 
 
@@ -479,8 +475,8 @@ Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.h
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage), and
-[Storage Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer).
+See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage), and
+[Storage Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer).
 
 * 
 
@@ -491,7 +487,7 @@ count against this limit.
 Only descriptors in descriptor set layouts created without the
 [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
-See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment).
+See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inputattachment).
 
 * 
  `maxVertexInputAttributes` is

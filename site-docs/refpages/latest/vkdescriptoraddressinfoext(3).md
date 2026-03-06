@@ -25,6 +25,9 @@ Data describing a [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
 [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) descriptor is passed in a
 `VkDescriptorAddressInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorAddressInfoEXT {
     VkStructureType    sType;

@@ -34,6 +34,9 @@ Bits which **can** be set in
 
 specify how a pipeline is created, and are:
 
+|  | This functionality is superseded by [VkPipelineCreateFlagBits2](../../../../spec/latest/chapters/pipelines.html#VkPipelineCreateFlagBits2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkPipelineCreateFlagBits {
     VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT = 0x00000001,
@@ -284,7 +287,7 @@ necessary to later perform an optimal link with
 * 
 [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#) specifies that a
 pipeline will be used with [descriptor buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorbuffers),
-rather than [descriptor sets](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets).
+rather than [descriptor sets](../../../../spec/latest/chapters/descriptorsets.html#descriptors).
 
 * 
 [VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#)

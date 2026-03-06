@@ -21,7 +21,7 @@ vkGetPhysicalDeviceQueueFamilyProperties - Reports properties of the queues of t
 
 To query properties of queues available on a physical device, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceQueueFamilyProperties2](../../../../spec/latest/chapters/devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

@@ -21,6 +21,9 @@ vkCmdSetDescriptorBufferOffsetsEXT - Setting descriptor buffer offsets in a comm
 
 To set descriptor buffer offsets in a command buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsetsEXT(
     VkCommandBuffer                             commandBuffer,
@@ -71,7 +74,7 @@ Any bindings that were previously applied via these sets, or calls to
 [vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), are no longer valid.
 Other sets will also be invalidated upon calling this command if
 `layout` differs from the pipeline layout used to bind those other sets,
-as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility).
+as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility).
 
 After binding descriptors, applications **can** modify descriptor memory either
 by performing writes on the host or with device commands.

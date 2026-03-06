@@ -23,7 +23,7 @@ Specification.
 
 // Provided by VK_VERSION_1_0
 // Version of this file
-#define VK_HEADER_VERSION 344
+#define VK_HEADER_VERSION 345
 
 [VK_HEADER_VERSION_COMPLETE](VK_HEADER_VERSION_COMPLETE.html), [VK_VERSION_1_0](VK_VERSION_1_0.html)
 

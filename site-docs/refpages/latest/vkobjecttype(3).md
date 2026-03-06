@@ -119,6 +119,8 @@ typedef enum VkObjectType {
     VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT = 1000572000,
   // Provided by VK_EXT_device_generated_commands
     VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT = 1000572001,
+  // Provided by VK_ARM_shader_instrumentation
+    VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM = 1000607000,
   // Provided by VK_KHR_descriptor_update_template
     VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE,
   // Provided by VK_KHR_sampler_ycbcr_conversion

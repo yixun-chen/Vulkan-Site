@@ -22,6 +22,9 @@ VkDescriptorBufferBindingInfoEXT - Structure specifying descriptor buffer bindin
 Data describing a descriptor buffer binding is passed in a
 `VkDescriptorBufferBindingInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingInfoEXT {
     VkStructureType       sType;

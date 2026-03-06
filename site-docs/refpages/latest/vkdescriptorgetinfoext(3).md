@@ -22,6 +22,9 @@ VkDescriptorGetInfoEXT - Structure specifying parameters of descriptor to get
 Information about the descriptor to get is passed in a
 `VkDescriptorGetInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorGetInfoEXT {
     VkStructureType        sType;

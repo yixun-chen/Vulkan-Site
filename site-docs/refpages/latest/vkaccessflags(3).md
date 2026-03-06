@@ -18,6 +18,9 @@
 
 VkAccessFlags - Bitmask of VkAccessFlagBits
 
+|  | This functionality is superseded by [VkAccessFlags2](../../../../spec/latest/chapters/synchronization.html#VkAccessFlags2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkAccessFlags;
 

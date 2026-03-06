@@ -155,6 +155,13 @@ Extending [VkStructureType](VkStructureType.html):
 * 
 [CooperativeMatrixKHR](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-CooperativeMatrixKHR)
 
+1.) How does cooperativeMatrixRobustBufferAccess interact with
+nullDescriptor?
+
+**RESOLVED**: nullDescriptor is not allowed here While drivers can handle
+going OOB into a buffer, if there is not buffer, via nullDescriptor, it is
+invalid to load/store from the cooperative matrix.
+
 * 
 Revision 2, 2023-05-03 (Kevin Petit)
 

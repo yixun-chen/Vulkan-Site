@@ -37,9 +37,15 @@ Layered architecture divides the system into distinct layers, each with a specif
 ![Layered Architecture Diagram showing different layers of a rendering engine](../../_images/images/layered_architecture_diagram.png)
 
 **Key Benefits:**
-* Clear separation of concerns
-* Easier to understand and maintain
-* Can replace or modify individual layers without affecting others
+
+* 
+Clear separation of concerns
+
+* 
+Easier to understand and maintain
+
+* 
+Can replace or modify individual layers without affecting others
 
 For detailed information and implementation examples, see the [Appendix: Layered Architecture](../Appendix/appendix.html#layered-architecture).
 
@@ -48,9 +54,15 @@ Data-Oriented Design (DOD) focuses on organizing data for efficient processing r
 ![Data-Oriented Design Diagram](../../_images/images/data_oriented_design_diagram.svg)
 
 **Key Benefits:**
-* Better cache utilization
-* More efficient memory usage
-* Easier to parallelize
+
+* 
+Better cache utilization
+
+* 
+More efficient memory usage
+
+* 
+Easier to parallelize
 
 For detailed information and implementation examples, see the [Appendix: Data-Oriented Design](../Appendix/appendix.html#data-oriented-design).
 
@@ -59,9 +71,15 @@ The Service Locator pattern provides a global point of access to services withou
 ![Service Locator Pattern Diagram](../../_images/images/service_locator_pattern_diagram.svg)
 
 **Key Benefits:**
-* Decouples service consumers from service providers
-* Allows for easy service replacement
-* Facilitates testing with mock services
+
+* 
+Decouples service consumers from service providers
+
+* 
+Allows for easy service replacement
+
+* 
+Facilitates testing with mock services
 
 For detailed information and implementation examples, see the [Appendix: Service Locator Pattern](../Appendix/appendix.html#service-locator-pattern).
 

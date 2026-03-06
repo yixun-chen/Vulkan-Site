@@ -63,7 +63,7 @@ When a promoted extension is available, any corresponding feature aliases
 
 To query supported features, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../appendices/versions.html#versions-1.1). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceFeatures2](#vkGetPhysicalDeviceFeatures2). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -5550,7 +5550,8 @@ capability.
 * 
 
 `cooperativeMatrixRobustBufferAccess` indicates that the
-implementation supports robust buffer access for SPIR-V
+implementation supports implementation supports
+[robust buffer access](shaders.html#shaders-robust-buffer-access) for SPIR-V
 `OpCooperativeMatrixLoadNV` and `OpCooperativeMatrixStoreNV`
 instructions.
 
@@ -5608,9 +5609,8 @@ capability.
 * 
 
 `cooperativeMatrixRobustBufferAccess` indicates that the
-implementation supports robust buffer access for SPIR-V
-`OpCooperativeMatrixLoadKHR` and `OpCooperativeMatrixStoreKHR`
-instructions.
+implementation supports [robust buffer    access](shaders.html#shaders-robust-buffer-access) for SPIR-V `OpCooperativeMatrixLoadKHR` and
+`OpCooperativeMatrixStoreKHR` instructions.
 
 If the `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2) structure passed to
@@ -9430,7 +9430,7 @@ whether this implementation supports a `VkImage` being created as a
 * 
  `mutableComparisonSamplers`
 indicates whether this implementation allows descriptors with comparison
-samplers to be [updated](descriptorsets.html#descriptorsets-updates).
+samplers to be [updated](descriptorsets.html#descriptors-sets-updates).
 
 * 
  `pointPolygons` indicates whether this
@@ -9641,6 +9641,9 @@ Vulkan 1.3. |
 
 The `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` structure is
 defined as:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_mutable_descriptor_type
 typedef struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT {
@@ -10655,6 +10658,9 @@ Structure Chaining
 
 The `VkPhysicalDeviceDescriptorBufferFeaturesEXT` structure is defined
 as:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkPhysicalDeviceDescriptorBufferFeaturesEXT {
@@ -17217,6 +17223,53 @@ Structure Chaining
 * 
 [VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2)
 
+The `VkPhysicalDeviceShaderInstrumentationFeaturesARM` structure is
+defined as:
+
+// Provided by VK_ARM_shader_instrumentation
+typedef struct VkPhysicalDeviceShaderInstrumentationFeaturesARM {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           shaderInstrumentation;
+} VkPhysicalDeviceShaderInstrumentationFeaturesARM;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+ `shaderInstrumentation` specifies
+whether shader instrumentation is supported.
+
+If the `VkPhysicalDeviceShaderInstrumentationFeaturesARM` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2) structure passed to
+[vkGetPhysicalDeviceFeatures2](#vkGetPhysicalDeviceFeatures2), it is filled in to indicate whether each
+corresponding feature is supported.
+If the application wishes to use a [VkDevice](devsandqueues.html#VkDevice) with any features
+described by `VkPhysicalDeviceShaderInstrumentationFeaturesARM`, it **must** add an instance of the structure,
+with the desired feature members set to [VK_TRUE](fundamentals.html#VK_TRUE), to the `pNext`
+chain of [VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo) when creating the [VkDevice](devsandqueues.html#VkDevice).
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceShaderInstrumentationFeaturesARM-sType-sType) VUID-VkPhysicalDeviceShaderInstrumentationFeaturesARM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM](fundamentals.html#VkStructureType)
+
+Structure Chaining
+
+[Extends the structures](fundamentals.html#fundamentals-validusage-pNext)
+
+* 
+[VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo)
+
+* 
+[VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2)
+
 All Vulkan graphics implementations **must** support the following features:
 
 * 
@@ -18393,6 +18446,9 @@ If `[VK_ARM_pipeline_opacity_micromap](../appendices/extensions.html#VK_ARM_pipe
 
 If `[VK_ARM_performance_counters_by_region](../appendices/extensions.html#VK_ARM_performance_counters_by_region)` is supported,
 [`performanceCountersByRegion`](#features-performanceCountersByRegion) **must** be supported
+
+If `[VK_ARM_shader_instrumentation](../appendices/extensions.html#VK_ARM_shader_instrumentation)` is supported,
+[`shaderInstrumentation`](#features-shaderInstrumentation) **must** be supported
 
 If `[VK_EXT_vertex_attribute_robustness](../appendices/extensions.html#VK_EXT_vertex_attribute_robustness)` is supported,
 [`vertexAttributeRobustness`](#features-vertexAttributeRobustness) **must** be supported

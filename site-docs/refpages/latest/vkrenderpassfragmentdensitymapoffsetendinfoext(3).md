@@ -155,7 +155,7 @@ The `y` component of each element of `pFragmentDensityOffsets`
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-10730) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-10730
 
-Each element of `pFragmentDensityOffsets` must be identical for
+Each element of `pFragmentDensityOffsets` **must** be identical for
 every [vkCmdEndRendering2KHR](vkCmdEndRendering2KHR.html) call made in a render pass
 
 Valid Usage (Implicit)

@@ -283,7 +283,7 @@ compatible for set *n*, with the [VkPipelineLayout](VkPipelineLayout.html) used 
 the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) array used to create the current
 [VkShaderEXT](VkShaderEXT.html)
-, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdDrawMeshTasksIndirectNV-None-08601) VUID-vkCmdDrawMeshTasksIndirectNV-None-08601
@@ -296,7 +296,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is
-[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](VkPipelineLayout.html) used to create the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) array used to create the current
 [VkShaderEXT](VkShaderEXT.html)
@@ -319,7 +319,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is
-[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](VkPipelineLayout.html) used to create the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) and [VkPushConstantRange](VkPushConstantRange.html) arrays
 used to create the current [VkShaderEXT](VkShaderEXT.html)

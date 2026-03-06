@@ -156,12 +156,22 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter
 
- `pCounterAddresses` **must** be a valid pointer to a valid `VkDeviceAddress` value
+ `pCounterAddresses` **must** be a valid pointer to an array of `counterAddressCount` `VkDeviceAddress` values
 
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter
 
- `pCounterIndices` **must** be a valid pointer to a `uint32_t` value
+ `pCounterIndices` **must** be a valid pointer to an array of `counterIndexCount` `uint32_t` values
+
+* 
+[](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterAddressCount-arraylength) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterAddressCount-arraylength
+
+ `counterAddressCount` **must** be greater than `0`
+
+* 
+[](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterIndexCount-arraylength) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterIndexCount-arraylength
+
+ `counterIndexCount` **must** be greater than `0`
 
 Structure Chaining
 

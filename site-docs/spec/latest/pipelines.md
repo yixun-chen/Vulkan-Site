@@ -397,11 +397,15 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_
 // Provided by VK_KHR_maintenance5 with VK_VERSION_1_4 or VK_EXT_pipeline_protected_access
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT = 0x40000000ULL;
 // Provided by VK_KHR_maintenance5 with VK_NV_displacement_micromap
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV = 0x10000000ULL;
+#endif
 // Provided by VK_KHR_maintenance5 with VK_EXT_descriptor_buffer
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT = 0x20000000ULL;
 // Provided by VK_KHR_maintenance5 with VK_ARM_pipeline_opacity_micromap, VK_ARM_pipeline_opacity_micromap
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM = 0x2000000000ULL;
+// Provided by VK_KHR_maintenance5 with VK_ARM_shader_instrumentation, VK_ARM_shader_instrumentation
+static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM = 0x8000000000ULL;
 // Provided by VK_KHR_pipeline_binary
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR = 0x80000000ULL;
 // Provided by VK_EXT_device_generated_commands
@@ -595,7 +599,7 @@ necessary to later perform an optimal link with
 * 
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that a
 pipeline will be used with [descriptor buffers](descriptorsets.html#descriptorbuffers),
-rather than [descriptor sets](descriptorsets.html#descriptorsets).
+rather than [descriptor sets](descriptorsets.html#descriptors).
 
 * 
 [VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
@@ -661,6 +665,10 @@ pipeline enables [64-bit indexing](../appendices/spirvenv.html#spirvenv-64bindex
 pipeline will use descriptor heap mappings instead of descriptor set
 layouts.
 
+* 
+[VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM](#VkPipelineCreateFlagBits2KHR) specifies that the
+shaders in the pipeline will be instrumented.
+
 It is valid to set both [VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits2KHR) and
 [VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#VkPipelineCreateFlagBits2KHR).
 This allows a pipeline to be both a parent and possibly a child in a
@@ -712,6 +720,9 @@ Bits which **can** be set in
 [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`flags`
 
 specify how a pipeline is created, and are:
+
+|  | This functionality is superseded by [VkPipelineCreateFlagBits2](#VkPipelineCreateFlagBits2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef enum VkPipelineCreateFlagBits {
@@ -963,7 +974,7 @@ necessary to later perform an optimal link with
 * 
 [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits) specifies that a
 pipeline will be used with [descriptor buffers](descriptorsets.html#descriptorbuffers),
-rather than [descriptor sets](descriptorsets.html#descriptorsets).
+rather than [descriptor sets](descriptorsets.html#descriptors).
 
 * 
 [VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
@@ -1025,6 +1036,9 @@ Using both options can allow latency-sensitive applications to generate a
 suboptimal but usable pipeline quickly, and then perform an optimal link in
 the background, substituting the result for the suboptimally linked pipeline
 as soon as it is available. |
+
+|  | This functionality is superseded by [VkPipelineCreateFlags2](#VkPipelineCreateFlags2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkPipelineCreateFlags;
@@ -3785,12 +3799,12 @@ When binding descriptor sets for this pipeline, the pipeline layout used
 **must** be compatible with this union.
 This pipeline layout **can** be overridden when linking with
 [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) by providing a
-[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is [compatible](descriptorsets.html#descriptorsets-compatibility)
-with this union other than
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is [compatible](descriptorsets.html#descriptors-compatibility) with
+this union other than
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), or when linking
 without [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) by providing
 a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is fully
-[compatible](descriptorsets.html#descriptorsets-compatibility) with this union.
+[compatible](descriptorsets.html#descriptors-compatibility) with this union.
 
 If the `pNext` chain includes a [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)
 structure, [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)::`flags` from that
@@ -6012,7 +6026,8 @@ one of
 [VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
 [VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
-other subset, any element of the `pSetLayouts` array when
+other subset, [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits)
+was not used, and any element of the `pSetLayouts` array when
 `layout` was created and the corresponding element of the
 `pSetLayouts` array used to create the library’s `layout` **must**
 not both be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -6027,11 +6042,12 @@ one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)
 includes
 [VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and any
-element of the `pSetLayouts` array used to create each library’s
-`layout` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
-the `pSetLayouts` array used to create the other library’s
-`layout` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits) was not used,
+and any element of the `pSetLayouts` array used to create each
+library’s `layout` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding
+element of the `pSetLayouts` array used to create the other
+library’s `layout` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06756) VUID-VkGraphicsPipelineCreateInfo-flags-06756
@@ -6486,8 +6502,8 @@ If
 the pipeline includes a [complete    set of state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was
 created with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created without
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
-`layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
-the layouts in those libraries
+`layout` **must** be [compatible](descriptorsets.html#descriptors-compatibility) with the
+layouts in those libraries
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06729) VUID-VkGraphicsPipelineCreateInfo-flags-06729
@@ -6500,8 +6516,8 @@ If
 includes a [complete set of    state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was created
 with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created with
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
-`layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
-the union of the libraries' pipeline layouts other than the
+`layout` **must** be [compatible](descriptorsets.html#descriptors-compatibility) with the
+union of the libraries' pipeline layouts other than the
 inclusion/exclusion of
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits)
 
@@ -6516,8 +6532,8 @@ If
 includes a [complete set of    state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was created
 with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created with
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
-`layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
-the union of the libraries' pipeline layouts
+`layout` **must** be [compatible](descriptorsets.html#descriptors-compatibility) with the
+union of the libraries' pipeline layouts
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-conservativePointAndLineRasterization-08892) VUID-VkGraphicsPipelineCreateInfo-conservativePointAndLineRasterization-08892

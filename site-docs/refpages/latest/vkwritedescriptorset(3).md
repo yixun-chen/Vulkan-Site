@@ -110,30 +110,63 @@ below.
 handles as described in the [Buffer Views](../../../../spec/latest/chapters/resources.html#resources-buffer-views)
 section or is ignored, as described below.
 
-Only one of `pImageInfo`, `pBufferInfo`, or `pTexelBufferView`
-members is used according to the descriptor type specified in the
-`descriptorType` member of the containing `VkWriteDescriptorSet`
-structure,
-or none of them in case `descriptorType` is
-[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), in which case the source data
-for the descriptor writes is taken from the
-[VkWriteDescriptorSetInlineUniformBlock](VkWriteDescriptorSetInlineUniformBlock.html) structure included in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html), in which case the
-source data for the descriptor writes is taken from the
-[VkWriteDescriptorSetAccelerationStructureKHR](VkWriteDescriptorSetAccelerationStructureKHR.html) structure in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), in which case the source
-data for the descriptor writes is taken from the
-[VkWriteDescriptorSetAccelerationStructureNV](VkWriteDescriptorSetAccelerationStructureNV.html) structure in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html), in which
-case the source data for the descriptor writes is taken from the instance of
-[VkWriteDescriptorSetTensorARM](VkWriteDescriptorSetTensorARM.html) in the `pNext` chain of
-`VkWriteDescriptorSet`,
-as specified below.
+Members of `pImageInfo`, `pBufferInfo` and `pTexelBufferView`
+are only accessed by the implementation when they correspond to a descriptor
+type being defined - otherwise they are ignored.
+The members accessed are as follows for each descriptor type:
+
+* 
+For [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html), only the `sampler` member of
+each element of [VkWriteDescriptorSet](#)::`pImageInfo` is
+accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html), only the `imageView` and
+`imageLayout` members of each element of
+[VkWriteDescriptorSet](#)::`pImageInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), all members of each
+element of [VkWriteDescriptorSet](#)::`pImageInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html), all members of each
+element of [VkWriteDescriptorSet](#)::`pBufferInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), each element of
+[VkWriteDescriptorSet](#)::`pTexelBufferView` is accessed.
+
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), none of the `pImageInfo`,
+`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
+the source data of the descriptor update operation is taken from the
+[VkWriteDescriptorSetInlineUniformBlock](VkWriteDescriptorSetInlineUniformBlock.html) structure in the `pNext`
+chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html), none of the
+`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
+accessed, instead the source data of the descriptor update operation is
+taken from the [VkWriteDescriptorSetAccelerationStructureKHR](VkWriteDescriptorSetAccelerationStructureKHR.html) structure
+in the `pNext` chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), none of the
+`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
+accessed, instead the source data of the descriptor update operation is
+taken from the [VkWriteDescriptorSetAccelerationStructureNV](VkWriteDescriptorSetAccelerationStructureNV.html) structure
+in the `pNext` chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html), none of the `pImageInfo`,
+`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
+the source data of the descriptor update operation is taken from the
+instance of [VkWriteDescriptorSetTensorARM](VkWriteDescriptorSetTensorARM.html) in the `pNext` chain of
+[VkWriteDescriptorSet](#).
 
 If the [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is enabled,
 the buffer,
@@ -241,7 +274,7 @@ identical [VkDescriptorBindingFlagBits](VkDescriptorBindingFlagBits.html)
 The sum of `dstArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `dstBinding`, and all applicable
-[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates-consecutive)
+[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02219) VUID-VkWriteDescriptorSet-descriptorType-02219
@@ -502,7 +535,7 @@ the [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Sampled    Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage)
+member of the list given in [Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04150) VUID-VkWriteDescriptorSet-descriptorType-04150
@@ -510,21 +543,21 @@ member of the list given in [Sampled    Image](../../../../spec/latest/chapters/
 If `descriptorType` is
 [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) the `imageLayout`
 member of each element of `pImageInfo` **must** be a member of the list
-given in [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler)
+given in [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptors-combinedimagesampler)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04151) VUID-VkWriteDescriptorSet-descriptorType-04151
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Input    Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment)
+member of the list given in [Input    Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptors-inputattachment)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04152) VUID-VkWriteDescriptorSet-descriptorType-04152
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Storage    Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage)
+member of the list given in [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00338) VUID-VkWriteDescriptorSet-descriptorType-00338

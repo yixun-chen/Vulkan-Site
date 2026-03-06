@@ -1130,7 +1130,7 @@ If the framebuffer attachment contains both depth and stencil aspects, the
 numeric format of the subpass input determines if depth or stencil aspect is
 accessed by the shader.
 
-See [Input Attachment](descriptorsets.html#descriptorsets-inputattachment) for more details.
+See [Input Attachment](descriptorsets.html#descriptors-inputattachment) for more details.
 
 An input attachment that is statically accessed by a fragment shader **must**
 be backed by a descriptor that is equivalent to the [VkImageView](resources.html#VkImageView) in the
@@ -1200,9 +1200,10 @@ attribute **must** only declare one variable of that type.
 
 When a shader stage accesses buffer,
 tensor,
-or image resources through a descriptor set, as described in the
-[Resource Descriptors](descriptorsets.html#descriptorsets) section, the shader resource
-variables **must** be matched with the [pipeline layout](descriptorsets.html#descriptorsets-pipelinelayout) that is provided at
+or image resources through a descriptor, as described in the
+[Resource Descriptors](descriptorsets.html#descriptors) section, the shader resource variables
+**must** be matched with the [pipeline layout](descriptorsets.html#descriptors-pipelinelayout)
+that is provided at
 shader or
 pipeline creation time.
 If a pipeline is created with
@@ -1390,9 +1391,9 @@ decoration of `InputAttachmentIndex` **must** be declared as described in
 [Fragment Input Attachment Interface](#interfaces-inputattachment).
 
 SPIR-V variables decorated with a descriptor set and binding that identify a
-[combined image sampler descriptor](descriptorsets.html#descriptorsets-combinedimagesampler)
-**can** have a type of `OpTypeImage`, `OpTypeSampler` (`Sampled`=1),
-or `OpTypeSampledImage`.
+[combined image sampler descriptor](descriptorsets.html#descriptors-combinedimagesampler) **can**
+have a type of `OpTypeImage`, `OpTypeSampler` (`Sampled`=1), or
+`OpTypeSampledImage`.
 
 |  | When using descriptor heaps, there is no combined image sampler descriptor
 | --- | --- |
@@ -1482,7 +1483,7 @@ Dynamically uniform: Always supported.
 * 
 Non-uniform: Always supported.
 
-[weight image](descriptorsets.html#descriptorsets-weightimage):
+[weight image](descriptorsets.html#descriptors-weightimage):
 
 * 
 Dynamically uniform: Always supported.
@@ -1490,7 +1491,7 @@ Dynamically uniform: Always supported.
 * 
 Non-uniform: Never supported.
 
-[Block matching image](descriptorsets.html#descriptorsets-blockmatch):
+[Block matching image](descriptorsets.html#descriptors-blockmatch):
 
 * 
 Dynamically uniform: Always supported.
@@ -1709,7 +1710,7 @@ If the array is runtime-sized, the [`runtimeDescriptorArray`](features.html#feat
 `RuntimeDescriptorArray` capability **must** be declared.
 The index of each element of the array is referred to as the *arrayElement*.
 For the purposes of interface matching and descriptor set
-[operations](descriptorsets.html#descriptorsets-updates), if a resource variable is not an
+[operations](descriptorsets.html#descriptors-sets-updates), if a resource variable is not an
 array, it is treated as if it has an arrayElement of zero.
 
 |  | Even though an array is assigned to a single `Binding`, when using

@@ -22,6 +22,9 @@ VkOpaqueCaptureDescriptorDataCreateInfoEXT - Structure specifying opaque capture
 The `VkOpaqueCaptureDescriptorDataCreateInfoEXT` structure is defined
 as:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {
     VkStructureType    sType;

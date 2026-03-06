@@ -22,6 +22,9 @@ vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT - Get acceleration stru
 To get the opaque capture descriptor data for an acceleration structure,
 call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing
 VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(
     VkDevice                                    device,

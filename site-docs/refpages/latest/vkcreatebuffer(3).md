@@ -43,6 +43,21 @@ containing parameters affecting creation of the buffer.
 `pBuffer` is a pointer to a [VkBuffer](VkBuffer.html) handle in which the
 resulting buffer object is returned.
 
+Implementations **may** fail to create a buffer if the
+[effective usage](../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html) flag, and `size` is
+greater than the maximum of
+[`maxResourceHeapSize`](../../../../spec/latest/chapters/limits.html#limits-maxResourceHeapSize) and
+[`maxSamplerHeapSize`](../../../../spec/latest/chapters/limits.html#limits-maxSamplerHeapSize).
+If this happens, [VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html) will be returned.
+
+|  | This is an issue identified with [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), which we
+| --- | --- |
+plan to tighten up for the KHR version.
+Applications using [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html) may wish to avoid
+suballocating heaps from the same buffer, instead creating one buffer per
+heap, to avoid situations where this causes issues. |
+
 Valid Usage
 
 * 

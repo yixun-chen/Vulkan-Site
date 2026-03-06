@@ -176,7 +176,7 @@ is a descriptor and push constant layout info provided either by
 `pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
 `pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
 create `indirectCommandsLayout`, the pipeline layout **must** be
-[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the descriptor and push
+[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) with the descriptor and push
 constant layout info used by `indirectExecutionSet`
 
 * 

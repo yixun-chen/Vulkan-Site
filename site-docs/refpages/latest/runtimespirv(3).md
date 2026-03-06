@@ -956,6 +956,11 @@ Any shader object containing `OpTypeCooperativeMatrixKHR` or
 [VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or the shader
 module must be version 1.6 or greater
 
+[](#VUID-RuntimeSpirv-OpCooperativeMatrix-12379) VUID-RuntimeSpirv-OpCooperativeMatrix-12379
+
+If any `OpCooperativeMatrix*` instructions accesses a descriptor, it
+**must** not be a null descriptor
+
 [](#VUID-RuntimeSpirv-OpCooperativeMatrixLoadNV-06324) VUID-RuntimeSpirv-OpCooperativeMatrixLoadNV-06324
 
 For `OpCooperativeMatrixLoadNV` and `OpCooperativeMatrixStoreNV`
@@ -1255,12 +1260,12 @@ The sum of size in bytes for variables and [    padding](../../../../spec/latest
 `Storage` `Class` in the `TaskEXT` `Execution` `Model` **must** be less than
 or equal to [    `maxTaskPayloadAndSharedMemorySize`](../../../../spec/latest/chapters/limits.html#limits-maxTaskPayloadAndSharedMemorySize)
 
-[](#VUID-RuntimeSpirv-MeshEXT-10883) VUID-RuntimeSpirv-MeshEXT-10883
+[](#VUID-RuntimeSpirv-MeshEXT-12380) VUID-RuntimeSpirv-MeshEXT-12380
 
-If the `MeshEXT` `Execution` `Model` declares a variable with the
-`TaskPayloadWorkgroupEXT` `Storage` `Class` in the entry point, there
-must be a matching `TaskPayloadWorkgroupEXT` `Storage` `Class` variable
-in the `TaskEXT` `Execution` `Model` passed as an argument to
+If the `MeshEXT` `Execution` `Model` dynamically accesses a variable
+with the `TaskPayloadWorkgroupEXT` `Storage` `Class`, there must be a
+matching `TaskPayloadWorkgroupEXT` `Storage` `Class` variable in the
+`TaskEXT` `Execution` `Model` passed as an argument to
 `OpEmitMeshTasksEXT`
 
 [](#VUID-RuntimeSpirv-OpCooperativeMatrixLoadKHR-08986) VUID-RuntimeSpirv-OpCooperativeMatrixLoadKHR-08986

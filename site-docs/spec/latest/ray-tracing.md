@@ -477,7 +477,7 @@ compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipeli
 the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08601) VUID-vkCmdTraceRaysKHR-None-08601
@@ -490,7 +490,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -513,7 +513,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -1946,7 +1946,7 @@ compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipeli
 the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08601) VUID-vkCmdTraceRaysIndirectKHR-None-08601
@@ -1959,7 +1959,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -1982,7 +1982,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -3311,7 +3311,7 @@ compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipeli
 the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08601) VUID-vkCmdTraceRaysIndirect2KHR-None-08601
@@ -3324,7 +3324,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -3347,7 +3347,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -4801,7 +4801,7 @@ compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipeli
 the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
+, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08601) VUID-vkCmdTraceRaysNV-None-08601
@@ -4814,7 +4814,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
@@ -4837,7 +4837,7 @@ as part of a pipeline without the
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
 statically uses a push constant value, that value **must** have been set
 for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
-[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[compatible for push constants](descriptorsets.html#descriptors-compatibility) with the
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)

@@ -21,6 +21,9 @@ VkFramebufferCreateFlagBits - Bitmask specifying framebuffer properties
 Bits which **can** be set in [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags`,
 specifying options for framebuffers, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-dynamicrendering) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkFramebufferCreateFlagBits {
   // Provided by VK_VERSION_1_2

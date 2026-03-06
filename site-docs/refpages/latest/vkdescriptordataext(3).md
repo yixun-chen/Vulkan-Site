@@ -22,6 +22,9 @@ VkDescriptorDataEXT - Structure specifying descriptor data
 Data describing the descriptor is passed in a `VkDescriptorDataEXT`
 structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef union VkDescriptorDataEXT {
     const VkSampler*                     pSampler;

@@ -64,11 +64,10 @@ specifies that source and destination stages are not ignored when
 performing a [queue family ownership    transfer](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers).
 
 * 
-[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#) specifies that
-[vkCmdSetEvent2](vkCmdSetEvent2.html) **must** only include the
-[source stage mask](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-masks) of the
-first synchronization scope, and that [vkCmdWaitEvents2](vkCmdWaitEvents2.html) **must**
-specify the complete barrier.
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#) specifies that the access
+scopes of [vkCmdSetEvent2](vkCmdSetEvent2.html) and [vkCmdWaitEvents2](vkCmdWaitEvents2.html) do not need to
+match for a given event when it is specified in both commands, and the
+access scope of [vkCmdSetEvent2](vkCmdSetEvent2.html) is empty.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDependencyFlags](VkDependencyFlags.html)
 

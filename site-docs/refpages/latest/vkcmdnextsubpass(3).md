@@ -22,7 +22,7 @@ vkCmdNextSubpass - Transition to the next subpass of a render pass
 To transition to the next subpass in the render pass instance after
 recording the commands for a subpass, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../../../../spec/latest/appendices/versions.html#versions-1.2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [vkCmdNextSubpass2](../../../../spec/latest/chapters/renderpass.html#vkCmdNextSubpass2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

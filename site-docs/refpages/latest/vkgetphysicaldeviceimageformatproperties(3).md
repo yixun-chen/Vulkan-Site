@@ -21,7 +21,7 @@ vkGetPhysicalDeviceImageFormatProperties - Lists physical device’s image forma
 
 To query additional capabilities specific to image types, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceImageFormatProperties2](../../../../spec/latest/chapters/capabilities.html#vkGetPhysicalDeviceImageFormatProperties2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

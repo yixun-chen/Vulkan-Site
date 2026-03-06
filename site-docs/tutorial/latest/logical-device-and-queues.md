@@ -49,12 +49,13 @@ void createLogicalDevice() {
 }
 
 The creation of a logical device involves specifying a bunch of details in
-structs again, of which the first one will be `VkDeviceQueueCreateInfo`. This
+structs again, of which the first one will be `vk::DeviceQueueCreateInfo`. This
 structure describes the number of queues we want for a single queue family.
 Right now we’re only interested in a queue with graphics capabilities.
 
 std::vector queueFamilyProperties = physicalDevice.getQueueFamilyProperties();
-uint32_t graphicsIndex = findQueueFamilies(m_physicalDevice);
+auto graphicsQueueFamilyProperty = std::ranges::find_if(queueFamilyProperties, [](auto const &qfp) { return (qfp.queueFlags & vk::QueueFlagBits::eGraphics) != static_cast(0); });
+auto graphicsIndex = static_cast(std::distance(queueFamilyProperties.begin(), graphicsQueueFamilyProperty));
 vk::DeviceQueueCreateInfo deviceQueueCreateInfo { .queueFamilyIndex = graphicsIndex };
 
 The currently available drivers will only allow you to create a small number of
@@ -71,9 +72,9 @@ vk::DeviceQueueCreateInfo deviceQueueCreateInfo { .queueFamilyIndex = graphicsIn
 
 The next information to specify is the set of device features that we’ll be
 using. These are the features that we queried support for with
-`vkGetPhysicalDeviceFeatures` in the previous chapter, like geometry shaders.
+`vk::raii::PhysicalDevice::getFeatures` in the previous chapter, like geometry shaders.
 Right now we don’t need anything special, so we can simply define it and leave
-everything to `VK_FALSE`. We’ll come back to this structure once we’re about to
+everything to `vk::False`. We’ll come back to this structure once we’re about to
 start doing more interesting things with Vulkan.
 
 vk::PhysicalDeviceFeatures deviceFeatures;
@@ -117,10 +118,10 @@ When we create the logical device later, we’ll pass a pointer to the first str
 
 For our application to work properly, we need to enable certain device extensions. These extensions provide additional functionality that we’ll need later in the tutorial.
 
-std::vector deviceExtensions = {
+std::vector requiredDeviceExtension = {
     vk::KHRSwapchainExtensionName};
 
-The `VK_KHR_swapchain` extension is required for presenting rendered images to the window. The other extensions provide additional functionality that we’ll use in later parts of the tutorial.
+The `VK_KHR_swapchain` extension is required for presenting rendered images to the window. Other extensions provide additional functionality that we’ll use in later parts of the tutorial.
 
 With all the necessary information prepared, we can now create the logical device. We need to fill in the `vk::DeviceCreateInfo` structure and connect our feature chain to it:
 
@@ -128,8 +129,8 @@ vk::DeviceCreateInfo deviceCreateInfo{
     .pNext = &featureChain.get(),
     .queueCreateInfoCount = 1,
     .pQueueCreateInfos = &deviceQueueCreateInfo,
-    .enabledExtensionCount = static_cast(deviceExtensions.size()),
-    .ppEnabledExtensionNames = deviceExtensions.data()
+    .enabledExtensionCount = static_cast(requiredDeviceExtension.size()),
+    .ppEnabledExtensionNames = requiredDeviceExtension.data()
 };
 
 Reviewing how we connect our feature chain to the device creation process:
@@ -142,9 +143,7 @@ Since all the structures in our feature chain are already connected (thanks to `
 
 This approach allows us to request multiple sets of features in a clean and organized way. Vulkan will process each structure in the chain and enable the requested features during device creation.
 
-The remainder of the information bears a resemblance to the
-`VkInstanceCreateInfo` struct and requires you to specify extensions and
-validation layers. The difference is that these are device-specific this time.
+The remainder of the information bears a resemblance to the `vk::InstanceCreateInfo` struct and requires you to specify extensions. The difference is that these are device-specific this time.
 
 An example of a device-specific extension is `VK_KHR_swapchain`, which allows
 you to present rendered images from that device to windows. It is possible that
@@ -156,17 +155,16 @@ Previous implementations of Vulkan made a distinction between instance and
 device-specific validation layers, but this is
 [no longer the case](https://docs.vulkan.org/spec/latest/chapters/raytracing.html#extendingvulkan-layers-devicelayerdeprecation).
 That means that the `enabledLayerCount` and `ppEnabledLayerNames` fields of
-`VkDeviceCreateInfo` are ignored by up-to-date implementations.
+`vk::DeviceCreateInfo` are ignored by up-to-date implementations.
 
 As mentioned earlier, we need several device-specific extensions for our application to work properly.
 
 device = vk::raii::Device( physicalDevice, deviceCreateInfo );
 
 The parameters are the physical device to interface with, and the usage
-info we just specified, the optional allocation callbacks pointer and a pointer
-to a variable to store the logical device handle in. Similarly to the instance
-creation function, this call can throw errors based on enabling non-existent
-extensions or specifying the desired usage of unsupported features.
+info we just specified. Similarly to the instance creation function, this
+call can throw errors based on enabling non-existent extensions or specifying
+the desired usage of unsupported features.
 
 Logical devices don’t interact directly with instances, which is why it’s not
 included as a parameter.
@@ -179,10 +177,10 @@ vk::raii::Queue graphicsQueue;
 Device queues are implicitly cleaned up when the device is destroyed, so we
 don’t need to do anything in `cleanup`.
 
-We can use the `vkGetDeviceQueue` function to retrieve queue handles for each
-queue family. The parameters are the logical device, queue family, queue index
-and a pointer to the variable to store the queue handle in. Because we’re only
-creating a single queue from this family, we’ll simply use index `0`.
+We can use the `vk::raii::Queue` constructor to retrieve a queue handle for one
+queue family. The parameters are the logical device, queue family index, and queue
+index. Because we’re only creating a single queue from this family, we’ll simply
+use queue index `0`.
 
 graphicsQueue = vk::raii::Queue( device, graphicsIndex, 0 );
 

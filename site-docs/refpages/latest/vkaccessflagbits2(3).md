@@ -205,7 +205,7 @@ Such access occurs in the
 
 * 
 [VK_ACCESS_2_UNIFORM_READ_BIT](#) specifies read access to a
-[uniform buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer) in any shader pipeline
+[uniform buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformbuffer) in any shader pipeline
 stage.
 
 * 
@@ -219,16 +219,16 @@ Such access occurs in the
 
 * 
 [VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#) specifies read access to a
-[uniform texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformtexelbuffer) or
-[sampled image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage) in any shader pipeline
+[uniform texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-uniformtexelbuffer) or
+[sampled image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage) in any shader pipeline
 stage.
 
 * 
 [VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#) specifies read access to a
-[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer),
-[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-physical-storage-buffer),
-[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer), or
-[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) in any shader pipeline
+[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer),
+[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-physical-storage-buffer),
+[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer), or
+[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) in any shader pipeline
 stage.
 
 * 
@@ -252,10 +252,10 @@ is equivalent to the logical OR of:
 [VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#)
 
 [VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#) specifies write access to a
-[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer),
-[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-physical-storage-buffer),
-[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer), or
-[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage) in any shader pipeline
+[storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagebuffer),
+[physical storage buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-physical-storage-buffer),
+[storage texel buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storagetexelbuffer), or
+[storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage) in any shader pipeline
 stage.
 
 [VK_ACCESS_2_SHADER_WRITE_BIT](#) is equivalent to
@@ -495,6 +495,12 @@ sampler heap in any shader pipeline stage.
 
 [VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#) specifies read access to a
 resource heap in any shader pipeline stage.
+
+Certain access types are only performed by a subset of pipeline stages, as
+described in more detail for [VkAccessFlagBits](VkAccessFlagBits.html).
+The [Supported Access Types](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types-supported) table
+lists, for each access flag, which pipeline stages **can** perform that type of
+access.
 
 |  | In situations where an application wishes to select all access types for a
 | --- | --- |

@@ -773,7 +773,7 @@ This is usually one element for each aspect in the image, but for
 interleaved depth/stencil images there is only one element describing the
 combined aspects.
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../appendices/versions.html#versions-1.1). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceSparseImageFormatProperties2](#vkGetPhysicalDeviceSparseImageFormatProperties2). See [Legacy Functionality](../appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

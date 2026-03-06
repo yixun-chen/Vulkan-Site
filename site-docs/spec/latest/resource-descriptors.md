@@ -8,56 +8,56 @@
 
 ## Table of Contents
 
-- [Descriptor Types](#descriptorsets-types)
-- [Storage Image](#descriptorsets-storageimage)
-- [Sampler](#descriptorsets-sampler)
-- [Sampled Image](#descriptorsets-sampledimage)
-- [Combined Image Sampler](#descriptorsets-combinedimagesampler)
-- [Combined_Image_Sampler](#descriptorsets-combinedimagesampler)
-- [Uniform Texel Buffer](#descriptorsets-uniformtexelbuffer)
-- [Uniform_Texel_Buffer](#descriptorsets-uniformtexelbuffer)
-- [Storage Texel Buffer](#descriptorsets-storagetexelbuffer)
-- [Storage_Texel_Buffer](#descriptorsets-storagetexelbuffer)
-- [Storage Buffer](#descriptorsets-storagebuffer)
-- [Uniform Buffer](#descriptorsets-uniformbuffer)
-- [Dynamic Uniform Buffer](#descriptorsets-uniformbufferdynamic)
-- [Dynamic_Uniform_Buffer](#descriptorsets-uniformbufferdynamic)
-- [Dynamic Storage Buffer](#descriptorsets-storagebufferdynamic)
-- [Dynamic_Storage_Buffer](#descriptorsets-storagebufferdynamic)
-- [Inline Uniform Block](#descriptorsets-inlineuniformblock)
-- [Inline_Uniform_Block](#descriptorsets-inlineuniformblock)
-- [Sample Weight Image](#descriptorsets-weightimage)
-- [Sample_Weight_Image](#descriptorsets-weightimage)
-- [Block Matching Image](#descriptorsets-blockmatch)
-- [Block_Matching_Image](#descriptorsets-blockmatch)
-- [Input Attachment](#descriptorsets-inputattachment)
-- [Acceleration Structure](#descriptorsets-accelerationstructure)
-- [Mutable](#descriptorsets-mutable)
-- [Storage Tensor](#descriptorsets-storagetensor)
-- [Descriptor Sets](#descriptorsets-sets)
-- [Descriptor Set Layout](#descriptorsets-setlayout)
-- [Descriptor_Set_Layout](#descriptorsets-setlayout)
-- [Pipeline Layouts](#descriptorsets-pipelinelayout)
-- [Pipeline Layout Compatibility](#descriptorsets-compatibility)
-- [Pipeline_Layout_Compatibility](#descriptorsets-compatibility)
-- [Allocation of Descriptor Sets](#descriptorsets-allocation)
-- [Allocation_of_Descriptor_Sets](#descriptorsets-allocation)
-- [Descriptor Set Updates](#descriptorsets-updates)
-- [Descriptor_Set_Updates](#descriptorsets-updates)
-- [Descriptor Update Templates](#descriptorsets-updates-with-template)
-- [Descriptor_Update_Templates](#descriptorsets-updates-with-template)
+- [Descriptor Types](#descriptors-types)
+- [Storage Image](#descriptors-storageimage)
+- [Sampler](#descriptors-sampler)
+- [Sampled Image](#descriptors-sampledimage)
+- [Combined Image Sampler](#descriptors-combinedimagesampler)
+- [Combined_Image_Sampler](#descriptors-combinedimagesampler)
+- [Uniform Texel Buffer](#descriptors-uniformtexelbuffer)
+- [Uniform_Texel_Buffer](#descriptors-uniformtexelbuffer)
+- [Storage Texel Buffer](#descriptors-storagetexelbuffer)
+- [Storage_Texel_Buffer](#descriptors-storagetexelbuffer)
+- [Storage Buffer](#descriptors-storagebuffer)
+- [Uniform Buffer](#descriptors-uniformbuffer)
+- [Dynamic Uniform Buffer](#descriptors-uniformbufferdynamic)
+- [Dynamic_Uniform_Buffer](#descriptors-uniformbufferdynamic)
+- [Dynamic Storage Buffer](#descriptors-storagebufferdynamic)
+- [Dynamic_Storage_Buffer](#descriptors-storagebufferdynamic)
+- [Inline Uniform Block](#descriptors-inlineuniformblock)
+- [Inline_Uniform_Block](#descriptors-inlineuniformblock)
+- [Sample Weight Image](#descriptors-weightimage)
+- [Sample_Weight_Image](#descriptors-weightimage)
+- [Block Matching Image](#descriptors-blockmatch)
+- [Block_Matching_Image](#descriptors-blockmatch)
+- [Input Attachment](#descriptors-inputattachment)
+- [Acceleration Structure](#descriptors-accelerationstructure)
+- [Mutable](#descriptors-mutable)
+- [Storage Tensor](#descriptors-storagetensor)
+- [Descriptor Sets](#descriptors-sets)
+- [Descriptor Set Layout](#descriptors-setlayout)
+- [Descriptor_Set_Layout](#descriptors-setlayout)
+- [Pipeline Layouts](#descriptors-pipelinelayout)
+- [Pipeline Layout Compatibility](#descriptors-compatibility)
+- [Pipeline_Layout_Compatibility](#descriptors-compatibility)
+- [Allocation of Descriptor Sets](#descriptors-allocation)
+- [Allocation_of_Descriptor_Sets](#descriptors-allocation)
+- [Descriptor Set Updates](#descriptors-sets-updates)
+- [Descriptor_Set_Updates](#descriptors-sets-updates)
+- [Descriptor Update Templates](#descriptors-sets-updates-with-template)
+- [Descriptor_Update_Templates](#descriptors-sets-updates-with-template)
 - [Descriptor Set Updates With Templates](#_descriptor_set_updates_with_templates)
 - [Descriptor_Set_Updates_With_Templates](#_descriptor_set_updates_with_templates)
-- [Descriptor Set Binding](#descriptorsets-binding)
-- [Descriptor_Set_Binding](#descriptorsets-binding)
-- [Push Descriptor Updates](#descriptorsets-push-descriptors)
-- [Push_Descriptor_Updates](#descriptorsets-push-descriptors)
+- [Descriptor Set Binding](#descriptors-binding)
+- [Descriptor_Set_Binding](#descriptors-binding)
+- [Push Descriptor Updates](#descriptors-push-descriptors)
+- [Push_Descriptor_Updates](#descriptors-push-descriptors)
 - [Push Descriptor Updates With Descriptor Update Templates](#_push_descriptor_updates_with_descriptor_update_templates)
 - [Push_Descriptor_Updates_With_Descriptor_Update_Templates](#_push_descriptor_updates_with_descriptor_update_templates)
-- [Push Constant Updates](#descriptorsets-push-constants)
-- [Push_Constant_Updates](#descriptorsets-push-constants)
-- [Physical Storage Buffer Access](#descriptorsets-physical-storage-buffer)
-- [Physical_Storage_Buffer_Access](#descriptorsets-physical-storage-buffer)
+- [Push Constant Updates](#descriptors-push-constants)
+- [Push_Constant_Updates](#descriptors-push-constants)
+- [Physical Storage Buffer Access](#descriptors-physical-storage-buffer)
+- [Physical_Storage_Buffer_Access](#descriptors-physical-storage-buffer)
 - [Descriptor Buffers](#descriptorbuffers)
 - [Putting Descriptors in Memory](#descriptorbuffers-puttingdescriptorsinmemory)
 - [Putting_Descriptors_in_Memory](#descriptorbuffers-puttingdescriptorsinmemory)
@@ -72,32 +72,26 @@
 
 ## Content
 
-A *descriptor* is an opaque data structure representing a shader resource
-such as a buffer, buffer view, image view, sampler, or combined image
-sampler.
-Descriptors are organized into *descriptor sets*, which are bound during
-command recording for use in subsequent drawing commands.
-The arrangement of content in each descriptor set is determined by a
-*descriptor set layout*, which determines what descriptors can be stored
-within it.
-The sequence of descriptor set layouts that **can** be used by a pipeline is
-specified in a *pipeline layout*.
-Each pipeline object **can** use up to `maxBoundDescriptorSets` (see
-[Limits](limits.html#limits)) descriptor sets.
+A *descriptor* is an opaque data structure used to access shader resources
+such as buffers, images, or samplers.
+Rather than existing as distinct objects, descriptors are handled as opaque
+data, which can be accessed by a shader through
+[descriptor heaps](descriptorheaps.html#descriptorheaps),
+[descriptor buffers](#descriptorbuffers),
+or
+[descriptor sets](#descriptors).
 
-If the [`descriptorBuffer`](features.html#features-descriptorBuffer) feature is
-enabled, the implementation supports placing descriptors into
-[descriptor buffers](#descriptorbuffers) which are bound during command
-recording in a similar way to descriptor sets.
-
-Shaders access resources via variables decorated with a descriptor set and
-binding number that link them to a descriptor in a descriptor set.
-The shader interface mapping to bound descriptor sets is described in the
+Shaders access descriptors via
+the `ResourceHeapEXT` and `SamplerHeapEXT` built-ins, or through
+variables decorated with `DescriptorSet` and `Binding` values linking
+them to the API.
+Details of the shader interface mapping are described in the
 [Shader Resource Interface](interfaces.html#interfaces-resources) section.
 
-Shaders **can** also access buffers without going through descriptors by using
-[Physical Storage Buffer Access](#descriptorsets-physical-storage-buffer) to
-access them through 64-bit addresses.
+|  | Shaders can also access buffers without going through descriptors by using
+| --- | --- |
+[Physical Storage Buffer Access](#descriptors-physical-storage-buffer) to
+access them through 64-bit addresses. |
 
 There are a number of different types of descriptor supported by Vulkan,
 corresponding to different resources or usage.
@@ -105,6 +99,105 @@ The following sections describe the API definitions of each descriptor type.
 The mapping of each type to SPIR-V is listed in the
 [Shader Resource and Descriptor Type Correspondence](interfaces.html#interfaces-resources-correspondence) and [Shader Resource and Storage Class Correspondence](interfaces.html#interfaces-resources-storage-class-correspondence) tables in the
 [Shader Interfaces](interfaces.html#interfaces) chapter.
+
+Possible descriptor types are:
+
+// Provided by VK_VERSION_1_0
+typedef enum VkDescriptorType {
+    VK_DESCRIPTOR_TYPE_SAMPLER = 0,
+    VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER = 1,
+    VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE = 2,
+    VK_DESCRIPTOR_TYPE_STORAGE_IMAGE = 3,
+    VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER = 4,
+    VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER = 5,
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER = 6,
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER = 7,
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = 8,
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = 9,
+    VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = 10,
+  // Provided by VK_VERSION_1_3
+    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK = 1000138000,
+  // Provided by VK_KHR_acceleration_structure
+    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000,
+  // Provided by VK_NV_ray_tracing
+    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV = 1000165000,
+  // Provided by VK_QCOM_image_processing
+    VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM = 1000440000,
+  // Provided by VK_QCOM_image_processing
+    VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM = 1000440001,
+  // Provided by VK_ARM_tensors
+    VK_DESCRIPTOR_TYPE_TENSOR_ARM = 1000460000,
+  // Provided by VK_EXT_mutable_descriptor_type
+    VK_DESCRIPTOR_TYPE_MUTABLE_EXT = 1000351000,
+  // Provided by VK_NV_partitioned_acceleration_structure
+    VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000,
+  // Provided by VK_EXT_inline_uniform_block
+    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK,
+  // Provided by VK_VALVE_mutable_descriptor_type
+    VK_DESCRIPTOR_TYPE_MUTABLE_VALVE = VK_DESCRIPTOR_TYPE_MUTABLE_EXT,
+} VkDescriptorType;
+
+* 
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) specifies a [    sampler descriptor](#descriptors-sampler).
+
+* 
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) specifies a
+[combined image sampler descriptor](#descriptors-combinedimagesampler).
+
+* 
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) specifies a
+[sampled image descriptor](#descriptors-sampledimage).
+
+* 
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) specifies a
+[storage image descriptor](#descriptors-storageimage).
+
+* 
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) specifies a
+[uniform texel buffer descriptor](#descriptors-uniformtexelbuffer).
+
+* 
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) specifies a
+[storage texel buffer descriptor](#descriptors-storagetexelbuffer).
+
+* 
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) specifies a
+[uniform buffer descriptor](#descriptors-uniformbuffer).
+
+* 
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) specifies a
+[storage buffer descriptor](#descriptors-storagebuffer).
+
+* 
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
+[dynamic uniform buffer descriptor](#descriptors-uniformbufferdynamic).
+
+* 
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
+[dynamic storage buffer descriptor](#descriptors-storagebufferdynamic).
+
+* 
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) specifies an
+[input attachment descriptor](#descriptors-inputattachment).
+
+* 
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) specifies an
+[inline uniform block](#descriptors-inlineuniformblock).
+
+* 
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) specifies a [    descriptor of mutable type](#descriptors-mutable).
+
+* 
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType) specifies a
+[sampled weight image descriptor](#descriptors-weightimage).
+
+* 
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType) specifies a
+[block matching image descriptor](#descriptors-blockmatch).
+
+* 
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) specifies a
+[storage tensor descriptor](#descriptors-storagetensor).
 
 A *storage image* ([VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType)) is a descriptor
 type associated with an [image resource](resources.html#resources-images) via an
@@ -167,7 +260,7 @@ Stores to depth/stencil attachments are not supported.
 A *sampler descriptor* ([VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType)) is a descriptor
 type associated with a [sampler](samplers.html#samplers) object, used to control the
 behavior of [sampling operations](textures.html#textures) performed on a
-[sampled image](#descriptorsets-sampledimage).
+[sampled image](#descriptors-sampledimage).
 
 A *sampled image* ([VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType)) is a descriptor
 type associated with an [image resource](resources.html#resources-images) via an
@@ -220,7 +313,7 @@ layouts:
 A *combined image sampler* ([VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType))
 is a single descriptor type associated with both a [sampler](samplers.html#samplers) and
 an [image resource](resources.html#resources-images), combining both a
-[sampler](#descriptorsets-sampler) and [sampled image](#descriptorsets-sampledimage) descriptor into a single descriptor.
+[sampler](#descriptors-sampler) and [sampled image](#descriptors-sampledimage) descriptor into a single descriptor.
 
 If the descriptor refers to a sampler that performs
 [Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion) or samples a
@@ -291,9 +384,9 @@ via a [buffer view](resources.html#resources-buffer-views) that [image load, sto
 Storage texel buffers define a tightly-packed 1-dimensional linear array of
 texels, with texels going through format conversion when read in a shader in
 the same way as they are for an image.
-Unlike [uniform texel buffers](#descriptorsets-uniformtexelbuffer), these
+Unlike [uniform texel buffers](#descriptors-uniformtexelbuffer), these
 buffers can also be written to in the same way as for
-[storage images](#descriptorsets-storageimage).
+[storage images](#descriptors-storageimage).
 
 Storage texel buffer loads are supported in all shader stages for texel
 buffer view formats which report
@@ -334,29 +427,38 @@ described in a shader as a structure with various members that load
 operations **can** be performed on.
 
 A *dynamic uniform buffer* ([VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType))
-is almost identical to a [uniform buffer](#descriptorsets-uniformbuffer),
-and differs only in how the offset into the buffer is specified.
-The base offset calculated by the [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when
-initially [updating the descriptor set](#descriptorsets-updates) is added
-to a [dynamic offset](#descriptorsets-binding-dynamicoffsets) when binding
-the descriptor set.
+is almost identical to a [uniform buffer](#descriptors-uniformbuffer), and
+differs only in how the offset into the buffer is specified.
+This descriptor type is only valid when using descriptor sets.
+The base offset calculated by [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when initially
+[updating a descriptor set](#descriptors-sets-updates) is added to a
+[dynamic offset](#descriptors-binding-dynamicoffsets) when binding a
+descriptor set.
 
 A *dynamic storage buffer* ([VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType))
-is almost identical to a [storage buffer](#descriptorsets-storagebuffer),
-and differs only in how the offset into the buffer is specified.
-The base offset calculated by the [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when
-initially [updating the descriptor set](#descriptorsets-updates) is added
-to a [dynamic offset](#descriptorsets-binding-dynamicoffsets) when binding
-the descriptor set.
+is almost identical to a [storage buffer](#descriptors-storagebuffer), and
+differs only in how the offset into the buffer is specified.
+This descriptor type is only valid when using descriptor sets.
+The base offset calculated by [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when initially
+[updating a descriptor set](#descriptors-sets-updates) is added to a
+[dynamic offset](#descriptors-binding-dynamicoffsets) when binding a
+descriptor set.
 
 An *inline uniform block* ([VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)) is
-almost identical to a [uniform buffer](#descriptorsets-uniformbuffer), and
-differs only in taking its storage directly from the encompassing descriptor
-set instead of being backed by buffer memory.
-It is typically used to access a small set of constant data that does not
-require the additional flexibility provided by the indirection enabled when
-using a uniform buffer where the descriptor and the referenced buffer memory
-are decoupled.
+almost identical to a [uniform buffer](#descriptors-uniformbuffer) in how
+it is accessed in the shader.
+Where it differs is that its storage is taken directly from a containing
+descriptor set
+or descriptor buffer,
+instead of being backed by a separate buffer object.
+This descriptor type is not valid when using descriptor heaps; applications
+**can** directly access the heap pointer in a shader or use the
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) mapping.
+
+Inline uniform blocks are typically used to access a small set of constant
+data that does not require the additional flexibility provided by the
+indirection enabled when using a uniform buffer where the descriptor and the
+referenced buffer memory are decoupled.
 Compared to push constants, they allow reusing the same set of constant data
 across multiple disjoint sets of drawing and dispatching commands.
 
@@ -463,9 +565,13 @@ shaders that are used for ray traversal.
 Shaders have read-only access to the memory.
 
 A descriptor of *mutable* ([VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)) type
-indicates that this descriptor **can** mutate to any of the descriptor types
-given in the [VkMutableDescriptorTypeListEXT](#VkMutableDescriptorTypeListEXT)::`pDescriptorTypes`
-list of descriptor types in the `pNext` chain of
+indicates that this descriptor **can** mutate to a number of different types.
+This descriptor type is not valid when using descriptor heaps, as the
+elements of a descriptor heap **can** be manually adjusted to hold different
+descriptor types already.
+When specified in a descriptor set layout, any of the descriptor types given
+in the [VkMutableDescriptorTypeListEXT](#VkMutableDescriptorTypeListEXT)::`pDescriptorTypes` list of
+descriptor types in the `pNext` chain of
 [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo) for this binding.
 At any point, each individual descriptor of mutable type has an active
 descriptor type.
@@ -475,8 +581,10 @@ Additionally, a mutable descriptor’s active descriptor type **can** be of the
 [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) type, which is the initial active
 descriptor type.
 The active descriptor type **can** change when the descriptor is updated.
-When a descriptor is consumed by binding a descriptor set, the active
-descriptor type is considered, not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType).
+When a descriptor is consumed by binding a descriptor
+buffer or
+set, the active descriptor type is considered, not
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType).
 
 An active descriptor type of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) is
 considered an **undefined** descriptor.
@@ -858,6 +966,9 @@ descriptor types.
 
 The `VkMutableDescriptorTypeCreateInfoEXT` structure is defined as:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_mutable_descriptor_type
 typedef struct VkMutableDescriptorTypeCreateInfoEXT {
     VkStructureType                          sType;
@@ -919,6 +1030,9 @@ The list of potential descriptor types a given mutable descriptor **can**
 mutate to is passed in a `VkMutableDescriptorTypeListEXT` structure.
 
 The `VkMutableDescriptorTypeListEXT` structure is defined as:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_mutable_descriptor_type
 typedef struct VkMutableDescriptorTypeListEXT {
@@ -2868,8 +2982,8 @@ Valid Usage (Implicit)
 
 Once created, pipeline layouts are used as part of pipeline creation (see
 [Pipelines](pipelines.html#pipelines)), as part of binding descriptor sets (see
-[Descriptor Set Binding](#descriptorsets-binding)), and as part of setting
-push constants (see [Push Constant Updates](#descriptorsets-push-constants)).
+[Descriptor Set Binding](#descriptors-binding)), and as part of setting
+push constants (see [Push Constant Updates](#descriptors-push-constants)).
 Pipeline creation accepts a pipeline layout as input, and the layout **may** be
 used to map (set, binding, arrayElement) tuples to implementation resources
 or memory locations within a descriptor set.
@@ -2898,7 +3012,7 @@ used by a particular pipeline.
 
 There is a limit on the total number of resources of each type that **can** be
 included in bindings in all descriptor set layouts in a pipeline layout as
-shown in [Pipeline Layout Resource Limits](#descriptorsets-pipelinelayout-limits).
+shown in [Pipeline Layout Resource Limits](#descriptors-pipelinelayout-limits).
 The “Total Resources Available” column gives the limit on the number of
 each type of resource that **can** be included in bindings in all descriptor
 sets in the pipeline layout.
@@ -3000,8 +3114,8 @@ Host Synchronization
 Host access to `pipelineLayout` **must** be externally synchronized
 
 Two pipeline layouts are defined to be “compatible for
-[push constants](#descriptorsets-push-constants)” if they were created
-with identical push constant ranges.
+[push constants](#descriptors-push-constants)” if they were created with
+identical push constant ranges.
 Two pipeline layouts are defined to be “compatible for set N” if they were
 created with [identically defined](../appendices/glossary.html#glossary-identically-defined) descriptor
 set layouts for sets zero through N,
@@ -3009,7 +3123,7 @@ if both of them either were or were not created with
 [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](#VkPipelineLayoutCreateFlagBits),
 and if they were created with identical push constant ranges.
 
-When binding a descriptor set (see [Descriptor Set Binding](#descriptorsets-binding)) to set number N, a previously bound descriptor set bound with
+When binding a descriptor set (see [Descriptor Set Binding](#descriptors-binding)) to set number N, a previously bound descriptor set bound with
 lower index M than N is disturbed if the pipeline layouts for set M and N
 are not compatible for set M. Otherwise, the bound descriptor set in M is
 not disturbed.
@@ -3373,7 +3487,7 @@ Valid Usage (Implicit)
  If `poolSizeCount` is not `0`, `pPoolSizes` **must** be a valid pointer to an array of `poolSizeCount` valid [VkDescriptorPoolSize](#VkDescriptorPoolSize) structures
 
 In order to be able to allocate descriptor sets having
-[inline uniform block](#descriptorsets-inlineuniformblock) bindings the
+[inline uniform block](#descriptors-inlineuniformblock) bindings the
 descriptor pool **must** be created with specifying the inline uniform block
 binding capacity of the descriptor pool, in addition to the total inline
 uniform data capacity in bytes which is specified through a
@@ -3664,19 +3778,19 @@ used, subject to the following conditions:
 For descriptor set bindings created with the
 [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set, all descriptors
 in that binding that are dynamically used **must** have been populated
-before the descriptor set is [consumed](#descriptorsets-binding).
+before the descriptor set is [consumed](#descriptors-binding).
 
 * 
 For descriptor set bindings created without the
 [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set, all descriptors
 in that binding that are statically used **must** have been populated
-before the descriptor set is [consumed](#descriptorsets-binding).
+before the descriptor set is [consumed](#descriptors-binding).
 
 * 
 Descriptor bindings with descriptor type of
 [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) **can** be **undefined** when
-the descriptor set is [consumed](#descriptorsets-binding); though values
-in that block will be **undefined**.
+the descriptor set is [consumed](#descriptors-binding); though values in
+that block will be **undefined**.
 
 * 
 Entries that are not used by a pipeline **can** have **undefined**
@@ -4442,30 +4556,63 @@ below.
 handles as described in the [Buffer Views](resources.html#resources-buffer-views)
 section or is ignored, as described below.
 
-Only one of `pImageInfo`, `pBufferInfo`, or `pTexelBufferView`
-members is used according to the descriptor type specified in the
-`descriptorType` member of the containing `VkWriteDescriptorSet`
-structure,
-or none of them in case `descriptorType` is
-[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), in which case the source data
-for the descriptor writes is taken from the
-[VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure included in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), in which case the
-source data for the descriptor writes is taken from the
-[VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), in which case the source
-data for the descriptor writes is taken from the
-[VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure in the
-`pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), in which
-case the source data for the descriptor writes is taken from the instance of
-[VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) in the `pNext` chain of
-`VkWriteDescriptorSet`,
-as specified below.
+Members of `pImageInfo`, `pBufferInfo` and `pTexelBufferView`
+are only accessed by the implementation when they correspond to a descriptor
+type being defined - otherwise they are ignored.
+The members accessed are as follows for each descriptor type:
+
+* 
+For [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), only the `sampler` member of
+each element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` is
+accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), only the `imageView` and
+`imageLayout` members of each element of
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), all members of each
+element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), all members of each
+element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pBufferInfo` are accessed.
+
+* 
+For [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), each element of
+[VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pTexelBufferView` is accessed.
+
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), none of the `pImageInfo`,
+`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
+the source data of the descriptor update operation is taken from the
+[VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure in the `pNext`
+chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), none of the
+`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
+accessed, instead the source data of the descriptor update operation is
+taken from the [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure
+in the `pNext` chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), none of the
+`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
+accessed, instead the source data of the descriptor update operation is
+taken from the [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure
+in the `pNext` chain of `VkWriteDescriptorSet`.
+When updating descriptor sets with a `descriptorType` of
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), none of the `pImageInfo`,
+`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
+the source data of the descriptor update operation is taken from the
+instance of [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) in the `pNext` chain of
+[VkWriteDescriptorSet](#VkWriteDescriptorSet).
 
 If the [`nullDescriptor`](features.html#features-nullDescriptor) feature is enabled,
 the buffer,
@@ -4573,7 +4720,7 @@ identical [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits)
 The sum of `dstArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `dstBinding`, and all applicable
-[consecutive bindings](#descriptorsets-updates-consecutive)
+[consecutive bindings](#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02219) VUID-VkWriteDescriptorSet-descriptorType-02219
@@ -4834,7 +4981,7 @@ the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Sampled    Image](#descriptorsets-sampledimage)
+member of the list given in [Sampled Image](#descriptors-sampledimage)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04150) VUID-VkWriteDescriptorSet-descriptorType-04150
@@ -4842,21 +4989,21 @@ member of the list given in [Sampled    Image](#descriptorsets-sampledimage)
 If `descriptorType` is
 [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) the `imageLayout`
 member of each element of `pImageInfo` **must** be a member of the list
-given in [Combined Image Sampler](#descriptorsets-combinedimagesampler)
+given in [Combined Image Sampler](#descriptors-combinedimagesampler)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04151) VUID-VkWriteDescriptorSet-descriptorType-04151
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Input    Attachment](#descriptorsets-inputattachment)
+member of the list given in [Input    Attachment](#descriptors-inputattachment)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04152) VUID-VkWriteDescriptorSet-descriptorType-04152
 
 If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
-member of the list given in [Storage    Image](#descriptorsets-storageimage)
+member of the list given in [Storage Image](#descriptors-storageimage)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00338) VUID-VkWriteDescriptorSet-descriptorType-00338
@@ -4946,167 +5093,6 @@ Valid Usage (Implicit)
 [](#VUID-VkWriteDescriptorSet-commonparent) VUID-VkWriteDescriptorSet-commonparent
 
  Both of `dstSet`, and the elements of `pTexelBufferView` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
-
-The type of descriptors in a descriptor set is specified by
-[VkWriteDescriptorSet](#VkWriteDescriptorSet)::`descriptorType`, which **must** be one of the
-values:
-
-// Provided by VK_VERSION_1_0
-typedef enum VkDescriptorType {
-    VK_DESCRIPTOR_TYPE_SAMPLER = 0,
-    VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER = 1,
-    VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE = 2,
-    VK_DESCRIPTOR_TYPE_STORAGE_IMAGE = 3,
-    VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER = 4,
-    VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER = 5,
-    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER = 6,
-    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER = 7,
-    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = 8,
-    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = 9,
-    VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = 10,
-  // Provided by VK_VERSION_1_3
-    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK = 1000138000,
-  // Provided by VK_KHR_acceleration_structure
-    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000,
-  // Provided by VK_NV_ray_tracing
-    VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV = 1000165000,
-  // Provided by VK_QCOM_image_processing
-    VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM = 1000440000,
-  // Provided by VK_QCOM_image_processing
-    VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM = 1000440001,
-  // Provided by VK_ARM_tensors
-    VK_DESCRIPTOR_TYPE_TENSOR_ARM = 1000460000,
-  // Provided by VK_EXT_mutable_descriptor_type
-    VK_DESCRIPTOR_TYPE_MUTABLE_EXT = 1000351000,
-  // Provided by VK_NV_partitioned_acceleration_structure
-    VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000,
-  // Provided by VK_EXT_inline_uniform_block
-    VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK,
-  // Provided by VK_VALVE_mutable_descriptor_type
-    VK_DESCRIPTOR_TYPE_MUTABLE_VALVE = VK_DESCRIPTOR_TYPE_MUTABLE_EXT,
-} VkDescriptorType;
-
-* 
-[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) specifies a [    sampler descriptor](#descriptorsets-sampler).
-
-* 
-[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) specifies a
-[combined image sampler    descriptor](#descriptorsets-combinedimagesampler).
-
-* 
-[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) specifies a
-[sampled image descriptor](#descriptorsets-sampledimage).
-
-* 
-[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) specifies a
-[storage image descriptor](#descriptorsets-storageimage).
-
-* 
-[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) specifies a
-[uniform texel buffer descriptor](#descriptorsets-uniformtexelbuffer).
-
-* 
-[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) specifies a
-[storage texel buffer descriptor](#descriptorsets-storagetexelbuffer).
-
-* 
-[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) specifies a
-[uniform buffer descriptor](#descriptorsets-uniformbuffer).
-
-* 
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) specifies a
-[storage buffer descriptor](#descriptorsets-storagebuffer).
-
-* 
-[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
-[dynamic uniform buffer    descriptor](#descriptorsets-uniformbufferdynamic).
-
-* 
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
-[dynamic storage buffer    descriptor](#descriptorsets-storagebufferdynamic).
-
-* 
-[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) specifies an
-[input attachment descriptor](#descriptorsets-inputattachment).
-
-* 
-[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) specifies an
-[inline uniform block](#descriptorsets-inlineuniformblock).
-
-* 
-[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) specifies a
-[descriptor of mutable type](#descriptorsets-mutable).
-
-* 
-[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType) specifies a
-[sampled weight image descriptor](#descriptorsets-weightimage).
-
-* 
-[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType) specifies a
-[block matching image descriptor](#descriptorsets-blockmatch).
-
-* 
-[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) specifies a
-[storage tensor descriptor](#descriptorsets-storagetensor).
-
-When a descriptor set is updated via elements of [VkWriteDescriptorSet](#VkWriteDescriptorSet),
-members of `pImageInfo`, `pBufferInfo` and `pTexelBufferView`
-are only accessed by the implementation when they correspond to descriptor
-type being defined - otherwise they are ignored.
-The members accessed are as follows for each descriptor type:
-
-* 
-For [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), only the `sampler` member of
-each element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` is
-accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
-[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), or
-[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), only the `imageView` and
-`imageLayout` members of each element of
-[VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), all members of each
-element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
-[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
-[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), all members of each
-element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pBufferInfo` are accessed.
-
-* 
-For [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) or
-[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), each element of
-[VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pTexelBufferView` is accessed.
-
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), none of the `pImageInfo`,
-`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
-the source data of the descriptor update operation is taken from the
-[VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure in the `pNext`
-chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), none of the
-`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
-accessed, instead the source data of the descriptor update operation is
-taken from the [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure
-in the `pNext` chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), none of the
-`pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
-accessed, instead the source data of the descriptor update operation is
-taken from the [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure
-in the `pNext` chain of `VkWriteDescriptorSet`.
-When updating descriptors with a `descriptorType` of
-[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), none of the `pImageInfo`,
-`pBufferInfo`, or `pTexelBufferView` members are accessed, instead
-the source data of the descriptor update operation is taken from the
-instance of [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) in the `pNext` chain of
-[VkWriteDescriptorSet](#VkWriteDescriptorSet).
 
 The `VkDescriptorBufferInfo` structure is defined as:
 
@@ -5727,7 +5713,7 @@ Valid Usage
 The sum of `srcArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `srcBinding`, and all applicable
-[consecutive bindings](#descriptorsets-updates-consecutive)
+[consecutive bindings](#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-00347) VUID-VkCopyDescriptorSet-dstBinding-00347
@@ -5740,7 +5726,7 @@ binding specified by `srcBinding`, and all applicable
 The sum of `dstArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `dstBinding`, and all applicable
-[consecutive bindings](#descriptorsets-updates-consecutive)
+[consecutive bindings](#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02632) VUID-VkCopyDescriptorSet-dstBinding-02632
@@ -5753,7 +5739,7 @@ type of `srcBinding` within `srcSet`
 
 If `srcSet` is equal to `dstSet`, then the source and
 destination ranges of descriptors **must** not overlap, where the ranges
-**may** include array elements from [    consecutive bindings](#descriptorsets-updates-consecutive)
+**may** include array elements from [    consecutive bindings](#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcBinding-02223) VUID-VkCopyDescriptorSet-srcBinding-02223
@@ -6287,7 +6273,7 @@ descriptors
 `dstArrayElement` and `descriptorCount` **must** be less than or
 equal to the number of array elements in the descriptor set binding
 implicitly specified when using a descriptor update template to update
-descriptors, and all applicable [    consecutive bindings](#descriptorsets-updates-consecutive)
+descriptors, and all applicable [    consecutive bindings](#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226
@@ -6601,7 +6587,7 @@ are no longer valid.
 Once bound, a descriptor set affects rendering of subsequent commands that
 interact with the given pipeline type in the command buffer until either a
 different set is bound to the same set number, or the set is disturbed as
-described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
+described in [Pipeline Layout Compatibility](#descriptors-compatibility).
 
 A compatible descriptor set **must** be bound for all set numbers that any
 shaders in a pipeline access, at the time that a drawing or dispatching
@@ -6616,7 +6602,7 @@ descriptor is not **undefined** as described by
 [descriptor set allocation](#descriptor-set-initial-state).
 If the [`nullDescriptor`](features.html#features-nullDescriptor) feature is enabled,
 a null descriptor is also considered valid.
-A descriptor that was disturbed by [Pipeline Layout Compatibility](#descriptorsets-compatibility), or was never bound by `vkCmdBindDescriptorSets`
+A descriptor that was disturbed by [Pipeline Layout Compatibility](#descriptors-compatibility), or was never bound by `vkCmdBindDescriptorSets`
 is not considered valid.
 For any given descriptor, [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits) and
 [VkDescriptorSetLayoutCreateFlagBits](#VkDescriptorSetLayoutCreateFlagBits) determine if validity is defined
@@ -6654,7 +6640,7 @@ Each of the `pDescriptorSets` **must** be compatible with the pipeline
 layout specified by `layout`.
 The layout used to program the bindings **must** also be compatible with the
 pipeline used in subsequent [bound pipeline commands](pipelines.html#pipelines-bindpoint-commands) with that pipeline type, as defined in the
-[Pipeline Layout Compatibility](#descriptorsets-compatibility) section.
+[Pipeline Layout Compatibility](#descriptors-compatibility) section.
 
 The descriptor set contents bound by a call to `vkCmdBindDescriptorSets`
 **may** be consumed at the following times:
@@ -7273,7 +7259,7 @@ When a command buffer begins recording, all push descriptors are **undefined**.
 Push descriptors **can** be updated incrementally and cause shaders to use the
 updated descriptors for subsequent [bound pipeline commands](pipelines.html#pipelines-bindpoint-commands) with the pipeline type set by `pipelineBindPoint`
 until the descriptor is overwritten, or else until the set is disturbed as
-described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
+described in [Pipeline Layout Compatibility](#descriptors-compatibility).
 When the set is disturbed or push descriptors with a different descriptor
 set layout are set, all push descriptors are **undefined**.
 
@@ -8150,7 +8136,7 @@ Valid Usage (Implicit)
 
  Both of `descriptorUpdateTemplate`, and `layout` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
-As described above in section [Pipeline Layouts](#descriptorsets-pipelinelayout), the pipeline layout defines shader push constants which are
+As described above in section [Pipeline Layouts](#descriptors-pipelinelayout), the pipeline layout defines shader push constants which are
 updated via Vulkan commands rather than via writes to memory or copy
 commands.
 
@@ -8205,7 +8191,7 @@ constants not modified by this command.
 When a [bound pipeline command](pipelines.html#pipelines-bindpoint-commands) is issued,
 the bound pipeline’s layout **must** be compatible with the layouts used to set
 the values of all push constants in the pipeline layout’s push constant
-ranges, as described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
+ranges, as described in [Pipeline Layout Compatibility](#descriptors-compatibility).
 Binding a pipeline with a layout that is not compatible with the push
 constant layout does not disturb the push constant values.
 
@@ -8598,6 +8584,9 @@ layout.
 To determine the amount of memory needed to store all descriptors with a
 given layout, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorSetLayoutSizeEXT(
     VkDevice                                    device,
@@ -8699,6 +8688,9 @@ Valid Usage (Implicit)
 To get the offset of a binding within a descriptor set layout in memory,
 call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorSetLayoutBindingOffsetEXT(
     VkDevice                                    device,
@@ -8757,7 +8749,7 @@ A descriptor `binding` with type [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorT
 Any potential types in
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT)::`pDescriptorTypes` for
 `binding` share the same offset.
-If the size of the [mutable descriptor](#descriptorsets-mutable) is larger
+If the size of the [mutable descriptor](#descriptors-mutable) is larger
 than the size of a concrete descriptor type being accessed, the padding area
 is ignored by the implementation.
 
@@ -8811,6 +8803,9 @@ Valid Usage (Implicit)
  `layout` **must** have been created, allocated, or retrieved from `device`
 
 To get descriptor data to place in a buffer, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 void vkGetDescriptorEXT(
@@ -8932,6 +8927,9 @@ Valid Usage (Implicit)
 
 Information about the descriptor to get is passed in a
 `VkDescriptorGetInfoEXT` structure:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorGetInfoEXT {
@@ -9226,6 +9224,9 @@ Valid Usage (Implicit)
 Data describing the descriptor is passed in a `VkDescriptorDataEXT`
 structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef union VkDescriptorDataEXT {
     const VkSampler*                     pSampler;
@@ -9387,6 +9388,9 @@ Data describing a [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
 [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), or
 [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) descriptor is passed in a
 `VkDescriptorAddressInfoEXT` structure:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorAddressInfoEXT {
@@ -9581,6 +9585,9 @@ by previous calls to [vkCmdBindDescriptorSets](#vkCmdBindDescriptorSets) and vic
 
 To bind descriptor buffers to a command buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBuffersEXT(
     VkCommandBuffer                             commandBuffer,
@@ -9753,6 +9760,9 @@ vkCmdBindDescriptorBuffersEXT is not affected by [conditional rendering](drawing
 Data describing a descriptor buffer binding is passed in a
 `VkDescriptorBufferBindingInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingInfoEXT {
     VkStructureType       sType;
@@ -9881,6 +9891,9 @@ property is [VK_FALSE](fundamentals.html#VK_FALSE), the `VkBuffer` handle of the
 descriptors is passed in a
 `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
     VkStructureType    sType;
@@ -9927,6 +9940,9 @@ Structure Chaining
 [VkDescriptorBufferBindingInfoEXT](#VkDescriptorBufferBindingInfoEXT)
 
 To set descriptor buffer offsets in a command buffer, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsetsEXT(
@@ -9978,7 +9994,7 @@ Any bindings that were previously applied via these sets, or calls to
 [vkCmdBindDescriptorSets](#vkCmdBindDescriptorSets), are no longer valid.
 Other sets will also be invalidated upon calling this command if
 `layout` differs from the pipeline layout used to bind those other sets,
-as described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
+as described in [Pipeline Layout Compatibility](#descriptors-compatibility).
 
 After binding descriptors, applications **can** modify descriptor memory either
 by performing writes on the host or with device commands.
@@ -10207,6 +10223,9 @@ Conditional Rendering
 vkCmdSetDescriptorBufferOffsetsEXT is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
 To set descriptor buffer offsets in a command buffer, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsets2EXT(
@@ -10501,6 +10520,9 @@ Valid Usage (Implicit)
 
 To bind an embedded immutable sampler set to a command buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(
     VkCommandBuffer                             commandBuffer,
@@ -10533,7 +10555,7 @@ Any sets that were last bound by a call to [vkCmdBindDescriptorSets](#vkCmdBindD
 invalidated upon calling this command.
 Other sets will also be invalidated upon calling this command if
 `layout` differs from the pipeline layout used to bind those other sets,
-as described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
+as described in [Pipeline Layout Compatibility](#descriptors-compatibility).
 
 Valid Usage
 
@@ -10639,6 +10661,9 @@ Conditional Rendering
 vkCmdBindDescriptorBufferEmbeddedSamplersEXT is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
 To bind an embedded immutable sampler set to a command buffer, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
@@ -10871,6 +10896,9 @@ replayed using [VkMemoryOpaqueCaptureAddressAllocateInfo](memory.html#VkMemoryOp
 
 To get the opaque descriptor data for a buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(
     VkDevice                                    device,
@@ -10949,6 +10977,9 @@ Return Codes
 Information about the buffer to get descriptor buffer capture data for is
 passed in a `VkBufferCaptureDescriptorDataInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkBufferCaptureDescriptorDataInfoEXT {
     VkStructureType    sType;
@@ -10994,6 +11025,9 @@ Valid Usage (Implicit)
  `buffer` **must** be a valid [VkBuffer](resources.html#VkBuffer) handle
 
 To get the opaque capture descriptor data for an image, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(
@@ -11073,6 +11107,9 @@ Return Codes
 Information about the image to get descriptor buffer capture data for is
 passed in a `VkImageCaptureDescriptorDataInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkImageCaptureDescriptorDataInfoEXT {
     VkStructureType    sType;
@@ -11118,6 +11155,9 @@ Valid Usage (Implicit)
  `image` **must** be a valid [VkImage](resources.html#VkImage) handle
 
 To get the opaque capture descriptor data for an image view, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(
@@ -11198,6 +11238,9 @@ Return Codes
 Information about the image view to get descriptor buffer capture data for
 is passed in a `VkImageViewCaptureDescriptorDataInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkImageViewCaptureDescriptorDataInfoEXT {
     VkStructureType    sType;
@@ -11243,6 +11286,9 @@ Valid Usage (Implicit)
  `imageView` **must** be a valid [VkImageView](resources.html#VkImageView) handle
 
 To get the opaque capture descriptor data for a sampler, call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(
@@ -11323,6 +11369,9 @@ Return Codes
 Information about the sampler to get descriptor buffer capture data for is
 passed in a `VkSamplerCaptureDescriptorDataInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkSamplerCaptureDescriptorDataInfoEXT {
     VkStructureType    sType;
@@ -11369,6 +11418,9 @@ Valid Usage (Implicit)
 
 To get the opaque capture descriptor data for an acceleration structure,
 call:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing
 VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(
@@ -11449,6 +11501,9 @@ Return Codes
 Information about the acceleration structure to get descriptor buffer
 capture data for is passed in a
 `VkAccelerationStructureCaptureDescriptorDataInfoEXT` structure:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing
 typedef struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {
@@ -11532,6 +11587,9 @@ Valid Usage (Implicit)
 
 The `VkOpaqueCaptureDescriptorDataCreateInfoEXT` structure is defined
 as:
+
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap). See [Legacy Functionality](../appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
 
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {

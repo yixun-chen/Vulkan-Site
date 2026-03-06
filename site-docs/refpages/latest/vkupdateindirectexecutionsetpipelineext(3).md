@@ -91,8 +91,8 @@ If `initialPipeline` was created with
 If `initialPipeline` was created without
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), the
 layout of each pipeline in `pExecutionSetWrites` **must** be
-[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
-`initialPipeline` used to create the Indirect Execution Set
+[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) with the `initialPipeline`
+used to create the Indirect Execution Set
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11040) VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11040

@@ -26,6 +26,8 @@ typedef enum VkShaderCreateFlagBitsEXT {
     VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = 0x00000001,
   // Provided by VK_EXT_descriptor_heap with VK_EXT_shader_object
     VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT = 0x00000400,
+  // Provided by VK_KHR_maintenance5 with VK_ARM_shader_instrumentation, VK_EXT_shader_object with VK_ARM_shader_instrumentation
+    VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM = 0x00000800,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
     VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 0x00000002,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3

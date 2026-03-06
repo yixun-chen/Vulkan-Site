@@ -77,7 +77,7 @@ When a command buffer begins recording, all push descriptors are **undefined**.
 Push descriptors **can** be updated incrementally and cause shaders to use the
 updated descriptors for subsequent [bound pipeline commands](../../../../spec/latest/chapters/pipelines.html#pipelines-bindpoint-commands) with the pipeline type set by `pipelineBindPoint`
 until the descriptor is overwritten, or else until the set is disturbed as
-described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility).
+described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility).
 When the set is disturbed or push descriptors with a different descriptor
 set layout are set, all push descriptors are **undefined**.
 

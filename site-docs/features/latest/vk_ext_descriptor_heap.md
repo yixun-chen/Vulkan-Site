@@ -1353,7 +1353,7 @@ mappings[3] = descriptorSet0Mapping;
 mappings[0].firstBinding = 0;
 mappings[0].sourceData.pushIndex = {0};
 mappings[0].sourceData.pushIndex.heapOffset = 0;
-mappings[3].sourceData.pushIndex.heapIndexStride = 1;      // Interpret push data as byte offset
+mappings[0].sourceData.pushIndex.heapIndexStride = 1;      // Interpret push data as byte offset
 mappings[0].sourceData.pushIndex.heapArrayStride = bufferDescriptorSize;
 mappings[0].sourceData.pushIndex.pushOffset = DescriptorSetPushOffset;
 
@@ -1363,9 +1363,9 @@ mappings[0].sourceData.pushIndex.pushOffset = DescriptorSetPushOffset;
 mappings[1].firstBinding = 1;
 mappings[1].sourceData.pushIndex = {0};
 mappings[1].sourceData.pushIndex.heapOffset = UniformBufferArraySize;
-mappings[3].sourceData.pushIndex.heapIndexStride = 1;
+mappings[1].sourceData.pushIndex.heapIndexStride = 1;
 mappings[1].sourceData.pushIndex.samplerHeapOffset = 0;
-mappings[3].sourceData.pushIndex.samplerHeapIndexStride = 1;
+mappings[1].sourceData.pushIndex.samplerHeapIndexStride = 1;
 mappings[1].sourceData.pushIndex.pushOffset = DescriptorSetPushOffset;
 
 // An inline uniform block
@@ -1857,7 +1857,7 @@ As a result, the EXT just reuses the push constant token, whereas the NV extensi
 The NV extension smooshed all tokens into a monolithic structure, so having push constants sometimes being push data would add significant complexity to validation; so having a separate token along the lines of other extensions made sense.
 With the EXT, the tokens are isolated structures in a union, so the valid usage was much simpler to spell out, and so the token would have just been an alias anyway.
 
-Yes! There is no cross stage validation for the mappings set by a user; as long as an application ensures that the descriptors they user are where they expect them to be for each shader, the mappings can be set however the developer wishes.
+Yes! There is no cross stage validation for the mappings set by a user; as long as an application ensures that the descriptors they use are where they expect them to be for each shader, the mappings can be set however the developer wishes.
 
 So that each pointer can be set to `NULL` to define a "null descriptor" when interacting with `VK_EXT_robustness2`.
 
@@ -1882,7 +1882,7 @@ It would be useful to be able to express different data types coming from a reso
 
 Debugging descriptors has been a pain since dynamic indexing was introduced, requiring point-of-access validation.
 The current approach to this in debug tools requires looking up descriptors in a table to see if they are valid, which requires shader instrumentation, and is too slow to be on by default.
-Traverse research did some excellent work on this topic in their bindless setup, where they restricted their descriptor indices to 31 bits and used the last bit as a sentinel value to check for validity, which you can read about [here](https://blog.traverseresearch.nl/bindless-rendering-setup-afeb678d77fc).
+Traverse Research did some excellent work on this topic in their bindless setup, where they restricted their descriptor indices to 31 bits and used the last bit as a sentinel value to check for validity, which you can read about [here](https://blog.traverseresearch.nl/bindless-rendering-setup-afeb678d77fc).
 Finding spare bits in real descriptors was considered, but could not be guaranteed reliably by all vendors.
 However, by exposing descriptor sizes precisely and allowing arbitrary data to be read from the heaps, a similar approach should be possible, potentially expanding beyond single descriptors.
 This extension provides a lot of tools, the next step is to find ways to use them.

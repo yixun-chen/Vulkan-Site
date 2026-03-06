@@ -21,6 +21,9 @@ VkBufferMemoryBarrier - Structure specifying a buffer memory barrier
 
 The `VkBufferMemoryBarrier` structure is defined as:
 
+|  | This functionality is superseded by [VkBufferMemoryBarrier2](../../../../spec/latest/chapters/synchronization.html#VkBufferMemoryBarrier2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef struct VkBufferMemoryBarrier {
     VkStructureType    sType;

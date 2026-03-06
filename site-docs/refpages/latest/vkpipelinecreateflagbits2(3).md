@@ -105,11 +105,15 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_
 // Provided by VK_KHR_maintenance5 with VK_VERSION_1_4 or VK_EXT_pipeline_protected_access
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT = 0x40000000ULL;
 // Provided by VK_KHR_maintenance5 with VK_NV_displacement_micromap
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV = 0x10000000ULL;
+#endif
 // Provided by VK_KHR_maintenance5 with VK_EXT_descriptor_buffer
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT = 0x20000000ULL;
 // Provided by VK_KHR_maintenance5 with VK_ARM_pipeline_opacity_micromap, VK_ARM_pipeline_opacity_micromap
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM = 0x2000000000ULL;
+// Provided by VK_KHR_maintenance5 with VK_ARM_shader_instrumentation, VK_ARM_shader_instrumentation
+static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM = 0x8000000000ULL;
 // Provided by VK_KHR_pipeline_binary
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR = 0x80000000ULL;
 // Provided by VK_EXT_device_generated_commands
@@ -303,7 +307,7 @@ necessary to later perform an optimal link with
 * 
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](#) specifies that a
 pipeline will be used with [descriptor buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorbuffers),
-rather than [descriptor sets](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets).
+rather than [descriptor sets](../../../../spec/latest/chapters/descriptorsets.html#descriptors).
 
 * 
 [VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#)
@@ -368,6 +372,10 @@ pipeline enables [64-bit indexing](../../../../spec/latest/appendices/spirvenv.h
 [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#) specifies that the
 pipeline will use descriptor heap mappings instead of descriptor set
 layouts.
+
+* 
+[VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM](#) specifies that the
+shaders in the pipeline will be instrumented.
 
 It is valid to set both [VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#) and
 [VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#).

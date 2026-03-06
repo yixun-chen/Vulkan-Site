@@ -18,6 +18,9 @@
 
 VkFormatFeatureFlags - Bitmask of VkFormatFeatureFlagBits
 
+|  | This functionality is superseded by [VkFormatFeatureFlags2](../../../../spec/latest/chapters/formats.html#VkFormatFeatureFlags2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkFormatFeatureFlags;
 

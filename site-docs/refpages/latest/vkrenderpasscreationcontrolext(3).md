@@ -24,7 +24,7 @@ A `VkRenderPassCreationControlEXT` structure **can** be included in the
 [VkSubpassDescription2](VkSubpassDescription2.html).
 The `VkRenderPassCreationControlEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](VK_KHR_dynamic_rendering_local_read.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback

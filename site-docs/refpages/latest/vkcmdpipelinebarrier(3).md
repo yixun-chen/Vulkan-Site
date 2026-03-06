@@ -21,6 +21,9 @@ vkCmdPipelineBarrier - Insert a memory dependency
 
 To record a pipeline barrier, call:
 
+|  | This functionality is superseded by [vkCmdPipelineBarrier2](../../../../spec/latest/chapters/synchronization.html#vkCmdPipelineBarrier2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdPipelineBarrier(
     VkCommandBuffer                             commandBuffer,

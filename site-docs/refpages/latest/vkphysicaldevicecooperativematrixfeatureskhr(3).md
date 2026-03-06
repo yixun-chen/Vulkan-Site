@@ -47,9 +47,8 @@ capability.
 * 
 
 `cooperativeMatrixRobustBufferAccess` indicates that the
-implementation supports robust buffer access for SPIR-V
-`OpCooperativeMatrixLoadKHR` and `OpCooperativeMatrixStoreKHR`
-instructions.
+implementation supports [robust buffer    access](../../../../spec/latest/chapters/shaders.html#shaders-robust-buffer-access) for SPIR-V `OpCooperativeMatrixLoadKHR` and
+`OpCooperativeMatrixStoreKHR` instructions.
 
 If the `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to

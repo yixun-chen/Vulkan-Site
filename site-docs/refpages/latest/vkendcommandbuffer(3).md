@@ -95,6 +95,12 @@ an outstanding [vkCmdDebugMarkerBeginEXT](vkCmdDebugMarkerBeginEXT.html) command
 `commandBuffer` that has not previously been ended by a call to
 [vkCmdDebugMarkerEndEXT](vkCmdDebugMarkerEndEXT.html)
 
+* 
+[](#VUID-vkEndCommandBuffer-commandBuffer-12372) VUID-vkEndCommandBuffer-commandBuffer-12372
+
+`commandBuffer` **must** not have any shader instrumentation
+[active](../../../../spec/latest/chapters/shaders.html#shaders-instrumentation-active)
+
 Valid Usage (Implicit)
 
 * 

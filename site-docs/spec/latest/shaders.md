@@ -141,6 +141,17 @@
 - [Reading back CUDA Module Cache](#cuda-modules-getcache)
 - [Reading_back_CUDA_Module_Cache](#cuda-modules-getcache)
 - [Limitations](#cuda-modules-limitations)
+- [Shader Instrumentation](#shaders-instrumentation)
+- [Shader Instrumentation Metrics](#shaders-instrumentation-metric-enumeration)
+- [Shader_Instrumentation_Metrics](#shaders-instrumentation-metric-enumeration)
+- [Shader Instrumentation Objects](#shaders-instrumentation-objects)
+- [Shader_Instrumentation_Objects](#shaders-instrumentation-objects)
+- [Shader Instrumentation Capture](#_shader_instrumentation_capture)
+- [Shader_Instrumentation_Capture](#_shader_instrumentation_capture)
+- [Shader Instrumentation Retrieval](#_shader_instrumentation_retrieval)
+- [Shader_Instrumentation_Retrieval](#_shader_instrumentation_retrieval)
+- [Shader Instrumentation Clearing](#_shader_instrumentation_clearing)
+- [Shader_Instrumentation_Clearing](#_shader_instrumentation_clearing)
 
 ## Content
 
@@ -1297,6 +1308,8 @@ typedef enum VkShaderCreateFlagBitsEXT {
     VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = 0x00000001,
   // Provided by VK_EXT_descriptor_heap with VK_EXT_shader_object
     VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT = 0x00000400,
+  // Provided by VK_KHR_maintenance5 with VK_ARM_shader_instrumentation, VK_EXT_shader_object with VK_ARM_shader_instrumentation
+    VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM = 0x00000800,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
     VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 0x00000002,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
@@ -6581,3 +6594,729 @@ CUDA Dynamic parallelism is not supported.
 
 * 
 `vk*DispatchIndirect` is not available.
+
+Shaders **can** be instrumented to provide a runtime shader cost analysis.
+
+Shader instrumentation is enabled for a pipeline when
+[VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM](pipelines.html#VkPipelineCreateFlagBits2KHR) is included in
+[VkPipelineCreateFlags2CreateInfoKHR](pipelines.html#VkPipelineCreateFlags2CreateInfoKHR)::`flags`.
+
+Shader instrumentation is enabled for a shader object when
+[VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM](#VkShaderCreateFlagBitsEXT) is included in
+[VkShaderCreateInfoEXT](#VkShaderCreateInfoEXT)::`flags`.
+
+|  | Shader instrumentation will incur a runtime performance cost.
+| --- | --- |
+Applications or tools are only expected to enable shader instrumentation
+during development, for performance profiling or debugging purposes, and to
+leave it disabled in production use of the applications. |
+
+To enumerate the available shader instrumentation metrics, call:
+
+// Provided by VK_ARM_shader_instrumentation
+VkResult vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM(
+    VkPhysicalDevice                            physicalDevice,
+    uint32_t*                                   pDescriptionCount,
+    VkShaderInstrumentationMetricDescriptionARM* pDescriptions);
+
+* 
+`physicalDevice` is the physical device.
+
+* 
+`pDescriptionCount` is a pointer to an integer related to the number
+of shader instrumentation metrics available or queried.
+
+* 
+`pDescriptions` is either `NULL` or a pointer to an array of
+[VkShaderInstrumentationMetricDescriptionARM](#VkShaderInstrumentationMetricDescriptionARM) structures.
+
+If `pDescriptions` is `NULL`, then the number of shader instrumentation
+metrics available is returned in `pDescriptionCount`.
+Otherwise, `pDescriptionCount` **must** point to a variable set by the
+application to the number of elements in the `pDescriptions` array, and
+on return the variable is overwritten with the number of structures actually
+written to `pDescriptions`.
+If `pDescriptionCount` is less than the number shader instrumentation
+metrics available, at most `pDescriptionCount` structures will be
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available shader
+instrumentation metrics were returned.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-physicalDevice-parameter) VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-physicalDevice-parameter
+
+ `physicalDevice` **must** be a valid [VkPhysicalDevice](devsandqueues.html#VkPhysicalDevice) handle
+
+* 
+[](#VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-pDescriptionCount-parameter) VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-pDescriptionCount-parameter
+
+ `pDescriptionCount` **must** be a valid pointer to a `uint32_t` value
+
+* 
+[](#VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-pDescriptions-parameter) VUID-vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM-pDescriptions-parameter
+
+ If the value referenced by `pDescriptionCount` is not `0`, and `pDescriptions` is not `NULL`, `pDescriptions` **must** be a valid pointer to an array of `pDescriptionCount` [VkShaderInstrumentationMetricDescriptionARM](#VkShaderInstrumentationMetricDescriptionARM) structures
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_INCOMPLETE](fundamentals.html#VkResult)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+The `VkShaderInstrumentationMetricDescriptionARM` structure is defined
+as:
+
+// Provided by VK_ARM_shader_instrumentation
+typedef struct VkShaderInstrumentationMetricDescriptionARM {
+    VkStructureType    sType;
+    void*              pNext;
+    char               name[VK_MAX_DESCRIPTION_SIZE];
+    char               description[VK_MAX_DESCRIPTION_SIZE];
+} VkShaderInstrumentationMetricDescriptionARM;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
+containing a null-terminated UTF-8 string which is a short human
+readable name for this shader instrumentation metric.
+
+* 
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
+containing a null-terminated UTF-8 string which is a human readable
+description for this shader instrumentation metric.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDescriptionARM-sType-sType) VUID-VkShaderInstrumentationMetricDescriptionARM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDescriptionARM-pNext-pNext) VUID-VkShaderInstrumentationMetricDescriptionARM-pNext-pNext
+
+ `pNext` **must** be `NULL`
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDescriptionARM-name-parameter) VUID-VkShaderInstrumentationMetricDescriptionARM-name-parameter
+
+ `name` **must** be a null-terminated UTF-8 string whose length is less than or equal to [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE)
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDescriptionARM-description-parameter) VUID-VkShaderInstrumentationMetricDescriptionARM-description-parameter
+
+ `description` **must** be a null-terminated UTF-8 string whose length is less than or equal to [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE)
+
+Shader instrumentation metrics are captured via instrumentation objects.
+
+Shader instrumentation objects are represented by
+`VkShaderInstrumentationARM` handles:
+
+// Provided by VK_ARM_shader_instrumentation
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkShaderInstrumentationARM)
+
+To create a shader instrumentation object, call:
+
+// Provided by VK_ARM_shader_instrumentation
+VkResult vkCreateShaderInstrumentationARM(
+    VkDevice                                    device,
+    const VkShaderInstrumentationCreateInfoARM* pCreateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkShaderInstrumentationARM*                 pInstrumentation);
+
+* 
+`device` is the logical device that creates the shader
+instrumentation object.
+
+* 
+`pCreateInfo` is a pointer to a
+[VkShaderInstrumentationCreateInfoARM](#VkShaderInstrumentationCreateInfoARM) structure containing
+information about how the shader instrumentation object is to be
+created.
+
+* 
+`pAllocator` controls host memory allocation as described in the
+[Memory Allocation](memory.html#memory-allocation) chapter.
+
+* 
+`pInstrumentation` is a pointer to a handle in which the resulting
+shader instrumentation object is returned.
+
+Valid Usage
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCreateShaderInstrumentationARM-device-parameter) VUID-vkCreateShaderInstrumentationARM-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkCreateShaderInstrumentationARM-pCreateInfo-parameter) VUID-vkCreateShaderInstrumentationARM-pCreateInfo-parameter
+
+ `pCreateInfo` **must** be a valid pointer to a valid [VkShaderInstrumentationCreateInfoARM](#VkShaderInstrumentationCreateInfoARM) structure
+
+* 
+[](#VUID-vkCreateShaderInstrumentationARM-pAllocator-parameter) VUID-vkCreateShaderInstrumentationARM-pAllocator-parameter
+
+ If `pAllocator` is not `NULL`, `pAllocator` **must** be a valid pointer to a valid [VkAllocationCallbacks](memory.html#VkAllocationCallbacks) structure
+
+* 
+[](#VUID-vkCreateShaderInstrumentationARM-pInstrumentation-parameter) VUID-vkCreateShaderInstrumentationARM-pInstrumentation-parameter
+
+ `pInstrumentation` **must** be a valid pointer to a [VkShaderInstrumentationARM](#VkShaderInstrumentationARM) handle
+
+* 
+[](#VUID-vkCreateShaderInstrumentationARM-device-queuecount) VUID-vkCreateShaderInstrumentationARM-device-queuecount
+
+ The device **must** have been created with at least `1` queue
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+The `VkShaderInstrumentationCreateInfoARM` structure is defined as:
+
+// Provided by VK_ARM_shader_instrumentation
+typedef struct VkShaderInstrumentationCreateInfoARM {
+    VkStructureType    sType;
+    void*              pNext;
+} VkShaderInstrumentationCreateInfoARM;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkShaderInstrumentationCreateInfoARM-sType-sType) VUID-VkShaderInstrumentationCreateInfoARM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkShaderInstrumentationCreateInfoARM-pNext-pNext) VUID-VkShaderInstrumentationCreateInfoARM-pNext-pNext
+
+ `pNext` **must** be `NULL`
+
+To destroy a shader instrumentation object, call:
+
+// Provided by VK_ARM_shader_instrumentation
+void vkDestroyShaderInstrumentationARM(
+    VkDevice                                    device,
+    VkShaderInstrumentationARM                  instrumentation,
+    const VkAllocationCallbacks*                pAllocator);
+
+* 
+`device` is the logical device that destroys the shader
+instrumentation.
+
+* 
+`instrumentation` is the handle of the shader instrumentation to
+destroy.
+
+* 
+`pAllocator` controls host memory allocation as described in the
+[Memory Allocation](memory.html#memory-allocation) chapter.
+
+Valid Usage
+
+* 
+[](#VUID-vkDestroyShaderInstrumentationARM-instrumentation-12374) VUID-vkDestroyShaderInstrumentationARM-instrumentation-12374
+
+All submitted commands that refer to `instrumentation` **must** have
+completed execution
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkDestroyShaderInstrumentationARM-device-parameter) VUID-vkDestroyShaderInstrumentationARM-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkDestroyShaderInstrumentationARM-instrumentation-parameter) VUID-vkDestroyShaderInstrumentationARM-instrumentation-parameter
+
+ If `instrumentation` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `instrumentation` **must** be a valid [VkShaderInstrumentationARM](#VkShaderInstrumentationARM) handle
+
+* 
+[](#VUID-vkDestroyShaderInstrumentationARM-pAllocator-parameter) VUID-vkDestroyShaderInstrumentationARM-pAllocator-parameter
+
+ If `pAllocator` is not `NULL`, `pAllocator` **must** be a valid pointer to a valid [VkAllocationCallbacks](memory.html#VkAllocationCallbacks) structure
+
+* 
+[](#VUID-vkDestroyShaderInstrumentationARM-instrumentation-parent) VUID-vkDestroyShaderInstrumentationARM-instrumentation-parent
+
+ If `instrumentation` is a valid handle, it **must** have been created, allocated, or retrieved from `device`
+
+Host Synchronization
+
+* 
+Host access to `instrumentation` **must** be externally synchronized
+
+To begin shader instrumentation, call:
+
+// Provided by VK_ARM_shader_instrumentation
+void vkCmdBeginShaderInstrumentationARM(
+    VkCommandBuffer                             commandBuffer,
+    VkShaderInstrumentationARM                  instrumentation);
+
+* 
+`commandBuffer` is the command buffer into which this command will
+be recorded.
+
+* 
+`instrumentation` is the handle of the shader instrumentation object
+that will capture the metrics.
+
+After beginning shader instrumentation, shader instrumentation is considered
+*active* within the command buffer it was called in until shader
+instrumentation is ended.
+
+The shader instrumentation object has an implicit result index where the
+per-shader metrics will be written.
+The result index is set to 0 when the object is created by calling
+`vkCreateShaderInstrumentationARM`, and incremented by `1` for each
+draw, dispatch, and ray tracing command recorded while the shader
+instrumentation object is active.
+
+The result index is also incremented by `1` when
+[vkCmdExecuteGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdExecuteGeneratedCommandsEXT) is recorded.
+
+While shader instrumentation is active, instrumented shaders write to the
+instrumentation object.
+These writes **must** be synchronized using the instrumented shader’s stage
+with access mask [VK_ACCESS_2_SHADER_WRITE_BIT](synchronization.html#VkAccessFlagBits2KHR).
+If no instrumentation object is bound, writes are discarded.
+
+If a command buffer is submitted multiple times, the shader instrumented
+metrics for all submissions will be aggregated in the instrumentation
+object, unless the metrics are [cleared](#shaders-instrumentation-clear)
+between submissions.
+
+Valid Usage
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-12375) VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-12375
+
+This command **must** not be recorded while shader instrumentation is
+active within `commandBuffer`
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-12376) VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-12376
+
+`commandBuffer` **must** not be a protected command buffer
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-parameter) VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-parameter
+
+ `commandBuffer` **must** be a valid [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) handle
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-instrumentation-parameter) VUID-vkCmdBeginShaderInstrumentationARM-instrumentation-parameter
+
+ `instrumentation` **must** be a valid [VkShaderInstrumentationARM](#VkShaderInstrumentationARM) handle
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-recording) VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-recording
+
+ `commandBuffer` **must** be in the [recording state](cmdbuffers.html#commandbuffers-lifecycle)
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-cmdpool) VUID-vkCmdBeginShaderInstrumentationARM-commandBuffer-cmdpool
+
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-suspended) VUID-vkCmdBeginShaderInstrumentationARM-suspended
+
+ This command **must** not be called between suspended render pass instances
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-videocoding) VUID-vkCmdBeginShaderInstrumentationARM-videocoding
+
+ This command **must** only be called outside of a video coding scope
+
+* 
+[](#VUID-vkCmdBeginShaderInstrumentationARM-commonparent) VUID-vkCmdBeginShaderInstrumentationARM-commonparent
+
+ Both of `commandBuffer`, and `instrumentation` **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
+
+Host Synchronization
+
+* 
+Host access to `commandBuffer` **must** be externally synchronized
+
+* 
+Host access to `instrumentation` **must** be externally synchronized
+
+* 
+Host access to the `VkCommandPool` that `commandBuffer` was allocated from **must** be externally synchronized
+
+Command Properties
+| [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
+| --- | --- | --- | --- | --- |
+| Primary
+
+Secondary | Both | Outside | VK_QUEUE_COMPUTE_BIT
+
+VK_QUEUE_DATA_GRAPH_BIT_ARM
+
+VK_QUEUE_GRAPHICS_BIT | Action
+
+State |
+
+Conditional Rendering
+
+vkCmdBeginShaderInstrumentationARM is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
+
+To end shader instrumentation, call:
+
+// Provided by VK_ARM_shader_instrumentation
+void vkCmdEndShaderInstrumentationARM(
+    VkCommandBuffer                             commandBuffer);
+
+* 
+`commandBuffer` is the command buffer into which this command will
+be recorded.
+
+Once recorded, shader instrumentation is no longer considered *active*
+within the command buffer.
+
+Valid Usage
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-12377) VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-12377
+
+Shader instrumentation **must** be active within `commandBuffer`
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-12378) VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-12378
+
+`commandBuffer` **must** not be a protected command buffer
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-parameter) VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-parameter
+
+ `commandBuffer` **must** be a valid [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) handle
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-recording) VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-recording
+
+ `commandBuffer` **must** be in the [recording state](cmdbuffers.html#commandbuffers-lifecycle)
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-cmdpool) VUID-vkCmdEndShaderInstrumentationARM-commandBuffer-cmdpool
+
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-suspended) VUID-vkCmdEndShaderInstrumentationARM-suspended
+
+ This command **must** not be called between suspended render pass instances
+
+* 
+[](#VUID-vkCmdEndShaderInstrumentationARM-videocoding) VUID-vkCmdEndShaderInstrumentationARM-videocoding
+
+ This command **must** only be called outside of a video coding scope
+
+Host Synchronization
+
+* 
+Host access to `commandBuffer` **must** be externally synchronized
+
+* 
+Host access to the `VkCommandPool` that `commandBuffer` was allocated from **must** be externally synchronized
+
+Command Properties
+| [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
+| --- | --- | --- | --- | --- |
+| Primary
+
+Secondary | Both | Outside | VK_QUEUE_COMPUTE_BIT
+
+VK_QUEUE_DATA_GRAPH_BIT_ARM
+
+VK_QUEUE_GRAPHICS_BIT | Action
+
+State |
+
+Conditional Rendering
+
+vkCmdEndShaderInstrumentationARM is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
+
+Data **can** be retrieved from an instrumentation object in units of metric
+blocks.
+The size of each metric block in bytes is
+`sizeof`([VkShaderInstrumentationMetricDataHeaderARM](#VkShaderInstrumentationMetricDataHeaderARM)) + 
+`sizeof`(uint64_t) ×
+`VkPhysicalDeviceShaderInstrumentationPropertiesARM`::`numMetrics`.
+
+To retrieve metric blocks from an instrumentation object, call:
+
+// Provided by VK_ARM_shader_instrumentation
+VkResult vkGetShaderInstrumentationValuesARM(
+    VkDevice                                    device,
+    VkShaderInstrumentationARM                  instrumentation,
+    uint32_t*                                   pMetricBlockCount,
+    void*                                       pMetricValues,
+    VkShaderInstrumentationValuesFlagsARM       flags);
+
+* 
+`device` is the logical device that was used to capture shader
+instrumentation data.
+
+* 
+`instrumentation` is the shader instrumentation object to retrieve
+values from
+
+* 
+`pMetricBlockCount` is a pointer to an integer related to the number
+of metric blocks available or queried.
+
+* 
+`pMetricValues` is either `NULL` or a pointer to an
+application-allocated buffer where the results will be written.
+
+* 
+`flags` is reserved for future use.
+
+If `pMetricValues` is `NULL`, then the number of metric blocks available
+is returned in `pMetricBlockCount`.
+Otherwise, `pMetricBlockCount` **must** point to a variable set by the
+application to the number of elements in the `pMetricValues` array, and
+on return the variable is overwritten with the number of metric blocks
+actually written to `pMetricValues`.
+If `pMetricBlockCount` is less than the number of metric blocks
+available, at most `pMetricBlockCount` elements will be written, and
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
+indicate that not all the available metric blocks were returned.
+
+Metrics are written to `pMetricValues` as a tightly packed array of
+metric blocks, where each block consists of a
+`VkShaderInstrumentationMetricDataHeaderARM` header followed by
+`VkPhysicalDeviceShaderInstrumentationPropertiesARM`::`numMetrics`
+unsigned 64-bit values.
+The order of the metrics matches the order in which they are enumerated by
+[vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM](#vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM).
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-device-parameter) VUID-vkGetShaderInstrumentationValuesARM-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-instrumentation-parameter) VUID-vkGetShaderInstrumentationValuesARM-instrumentation-parameter
+
+ `instrumentation` **must** be a valid [VkShaderInstrumentationARM](#VkShaderInstrumentationARM) handle
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-pMetricBlockCount-parameter) VUID-vkGetShaderInstrumentationValuesARM-pMetricBlockCount-parameter
+
+ `pMetricBlockCount` **must** be a valid pointer to a `uint32_t` value
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-pMetricValues-parameter) VUID-vkGetShaderInstrumentationValuesARM-pMetricValues-parameter
+
+ `pMetricValues` **must** be a pointer value
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-flags-zerobitmask) VUID-vkGetShaderInstrumentationValuesARM-flags-zerobitmask
+
+ `flags` **must** be `0`
+
+* 
+[](#VUID-vkGetShaderInstrumentationValuesARM-instrumentation-parent) VUID-vkGetShaderInstrumentationValuesARM-instrumentation-parent
+
+ `instrumentation` **must** have been created, allocated, or retrieved from `device`
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_INCOMPLETE](fundamentals.html#VkResult)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+// Provided by VK_ARM_shader_instrumentation
+typedef VkFlags VkShaderInstrumentationValuesFlagsARM;
+
+`VkShaderInstrumentationValuesFlagsARM` is a bitmask type for parameters
+to the retrieval, but is currently reserved for future use.
+
+The shader instrumentation metrics block header is defined as:
+
+// Provided by VK_ARM_shader_instrumentation
+typedef struct VkShaderInstrumentationMetricDataHeaderARM {
+    uint32_t              resultIndex;
+    uint32_t              resultSubIndex;
+    VkShaderStageFlags    stages;
+    uint32_t              basicBlockIndex;
+} VkShaderInstrumentationMetricDataHeaderARM;
+
+* 
+`resultIndex` is the result index of the metric block, as captured
+when the command was recorded.
+
+* 
+`resultSubIndex` is a secondary index with the result index,
+explained further below.
+
+* 
+`stages` is a bitfield of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) describing the
+shader stages that the metric block is for.
+
+* 
+`basicBlockIndex` is the index of the basic block within the shader
+that the metric block is for.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDataHeaderARM-stages-parameter) VUID-VkShaderInstrumentationMetricDataHeaderARM-stages-parameter
+
+ `stages` **must** be a valid combination of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) values
+
+* 
+[](#VUID-VkShaderInstrumentationMetricDataHeaderARM-stages-requiredbitmask) VUID-VkShaderInstrumentationMetricDataHeaderARM-stages-requiredbitmask
+
+ `stages` **must** not be `0`
+
+The `resultIndex` is the index captured during command buffer recording,
+and identifies the draw, dispatch, or ray tracing command that the metrics
+are captured for.
+
+Metrics are returned in ascending order of `resultIndex` values.
+Metrics with the same value of `resultIndex` are returned in ascending
+order of `resultSubIndex` values.
+Metrics with the same value of `resultIndex` and `resultSubIndex`
+are grouped by the value of `stages`.
+Metrics with the same value of `resultIndex`, `resultSubIndex`, and
+`stages` are returned in ascending order of `basicBlockIndex`
+values.
+
+All metrics for commands that record multiple draws (such as indirect
+drawing commands with `drawCount` greater than one), dispatches,
+or involve groups of shaders (such as ray tracing pipelines),
+are returned using the same `resultIndex`.
+
+Implementations **may** use a non-zero `resultSubIndex` to report more
+fine-grained metrics (such as per draw) for such commands, or aggregate all
+metrics for the command using `resultSubIndex` zero.
+
+Metrics for commands recorded while multiview is enabled are returned as
+aggregated values across all views.
+
+Implementations **may** aggregate metrics for multiple shader stages.
+The value of `stages` describes which shader stages have been
+aggregated.
+
+`basicBlockIndex` describes the index of the basic block of the shader
+that metrics are captured for.
+If
+`VkPhysicalDeviceShaderInstrumentationPropertiesARM`::`perBasicBlockGranularity`
+is [VK_FALSE](fundamentals.html#VK_FALSE), results are aggregated for the entire shader and reported
+as basic block zero.
+
+To clear the value of all metric blocks in an instrumentation object to
+zero, call:
+
+// Provided by VK_ARM_shader_instrumentation
+void vkClearShaderInstrumentationMetricsARM(
+    VkDevice                                    device,
+    VkShaderInstrumentationARM                  instrumentation);
+
+* 
+`device` is the logical device that owns the shader instrumentation
+object.
+
+* 
+`instrumentation` is the shader instrumentation object to clear.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkClearShaderInstrumentationMetricsARM-device-parameter) VUID-vkClearShaderInstrumentationMetricsARM-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkClearShaderInstrumentationMetricsARM-instrumentation-parameter) VUID-vkClearShaderInstrumentationMetricsARM-instrumentation-parameter
+
+ `instrumentation` **must** be a valid [VkShaderInstrumentationARM](#VkShaderInstrumentationARM) handle
+
+* 
+[](#VUID-vkClearShaderInstrumentationMetricsARM-instrumentation-parent) VUID-vkClearShaderInstrumentationMetricsARM-instrumentation-parent
+
+ `instrumentation` **must** have been created, allocated, or retrieved from `device`

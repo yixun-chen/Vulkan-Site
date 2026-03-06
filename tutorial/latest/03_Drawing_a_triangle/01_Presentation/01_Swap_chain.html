@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:tutorial" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -740,15 +740,15 @@ images with the refresh rate of the screen.</p>
 various reasons, for example, because they are designed for servers and don&#8217;t
 have any display outputs. Secondly, since image presentation is heavily tied
 into the window system and the surfaces associated with windows, it is not
- part of the Vulkan core. You have to enable the <code>VK_KHR_swapchain</code>
-device extension after querying for its support.</p>
+part of the Vulkan core. You have to enable the <code>VK_KHR_swapchain</code> device
+extension after querying for its support.</p>
 </div>
 <div class="paragraph">
 <p>For that purpose we&#8217;ll first extend the <code>createLogicalDevice</code> function to
 check if this extension is supported. We&#8217;ve previously seen how to list the
-extensions that are supported by a <code>VkPhysicalDevice</code>, so doing that should
+extensions that are supported by a <code>vk::raii::PhysicalDevice</code>, so doing that should
 be fairly straightforward. Note that the Vulkan header file provides a nice
-macro <code>VK_KHR_SWAPCHAIN_EXTENSION_NAME</code> that is defined as
+macro <code>vk::KHRSwapchainExtensionName</code> that is defined as
 <code>VK_KHR_swapchain</code>. The advantage of using this macro is that the compiler
 will catch misspellings.</p>
 </div>
@@ -758,7 +758,7 @@ validation layers to enable.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;const char*&gt; deviceExtensions = {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;const char*&gt; requiredDeviceExtension = {
     vk::KHRSwapchainExtensionName};</code></pre>
 </div>
 </div>
@@ -779,8 +779,8 @@ creation structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">deviceCreateInfo.enabledExtensionCount = deviceExtensions.size();
-deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">deviceCreateInfo.enabledExtensionCount = requiredDeviceExtension.size();
+deviceCreateInfo.ppEnabledExtensionNames = requiredDeviceExtension.data();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -788,10 +788,15 @@ deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector deviceExtensions = { vk::KHRSwapchainExtensionName };
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector requiredDeviceExtension = { vk::KHRSwapchainExtensionName };
+
 float                     queuePriority = 0.5f;
-vk::DeviceQueueCreateInfo deviceQueueCreateInfo( {}, graphicsIndex, 1, &amp;queuePriority );
-vk::DeviceCreateInfo      deviceCreateInfo( {}, deviceQueueCreateInfo, {}, deviceExtensions );</code></pre>
+vk::DeviceQueueCreateInfo deviceQueueCreateInfo{.queueFamilyIndex = queueIndex, .queueCount = 1, .pQueuePriorities = &amp;queuePriority};
+vk::DeviceCreateInfo      deviceCreateInfo{.pNext                   = &amp;featureChain.get&lt;vk::PhysicalDeviceFeatures2&gt;(),
+                                           .queueCreateInfoCount    = 1,
+                                           .pQueueCreateInfos       = &amp;deviceQueueCreateInfo,
+                                           .enabledExtensionCount   = static_cast&lt;uint32_t&gt;(requiredDeviceExtension.size()),
+                                           .ppEnabledExtensionNames = requiredDeviceExtension.data()};</code></pre>
 </div>
 </div>
 </div>
@@ -801,7 +806,7 @@ vk::DeviceCreateInfo      deviceCreateInfo( {}, deviceQueueCreateInfo, {}, devic
 <div class="sectionbody">
 <div class="paragraph">
 <p>Just checking if a swap chain is available is not enough because it may not
- be compatible with our window surface. Creating a swap chain also
+be compatible with our window surface. Creating a swap chain also
 involves a lot more settings than instance and device creation, so we need to
 query for some more details before we&#8217;re able to proceed.</p>
 </div>
@@ -830,18 +835,17 @@ next section.</p>
 <div class="paragraph">
 <p>Let&#8217;s start with the basic surface capabilities. These properties are
 straightforward to query and are returned into a single
-<code>VkSurfaceCapabilitiesKHR</code> struct.</p>
+<code>vk::SurfaceCapabilitiesKHR</code> struct.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( surface );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This function takes the specified <code>VkPhysicalDevice</code> and <code>VkSurfaceKHR</code> window
-surface into account when determining the supported capabilities. All the
-support querying functions have these two as first parameters because they are
-the core components of the swap chain.</p>
+<p>This function takes the specified <code>vk::SurfaceKHR</code> window surface into account
+when determining the supported capabilities. All the support querying functions
+have that as the first parameter because it is the core component of the swap chain.</p>
 </div>
 <div class="paragraph">
 <p>The next step is about querying the supported surface formats.</p>
@@ -852,11 +856,8 @@ the core components of the swap chain.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Make sure that the vector is resized to hold all the available formats.</p>
-</div>
-<div class="paragraph">
 <p>Finally, querying the supported presentation modes works exactly the same way
-with <code>vkGetPhysicalDeviceSurfacePresentModesKHR</code>:</p>
+with <code>vk::raii::PhysicalDevice::getSurfacePresentModesKHR</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -906,51 +907,48 @@ thing.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector&lt;vk::SurfaceFormatKHR&gt;&amp; availableFormats) {
-        return availableFormats[0];
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SurfaceFormatKHR chooseSwapSurfaceFormat(std::vector&lt;vk::SurfaceFormatKHR&gt; const &amp;availableFormats)
+{
+    assert(!availableFormats.empty());
+    return availableFormats[0];
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Each <code>VkSurfaceFormatKHR</code> entry contains a <code>format</code> and a <code>colorSpace</code> member. The
+<p>Each <code>vk::SurfaceFormatKHR</code> entry contains a <code>format</code> and a <code>colorSpace</code> member. The
 <code>format</code> member specifies the color channels and types. For example,
-<code>VK_FORMAT_B8G8R8A8_SRGB</code> means that we store the B, G, R and alpha channels in
+<code>vk::Format::eB8G8R8A8Srgb</code> means that we store the B, G, R and alpha channels in
 that order with an 8-bit unsigned integer for a total of 32 bits per pixel. The
 <code>colorSpace</code> member indicates if the SRGB color space is supported or not using
-the <code>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</code> flag. Note that this flag used to be
-called <code>VK_COLORSPACE_SRGB_NONLINEAR_KHR</code> in old versions of the specification.</p>
+the <code>vk::ColorSpaceKHR::eSrgbNonlinear</code> flag.</p>
 </div>
 <div class="paragraph">
 <p>For the color space we&#8217;ll use SRGB if it is available, because it <a href="http://stackoverflow.com/questions/12524623/">results in more accurate perceived colors</a>. It is also pretty much the standard color space for images, like the textures we&#8217;ll use later on.
-Because of that we should also use an SRGB color format, of which one of the most common ones is <code>VK_FORMAT_B8G8R8A8_SRGB</code>.</p>
+Because of that we should also use an SRGB color format, of which one of the most common ones is <code>vk::Format::eB8G8R8A8Srgb</code>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s go through the list and see if the preferred combination is available:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (const auto&amp; availableFormat : availableFormats) {
-    if (availableFormat.format == vk::Format::eB8G8R8A8Srgb &amp;&amp; availableFormat.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
-        return availableFormat;
-    }
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">const auto formatIt = std::ranges::find_if(
+    availableFormats,
+    [](const auto &amp;format) { return format.format == vk::Format::eB8G8R8A8Srgb &amp;&amp; format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear; });
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If that also fails, then we could start ranking the available formats based on
+<p>If that fails, then we could start ranking the available formats based on
 how "good" they are, but in most cases it&#8217;s okay to just settle with the first
 format that is specified.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector&lt;vk::SurfaceFormatKHR&gt;&amp; availableFormats) {
-    for (const auto&amp; availableFormat : availableFormats) {
-        if (availableFormat.format == vk::Format::eB8G8R8A8Srgb &amp;&amp; availableFormat.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
-            return availableFormat;
-        }
-    }
-
-    return availableFormats[0];
+    const auto formatIt = std::ranges::find_if(
+        availableFormats,
+        [](const auto &amp;format) { return format.format == vk::Format::eB8G8R8A8Srgb &amp;&amp; format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear; });
+    return formatIt != availableFormats.end() ? *formatIt : availableFormats[0];
 }</code></pre>
 </div>
 </div>
@@ -965,11 +963,11 @@ There are four possible modes available in Vulkan:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PRESENT_MODE_IMMEDIATE_KHR</code>: Images submitted by your application are
+<p><code>vk::PresentModeKHR::eImmediate</code>: Images submitted by your application are
 transferred to the screen right away, which may result in tearing.</p>
 </li>
 <li>
-<p><code>VK_PRESENT_MODE_FIFO_KHR</code>: The swap chain is a queue where the display takes
+<p><code>vk::PresentModeKHR::eFifo</code>: The swap chain is a queue where the display takes
 an image from the front of the queue when the display is refreshed, and the
 program inserts rendered images at the back of the queue. If the queue is full,
 then the program has to wait. This is most similar to vertical sync as found in
@@ -977,13 +975,13 @@ modern games. The moment that the display is refreshed is known as "vertical
 blank".</p>
 </li>
 <li>
-<p><code>VK_PRESENT_MODE_FIFO_RELAXED_KHR</code>: This mode only differs from the previous
+<p><code>vk::PresentModeKHR::eFifoRelaxed</code>: This mode only differs from the previous
 one if the application is late and the queue was empty at the last vertical
 blank. Instead of waiting for the next vertical blank, the image is transferred
 right away when it finally arrives. This may result in visible tearing.</p>
 </li>
 <li>
-<p><code>VK_PRESENT_MODE_MAILBOX_KHR</code>: This is another variation of the second mode.
+<p><code>vk::PresentModeKHR::eMailbox</code>: This is another variation of the second mode.
 Instead of blocking the application when the queue is full, the images that are
 already queued are simply replaced with the newer ones. This mode can be used to
 render frames as fast as possible while still avoiding tearing, resulting in
@@ -994,34 +992,35 @@ necessarily mean that the framerate is unlocked.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Only the <code>VK_PRESENT_MODE_FIFO_KHR</code> mode is guaranteed to be available, so we&#8217;ll
+<p>Only the <code>vk::PresentModeKHR::eFifo</code> mode is guaranteed to be available, so we&#8217;ll
 again have to write a function that looks for the best mode that is available:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PresentModeKHR chooseSwapPresentMode(const std::vector&lt;vk::PresentModeKHR&gt;&amp; availablePresentModes) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PresentModeKHR chooseSwapPresentMode(std::vector&lt;vk::PresentModeKHR&gt; const &amp;availablePresentModes)
+{
     return vk::PresentModeKHR::eFifo;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I think that <code>VK_PRESENT_MODE_MAILBOX_KHR</code> is a very nice trade-off if
+<p>I think that <code>vk::PresentModeKHR::eMailbox</code> is a very nice trade-off if
 energy usage is not a concern. It allows us to avoid tearing while still
 maintaining fairly low latency by rendering new images that are as
 up to date as possible right until the vertical blank. On mobile devices,
 where energy usage is more important, you will probably want to use
-<code>VK_PRESENT_MODE_FIFO_KHR</code> instead. Now, let&#8217;s look through the list to see
-if <code>VK_PRESENT_MODE_MAILBOX_KHR</code> is available:</p>
+<code>vk::PresentModeKHR::eFifo</code> instead. Now, let&#8217;s look through the list to see
+if <code>vk::PresentModeKHR::eMailbox</code> is available:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PresentModeKHR chooseSwapPresentMode(const std::vector&lt;vk::PresentModeKHR&gt;&amp; availablePresentModes) {
-    for (const auto&amp; availablePresentMode : availablePresentModes) {
-        if (availablePresentMode == vk::PresentModeKHR::eMailbox) {
-            return availablePresentMode;
-        }
-    }
-    return vk::PresentModeKHR::eFifo;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PresentModeKHR chooseSwapPresentMode(std::vector&lt;vk::PresentModeKHR&gt; const &amp;availablePresentModes)
+{
+    assert(std::ranges::any_of(availablePresentModes, [](auto presentMode) { return presentMode == vk::PresentModeKHR::eFifo; }));
+    return std::ranges::any_of(availablePresentModes,
+                               [](const vk::PresentModeKHR value) { return vk::PresentModeKHR::eMailbox == value; }) ?
+               vk::PresentModeKHR::eMailbox :
+               vk::PresentModeKHR::eFifo;
 }</code></pre>
 </div>
 </div>
@@ -1033,15 +1032,15 @@ if <code>VK_PRESENT_MODE_MAILBOX_KHR</code> is available:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR&amp; capabilities) {
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::Extent2D chooseSwapExtent(vk::SurfaceCapabilitiesKHR const &amp;capabilities)
+{}</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The swap extent is the resolution of the swap chain images, and it&#8217;s almost
 always exactly equal to the resolution of the window that we&#8217;re drawing to <em>in
 pixels</em> (more on that in a moment). The range of the possible resolutions is
-defined in the <code>VkSurfaceCapabilitiesKHR</code> structure. Vulkan tells us to match
+defined in the <code>vk::SurfaceCapabilitiesKHR</code> structure. Vulkan tells us to match
 the resolution of the window by setting the width and height in the
 <code>currentExtent</code> member. However, some window managers do allow us to differ here,
 and this is indicated by setting the width and height in <code>currentExtent</code> to a
@@ -1071,8 +1070,10 @@ matching it against the minimum and maximum image extent.</p>
 
 ...
 
-vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR&amp; capabilities) {
-    if (capabilities.currentExtent.width != std::numeric_limits&lt;uint32_t&gt;::max()) {
+vk::Extent2D chooseSwapExtent(vk::SurfaceCapabilitiesKHR const &amp;capabilities)
+{
+    if (capabilities.currentExtent.width != std::numeric_limits&lt;uint32_t&gt;::max())
+    {
         return capabilities.currentExtent;
     }
     int width, height;
@@ -1117,11 +1118,12 @@ calls and make sure to call it from <code>initVulkan</code> after logical device
 }
 
 void createSwapChain() {
-    auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
-    swapChainSurfaceFormat = chooseSwapSurfaceFormat(physicalDevice.getSurfaceFormatsKHR( *surface ));
-    swapChainExtent = chooseSwapExtent(surfaceCapabilities);
-    auto minImageCount = std::max( 3u, surfaceCapabilities.minImageCount );
-    minImageCount = ( surfaceCapabilities.maxImageCount &gt; 0 &amp;&amp; minImageCount &gt; surfaceCapabilities.maxImageCount ) ? surfaceCapabilities.maxImageCount : minImageCount;
+    vk::SurfaceCapabilitiesKHR surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
+    swapChainExtent                                = chooseSwapExtent(surfaceCapabilities);
+    uint32_t minImageCount                         = chooseSwapMinImageCount(surfaceCapabilities);
+
+    std::vector&lt;vk::SurfaceFormatKHR&gt; availableFormats = physicalDevice.getSurfaceFormatsKHR(*surface);
+    swapChainSurfaceFormat                             = chooseSwapSurfaceFormat(availableFormats);
 }</code></pre>
 </div>
 </div>
@@ -1148,12 +1150,19 @@ one more image than the minimum:</p>
 </div>
 <div class="paragraph">
 <p>We should also make sure to not exceed the maximum number of images while
-doing this, where <code>0</code> is a special value that means that there is no maximum:</p>
+doing this, where <code>0</code> is a special value that means that there is no maximum,
+resulting in this helper function</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (surfaceCapabilities.maxImageCount &gt; 0 &amp;&amp; imageCount &gt; surfaceCapabilities.maxImageCount) {
-    imageCount = surfaceCapabilities.maxImageCount;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t chooseSwapMinImageCount(vk::SurfaceCapabilitiesKHR const &amp;surfaceCapabilities)
+{
+    auto minImageCount = std::max(3u, surfaceCapabilities.minImageCount);
+    if ((0 &lt; surfaceCapabilities.maxImageCount) &amp;&amp; (surfaceCapabilities.maxImageCount &lt; minImageCount))
+    {
+        minImageCount = surfaceCapabilities.maxImageCount;
+    }
+    return minImageCount;
 }</code></pre>
 </div>
 </div>
@@ -1164,85 +1173,79 @@ object so it is among the larger createInfo structures in Vulkan:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SwapchainCreateInfoKHR swapChainCreateInfo{
-    .flags = vk::SwapchainCreateFlagsKHR(),
-    .surface = *surface,
-    .minImageCount = minImageCount,
-    .imageFormat = swapChainSurfaceFormat.format,
-    .imageColorSpace = swapChainSurfaceFormat.colorSpace,
-    .imageExtent = swapChainExtent,
-    .imageArrayLayers =1,
-    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment,
-    .imageSharingMode = vk::SharingMode::eExclusive,
-    .preTransform = surfaceCapabilities.currentTransform,
-    .compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque,
-    .presentMode = chooseSwapPresentMode(physicalDevice.getSurfacePresentModesKHR( *surface )),
-    .clipped = true,
-    .oldSwapchain = nullptr
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SwapchainCreateInfoKHR swapChainCreateInfo{.surface          = *surface,
+                                               .minImageCount    = minImageCount,
+                                               .imageFormat      = swapChainSurfaceFormat.format,
+                                               .imageColorSpace  = swapChainSurfaceFormat.colorSpace,
+                                               .imageExtent      = swapChainExtent,
+                                               .imageArrayLayers = 1,
+                                               .imageUsage       = vk::ImageUsageFlagBits::eColorAttachment,
+                                               .imageSharingMode = vk::SharingMode::eExclusive,
+                                               .preTransform     = surfaceCapabilities.currentTransform,
+                                               .compositeAlpha   = vk::CompositeAlphaFlagBitsKHR::eOpaque,
+                                               .presentMode      = chooseSwapPresentMode(availablePresentModes),
+                                               .clipped          = true};
 };</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .imageArrayLayers = 1,</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>imageArrayLayers</code> specifies the number of layers each image consists of.
-This is always <code>1</code> unless you are developing a stereoscopic 3D application. The
-<code>imageUsage</code> bit field specifies what kind of operations we&#8217;ll use the images in
+This is always <code>1</code> unless you are developing a stereoscopic 3D application.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>imageUsage</code> bit field specifies what kind of operations we&#8217;ll use the images in
 the swap chain for. In this tutorial, we&#8217;re going to render directly to them,
 which means that they&#8217;re used as color attachment. It is also possible that
 you&#8217;ll render images to a separate image first to perform operations like
 post-processing. In that case you may use a value like
-<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> instead and use a memory operation to transfer
+<code>vk::ImageUsageFlagBits::eTransferDst</code> instead and use a memory operation to transfer
 the rendered image to a swap chain image.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t queueFamilyIndices[] = {graphicsFamily, presentFamily};
-
-if (graphicsFamily != presentFamily) {
-    swapChainCreateInfo.imageSharingMode = vk::SharingMode::eConcurrent;
-    swapChainCreateInfo.queueFamilyIndexCount = 2;
-    swapChainCreateInfo.pQueueFamilyIndices = queueFamilyIndices;
-} else {
-    swapChainCreateInfo.imageSharingMode = vk::SharingMode::eExclusive;
-    swapChainCreateInfo.queueFamilyIndexCount = 0; // Optional
-    swapChainCreateInfo.pQueueFamilyIndices = nullptr; // Optional
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .imageSharingMode = vk::SharingMode::eExclusive,</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, we need to specify how to handle swap chain images that will be used
-across multiple queue families. That will be the case in our application if the
-graphics queue family is different from the presentation queue. We&#8217;ll be drawing
-on the images in the swap chain from the graphics queue and then submitting them
-on the presentation queue. There are two ways to handle images that are
-accessed from multiple queues:</p>
+<p>The <code>imageSharingMode</code> specifies how to handle swap chain images that might be used
+across multiple queue families. There are two ways to handle images that are accessed
+from multiple queues:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SHARING_MODE_EXCLUSIVE</code>: An image is owned by one queue family at a time,
+<p><code>vk::SharingMode::eExclusive</code>: An image is owned by one queue family at a time,
 and ownership must be explicitly transferred before using it in another queue
 family. This option offers the best performance.</p>
 </li>
 <li>
-<p><code>VK_SHARING_MODE_CONCURRENT</code>: Images can be used across multiple queue
+<p><code>vk::SharingMode::eConcurrent</code>: Images can be used across multiple queue
 families without explicit ownership transfers.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the queue families differ, then we&#8217;ll be using the concurrent mode in this
-tutorial to avoid having to do the ownership chapters, because these involve
-some concepts that are better explained at a later time. Concurrent mode
-requires you to specify in advance between which queue families ownership will
-be shared using the <code>queueFamilyIndexCount</code> and <code>pQueueFamilyIndices</code>
-parameters. If the graphics queue family and presentation queue family are the
-same, which will be the case on most hardware, then we should stick to exclusive
-mode. Concurrent mode requires you to specify at least two distinct
-queue families.</p>
+<p>If the queue families differ, then you could use the concurrent mode to avoid having
+to do the ownership chapters, because these involve some concepts that are better
+explained at a later time. Concurrent mode requires you to specify in advance between
+which queue families ownership will be shared using the <code>queueFamilyIndexCount</code> and
+<code>pQueueFamilyIndices</code> parameters. Concurrent mode requires you to specify at least two
+distinct queue families. If the graphics queue family and presentation queue family are
+the same, which will be the case on most hardware, then we should stick to exclusive mode.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainCreateInfo.preTransform = surfaceCapabilities.currentTransform;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .preTransform     = surfaceCapabilities.currentTransform,</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1253,30 +1256,30 @@ any transformation, simply specify the current transformation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainCreateInfo.compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .compositeAlpha   = vk::CompositeAlphaFlagBitsKHR::eOpaque,</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>compositeAlpha</code> field specifies if the alpha channel should be used for
 blending with other windows in the window system. You&#8217;ll almost always want to
-simply ignore the alpha channel, hence <code>VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR</code>.</p>
+simply ignore the alpha channel, hence <code>vk::CompositeAlphaFlagBitsKHR::eOpaque</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainCreateInfo.presentMode = presentMode;
-swapChainCreateInfo.clipped = vk::True;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    .presentMode      = chooseSwapPresentMode(availablePresentModes),
+    .clipped          = true};</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>presentMode</code> member speaks for itself. If the <code>clipped</code> member is set to
-<code>VK_TRUE</code> then that means that we don&#8217;t care about the color of pixels that are
+<code>vk::True</code> then that means that we don&#8217;t care about the color of pixels that are
 obscured, for example, because another window is in front of them. Unless you
 really need to be able to read these pixels back and get predictable results,
 you&#8217;ll get the best performance by enabling clipping.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainCreateInfo.oldSwapchain = VK_NULL_HANDLE;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainCreateInfo.oldSwapchain = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1285,30 +1288,30 @@ your swap chain becomes invalid or unoptimized while your application is
 running, for example, because the window was resized. In that case, the swap chain
 actually needs to be recreated from scratch, and a reference to the old one must
 be specified in this field. This is a complex topic that we&#8217;ll learn more about
-in <a href="../04_Swap_chain_recreation.html" class="xref page">a future chapter</a>. For now, we&#8217;ll assume that we&#8217;ll only ever create
-one swap chain.</p>
+in <a href="../04_Swap_chain_recreation.html" class="xref page">a future chapter</a>.
+For now, we&#8217;ll assume that we&#8217;ll only ever create one swap chain and can leave this
+member to its default <code>nullptr</code>.</p>
 </div>
 <div class="paragraph">
-<p>Now add class members to store the <code>VkSwapchainKHR</code> object and its images:</p>
+<p>Now add class members to store the <code>vk::SwapchainKHR</code> object and its images:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkSwapchainKHR swapChain;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::SwapchainKHR swapChain;
 std::vector&lt;vk::Image&gt; swapChainImages;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Creating the swap chain is now as simple as calling <code>vkCreateSwapchainKHR</code>:</p>
+<p>Creating the swap chain is now as simple as calling the constructor of <code>vk::raii::SwapchainKHR</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChain = vk::raii::SwapchainKHR( device, swapChainCreateInfo );
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChain       = vk::raii::SwapchainKHR( device, swapChainCreateInfo );
 swapChainImages = swapChain.getImages();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The parameters are the logical device, swap chain creation info, optional custom
-allocators and a pointer to the variable to store the handle in.</p>
+<p>The parameters are the logical device and a swap chain creation info.</p>
 </div>
 <div class="paragraph">
 <p>Now run the application to ensure that the swap chain is created
@@ -1334,12 +1337,12 @@ mistake and a helpful message is printed:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The swap chain has been created now, so all that remains is retrieving the
-handles of the <code>VkImage</code> objects it contains. We&#8217;ll reference these during rendering
+handles of the <code>vk::Image</code> objects it contains. We&#8217;ll reference these during rendering
 operations in later chapters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;vk::Image&gt; swapChainImages = swapChainImages = swapChain-&gt;getImages();</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;vk::Image&gt; swapChainImages = swapChain-&gt;getImages();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1350,13 +1353,8 @@ images in member variables. We&#8217;ll need them in future chapters.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::SwapchainKHR swapChain = nullptr;
 std::vector&lt;vk::Image&gt; swapChainImages;
-vk::Format swapChainImageFormat = vk::Format::eUndefined;
-vk::Extent2D swapChainExtent;
-
-...
-
-swapChainImageFormat = surfaceFormat.format;
-swapChainExtent = extent;</code></pre>
+vk::SurfaceFormatKHR   swapChainSurfaceFormat;
+vk::Extent2D           swapChainExtent;</code></pre>
 </div>
 </div>
 <div class="paragraph">

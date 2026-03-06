@@ -23,6 +23,9 @@ Bits which **can** be set in the [VkFormatProperties](VkFormatProperties.html) f
 [VkDrmFormatModifierPropertiesEXT](VkDrmFormatModifierPropertiesEXT.html)::`drmFormatModifierTilingFeatures`,
 and `bufferFeatures` are:
 
+|  | This functionality is superseded by [VkFormatFeatureFlagBits2](../../../../spec/latest/chapters/formats.html#VkFormatFeatureFlagBits2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkFormatFeatureFlagBits {
     VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = 0x00000001,
@@ -112,11 +115,11 @@ created with the queried
 
 * 
 [VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#) specifies that an image view
-**can** be [sampled from](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage).
+**can** be [sampled from](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sampledimage).
 
 * 
 [VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](#) specifies that an image view
-**can** be used as a [storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage).
+**can** be used as a [storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptors-storageimage).
 
 * 
 [VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](#) specifies that an image

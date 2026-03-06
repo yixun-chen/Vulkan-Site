@@ -21,6 +21,9 @@ vkCmdWriteTimestamp - Write a device timestamp into a query object
 
 To request a timestamp and write the value to memory, call:
 
+|  | This functionality is superseded by [vkCmdWriteTimestamp2](../../../../spec/latest/chapters/queries.html#vkCmdWriteTimestamp2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdWriteTimestamp(
     VkCommandBuffer                             commandBuffer,

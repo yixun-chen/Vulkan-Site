@@ -21,7 +21,7 @@ vkGetPhysicalDeviceProperties - Returns properties of a physical device
 
 To query general properties of physical devices once enumerated, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
+|  | This functionality is superseded by [vkGetPhysicalDeviceProperties2](../../../../spec/latest/chapters/devsandqueues.html#vkGetPhysicalDeviceProperties2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-gpdp2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0

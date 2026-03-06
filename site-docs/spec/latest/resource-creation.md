@@ -116,6 +116,21 @@ containing parameters affecting creation of the buffer.
 `pBuffer` is a pointer to a [VkBuffer](#VkBuffer) handle in which the
 resulting buffer object is returned.
 
+Implementations **may** fail to create a buffer if the
+[effective usage](#resources-effective-buffer-usage) includes the
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) flag, and `size` is
+greater than the maximum of
+[`maxResourceHeapSize`](limits.html#limits-maxResourceHeapSize) and
+[`maxSamplerHeapSize`](limits.html#limits-maxSamplerHeapSize).
+If this happens, [VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult) will be returned.
+
+|  | This is an issue identified with [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap), which we
+| --- | --- |
+plan to tighten up for the KHR version.
+Applications using [VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap) may wish to avoid
+suballocating heaps from the same buffer, instead creating one buffer per
+heap, to avoid situations where this causes issues. |
+
 Valid Usage
 
 * 
@@ -1031,6 +1046,9 @@ more [VkBufferUsageFlagBits2](#VkBufferUsageFlagBits2).
 Bits which **can** be set in [VkBufferCreateInfo](#VkBufferCreateInfo)::`usage`, specifying
 usage behavior of a buffer, are:
 
+|  | This functionality is superseded by [VkBufferUsageFlagBits2](#VkBufferUsageFlagBits2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkBufferUsageFlagBits {
     VK_BUFFER_USAGE_TRANSFER_SRC_BIT = 0x00000001,
@@ -1244,6 +1262,9 @@ the buffer **can** be used for as scratch memory for
 * 
 [VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be used as a [descriptor heap](descriptorheaps.html#descriptorheaps).
+
+|  | This functionality is superseded by [VkBufferUsageFlags2](#VkBufferUsageFlags2). See [Legacy Functionality](../appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkBufferUsageFlags;
@@ -2307,7 +2328,7 @@ Valid Usage (Implicit)
 Images are specialized resources that have multi-dimensional access, as
 outlined in the [Images](images.html#images) chapter.
 Images **can** be used for various purposes, such as [rendering attachments](renderpass.html#renderpass), [for copy operations](copies.html#copies), or accessed through shaders
-via [resource descriptors](descriptorsets.html#descriptorsets).
+via [resource descriptors](descriptorsets.html#descriptors).
 
 Images are represented by `VkImage` handles:
 
@@ -8010,7 +8031,7 @@ and [Copy Commands](copies.html#copies)).
 For use as a framebuffer attachment, this is a member in the substructures
 of the [VkRenderPassCreateInfo](renderpass.html#VkRenderPassCreateInfo) (see [Render Pass](renderpass.html#renderpass)).
 For use in a descriptor set, this is a member in the
-`VkDescriptorImageInfo` structure (see [Descriptor Set Updates](descriptorsets.html#descriptorsets-updates)).
+`VkDescriptorImageInfo` structure (see [Descriptor Set Updates](descriptorsets.html#descriptors-sets-updates)).
 
 If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts) feature
 is enabled, the [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) image layout **may** be used in

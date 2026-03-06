@@ -21,6 +21,9 @@ vkCmdBindDescriptorBufferEmbeddedSamplersEXT - Setting embedded immutable sample
 
 To bind an embedded immutable sampler set to a command buffer, call:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(
     VkCommandBuffer                             commandBuffer,
@@ -53,7 +56,7 @@ Any sets that were last bound by a call to [vkCmdBindDescriptorSets](vkCmdBindDe
 invalidated upon calling this command.
 Other sets will also be invalidated upon calling this command if
 `layout` differs from the pipeline layout used to bind those other sets,
-as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility).
+as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility).
 
 Valid Usage
 

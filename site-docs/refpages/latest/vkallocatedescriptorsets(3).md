@@ -53,19 +53,19 @@ used, subject to the following conditions:
 For descriptor set bindings created with the
 [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html) bit set, all descriptors
 in that binding that are dynamically used **must** have been populated
-before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding).
+before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptors-binding).
 
 * 
 For descriptor set bindings created without the
 [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html) bit set, all descriptors
 in that binding that are statically used **must** have been populated
-before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding).
+before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptors-binding).
 
 * 
 Descriptor bindings with descriptor type of
 [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) **can** be **undefined** when
-the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding); though values
-in that block will be **undefined**.
+the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptors-binding); though values in
+that block will be **undefined**.
 
 * 
 Entries that are not used by a pipeline **can** have **undefined**

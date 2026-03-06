@@ -76,6 +76,9 @@ Interacts with VK_VERSION_1_4
 Interacts with VK_ARM_pipeline_opacity_micromap
 
 * 
+Interacts with VK_ARM_shader_instrumentation
+
+* 
 Interacts with VK_EXT_attachment_feedback_loop_layout
 
 * 
@@ -452,6 +455,18 @@ If [VK_ARM_pipeline_opacity_micromap](VK_ARM_pipeline_opacity_micromap.html) is 
 Extending [VkPipelineCreateFlagBits2](VkPipelineCreateFlagBits2.html):
 
 [VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM](VkPipelineCreateFlagBits2.html)
+
+If [VK_ARM_shader_instrumentation](VK_ARM_shader_instrumentation.html) is supported:
+
+* 
+Extending [VkPipelineCreateFlagBits2](VkPipelineCreateFlagBits2.html):
+
+[VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM](VkPipelineCreateFlagBits2.html)
+
+Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
+
+* 
+[VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM](VkShaderCreateFlagBitsEXT.html)
 
 If [VK_EXT_attachment_feedback_loop_layout](VK_EXT_attachment_feedback_loop_layout.html) is supported:
 

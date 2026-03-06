@@ -86,7 +86,7 @@ If the shaders in `pInitialShaders` were created with
 If the shaders in `pInitialShaders` were created without
 [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), the
 descriptor layout of each shader in `pExecutionSetWrites` **must** be
-[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the initial layout info
+[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) with the initial layout info
 used to create the Indirect Execution Set
 
 * 

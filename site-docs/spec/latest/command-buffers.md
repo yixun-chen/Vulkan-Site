@@ -2188,6 +2188,12 @@ an outstanding [vkCmdDebugMarkerBeginEXT](debugging.html#vkCmdDebugMarkerBeginEX
 `commandBuffer` that has not previously been ended by a call to
 [vkCmdDebugMarkerEndEXT](debugging.html#vkCmdDebugMarkerEndEXT)
 
+* 
+[](#VUID-vkEndCommandBuffer-commandBuffer-12372) VUID-vkEndCommandBuffer-commandBuffer-12372
+
+`commandBuffer` **must** not have any shader instrumentation
+[active](shaders.html#shaders-instrumentation-active)
+
 Valid Usage (Implicit)
 
 * 
@@ -3123,6 +3129,9 @@ Structure Chaining
 
 To submit command buffers to a queue, call:
 
+|  | This functionality is superseded by [vkQueueSubmit2](#vkQueueSubmit2). See [Legacy Functionality](../appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 VkResult vkQueueSubmit(
     VkQueue                                     queue,
@@ -3411,6 +3420,9 @@ Return Codes
 [VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSubmitInfo` structure is defined as:
+
+|  | This functionality is superseded by [VkSubmitInfo2](#VkSubmitInfo2). See [Legacy Functionality](../appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef struct VkSubmitInfo {
@@ -5350,6 +5362,12 @@ each element of `pCommandBuffers` **must** have been recorded with a
 value of
 [VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
 set to `NULL`
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-12373) VUID-vkCmdExecuteCommands-commandBuffer-12373
+
+`commandBuffer` **must** not have any shader instrumentation
+[active](shaders.html#shaders-instrumentation-active)
 
 Valid Usage (Implicit)
 

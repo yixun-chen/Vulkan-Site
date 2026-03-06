@@ -22,6 +22,9 @@ VkImageCaptureDescriptorDataInfoEXT - Structure specifying an image for descript
 Information about the image to get descriptor buffer capture data for is
 passed in a `VkImageCaptureDescriptorDataInfoEXT` structure:
 
+|  | This functionality is superseded by [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-descriptor-sets) for more information. |
+| --- | --- |
+
 // Provided by VK_EXT_descriptor_buffer
 typedef struct VkImageCaptureDescriptorDataInfoEXT {
     VkStructureType    sType;

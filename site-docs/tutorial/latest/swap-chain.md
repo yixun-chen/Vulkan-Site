@@ -41,21 +41,21 @@ Not all graphics cards are capable of presenting images directly to a screen for
 various reasons, for example, because they are designed for servers and don’t
 have any display outputs. Secondly, since image presentation is heavily tied
 into the window system and the surfaces associated with windows, it is not
- part of the Vulkan core. You have to enable the `VK_KHR_swapchain`
-device extension after querying for its support.
+part of the Vulkan core. You have to enable the `VK_KHR_swapchain` device
+extension after querying for its support.
 
 For that purpose we’ll first extend the `createLogicalDevice` function to
 check if this extension is supported. We’ve previously seen how to list the
-extensions that are supported by a `VkPhysicalDevice`, so doing that should
+extensions that are supported by a `vk::raii::PhysicalDevice`, so doing that should
 be fairly straightforward. Note that the Vulkan header file provides a nice
-macro `VK_KHR_SWAPCHAIN_EXTENSION_NAME` that is defined as
+macro `vk::KHRSwapchainExtensionName` that is defined as
 `VK_KHR_swapchain`. The advantage of using this macro is that the compiler
 will catch misspellings.
 
 First declare a list of required device extensions, similar to the list of
 validation layers to enable.
 
-std::vector deviceExtensions = {
+std::vector requiredDeviceExtension = {
     vk::KHRSwapchainExtensionName};
 
 It should be noted that the availability of a presentation queue,
@@ -66,18 +66,23 @@ Using a swapchain requires enabling the `VK_KHR_swapchain` extension first.
 Enabling the extension just requires a small change to the logical device
 creation structure:
 
-deviceCreateInfo.enabledExtensionCount = deviceExtensions.size();
-deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
+deviceCreateInfo.enabledExtensionCount = requiredDeviceExtension.size();
+deviceCreateInfo.ppEnabledExtensionNames = requiredDeviceExtension.data();
 
 Alternatively, we can do this at the construction and keep this very succinct:
 
-std::vector deviceExtensions = { vk::KHRSwapchainExtensionName };
+std::vector requiredDeviceExtension = { vk::KHRSwapchainExtensionName };
+
 float                     queuePriority = 0.5f;
-vk::DeviceQueueCreateInfo deviceQueueCreateInfo( {}, graphicsIndex, 1, &queuePriority );
-vk::DeviceCreateInfo      deviceCreateInfo( {}, deviceQueueCreateInfo, {}, deviceExtensions );
+vk::DeviceQueueCreateInfo deviceQueueCreateInfo{.queueFamilyIndex = queueIndex, .queueCount = 1, .pQueuePriorities = &queuePriority};
+vk::DeviceCreateInfo      deviceCreateInfo{.pNext                   = &featureChain.get(),
+                                           .queueCreateInfoCount    = 1,
+                                           .pQueueCreateInfos       = &deviceQueueCreateInfo,
+                                           .enabledExtensionCount   = static_cast(requiredDeviceExtension.size()),
+                                           .ppEnabledExtensionNames = requiredDeviceExtension.data()};
 
 Just checking if a swap chain is available is not enough because it may not
- be compatible with our window surface. Creating a swap chain also
+be compatible with our window surface. Creating a swap chain also
 involves a lot more settings than instance and device creation, so we need to
 query for some more details before we’re able to proceed.
 
@@ -99,23 +104,20 @@ next section.
 
 Let’s start with the basic surface capabilities. These properties are
 straightforward to query and are returned into a single
-`VkSurfaceCapabilitiesKHR` struct.
+`vk::SurfaceCapabilitiesKHR` struct.
 
-auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( surface );
+auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
 
-This function takes the specified `VkPhysicalDevice` and `VkSurfaceKHR` window
-surface into account when determining the supported capabilities. All the
-support querying functions have these two as first parameters because they are
-the core components of the swap chain.
+This function takes the specified `vk::SurfaceKHR` window surface into account
+when determining the supported capabilities. All the support querying functions
+have that as the first parameter because it is the core component of the swap chain.
 
 The next step is about querying the supported surface formats.
 
 std::vector availableFormats = physicalDevice.getSurfaceFormatsKHR( surface );
 
-Make sure that the vector is resized to hold all the available formats.
-
 Finally, querying the supported presentation modes works exactly the same way
-with `vkGetPhysicalDeviceSurfacePresentModesKHR`:
+with `vk::raii::PhysicalDevice::getSurfacePresentModesKHR`:
 
 std::vector availablePresentModes = physicalDevice.getSurfacePresentModesKHR( surface );
 
@@ -145,41 +147,38 @@ thing.
 The function for this setting starts out like this. We’ll later pass the
 `formats` member of the `SwapChainSupportDetails` struct as argument.
 
-vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector& availableFormats) {
-        return availableFormats[0];
+vk::SurfaceFormatKHR chooseSwapSurfaceFormat(std::vector const &availableFormats)
+{
+    assert(!availableFormats.empty());
+    return availableFormats[0];
 }
 
-Each `VkSurfaceFormatKHR` entry contains a `format` and a `colorSpace` member. The
+Each `vk::SurfaceFormatKHR` entry contains a `format` and a `colorSpace` member. The
 `format` member specifies the color channels and types. For example,
-`VK_FORMAT_B8G8R8A8_SRGB` means that we store the B, G, R and alpha channels in
+`vk::Format::eB8G8R8A8Srgb` means that we store the B, G, R and alpha channels in
 that order with an 8-bit unsigned integer for a total of 32 bits per pixel. The
 `colorSpace` member indicates if the SRGB color space is supported or not using
-the `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` flag. Note that this flag used to be
-called `VK_COLORSPACE_SRGB_NONLINEAR_KHR` in old versions of the specification.
+the `vk::ColorSpaceKHR::eSrgbNonlinear` flag.
 
 For the color space we’ll use SRGB if it is available, because it [results in more accurate perceived colors](http://stackoverflow.com/questions/12524623/). It is also pretty much the standard color space for images, like the textures we’ll use later on.
-Because of that we should also use an SRGB color format, of which one of the most common ones is `VK_FORMAT_B8G8R8A8_SRGB`.
+Because of that we should also use an SRGB color format, of which one of the most common ones is `vk::Format::eB8G8R8A8Srgb`.
 
 Let’s go through the list and see if the preferred combination is available:
 
-for (const auto& availableFormat : availableFormats) {
-    if (availableFormat.format == vk::Format::eB8G8R8A8Srgb && availableFormat.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
-        return availableFormat;
-    }
+const auto formatIt = std::ranges::find_if(
+    availableFormats,
+    [](const auto &format) { return format.format == vk::Format::eB8G8R8A8Srgb && format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear; });
 }
 
-If that also fails, then we could start ranking the available formats based on
+If that fails, then we could start ranking the available formats based on
 how "good" they are, but in most cases it’s okay to just settle with the first
 format that is specified.
 
 vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector& availableFormats) {
-    for (const auto& availableFormat : availableFormats) {
-        if (availableFormat.format == vk::Format::eB8G8R8A8Srgb && availableFormat.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
-            return availableFormat;
-        }
-    }
-
-    return availableFormats[0];
+    const auto formatIt = std::ranges::find_if(
+        availableFormats,
+        [](const auto &format) { return format.format == vk::Format::eB8G8R8A8Srgb && format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear; });
+    return formatIt != availableFormats.end() ? *formatIt : availableFormats[0];
 }
 
 The presentation mode is arguably the most important setting for the swap chain,
@@ -187,11 +186,11 @@ because it represents the actual conditions for showing images to the screen.
 There are four possible modes available in Vulkan:
 
 * 
-`VK_PRESENT_MODE_IMMEDIATE_KHR`: Images submitted by your application are
+`vk::PresentModeKHR::eImmediate`: Images submitted by your application are
 transferred to the screen right away, which may result in tearing.
 
 * 
-`VK_PRESENT_MODE_FIFO_KHR`: The swap chain is a queue where the display takes
+`vk::PresentModeKHR::eFifo`: The swap chain is a queue where the display takes
 an image from the front of the queue when the display is refreshed, and the
 program inserts rendered images at the back of the queue. If the queue is full,
 then the program has to wait. This is most similar to vertical sync as found in
@@ -199,13 +198,13 @@ modern games. The moment that the display is refreshed is known as "vertical
 blank".
 
 * 
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`: This mode only differs from the previous
+`vk::PresentModeKHR::eFifoRelaxed`: This mode only differs from the previous
 one if the application is late and the queue was empty at the last vertical
 blank. Instead of waiting for the next vertical blank, the image is transferred
 right away when it finally arrives. This may result in visible tearing.
 
 * 
-`VK_PRESENT_MODE_MAILBOX_KHR`: This is another variation of the second mode.
+`vk::PresentModeKHR::eMailbox`: This is another variation of the second mode.
 Instead of blocking the application when the queue is full, the images that are
 already queued are simply replaced with the newer ones. This mode can be used to
 render frames as fast as possible while still avoiding tearing, resulting in
@@ -213,39 +212,40 @@ fewer latency issues than standard vertical sync. This is commonly known as
 "triple buffering," although the existence of three buffers alone does not
 necessarily mean that the framerate is unlocked.
 
-Only the `VK_PRESENT_MODE_FIFO_KHR` mode is guaranteed to be available, so we’ll
+Only the `vk::PresentModeKHR::eFifo` mode is guaranteed to be available, so we’ll
 again have to write a function that looks for the best mode that is available:
 
-vk::PresentModeKHR chooseSwapPresentMode(const std::vector& availablePresentModes) {
+vk::PresentModeKHR chooseSwapPresentMode(std::vector const &availablePresentModes)
+{
     return vk::PresentModeKHR::eFifo;
 }
 
-I think that `VK_PRESENT_MODE_MAILBOX_KHR` is a very nice trade-off if
+I think that `vk::PresentModeKHR::eMailbox` is a very nice trade-off if
 energy usage is not a concern. It allows us to avoid tearing while still
 maintaining fairly low latency by rendering new images that are as
 up to date as possible right until the vertical blank. On mobile devices,
 where energy usage is more important, you will probably want to use
-`VK_PRESENT_MODE_FIFO_KHR` instead. Now, let’s look through the list to see
-if `VK_PRESENT_MODE_MAILBOX_KHR` is available:
+`vk::PresentModeKHR::eFifo` instead. Now, let’s look through the list to see
+if `vk::PresentModeKHR::eMailbox` is available:
 
-vk::PresentModeKHR chooseSwapPresentMode(const std::vector& availablePresentModes) {
-    for (const auto& availablePresentMode : availablePresentModes) {
-        if (availablePresentMode == vk::PresentModeKHR::eMailbox) {
-            return availablePresentMode;
-        }
-    }
-    return vk::PresentModeKHR::eFifo;
+vk::PresentModeKHR chooseSwapPresentMode(std::vector const &availablePresentModes)
+{
+    assert(std::ranges::any_of(availablePresentModes, [](auto presentMode) { return presentMode == vk::PresentModeKHR::eFifo; }));
+    return std::ranges::any_of(availablePresentModes,
+                               [](const vk::PresentModeKHR value) { return vk::PresentModeKHR::eMailbox == value; }) ?
+               vk::PresentModeKHR::eMailbox :
+               vk::PresentModeKHR::eFifo;
 }
 
 That leaves only one major property, for which we’ll add one last function:
 
-vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR& capabilities) {
-}
+vk::Extent2D chooseSwapExtent(vk::SurfaceCapabilitiesKHR const &capabilities)
+{}
 
 The swap extent is the resolution of the swap chain images, and it’s almost
 always exactly equal to the resolution of the window that we’re drawing to *in
 pixels* (more on that in a moment). The range of the possible resolutions is
-defined in the `VkSurfaceCapabilitiesKHR` structure. Vulkan tells us to match
+defined in the `vk::SurfaceCapabilitiesKHR` structure. Vulkan tells us to match
 the resolution of the window by setting the width and height in the
 `currentExtent` member. However, some window managers do allow us to differ here,
 and this is indicated by setting the width and height in `currentExtent` to a
@@ -272,8 +272,10 @@ matching it against the minimum and maximum image extent.
 
 ...
 
-vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR& capabilities) {
-    if (capabilities.currentExtent.width != std::numeric_limits::max()) {
+vk::Extent2D chooseSwapExtent(vk::SurfaceCapabilitiesKHR const &capabilities)
+{
+    if (capabilities.currentExtent.width != std::numeric_limits::max())
+    {
         return capabilities.currentExtent;
     }
     int width, height;
@@ -306,11 +308,12 @@ void initVulkan() {
 }
 
 void createSwapChain() {
-    auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
-    swapChainSurfaceFormat = chooseSwapSurfaceFormat(physicalDevice.getSurfaceFormatsKHR( *surface ));
-    swapChainExtent = chooseSwapExtent(surfaceCapabilities);
-    auto minImageCount = std::max( 3u, surfaceCapabilities.minImageCount );
-    minImageCount = ( surfaceCapabilities.maxImageCount > 0 && minImageCount > surfaceCapabilities.maxImageCount ) ? surfaceCapabilities.maxImageCount : minImageCount;
+    vk::SurfaceCapabilitiesKHR surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
+    swapChainExtent                                = chooseSwapExtent(surfaceCapabilities);
+    uint32_t minImageCount                         = chooseSwapMinImageCount(surfaceCapabilities);
+
+    std::vector availableFormats = physicalDevice.getSurfaceFormatsKHR(*surface);
+    swapChainSurfaceFormat                             = chooseSwapSurfaceFormat(availableFormats);
 }
 
 Aside from these properties, we also have to decide how many images we
@@ -327,125 +330,114 @@ one more image than the minimum:
 uint32_t imageCount = surfaceCapabilities.minImageCount + 1;
 
 We should also make sure to not exceed the maximum number of images while
-doing this, where `0` is a special value that means that there is no maximum:
+doing this, where `0` is a special value that means that there is no maximum,
+resulting in this helper function
 
-if (surfaceCapabilities.maxImageCount > 0 && imageCount > surfaceCapabilities.maxImageCount) {
-    imageCount = surfaceCapabilities.maxImageCount;
-}
+uint32_t chooseSwapMinImageCount(vk::SurfaceCapabilitiesKHR const &surfaceCapabilities)
+{
+    auto minImageCount = std::max(3u, surfaceCapabilities.minImageCount);
+    if ((0 
 
 As is tradition with Vulkan objects, creating the swap chain object requires
 filling in a large structure, to be fair, the swapchain is a fairly complex
 object so it is among the larger createInfo structures in Vulkan:
 
-vk::SwapchainCreateInfoKHR swapChainCreateInfo{
-    .flags = vk::SwapchainCreateFlagsKHR(),
-    .surface = *surface,
-    .minImageCount = minImageCount,
-    .imageFormat = swapChainSurfaceFormat.format,
-    .imageColorSpace = swapChainSurfaceFormat.colorSpace,
-    .imageExtent = swapChainExtent,
-    .imageArrayLayers =1,
-    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment,
-    .imageSharingMode = vk::SharingMode::eExclusive,
-    .preTransform = surfaceCapabilities.currentTransform,
-    .compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque,
-    .presentMode = chooseSwapPresentMode(physicalDevice.getSurfacePresentModesKHR( *surface )),
-    .clipped = true,
-    .oldSwapchain = nullptr
+vk::SwapchainCreateInfoKHR swapChainCreateInfo{.surface          = *surface,
+                                               .minImageCount    = minImageCount,
+                                               .imageFormat      = swapChainSurfaceFormat.format,
+                                               .imageColorSpace  = swapChainSurfaceFormat.colorSpace,
+                                               .imageExtent      = swapChainExtent,
+                                               .imageArrayLayers = 1,
+                                               .imageUsage       = vk::ImageUsageFlagBits::eColorAttachment,
+                                               .imageSharingMode = vk::SharingMode::eExclusive,
+                                               .preTransform     = surfaceCapabilities.currentTransform,
+                                               .compositeAlpha   = vk::CompositeAlphaFlagBitsKHR::eOpaque,
+                                               .presentMode      = chooseSwapPresentMode(availablePresentModes),
+                                               .clipped          = true};
 };
 
+    .imageArrayLayers = 1,
+
 The `imageArrayLayers` specifies the number of layers each image consists of.
-This is always `1` unless you are developing a stereoscopic 3D application. The
-`imageUsage` bit field specifies what kind of operations we’ll use the images in
+This is always `1` unless you are developing a stereoscopic 3D application.
+
+    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment,
+
+The `imageUsage` bit field specifies what kind of operations we’ll use the images in
 the swap chain for. In this tutorial, we’re going to render directly to them,
 which means that they’re used as color attachment. It is also possible that
 you’ll render images to a separate image first to perform operations like
 post-processing. In that case you may use a value like
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` instead and use a memory operation to transfer
+`vk::ImageUsageFlagBits::eTransferDst` instead and use a memory operation to transfer
 the rendered image to a swap chain image.
 
-uint32_t queueFamilyIndices[] = {graphicsFamily, presentFamily};
+    .imageSharingMode = vk::SharingMode::eExclusive,
 
-if (graphicsFamily != presentFamily) {
-    swapChainCreateInfo.imageSharingMode = vk::SharingMode::eConcurrent;
-    swapChainCreateInfo.queueFamilyIndexCount = 2;
-    swapChainCreateInfo.pQueueFamilyIndices = queueFamilyIndices;
-} else {
-    swapChainCreateInfo.imageSharingMode = vk::SharingMode::eExclusive;
-    swapChainCreateInfo.queueFamilyIndexCount = 0; // Optional
-    swapChainCreateInfo.pQueueFamilyIndices = nullptr; // Optional
-}
-
-Next, we need to specify how to handle swap chain images that will be used
-across multiple queue families. That will be the case in our application if the
-graphics queue family is different from the presentation queue. We’ll be drawing
-on the images in the swap chain from the graphics queue and then submitting them
-on the presentation queue. There are two ways to handle images that are
-accessed from multiple queues:
+The `imageSharingMode` specifies how to handle swap chain images that might be used
+across multiple queue families. There are two ways to handle images that are accessed
+from multiple queues:
 
 * 
-`VK_SHARING_MODE_EXCLUSIVE`: An image is owned by one queue family at a time,
+`vk::SharingMode::eExclusive`: An image is owned by one queue family at a time,
 and ownership must be explicitly transferred before using it in another queue
 family. This option offers the best performance.
 
 * 
-`VK_SHARING_MODE_CONCURRENT`: Images can be used across multiple queue
+`vk::SharingMode::eConcurrent`: Images can be used across multiple queue
 families without explicit ownership transfers.
 
-If the queue families differ, then we’ll be using the concurrent mode in this
-tutorial to avoid having to do the ownership chapters, because these involve
-some concepts that are better explained at a later time. Concurrent mode
-requires you to specify in advance between which queue families ownership will
-be shared using the `queueFamilyIndexCount` and `pQueueFamilyIndices`
-parameters. If the graphics queue family and presentation queue family are the
-same, which will be the case on most hardware, then we should stick to exclusive
-mode. Concurrent mode requires you to specify at least two distinct
-queue families.
+If the queue families differ, then you could use the concurrent mode to avoid having
+to do the ownership chapters, because these involve some concepts that are better
+explained at a later time. Concurrent mode requires you to specify in advance between
+which queue families ownership will be shared using the `queueFamilyIndexCount` and
+`pQueueFamilyIndices` parameters. Concurrent mode requires you to specify at least two
+distinct queue families. If the graphics queue family and presentation queue family are
+the same, which will be the case on most hardware, then we should stick to exclusive mode.
 
-swapChainCreateInfo.preTransform = surfaceCapabilities.currentTransform;
+    .preTransform     = surfaceCapabilities.currentTransform,
 
 We can specify that a certain transform should be applied to images in the swap
 chain if it is supported (`supportedTransforms` in `capabilities`), like a
 90-degree clockwise rotation or horizontal flip. To specify that you do not want
 any transformation, simply specify the current transformation.
 
-swapChainCreateInfo.compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque;
+    .compositeAlpha   = vk::CompositeAlphaFlagBitsKHR::eOpaque,
 
 The `compositeAlpha` field specifies if the alpha channel should be used for
 blending with other windows in the window system. You’ll almost always want to
-simply ignore the alpha channel, hence `VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR`.
+simply ignore the alpha channel, hence `vk::CompositeAlphaFlagBitsKHR::eOpaque`.
 
-swapChainCreateInfo.presentMode = presentMode;
-swapChainCreateInfo.clipped = vk::True;
+    .presentMode      = chooseSwapPresentMode(availablePresentModes),
+    .clipped          = true};
 
 The `presentMode` member speaks for itself. If the `clipped` member is set to
-`VK_TRUE` then that means that we don’t care about the color of pixels that are
+`vk::True` then that means that we don’t care about the color of pixels that are
 obscured, for example, because another window is in front of them. Unless you
 really need to be able to read these pixels back and get predictable results,
 you’ll get the best performance by enabling clipping.
 
-swapChainCreateInfo.oldSwapchain = VK_NULL_HANDLE;
+swapChainCreateInfo.oldSwapchain = nullptr;
 
 That leaves one last field, `oldSwapChain`. With Vulkan, it’s possible that
 your swap chain becomes invalid or unoptimized while your application is
 running, for example, because the window was resized. In that case, the swap chain
 actually needs to be recreated from scratch, and a reference to the old one must
 be specified in this field. This is a complex topic that we’ll learn more about
-in [a future chapter](../04_Swap_chain_recreation.html). For now, we’ll assume that we’ll only ever create
-one swap chain.
+in [a future chapter](../04_Swap_chain_recreation.html).
+For now, we’ll assume that we’ll only ever create one swap chain and can leave this
+member to its default `nullptr`.
 
-Now add class members to store the `VkSwapchainKHR` object and its images:
+Now add class members to store the `vk::SwapchainKHR` object and its images:
 
-VkSwapchainKHR swapChain;
+vk::raii::SwapchainKHR swapChain;
 std::vector swapChainImages;
 
-Creating the swap chain is now as simple as calling `vkCreateSwapchainKHR`:
+Creating the swap chain is now as simple as calling the constructor of `vk::raii::SwapchainKHR`:
 
-swapChain = vk::raii::SwapchainKHR( device, swapChainCreateInfo );
+swapChain       = vk::raii::SwapchainKHR( device, swapChainCreateInfo );
 swapChainImages = swapChain.getImages();
 
-The parameters are the logical device, swap chain creation info, optional custom
-allocators and a pointer to the variable to store the handle in.
+The parameters are the logical device and a swap chain creation info.
 
 Now run the application to ensure that the swap chain is created
 successfully! If at this point you get an access violation error in
@@ -460,23 +452,18 @@ mistake and a helpful message is printed:
 ![swap chain validation layer](../../_images/images/swap_chain_validation_layer.png)
 
 The swap chain has been created now, so all that remains is retrieving the
-handles of the `VkImage` objects it contains. We’ll reference these during rendering
+handles of the `vk::Image` objects it contains. We’ll reference these during rendering
 operations in later chapters.
 
-std::vector swapChainImages = swapChainImages = swapChain->getImages();
+std::vector swapChainImages = swapChain->getImages();
 
 One last thing, store the format and extent we’ve chosen for the swap chain
 images in member variables. We’ll need them in future chapters.
 
 vk::raii::SwapchainKHR swapChain = nullptr;
 std::vector swapChainImages;
-vk::Format swapChainImageFormat = vk::Format::eUndefined;
-vk::Extent2D swapChainExtent;
-
-...
-
-swapChainImageFormat = surfaceFormat.format;
-swapChainExtent = extent;
+vk::SurfaceFormatKHR   swapChainSurfaceFormat;
+vk::Extent2D           swapChainExtent;
 
 We now have a set of images that can be drawn onto and can be presented to the
 window. The [next chapter](02_Image_views.html) will begin to cover how we can set up the images as

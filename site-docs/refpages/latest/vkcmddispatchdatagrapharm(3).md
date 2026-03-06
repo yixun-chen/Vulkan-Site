@@ -64,7 +64,7 @@ For each set *n* that is statically used by a bound data graph pipeline,
 a descriptor set **must** have been bound to *n* at the same pipeline bind
 point, with a [VkPipelineLayout](VkPipelineLayout.html) that is compatible for set *n*,
 with the [VkPipelineLayout](VkPipelineLayout.html) used to create the current
-[VkPipeline](VkPipeline.html), as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility)
+[VkPipeline](VkPipeline.html), as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09935) VUID-vkCmdDispatchDataGraphARM-None-09935

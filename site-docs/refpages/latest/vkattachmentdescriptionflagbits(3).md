@@ -21,6 +21,9 @@ VkAttachmentDescriptionFlagBits - Bitmask specifying additional properties of an
 Bits which **can** be set in [VkAttachmentDescription](VkAttachmentDescription.html)::`flags`,
 describing additional properties of the attachment, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.2](../../../../spec/latest/appendices/versions.html#versions-1.2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-renderpass2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkAttachmentDescriptionFlagBits {
     VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = 0x00000001,

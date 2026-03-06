@@ -2593,12 +2593,22 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter
 
- `pCounterAddresses` **must** be a valid pointer to a valid `VkDeviceAddress` value
+ `pCounterAddresses` **must** be a valid pointer to an array of `counterAddressCount` `VkDeviceAddress` values
 
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterIndices-parameter
 
- `pCounterIndices` **must** be a valid pointer to a `uint32_t` value
+ `pCounterIndices` **must** be a valid pointer to an array of `counterIndexCount` `uint32_t` values
+
+* 
+[](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterAddressCount-arraylength) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterAddressCount-arraylength
+
+ `counterAddressCount` **must** be greater than `0`
+
+* 
+[](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterIndexCount-arraylength) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-counterIndexCount-arraylength
+
+ `counterIndexCount` **must** be greater than `0`
 
 Structure Chaining
 
@@ -3273,7 +3283,7 @@ attachment is not used.
 
 To create a render pass, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [vkCreateRenderPass2](#vkCreateRenderPass2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -3357,7 +3367,7 @@ Return Codes
 
 The `VkRenderPassCreateInfo` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -3665,6 +3675,9 @@ Valid Usage (Implicit)
 Bits which **can** be set in [VkRenderPassCreateInfo](#VkRenderPassCreateInfo)::`flags`,
 describing additional properties of the render pass, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkRenderPassCreateFlagBits {
   // Provided by VK_QCOM_render_pass_transform
@@ -3964,7 +3977,7 @@ structure includes a fragment density map attachment for the render pass.
 The `VkRenderPassFragmentDensityMapCreateInfoEXT` structure is defined
 as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_fragment_density_map
@@ -4070,7 +4083,7 @@ Structure Chaining
 
 The `VkAttachmentDescription` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkAttachmentDescription2](#VkAttachmentDescription2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -4521,6 +4534,9 @@ Valid Usage (Implicit)
 Bits which **can** be set in [VkAttachmentDescription](#VkAttachmentDescription)::`flags`,
 describing additional properties of the attachment, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkAttachmentDescriptionFlagBits {
     VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = 0x00000001,
@@ -4685,7 +4701,7 @@ Valid Usage (Implicit)
 
 The `VkSubpassDescription` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkSubpassDescription2](#VkSubpassDescription2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -5215,6 +5231,9 @@ Valid Usage (Implicit)
 Bits which **can** be set in [VkSubpassDescription](#VkSubpassDescription)::`flags`,
 specifying usage of the subpass, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkSubpassDescriptionFlagBits {
   // Provided by VK_NVX_multiview_per_view_attributes
@@ -5317,7 +5336,7 @@ or more [VkSubpassDescriptionFlagBits](#VkSubpassDescriptionFlagBits).
 
 The `VkAttachmentReference` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkAttachmentReference2](#VkAttachmentReference2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -5393,7 +5412,7 @@ It is described in more detail by [VkSubpassDependency](#VkSubpassDependency).
 
 The `VkSubpassDependency` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [VkSubpassDependency2](#VkSubpassDependency2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -8003,7 +8022,7 @@ Structure Chaining
 
 The `VkFragmentShadingRateAttachmentInfoKHR` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_KHR_fragment_shading_rate
@@ -9837,6 +9856,9 @@ Valid Usage (Implicit)
 Bits which **can** be set in [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags`,
 specifying options for framebuffers, are:
 
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef enum VkFramebufferCreateFlagBits {
   // Provided by VK_VERSION_1_2
@@ -10289,7 +10311,7 @@ instance.
 
 To begin a render pass instance, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [vkCmdBeginRenderPass2](#vkCmdBeginRenderPass2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -11369,7 +11391,7 @@ chain of `VkRenderPassBeginInfo`.
 
 The `VkRenderPassSampleLocationsBeginInfoEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_sample_locations
@@ -11455,7 +11477,7 @@ Structure Chaining
 
 The `VkAttachmentSampleLocationsEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_sample_locations
@@ -11497,7 +11519,7 @@ Valid Usage (Implicit)
 
 The `VkSubpassSampleLocationsEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_sample_locations
@@ -11731,6 +11753,9 @@ Valid Usage (Implicit)
 
 Possible values of [vkCmdBeginRenderPass](#vkCmdBeginRenderPass)::`contents`, specifying
 how the commands in the first subpass will be provided, are:
+
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+| --- | --- |
 
 // Provided by VK_VERSION_1_0
 typedef enum VkSubpassContents {
@@ -12195,7 +12220,7 @@ Valid Usage (Implicit)
 To transition to the next subpass in the render pass instance after
 recording the commands for a subpass, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [vkCmdNextSubpass2](#vkCmdNextSubpass2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -12415,7 +12440,7 @@ vkCmdNextSubpass2 is not affected by [conditional rendering](drawing.html#drawin
 To record a command to end a render pass instance after recording the
 commands for the last subpass, call:
 
-|  | This functionality is superseded by [Vulkan Version 1.2](../appendices/versions.html#versions-1.2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
+|  | This functionality is superseded by [vkCmdEndRenderPass2](#vkCmdEndRenderPass2). See [Legacy Functionality](../appendices/legacy.html#legacy-renderpass2) for more information. |
 | --- | --- |
 
 // Provided by VK_VERSION_1_0
@@ -12860,7 +12885,7 @@ The `y` component of each element of `pFragmentDensityOffsets`
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-10730) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-10730
 
-Each element of `pFragmentDensityOffsets` must be identical for
+Each element of `pFragmentDensityOffsets` **must** be identical for
 every [vkCmdEndRendering2KHR](#vkCmdEndRendering2KHR) call made in a render pass
 
 Valid Usage (Implicit)
@@ -12890,7 +12915,7 @@ A `VkRenderPassCreationControlEXT` structure **can** be included in the
 [VkSubpassDescription2](#VkSubpassDescription2).
 The `VkRenderPassCreationControlEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback
@@ -12942,7 +12967,7 @@ To obtain feedback about the creation of a render pass, include a
 chain of [VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2).
 The `VkRenderPassCreationFeedbackCreateInfoEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback
@@ -12985,7 +13010,7 @@ Structure Chaining
 
 The `VkRenderPassCreationFeedbackInfoEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback
@@ -13001,7 +13026,7 @@ Feedback about the creation of a subpass **can** be obtained by including a
 chain of [VkSubpassDescription2](#VkSubpassDescription2).
 `VkRenderPassSubpassFeedbackCreateInfoEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback
@@ -13044,7 +13069,7 @@ Structure Chaining
 
 The `VkRenderPassSubpassFeedbackInfoEXT` structure is defined as:
 
-|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
+|  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4) and [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
 
 // Provided by VK_EXT_subpass_merge_feedback

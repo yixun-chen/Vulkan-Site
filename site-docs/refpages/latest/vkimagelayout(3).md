@@ -343,7 +343,7 @@ and [Copy Commands](../../../../spec/latest/chapters/copies.html#copies)).
 For use as a framebuffer attachment, this is a member in the substructures
 of the [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html) (see [Render Pass](../../../../spec/latest/chapters/renderpass.html#renderpass)).
 For use in a descriptor set, this is a member in the
-`VkDescriptorImageInfo` structure (see [Descriptor Set Updates](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates)).
+`VkDescriptorImageInfo` structure (see [Descriptor Set Updates](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates)).
 
 If the [`unifiedImageLayouts`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts) feature
 is enabled, the [VK_IMAGE_LAYOUT_GENERAL](#) image layout **may** be used in

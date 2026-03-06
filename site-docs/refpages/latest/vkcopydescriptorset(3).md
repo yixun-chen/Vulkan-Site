@@ -100,7 +100,7 @@ Valid Usage
 The sum of `srcArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `srcBinding`, and all applicable
-[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates-consecutive)
+[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-00347) VUID-VkCopyDescriptorSet-dstBinding-00347
@@ -113,7 +113,7 @@ binding specified by `srcBinding`, and all applicable
 The sum of `dstArrayElement` and `descriptorCount` **must** be less
 than or equal to the number of array elements in the descriptor set
 binding specified by `dstBinding`, and all applicable
-[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates-consecutive)
+[consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02632) VUID-VkCopyDescriptorSet-dstBinding-02632
@@ -126,7 +126,7 @@ type of `srcBinding` within `srcSet`
 
 If `srcSet` is equal to `dstSet`, then the source and
 destination ranges of descriptors **must** not overlap, where the ranges
-**may** include array elements from [    consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-updates-consecutive)
+**may** include array elements from [    consecutive bindings](../../../../spec/latest/chapters/descriptorsets.html#descriptors-sets-updates-consecutive)
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcBinding-02223) VUID-VkCopyDescriptorSet-srcBinding-02223

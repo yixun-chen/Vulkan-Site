@@ -21,6 +21,9 @@ vkCmdSetEvent - Set an event object to signaled state
 
 To set the state of an event to signaled from a device, call:
 
+|  | This functionality is superseded by [vkCmdSetEvent2](../../../../spec/latest/chapters/synchronization.html#vkCmdSetEvent2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdSetEvent(
     VkCommandBuffer                             commandBuffer,

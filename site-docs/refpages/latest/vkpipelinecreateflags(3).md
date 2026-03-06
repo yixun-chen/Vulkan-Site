@@ -18,6 +18,9 @@
 
 VkPipelineCreateFlags - Bitmask of VkPipelineCreateFlagBits
 
+|  | This functionality is superseded by [VkPipelineCreateFlags2](../../../../spec/latest/chapters/pipelines.html#VkPipelineCreateFlags2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-flagbits) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkPipelineCreateFlags;
 

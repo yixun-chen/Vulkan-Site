@@ -21,6 +21,9 @@ vkCmdResetEvent - Reset an event object to non-signaled state
 
 To set the state of an event to unsignaled from a device, call:
 
+|  | This functionality is superseded by [vkCmdResetEvent2](../../../../spec/latest/chapters/synchronization.html#vkCmdResetEvent2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 void vkCmdResetEvent(
     VkCommandBuffer                             commandBuffer,

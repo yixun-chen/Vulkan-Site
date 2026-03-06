@@ -21,6 +21,9 @@ VkImageMemoryBarrier - Structure specifying the parameters of an image memory ba
 
 The `VkImageMemoryBarrier` structure is defined as:
 
+|  | This functionality is superseded by [VkImageMemoryBarrier2](../../../../spec/latest/chapters/synchronization.html#VkImageMemoryBarrier2). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#deprecation-sync2) for more information. |
+| --- | --- |
+
 // Provided by VK_VERSION_1_0
 typedef struct VkImageMemoryBarrier {
     VkStructureType            sType;

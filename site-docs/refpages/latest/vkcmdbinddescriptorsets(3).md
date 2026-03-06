@@ -79,7 +79,7 @@ are no longer valid.
 Once bound, a descriptor set affects rendering of subsequent commands that
 interact with the given pipeline type in the command buffer until either a
 different set is bound to the same set number, or the set is disturbed as
-described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility).
+described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility).
 
 A compatible descriptor set **must** be bound for all set numbers that any
 shaders in a pipeline access, at the time that a drawing or dispatching
@@ -94,7 +94,7 @@ descriptor is not **undefined** as described by
 [descriptor set allocation](../../../../spec/latest/chapters/descriptorsets.html#descriptor-set-initial-state).
 If the [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is enabled,
 a null descriptor is also considered valid.
-A descriptor that was disturbed by [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility), or was never bound by `vkCmdBindDescriptorSets`
+A descriptor that was disturbed by [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility), or was never bound by `vkCmdBindDescriptorSets`
 is not considered valid.
 For any given descriptor, [VkDescriptorBindingFlagBits](VkDescriptorBindingFlagBits.html) and
 [VkDescriptorSetLayoutCreateFlagBits](VkDescriptorSetLayoutCreateFlagBits.html) determine if validity is defined
@@ -132,7 +132,7 @@ Each of the `pDescriptorSets` **must** be compatible with the pipeline
 layout specified by `layout`.
 The layout used to program the bindings **must** also be compatible with the
 pipeline used in subsequent [bound pipeline commands](../../../../spec/latest/chapters/pipelines.html#pipelines-bindpoint-commands) with that pipeline type, as defined in the
-[Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) section.
+[Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptors-compatibility) section.
 
 The descriptor set contents bound by a call to `vkCmdBindDescriptorSets`
 **may** be consumed at the following times:
