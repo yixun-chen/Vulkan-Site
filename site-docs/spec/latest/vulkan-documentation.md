@@ -41,7 +41,7 @@ help navigate quickly to the information you need for developing
 Vulkan-based applications.
 
 This build of the site includes the Vulkan 1.4.345 API specification
-(with all registered extensions), generated on 2026-03-06 00:09:52Z from git branch: main commit: b0b699e446e3eab9bc0d6b192599871eecf25e1e.
+(with all registered extensions), generated on 2026-03-09 16:37:00Z from git branch: main commit: b0b699e446e3eab9bc0d6b192599871eecf25e1e.
 
 The site is organized into “components”.
 The left navigation sidebar links to pages in the current component.

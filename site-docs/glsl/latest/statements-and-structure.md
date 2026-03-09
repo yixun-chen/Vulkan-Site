@@ -238,7 +238,7 @@ either **int** or **uint** to **double**.
 If none of the rules above apply to a particular pair of conversions,
 neither conversion is considered better than the other.
 
-For the example function prototypes (A), (B), and © above, the following
+For the example function prototypes (A), (B), and (C) above, the following
 examples show how the rules apply to different sets of calling argument
 types:
 

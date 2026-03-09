@@ -375,6 +375,9 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rasterization_order_attachment_access/README.html">Rasterization order attachment access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="ray_tracing_basic/README.html">Raytracing basic</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -557,7 +560,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+    <span class="nav-text">link:https://github.com/KhronosGroup/Vulkan-Samples[GitHub Repository, window=_blank</span>
   </li>
 </ul>
   </li>
@@ -681,6 +684,15 @@ Read the blog post here for discussion: (<a href="https://www.khronos.org/blog/s
 <div class="paragraph">
 <p>Demonstrates how to use Dynamic Rendering with local reads to fully replace render passses with multiple subpasses.
 See this <a href="https://www.khronos.org/blog/streamlining-subpasses">this blogpost</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rasterization_order_attachment_access"><a class="anchor" href="#_rasterization_order_attachment_access"></a><a href="rasterization_order_attachment_access/README.html" class="xref page">Rasterization Order Attachment Access</a></h3>
+<div class="paragraph">
+<p><strong>Extensions</strong>: <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_rasterization_order_attachment_access"><code>VK_EXT_rasterization_order_attachment_access</code></a>, <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering"><code>VK_KHR_dynamic_rendering</code></a>, <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering_local_read"><code>VK_KHR_dynamic_rendering_local_read</code></a></p>
+</div>
+<div class="paragraph">
+<p>Demonstrates how to use rasterization order attachment access with dynamic rendering local read to implement framebuffer fetch with guaranteed fragment ordering. A runtime toggle compares single-draw ROAA blending against multi-draw fallback with pipeline barriers.</p>
 </div>
 </div>
 <div class="sect2">

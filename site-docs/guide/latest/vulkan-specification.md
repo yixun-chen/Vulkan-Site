@@ -30,7 +30,7 @@ The Vulkan Spec can be built for any version and with any permutation of extensi
 
 When building the Vulkan Spec, you pass in what version of Vulkan to build for as well as what extensions to include. A Vulkan Spec without any extensions is also referred to as the [core version](https://docs.vulkan.org/spec/latest/chapters/extensions.html#extendingvulkan-coreversions) as it is the minimal amount of Vulkan an implementation needs to support in order to be [conformant](vulkan_cts.html#vulkan-cts).
 
-Vulkan 1.0 to 1.3, there was a dedicated version of the spec. To to reduce build permutation, starting with Vulkan 1.4 there is now a `latest` version that will always be updated to the latest version of Vulkan.
+Vulkan 1.0 to 1.3, there was a dedicated version of the spec. To reduce build permutation, starting with Vulkan 1.4 there is now a `latest` version that will always be updated to the latest version of Vulkan.
 
 The [Vulkan SDK](https://vulkan.lunarg.com/doc/sdk/1.4.304.0/windows/1.4-extensions/vkspec.html) will always contain the version of the spec that it was created with.
 
